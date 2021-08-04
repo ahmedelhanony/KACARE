@@ -1,0 +1,229 @@
+.btn{
+  height: 55px;
+  min-width: 140px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: all .2s linear;
+
+  .btn-icon{
+    margin-right: 5px;
+  }
+
+  .mat-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    transition: all 0.1s;
+  }
+
+  &.square{
+    min-width: 42px !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    &.large{
+      min-width: 55px !important;
+      width: 55px !important;
+      height: 55px !important;
+    }
+    &.small{
+      min-width: 38px !important;
+      width: 38px !important;
+      height: 38px !important;
+    }
+  }
+
+  &.mat-flat-button{
+
+    font-size: 1.0625rem;
+    font-weight: $font-bold;
+    padding: 0 30px;
+
+    @include gen-buttons('flat');
+
+    //.mat-button-ripple{
+    //  display: none !important;
+    //}
+
+    &.primary-button {
+      background-color: $light-gray;
+      color: $light-blue;
+      .mat-button-ripple{
+        background-color: rgba($light-gray, 20%);
+      }
+      &:hover {
+        background-color: $blue;
+        color: $white;
+      }
+
+    }
+
+    &.secondary-button {
+      background-color: $light-blue-1;
+      color: $blue;
+
+      &:hover {
+        background-color: $blue;
+        color: $white;
+      }
+    }
+
+    &.light-blue-button {
+      background-color: $light-blue;
+      color: $white;
+
+      &.only-shadow{
+        box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
+        &:hover{
+          box-shadow: none !important;
+          background-color: $light-blue;
+          color: $white;
+        }
+      }
+
+      &.shadow{
+        box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
+        &:hover{
+          box-shadow: none !important;
+        }
+
+      }
+
+      &.shadow-hover{
+        &:hover{
+          background-color: $light-blue !important;
+          color: $white !important;
+          box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
+        }
+      }
+      &:hover {
+        background-color: $light-gray;
+        color: $light-blue;
+      }
+    }
+
+    &.light-gray-button {
+      background-color: $light-gray;
+      color: $gray;
+      &.bordered {
+        border: 1px solid #E4E7EE;
+        color: $onyx;
+      }
+      &:hover {
+        box-shadow: 0 20px 34px rgba($light-gray, 20%) !important;
+      }
+    }
+
+
+
+  }
+
+  &.mat-stroked-button{
+    font-size: 1.0625rem;
+    font-weight: $font-bold;
+    padding: 0 30px;
+    &.light-blue-button {
+      background-color: $transparent;
+      color: $light-blue;
+      border: 2px solid $light-blue;
+      &.shadow{
+        box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
+        &:hover{
+          box-shadow: none !important;
+        }
+      }
+      &.shadow-hover{
+        &:hover{
+          box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
+        }
+      }
+      &:hover {
+        background-color: $light-blue;
+        color: $white;
+      }
+    }
+  }
+
+  &.mat-icon-button{
+    border-width: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    @extend .square;
+    .fi{
+      font-size: 1.3rem;
+    }
+    @include gen-buttons('square');
+    .mat-button-focus-overlay{
+      transition: all 0.4s;
+      opacity: 1 !important;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+    }
+    &.action-button{
+      background-color: $light-gray !important;
+      //font-size: 1.2rem;
+      .mat-button-focus-overlay{
+        background-color: $light-gray;
+      }
+      &:hover{
+        .mat-button-focus-overlay{
+          background-color: rgba($gray, 25%);
+        }
+      }
+    }
+
+    &.arrow-button{
+      background-color: $light-gray;
+      color: $light-blue;
+
+      &.white{
+        background-color: $white;
+      }
+      .mat-button-focus-overlay{
+        background-color: transparent;
+      }
+      &:hover{
+        background-color: $light-blue;
+        color: $white;
+      }
+    }
+    &.button-transparent{
+      color: $onyx !important;
+      background-color: transparent !important;
+      .mat-button-focus-overlay{
+        background-color: transparent;
+      }
+    }
+    &:hover{
+      .mat-button-focus-overlay{
+        opacity: .9 !important;
+        width: 0;
+      }
+    }
+  }
+  &:disabled {
+    background-color: $gray-1 !important;
+    border: 2px solid $gray-1 !important;
+    color: $white !important;
+    opacity: 1 !important;
+    cursor: not-allowed !important;
+
+    .mat-button-focus-overlay{
+      display: none !important;
+    }
+  }
+
+}
+
+
+
+
+
+

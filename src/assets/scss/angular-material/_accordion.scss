@@ -1,0 +1,91 @@
+.primary-accordion {
+
+  .mat-expansion-panel{
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    border: 0;
+    &:hover{
+      .mat-expansion-panel-header{
+        background-color: $light-gray !important;
+      }
+    }
+    &.mat-expansion-panel-spacing{
+      margin: 0;
+    }
+    .mat-expansion-panel-header{
+      height: 85px !important;
+      background-color: $white !important;
+      border-radius: 5px;
+      border: 1px solid $off-white-1;
+      transition: all .2s linear;
+      @include media-breakpoint-down(md){
+        padding: 0 12px;
+      }
+      .mat-content{
+        align-items: center;
+      }
+      .panel-title{
+        color: $onyx !important;
+      }
+
+      .mat-expansion-indicator{
+        display: none;
+
+      }
+
+      &:after{
+        content: "\e910";
+        font-family: 'kacare-font-icons' !important;
+        color: $onyx !important;
+        //border-width: 0 2px 2px 0 !important;
+        //height: 12px;
+        //width: 12px;
+        position: relative;
+        //top: -5px;
+        //border-style: solid;
+        display: inline-block;
+        //padding: 3px;
+        //transform: rotate(-45deg);
+        vertical-align: middle;
+        transition: transform .1s linear;
+        //@include media-breakpoint-down(md){
+        //  height: 2px;
+        //  width: 2px;
+        //}
+      }
+      &.mat-expanded{
+        background-color: $light-blue !important;
+        border: 1px solid $light-blue;
+        border-radius: 5px 5px 0 0;
+        .panel-title{
+          color: $white !important;
+        }
+        &:after{
+          transform: rotate(90deg) !important;
+          color: $white !important;
+        }
+      }
+    }
+
+    .mat-expansion-panel-body{
+        padding: 24px !important;
+
+
+        @include media-breakpoint-down(md){
+          padding: 12px !important;
+        }
+      p{
+        line-height: 1.5;
+      }
+    }
+
+    &.mat-expanded{
+      .mat-expansion-panel-content{
+        border-radius: 0 0 5px 5px;
+        border: 1px solid $off-white-1;
+        border-top: 0;
+      }
+    }
+  }
+}
+

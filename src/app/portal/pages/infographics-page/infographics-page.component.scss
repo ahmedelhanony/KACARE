@@ -1,0 +1,23 @@
+:host{
+  ::ng-deep{
+    .card.infographics-card {
+      &:hover{
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        z-index: 1;
+        .card-content{
+          h6{
+            height: auto;
+            flex: auto;
+            //min-height: auto;
+            //max-height: initial;
+            //overflow: visible;
+            transition: all .3s ease-out;
+          }
+        }
+      }
+    }
+
+  }
+}

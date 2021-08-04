@@ -1,0 +1,16 @@
+<div class="card-details-page row">
+  <div class="col-md-5">
+    <div class="img-card rounded-image full default-shadow">
+      <img [src]="image" alt="icon"/>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card-content ml-md-4">
+      <h3 class="font-34 font-md-24 mb-2">{{title}}</h3>
+      <h6 class="font-16 font-weight-normal text-color-gray mb-4" *ngIf="description">{{description}}</h6>
+      <button mat-flat-button class="btn light-blue-button shadow px-5" routerLink="/applications/apply" link>
+        Apply Now
+      </button>
+    </div>
+  </div>
+</div>

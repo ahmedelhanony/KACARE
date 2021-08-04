@@ -1,0 +1,32 @@
+.loading-bg {
+  min-height: 30px;
+  background-color: #eeeeee;
+  background-image: linear-gradient(90deg, #eeeeee 25%, #e6e6e6 37%, #eeeeee 63%);
+  background-size: 400% 100%;
+  -webkit-animation: loading-background 1.4s ease infinite;
+  animation: loading-background 1.4s ease infinite;
+  width: 100%;
+}
+
+.loading-bg-white {
+  min-height: 30px;
+  background-image: linear-gradient(90deg, #f8f8f8 25%, #e6e6e6 37%, #fff 63%);
+  background-size: 400% 100%;
+  -webkit-animation: loading-background 1.4s ease infinite;
+  animation: loading-background 1.4s ease infinite;
+  width: 100%;
+}
+
+.loading-btn {
+  height: 55px;
+  width: 150px;
+}
+
+@keyframes loading-background {
+  0% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0 50%
+  }
+}

@@ -1,0 +1,28 @@
+.status{
+  min-width: 100px;
+  //width: 75px;
+  min-height: 26px;
+  padding: 5px 15px;
+  font-size: 1rem;
+  border-radius: 3px;
+  font-weight: $font-medium;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &.draft{
+    color: $gray;
+    background-color: $light-gray;
+  }
+  &.waiting{
+    color: $white;
+    background-color: $yellow;
+  }
+  &.rejected{
+    color: $white;
+    background-color: $red;
+  }
+  &.approved{
+    color: $white;
+    background-color: $green;
+  }
+}

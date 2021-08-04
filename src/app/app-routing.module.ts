@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'sandbox',
+    loadChildren: () => import(`./sandbox/sandbox.module`).then(m => m.SandboxModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import(`./portal/portal.module`).then(m => m.PortalModule)
+  },
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

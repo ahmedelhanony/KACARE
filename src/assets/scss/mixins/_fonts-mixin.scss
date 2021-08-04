@@ -1,0 +1,19 @@
+@mixin fonts {
+  @for $i from 10 through 90 {
+    .font-#{$i} {
+      font-size: #{$i/$font-size-base}rem;
+    }
+
+    .font-#{$i}-imp {
+      font-size: #{$i/$font-size-base}rem !important;
+    }
+
+    @media(max-width: 768px) {
+      .font-md-#{$i} {
+        font-size: #{$i/$font-size-base}rem !important;
+      }
+    }
+  }
+}
+
+@include fonts;

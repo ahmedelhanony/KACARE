@@ -1,0 +1,29 @@
+:host ::ng-deep{
+  .swiper-container{
+    overflow: visible;
+
+    .swiper-slide {
+      opacity: 0;
+      &.swiper-slide-visible{
+        opacity: 1;
+      }
+    }
+    .swiper-controls{
+      position: absolute;
+      top: calc(50% + 20px);
+      width: 100%;
+      z-index: 3;
+
+      .arrow-button{
+        position: absolute;
+      }
+      .button-next{
+        right: -60px;
+      }
+
+      .button-prev{
+        left: -60px;
+      }
+    }
+  }
+}

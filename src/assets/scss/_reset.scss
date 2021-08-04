@@ -1,0 +1,17 @@
+* {
+  &:active,
+  :focus {
+    outline: none !important; // 1
+  }
+}
+.cdk-text-field-autofill-monitored:-webkit-autofill,
+.cdk-text-field-autofilled{
+  background-color: red !important;
+}
+a:not(.mat-button):not(.mat-raised-button):not(.mat-fab):not(.mat-mini-fab):not([mat-list-item]) {
+  color: $light-blue;
+}
+
+a:hover{
+  text-decoration: none;
+}

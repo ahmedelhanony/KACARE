@@ -1,0 +1,55 @@
+@import "src/assets/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+:host{
+  ::ng-deep{
+    .highcharts-label-box.highcharts-tooltip-box.highcharts-shadow, .highcharts-tooltip-box, .highcharts-credits{
+      display: none;
+    }
+    .project-chart{
+      position: relative;
+
+      align-items: baseline;
+
+      .share{
+        //left: 0;
+        //top: 0;
+        //align-self: flex-start;
+        .circle{
+          background-color: $light-blue;
+        }
+      }
+      .total{
+        //bottom: 0;
+        //right: 0;
+        //align-self: flex-end;
+        .circle{
+          background-color: $blue;
+        }
+      }
+    }
+    .tooltip-chart{
+      display: flex;
+      align-items: baseline;
+      background-color: $white;
+      padding: 15px;
+      width: 250px;
+      z-index: 1;
+      border-radius: 8px;
+      box-shadow: 0 3px 14px rgba($black , 6%);
+      .circle{
+        width: 10px;
+        min-width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .info{
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

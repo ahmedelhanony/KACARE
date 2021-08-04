@@ -1,0 +1,42 @@
+<app-header title="PV-Diesel Hybrid Systems"></app-header>
+<section class="secondary-section">
+  <div class="custom-container mb-5">
+    <div class="row">
+      <div class="col-md-8 mb-4">
+        <div class="pt-4">
+          <h5 class="font-24 text-color-onyx my-4">Overview</h5>
+          <ul class="default-list dashed-list">
+            <li *ngFor="let item of projectDetails.overview" class="font-16 text-color-gray font-weight-medium">{{item}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <app-project-card className="no-shadow details-page" [date]="projectDetails.date" [technology]="projectDetails.technology"
+                          [location]="projectDetails.location" [image]="projectDetails.image"
+        >
+          <img src="assets/images/logo.svg" alt="logo" logo>
+        </app-project-card>
+      </div>
+      <div class="col-12 my-4">
+        <div class="project-chart d-flex flex-column flex-lg-row justify-content-lg-start justify-content-center align-items-center align-items-lg-baseline">
+          <div class="tooltip-chart share align-self-auto align-self-lg-start">
+            <span class="circle"></span>
+            <div class="info">
+              <span class="font-16 font-weight-bold text-color-onyx">K.A.CARE Share</span>
+              <span class="font-14 text-color-gray">Which is 38% of the actual project completion costs.</span>
+            </div>
+          </div>
+          <highcharts-chart [Highcharts]="Highcharts" [options]="OutstandingAmount" class="my-3"></highcharts-chart>
+          <div class="tooltip-chart total align-self-auto align-self-lg-end">
+            <span class="circle"></span>
+            <div class="info">
+              <span class="font-16 font-weight-bold text-color-onyx">The Total Cost of the project</span>
+              <span class="font-14 text-color-gray">15,024.550 SAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

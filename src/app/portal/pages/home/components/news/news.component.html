@@ -1,0 +1,45 @@
+<section class="main-section">
+  <div class="custom-container">
+  <app-section-title title="News" subTitle="Our LATEST NEWS"></app-section-title>
+
+    <div class="my-4">
+      <swiper [config]="config" class="default-swiper">
+
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let newsItem of news">
+            <app-main-card
+              className="news-card image-card" [title]="newsItem.title">
+              <img [src]="newsItem.image" [alt]="newsItem.title" shape>
+              <div class="primary-label mb-3" date>
+                <span class="fi fi-calendar-1 text-color-light-blue"></span>
+                <span class="mx-1"></span>
+                <span class="font-weight-medium">{{ newsItem.date }}</span>
+              </div>
+              <button mat-flat-button class="btn button-white px-0" link>
+                Read more
+                <span class="mx-2 fi fi-arrow-right font-12"></span>
+              </button>
+            </app-main-card>
+          </div>
+        </div>
+
+        <div class="swiper-controls">
+
+          <div class="add-rows">
+            <!-- Add Arrows -->
+            <button mat-icon-button class="btn arrow-button button-next" type="button">
+              <span class="fi fi-arrow-right-long"></span>
+            </button>
+            <span class="mx-1"></span>
+            <button mat-icon-button class="btn arrow-button button-prev" type="button">
+              <span class="fi fi-arrow-left-long"></span>
+            </button>
+          </div>
+        </div>
+      </swiper>
+      <div class="d-flex justify-content-center mt-5">
+        <button mat-stroked-button class="btn light-blue-button shadow-hover px-5">View all</button>
+      </div>
+    </div>
+  </div>
+</section>

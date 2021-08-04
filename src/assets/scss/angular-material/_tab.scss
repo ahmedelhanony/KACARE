@@ -1,0 +1,39 @@
+.primary-tab {
+    .mat-ink-bar {
+        height: 2px;
+        bottom: 2px;
+        transform: scaleX(.6);
+        background-color: $light-blue !important;
+    }
+    .mat-tab-label {
+        height: auto;
+        padding: 20px 24px;
+        opacity: 1;
+        .mat-tab-label-content {
+            color: $gray;
+        }
+        &.mat-tab-label-active {
+            .mat-tab-label-content {
+                color: $onyx;
+                font-weight: $font-medium;
+            }
+        }
+    }
+  .mat-tab-header{
+    border-bottom: 0 !important;
+    border-top: 1px solid $gray-1 !important;
+  }
+  .mat-tab-body-wrapper{
+    border-top: 1px solid $gray-1 !important;
+    margin-top: -3px;
+    overflow: visible;
+    .mat-tab-body.mat-tab-body-active{
+      overflow: visible;
+    }
+    .mat-tab-body-content{
+
+      overflow:visible;
+    }
+  }
+
+}

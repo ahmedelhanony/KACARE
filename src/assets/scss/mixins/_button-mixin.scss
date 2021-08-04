@@ -1,0 +1,54 @@
+@mixin gen-buttons($button-type) {
+  @each $color-name, $color in $root-colors {
+    &.button-#{"" + $color-name}{
+      background-color: $color;
+      color: $white;
+
+      @if  $color-name == blue {
+        color: $white;
+        box-shadow: 0 20px 34px rgba($color, 20%) !important;
+      }
+
+      @else if  $color-name == white {
+        color: $light-blue;
+      }
+
+      @if $button-type == square {
+        background-color: rgba($color, .2);
+        color: $color;
+
+      }
+
+
+
+      .mat-button-focus-overlay{
+        @if $button-type == square {
+          background-color: rgba($color, .3);
+        }
+      }
+
+
+      &:hover{
+        box-shadow: 0 20px 34px rgba($color, 20%) !important;
+        @if $button-type == square{
+          color: $color;
+        }
+        @else if  $color-name == white {
+          color: $light-blue;
+        }
+        @else if  $color-name == blue {
+          box-shadow: none !important;
+          background-color: $light-gray;
+          color: $light-blue;
+        }
+        @else {
+          color: $white;
+        }
+      }
+    }
+
+
+  }
+}
+
+

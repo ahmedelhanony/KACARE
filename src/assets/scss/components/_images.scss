@@ -1,0 +1,45 @@
+img {
+  max-width: 100%;
+}
+
+.img-card{
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.circled-img {
+    border-radius: 50%;
+  }
+  &.rounded-image{
+    border-radius: 17px;
+  }
+
+  &.full{
+    width: 100%;
+    height: auto;
+  }
+  &.small {
+    width: 39px;
+    min-width: 39px;
+    height: 39px;
+  }
+  &.x-small {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+  }
+  &.semi {
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+
+
+

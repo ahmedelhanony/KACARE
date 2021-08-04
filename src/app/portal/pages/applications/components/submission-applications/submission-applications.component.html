@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">Application </label>
+      <mat-select disableOptionCentering required placeholder="Choose Application">
+        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3 mb-3">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">REP Topic</label>
+      <mat-select disableOptionCentering required placeholder="Choose REP Topic">
+        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<app-table-list [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns"></app-table-list>

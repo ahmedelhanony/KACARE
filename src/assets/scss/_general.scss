@@ -1,0 +1,90 @@
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 1rem;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: $white;
+
+  [dir=rtl] & {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+
+app-root {
+  height: 100%;
+}
+
+.main-section{
+  padding: 80px 0;
+}
+
+.secondary-section{
+  padding: 60px 0;
+}
+
+.btn-section{
+  display: flex;
+  align-items: center;
+  margin: 0 -1rem;
+  .btn{
+    margin: 0 1rem;
+    width: 205px;
+  }
+}
+
+.custom-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  @include media-breakpoint-down(sm) {
+    padding: 0 16px;
+  }
+}
+
+
+
+@include media-breakpoint-up(md) {
+  .w-md-50 {
+    width: 50% !important;
+  }
+  .w-md-75 {
+    width: 75% !important;
+  }
+  .w-md-100 {
+    width: 100% !important
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .w-sm-50 {
+    width: 50% !important;
+  }
+  .w-sm-75 {
+    width: 75% !important;
+  }
+  .w-sm-100 {
+    width: 100% !important
+  }
+}
+
+
+.hint{
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+

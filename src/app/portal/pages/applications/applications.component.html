@@ -1,0 +1,36 @@
+<app-header [className]="isRegistered ? 'header-2' : ''" title="Applications" subTitle="We Convert scientific insights into industry solutions"></app-header>
+<section class="secondary-section" *ngIf="!isRegistered">
+  <div class="custom-container mb-5">
+    <app-all-applications ></app-all-applications>
+
+  </div>
+</section>
+
+
+<div class="custom-container mt-4 mb-5" *ngIf="isRegistered">
+  <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="d-flex align-items-center font-18 font-weight-medium">
+          <span>All Applications</span>
+        </div>
+      </ng-template>
+
+      <div class="py-4 my-2">
+        <app-all-applications></app-all-applications>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="d-flex align-items-center font-18 font-weight-medium">
+          <span>My Submission Application</span>
+        </div>
+      </ng-template>
+      <div class="py-4 my-2">
+        <app-submission-applications></app-submission-applications>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

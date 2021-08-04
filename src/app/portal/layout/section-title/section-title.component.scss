@@ -1,0 +1,33 @@
+@import "src/assets/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.main-title, .sub-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-extra-bold;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.main-title{
+  font-size: 1.25rem;
+  font-weight: $font-extra-bold;
+  margin-bottom: 20px;
+
+
+  &:before {
+    content: '';
+    width: 26px;
+    height: 4px;
+    background-color: $light-blue;
+    margin: 0 10px;
+  }
+}
+
+.sub-title{
+  font-size: 2.125rem;
+  margin-bottom: 60px;
+}

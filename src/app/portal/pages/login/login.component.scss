@@ -1,0 +1,75 @@
+@import "src/assets/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+
+
+
+:host ::ng-deep {
+
+  .login-section {
+    min-height: 100vh;
+    display: flex;
+
+    .login-illustration {
+      min-width: 480px;
+      width: 480px;
+      background-image: url("/assets/images/login-illustration.svg");
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+
+      //&:before {
+      //  content: '';
+      //  width: 100%;
+      //  height: 100%;
+      //  position: absolute;
+      //  top: 0;
+      //  left: 0;
+      //  background-color: rgba($blue, .75);
+      //}
+
+      .login-info {
+        min-height: 100vh;
+        width: 100%;
+        padding: 30px 50px;
+        position: relative;
+        z-index: 1;
+        overflow-y:auto;
+        .logo{
+          //min-width: 115px;
+          //width: 115px;
+          //height: 115px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    .login-form {
+      padding: 30px;
+      background-color: $white;
+      background-image: url("/assets/images/login-pattern.svg");
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      //background-size: cover;
+      .login-title, .login-subtitle{
+        line-height: 1.2;
+      }
+
+    }
+  }
+  a{
+    color: $light-blue;
+    transition: all .3s linear;
+    &:hover{
+      text-decoration: underline;
+      color: $light-blue;
+      opacity: .8;
+    }
+  }
+}
+

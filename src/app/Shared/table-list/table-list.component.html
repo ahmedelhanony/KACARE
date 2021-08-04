@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="dataSource" class="primary-table">
+    <ng-container *ngFor="let column of columns; let i = index;">
+      <ng-container [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef> {{columnsConfig[i].label}} </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container [ngSwitch]="columnsConfig[i].type">
+            <span [ngClass]="columnsConfig[i].type" *ngSwitchCase="'file'">
+              {{ element[column] }}
+            </span>
+            <span class="{{element[column].type}}" [ngClass]="columnsConfig[i].type" *ngSwitchCase="'status'">
+              {{ element[column].label }}
+            </span>
+            <div class="d-flex" *ngSwitchCase="'action'">
+              <ng-container *ngFor="let action of element[column]">
+                <button mat-flat-button class="btn primary-button font-weight-bolder" *ngIf="action === 'download'">
+                  <span class="btn-icon fi fi-download"></span>
+                  <span>{{ element[column] }}</span>
+                </button>
+                <button class="square-btn {{action}} font-18" *ngIf="action === 'delete'" (click)="delete()">
+                  <span class="fi fi-delete"></span>
+                </button>
+                <button class="square-btn edit font-18" *ngIf="action === 'edit'">
+                  <span class="fi fi-edit"></span>
+                </button>
+              </ng-container>
+
+            </div>
+
+            <span [ngClass]="columnsConfig[i].type" *ngSwitchDefault>
+              {{ element[column] }}
+            </span>
+          </ng-container>
+
+        </td>
+      </ng-container>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>

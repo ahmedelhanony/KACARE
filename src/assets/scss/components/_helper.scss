@@ -1,0 +1,87 @@
+.underline {
+  text-decoration: underline;
+}
+
+.hover-underline{
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.no-box-shadow {
+  box-shadow: none !important;
+}
+
+.default-shadow{
+  box-shadow: 0 20px 40px rgba($black, 7%);
+}
+
+
+.h-55 {
+  height: 55px !important;
+}
+
+.h-51 {
+  height: 51px !important;
+}
+
+.h-40 {
+  height: 40px !important;
+}
+
+.general-box {
+  border: 1px solid $light-gray;
+}
+
+.general-border {
+  border: 2px solid $light-gray;
+}
+
+.border {
+  border: 1px solid $light-gray !important;
+}
+
+.border-top {
+  border-top: 1px solid $light-gray !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $light-gray !important;
+}
+
+
+.primary-label{
+  background: $light-gray;
+  border-radius: 7px;
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+
+[dir=rtl]  {
+  .back-arrow{
+    transform: rotateY(180deg);
+  }
+}
+
+
+.mat-progress-spinner, .mat-spinner {
+  width: 24px !important;
+  height: 24px !important;
+  svg{
+    width: 24px !important;
+    height: 24px !important;
+    circle {
+      stroke: $blue;
+    }
+  }
+
+}

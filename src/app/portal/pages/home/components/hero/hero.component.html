@@ -1,0 +1,51 @@
+<section>
+  <swiper [config]="config">
+
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let item of hero">
+        <div class="custom-container">
+          <div class="hero-slide">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="hero-text">
+                  <h1 class="font-50 font-weight-bolder text-color-onyx">{{item.title}}</h1>
+                  <h5 class="font-24 font-weight-normal text-color-gray">{{item.description}}</h5>
+                  <button mat-flat-button class="btn light-blue-button shadow">
+                    Get Consultation
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-6 hero-img">
+                <img [src]="item.imageUrl" [alt]="item.title">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="custom-container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="swiper-controls">
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <div class="add-rows">
+              <!-- Add Arrows -->
+              <button mat-icon-button class="btn arrow-button button-next" type="button">
+                <span class="fi fi-arrow-left-long"></span>
+              </button>
+              <span class="mx-1"></span>
+              <button mat-icon-button class="btn arrow-button button-prev" type="button">
+                <span class="fi fi-arrow-right-long"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper>
+</section>

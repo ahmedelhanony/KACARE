@@ -1,0 +1,10 @@
+@mixin gen-props($prefix, $property) {
+  @each $color-name, $color in $root-colors {
+    .#{$prefix}-#{"" + $color-name} {
+      #{$property}: $color;
+    }
+  }
+}
+
+@include gen-props('text-color', 'color');
+@include gen-props('bg-color', 'background');

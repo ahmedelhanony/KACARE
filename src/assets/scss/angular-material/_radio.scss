@@ -1,0 +1,33 @@
+.mat-radio-button{
+  &.mat-radio-checked{
+    .mat-radio-label{
+      .mat-radio-container{
+        .mat-radio-outer-circle{
+          border-color: $light-blue;
+          background-color: $light-blue;
+          box-shadow: 0 3px 6px rgba($light-blue, 30%);
+        }
+        .mat-ripple-element{
+          //background-color: $light-blue;
+          display: none;
+        }
+      }
+    }
+
+  }
+  .mat-radio-label{
+    .mat-radio-container{
+      .mat-radio-outer-circle{
+        border: 2px solid $gray-1;
+
+      }
+      .mat-radio-inner-circle{
+        background-color: $white;
+        transform: scale(.4) !important;
+      }
+      .mat-ripple-element{
+        background-color: $light-blue;
+      }
+    }
+  }
+}

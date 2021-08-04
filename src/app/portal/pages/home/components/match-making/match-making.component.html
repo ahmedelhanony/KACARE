@@ -1,0 +1,55 @@
+<section class="main-section bg-color-light-gray">
+  <div class="custom-container">
+  <app-section-title title="Match making" subTitle="Start matching with More than 2k connected companies"></app-section-title>
+
+    <div class="my-4">
+      <app-how-it-works *ngIf="!isRegister"></app-how-it-works>
+      <swiper [config]="config" class="default-swiper" *ngIf="isRegister">
+
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let company of companies">
+            <app-main-card
+              className="company-card" [title]="company.name" [description]="company.description">
+              <span class="text-avatar font-20 font-weight-bolder text-color-white bg-color-light-blue" shape>{{ getFirstChar(company.name) }}</span>
+              <div class="company-details font-14" card-details>
+                <span class="detail email d-flex align-items-center">
+                  <i class="fi fi-contact font-18 text-color-light-blue mx-2"></i>
+                  {{ company.email }}
+                </span>
+                <span class="detail">{{ company.technology }}</span>
+                <span class="detail">{{ company.role }}</span>
+              </div>
+            </app-main-card>
+          </div>
+        </div>
+
+        <div class="swiper-controls">
+
+          <div class="add-rows">
+            <!-- Add Arrows -->
+            <button mat-icon-button class="btn arrow-button button-next white" type="button">
+              <span class="fi fi-arrow-right-long"></span>
+            </button>
+            <span class="mx-1"></span>
+            <button mat-icon-button class="btn arrow-button button-prev white" type="button">
+              <span class="fi fi-arrow-left-long"></span>
+            </button>
+          </div>
+        </div>
+      </swiper>
+      <div class="d-flex align-items-center flex-column mt-5">
+        <div *ngIf="isRegister" class="hint mb-3">
+        <span class="icon">
+          <img src="assets/images/icons/lamp.svg" alt="">
+        </span>
+          <p class="font-24 text-color-onyx mb-0 mx-3">if you don't know what's the perfect application fit with your company   </p>
+        </div>
+        <div class="btn-section">
+          <button mat-flat-button class="btn light-blue-button shadow-hover px-5" *ngIf="!isRegister">Get Started</button>
+          <button mat-flat-button class="btn light-blue-button shadow-hover px-5" *ngIf="isRegister">Start a new match</button>
+          <button mat-stroked-button class="btn light-blue-button shadow-hover px-5" *ngIf="isRegister">View all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

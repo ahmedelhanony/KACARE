@@ -1,0 +1,40 @@
+<span class="form-label" *ngIf="label">{{label}}</span>
+<div (click)="fileAttached.click()"
+     class="upload-file-input mb-3">
+  <div class="align-items-center d-flex">
+    <i class="sfi sfi-upload-to-cloud text-color-coral font-25"></i>
+    <span class="mx-1"></span>
+    <p class="text-color-onyx font-16 font-md-14-imp text-center mb-0">
+      Drag and Drop or <strong class="font-weight-bold">Browse</strong>
+    </p>
+  </div>
+  <input type="file" class="d-none" #fileAttached>
+
+</div>
+<div class="text-center font-12 text-color-dark-gray mt-n2 mb-3" *ngIf="hint">{{hint}}</div>
+<ng-container>
+  <div class="row">
+    <div class="col-12 col-md-{{styleWidth}} mb-3" *ngFor="let i of [1,2,3]">
+      <div class="uploaded-file-item {{styleHeight}}">
+        <div class="uploaded-icon">
+          <span class="sfi sfi-pdf"></span>
+        </div>
+        <div class="d-flex flex-column justify-content-center flex-grow-1 mx-3 text-truncate">
+          <p class="file-name d-flex align-items-center">
+            <span class="name text-truncate d-inline-block">test.doc</span>
+          </p>
+          <span class="file-size">122 KB</span>
+        </div>
+        <div class="uploaded-file-actions">
+          <button class="delete">
+            <span class="sfi sfi-trash font-13 text-color-danger"></span>
+          </button>
+          <span class="mx-1"></span>
+          <button class="download">
+            <span class="sfi sfi-download font-13 text-color-secondary-purple"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

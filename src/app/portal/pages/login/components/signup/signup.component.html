@@ -1,0 +1,85 @@
+<h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">Signup</h2>
+<p class="font-20 font-weight-normal text-color-gray mb-4">Create as account</p>
+<form action="">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Personal Name</label>
+        <input matInput placeholder="Type Personal Name" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Organization Name</label>
+        <input matInput placeholder="Type Organization Name" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Email</label>
+        <input matInput placeholder="Type Email" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Phone Number</label>
+        <input matInput placeholder="Type Phone Number" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Job Title</label>
+        <input matInput placeholder="Type Job Title" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Registration Type </label>
+        <mat-select disableOptionCentering required placeholder="Choose Registration Type ">
+          <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Password</label>
+        <input matInput type="password" placeholder="Type your password" required>
+        <mat-icon class="fi fi-eye text-color-dark-gray-1 font-15" matSuffix></mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" floatLabel="never">
+        <label class="form-label">Confirm Password </label>
+        <input matInput type="password" placeholder="Confirm Password " required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12">
+      <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+        <label class="form-label">Organization Field of experience   </label>
+        <textarea matInput placeholder="Organization Field of experience  "></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <mat-slide-toggle>
+      <span class="font-17 font-weight-medium text-color-gray">Have the organization participated in TCL before?</span>
+    </mat-slide-toggle>
+  </div>
+  <button routerLink="/home" mat-flat-button class="btn light-blue-button only-shadow font-16 font-weight-bold w-100 mb-3">
+    Login
+  </button>
+  <p class="font-16 font-weight-medium text-color-gray mt-4 mb-2">
+    You have an account? <a routerLink="/login" class="text-color-light-blue">Login</a>
+  </p>
+</form>

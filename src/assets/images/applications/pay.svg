@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83.425" height="82.257" viewBox="0 0 83.425 82.257">
+  <g id="pay" transform="translate(-8.945 -7.343)">
+    <g id="color" transform="translate(8.945 7.343)">
+      <g id="Group_15485" data-name="Group 15485" transform="translate(6.792 18.866)">
+        <path id="Path_14688" data-name="Path 14688" d="M68.631,10.75H12.787A6.055,6.055,0,0,0,6.75,16.787v31.7a6.055,6.055,0,0,0,6.037,6.037H68.631a6.055,6.055,0,0,0,6.037-6.037v-31.7A6.055,6.055,0,0,0,68.631,10.75Z" transform="translate(-6.75 -10.75)" fill="#f3f3f1"/>
+      </g>
+      <g id="Group_15486" data-name="Group 15486" transform="translate(6.792 18.866)">
+        <path id="Path_14689" data-name="Path 14689" d="M13.542,48.482v-31.7a6.055,6.055,0,0,1,6.037-6.037H12.787A6.055,6.055,0,0,0,6.75,16.787v31.7a6.055,6.055,0,0,0,6.037,6.037h6.792A6.055,6.055,0,0,1,13.542,48.482Z" transform="translate(-6.75 -10.75)" fill="#d5dbe1"/>
+      </g>
+      <g id="Group_15487" data-name="Group 15487" transform="translate(15.863 6.792)">
+        <path id="Path_14690" data-name="Path 14690" d="M19.894,38.768,9.755,41.434,12.423,31.3,36.968,6.75l7.471,7.471Z" transform="translate(-9.755 -6.75)" fill="#00adee"/>
+      </g>
+      <g id="Group_15488" data-name="Group 15488" transform="translate(15.863 6.792)">
+        <path id="Path_14691" data-name="Path 14691" d="M19.215,32.806,41.118,10.9,36.968,6.75,12.423,31.3,9.755,41.434,17.48,39.4Z" transform="translate(-9.755 -6.75)" fill="#0080c5"/>
+      </g>
+      <g id="Group_15492" data-name="Group 15492" transform="translate(60.031 69.428)">
+        <g id="Group_15489" data-name="Group 15489" transform="translate(17.357)">
+          <path id="Path_14692" data-name="Path 14692" d="M30.137,27.5h6.037v3.019H30.137Z" transform="translate(-30.137 -27.5)" fill="#a4afc1"/>
+        </g>
+        <g id="Group_15490" data-name="Group 15490">
+          <path id="Path_14693" data-name="Path 14693" d="M24.387,27.5h6.037v3.019H24.387Z" transform="translate(-24.387 -27.5)" fill="#a4afc1"/>
+        </g>
+        <g id="Group_15491" data-name="Group 15491" transform="translate(10.565 6.792)">
+          <path id="Path_14694" data-name="Path 14694" d="M27.887,29.75h3.019v6.037H27.887Z" transform="translate(-27.887 -29.75)" fill="#a4afc1"/>
+        </g>
+      </g>
+      <g id="Group_15493" data-name="Group 15493">
+        <path id="Path_14695" data-name="Path 14695" d="M9.028,13.556a4.528,4.528,0,1,1,4.528-4.528A4.533,4.533,0,0,1,9.028,13.556Zm0-6.037a1.509,1.509,0,1,0,1.509,1.509A1.51,1.51,0,0,0,9.028,7.519Z" transform="translate(-4.5 -4.5)" fill="#a4afc1"/>
+      </g>
+    </g>
+    <g id="line" transform="translate(13.473 11.871)">
+      <g id="Group_15494" data-name="Group 15494" transform="translate(0 12.074)">
+        <path id="Path_14696" data-name="Path 14696" d="M70.145,58.3H14.3A8.31,8.31,0,0,1,6,50V18.3A8.308,8.308,0,0,1,14.3,10h6.55v4.528H14.3A3.778,3.778,0,0,0,10.528,18.3V50A3.778,3.778,0,0,0,14.3,53.77H70.145A3.778,3.778,0,0,0,73.918,50V18.3a3.778,3.778,0,0,0-3.773-3.773H57.558V10H70.145a8.308,8.308,0,0,1,8.3,8.3V50A8.312,8.312,0,0,1,70.145,58.3Z" transform="translate(-6 -10)"/>
+      </g>
+      <g id="Group_15495" data-name="Group 15495" transform="translate(9.072)">
+        <path id="Path_14697" data-name="Path 14697" d="M11.268,45.215a2.265,2.265,0,0,1-2.188-2.84l2.668-10.139a2.265,2.265,0,0,1,.589-1.026L36.884,6.661a2.259,2.259,0,0,1,3.2,0l7.471,7.474a2.265,2.265,0,0,1,0,3.2L23,41.885a2.271,2.271,0,0,1-1.023.589L11.842,45.145a2.464,2.464,0,0,1-.574.069Zm4.7-11.238-1.524,5.8,5.793-1.527,22.513-22.51-4.268-4.271Z" transform="translate(-9.005 -6)"/>
+      </g>
+      <g id="Group_15496" data-name="Group 15496" transform="translate(44.524 27.167)">
+        <path id="Path_14698" data-name="Path 14698" d="M20.75,15h16.6v4.528H20.75Z" transform="translate(-20.75 -15)"/>
+      </g>
+      <g id="Group_15497" data-name="Group 15497" transform="translate(11.32 42.26)">
+        <path id="Path_14699" data-name="Path 14699" d="M9.75,20H59.557v4.528H9.75Z" transform="translate(-9.75 -20)"/>
+      </g>
+    </g>
+  </g>
+</svg>

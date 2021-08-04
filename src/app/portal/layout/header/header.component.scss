@@ -1,0 +1,83 @@
+@import "src/assets/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+:host {
+  ::ng-deep{
+    header{
+      //height: 260px;
+      background-color: $light-gray;
+      background-image: url("/assets/images/login-pattern.svg");
+      background-position: 100% 80%;
+      background-size: 25%;
+      background-repeat: no-repeat;
+      position: relative;
+
+      //@include media-breakpoint-down(md){
+      //  min-height: 548px;
+      //}
+
+      &.secondary-header{
+        background: none;
+        .header-container{
+          background: none;
+          height: auto;
+          padding-bottom: 0;
+        }
+      }
+
+      &.header-2{
+        background: none;
+        .header-container{
+          background: none;
+          height: auto;
+          padding-bottom: 0;
+          padding-top: 20px;
+          flex-direction: column-reverse;
+          align-items: flex-start;
+
+          .main-title{
+            font-size: 2.125rem;
+            margin-bottom: 0;
+            &:before{
+              display: none;
+            }
+          }
+          .sub-title{
+            display: none;
+          }
+        }
+      }
+
+      .header-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        position: relative;
+        background-image: url("/assets/images/header-pattern.svg");
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        height: 260px;
+
+        .sub-title{
+          text-transform: capitalize;
+        }
+        .main-title{
+          font-size: 2.4375rem;
+        }
+
+        .sub-title{
+          font-size: 1.125rem;
+          font-weight: $font-medium;
+          color: $gray;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
