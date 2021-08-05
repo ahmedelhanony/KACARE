@@ -83,6 +83,9 @@
           background-color: $light-blue;
           color: $white;
         }
+        &:disabled{
+          box-shadow: none !important;
+        }
       }
 
       &.shadow{
@@ -214,6 +217,7 @@
     color: $white !important;
     opacity: 1 !important;
     cursor: not-allowed !important;
+    box-shadow: none !important;
 
     .mat-button-focus-overlay{
       display: none !important;

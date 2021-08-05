@@ -13,6 +13,8 @@ import { StrategyTeamsComponent } from './components/apply-for-application/strat
 import { BenefitCostComponent } from './components/apply-for-application/benefit-cost/benefit-cost.component';
 import {PortalModule} from "../../portal.module";
 import {SharedModule} from "../../../Shared/shared.module";
+import { ApplicationQuizComponent } from './components/application-quiz/application-quiz.component';
+import { QuizResultComponent } from './components/application-quiz/quiz-result/quiz-result.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {SharedModule} from "../../../Shared/shared.module";
     GeneralInfoComponent,
     TechnologyInfoComponent,
     StrategyTeamsComponent,
-    BenefitCostComponent
+    BenefitCostComponent,
+    ApplicationQuizComponent,
+    QuizResultComponent
   ],
   imports: [
     CommonModule,

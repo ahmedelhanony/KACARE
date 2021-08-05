@@ -1,0 +1,74 @@
+<div class="popup-container">
+  <mat-dialog-content class="p-0">
+    <div class="stepper-steps p-3">
+      <span class="item" *ngFor="let item of questions; let i = index"
+            [ngClass]="{'active' : stepper.selectedIndex >= i}"
+      ></span>
+    </div>
+    <div class="d-flex justify-content-end p-3 ">
+      <div class="leave-quiz">
+        <div class="quiz-tooltip">
+          Leave Quiz
+        </div>
+        <button class="mat-close-modal" matDialogClose>
+          <i class="fi fi-close"></i>
+        </button>
+      </div>
+
+    </div>
+    <div class="quiz-container"  [ngClass]="{'hide': viewResult}">
+
+      <mat-stepper class="quiz-stepper" linear #stepper>
+      <mat-step *ngFor="let question of questions">
+        <ng-template matStepLabel>
+        </ng-template>
+        <div class="step-content d-flex flex-column align-items-center justify-content-center py-4">
+          <h6 class="font-16 font-weight-bolder text-color-blue mb-3">Question {{stepper.selectedIndex + 1}}/{{questions.length}}</h6>
+          <h3 class="font-32 font-md-24 font-weight-bolder text-color-onyx mb-4">{{ question.label }}</h3>
+          <mat-button-toggle-group #toggleButton="matButtonToggleGroup" name="questionAnswer" aria-label="Question Answer">
+            <mat-button-toggle value="yes">Yes</mat-button-toggle>
+            <mat-button-toggle value="noe">No</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+    <div class="d-flex flex-column align-items-center justify-content-center py-4">
+      <button mat-flat-button class="btn light-blue-button only-shadow px-5 mb-4"
+              *ngIf="stepper.selectedIndex === questions.length -1"
+              (click)="viewResult = !viewResult"
+      >
+        View Result
+      </button>
+      <button mat-flat-button class="btn light-blue-button only-shadow px-5 mb-4"
+              *ngIf="stepper.selectedIndex < questions.length -1"
+              (click)="stepper.next()">
+        Next Question
+      </button>
+      <button mat-flat-button class="btn light-gray-button mb-4" *ngIf="stepper.selectedIndex > 0" (click)="stepper.previous()">
+        <span class="fi fi-arrow-left-long mx-1"></span> <span class="mx-1">Back</span>
+      </button>
+    </div>
+
+
+
+    </div>
+
+    <div class="stepper-result d-flex flex-column align-items-center justify-content-center" *ngIf="viewResult">
+      <div class="icon">
+        <img src="assets/images/icons/lamp-1.svg" alt="">
+      </div>
+      <h2 class="font-32 font-weight-bolder text-color-onyx my-3">Almost done!</h2>
+      <h6 class="font-22 font-weight-medium text-color-onyx mb-3">Due to your answers we Recommend to apply in</h6>
+      <a routerLink="/applications/application-details/proof-of-concept" matDialogClose class="font-28 font-md-20 font-weight-bolder text-color-blue underline mb-3">"DEMONSTRATION PROJECT "</a>
+
+      <button routerLink="/applications/apply" matDialogClose mat-flat-button class="btn light-blue-button only-shadow px-5 mb-4">
+        Apply Now
+      </button>
+      <button mat-flat-button class="btn light-gray-button mb-4" routerLink="/home" matDialogClose>
+        Back to home
+      </button>
+
+    </div>
+  </mat-dialog-content>
+</div>
