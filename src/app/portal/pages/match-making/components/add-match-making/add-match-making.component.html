@@ -1,0 +1,54 @@
+<div class="popup-container">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-24 font-md-20 font-weight-semi-bold">Add New Match Making</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <span class="fi fi-close text-color-black"></span>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <div class="p-3">
+      <div class="row">
+        <div class="col-12 mb-2">
+          <mat-form-field appearance="fill" floatLabel="never">
+            <label class="form-label">Technology </label>
+            <mat-select disableOptionCentering required placeholder="Choose Technology ">
+              <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 mb-2">
+          <mat-form-field appearance="fill" floatLabel="never">
+            <label class="form-label">Role </label>
+            <mat-select disableOptionCentering required placeholder="Choose Role ">
+              <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 mb-2">
+          <mat-form-field appearance="fill" floatLabel="never">
+            <label class="form-label">Contact Info</label>
+            <input matInput placeholder="Type Contact Info" required>
+          </mat-form-field>
+        </div>
+        <div class="col-12 mb-2">
+          <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+            <label class="form-label">Details</label>
+            <textarea matInput placeholder="Type Match Making Details here.."></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="default-footer">
+    <div class="d-flex justify-content-end w-100">
+      <button mat-flat-button class="btn button-white px-4" matDialogClose>
+        Cancel
+      </button>
+      <span class="mx-2"></span>
+      <button mat-flat-button class="btn light-blue-button shadow-hover px-4" matDialogClose (click)="done()">
+        Submit
+      </button>
+    </div>
+  </mat-dialog-actions>
+
+</div>

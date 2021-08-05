@@ -1,0 +1,114 @@
+@import "src/assets/scss/variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+
+:host ::ng-deep {
+  .details-stepper {
+    background-color: transparent;
+    .mat-ripple.mat-step-header-ripple {
+      display: none;
+    }
+
+    .mat-horizontal-stepper-header-container {
+      border: 0;
+
+      .mat-stepper-horizontal-line {
+        display: none;
+      }
+
+      .mat-horizontal-stepper-header {
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        background: transparent;
+
+        &[aria-selected="true"] {
+          //background-color: $light-blue;
+        }
+
+        .mat-step-icon {
+          display: none;
+        }
+
+        .mat-step-label {
+          font-size: 1.125rem;
+          color: $gray;
+          font-weight: $font-medium;
+
+           &:not(.mat-step-label-active){
+            path, circle{
+              fill: #706F73;
+            }
+          }
+
+
+          &.mat-step-label-selected,
+          &.mat-step-label-active{
+            color: $onyx !important;
+            filter: grayscale(0);
+            //background-color: $light-blue;
+
+            .icon{
+              [fill='#d5dbe1']{
+                fill: #d5dbe1;
+              }
+
+              [fill='#0080c5']{
+                fill: #0080c5;
+              }
+
+              [fill='#00adee']{
+                fill: #00ADEE;
+              }
+
+              [fill='#f3f3f1']{
+                fill: #F3F3F1;
+              }
+
+              [fill='#000000']{
+                fill: #000000;
+              }
+            }
+
+          }
+
+
+          .mat-step-text-label{
+            display: flex;
+            align-items: center;
+          }
+          //&.mat-step-label-active{
+          //  color: $green;
+          //}
+
+          .icon{
+            display: inline-flex;
+
+            [fill='#00adee'] ,[fill='#f3f3f1'], [fill='#0080c5'], [fill='#d5dbe1']{
+              fill: $white;
+            }
+
+            [fill='#000000']{
+              fill: #706F73;
+            }
+          }
+        }
+      }
+    }
+
+    .step-content{
+      padding: 60px 0;
+    }
+
+    .mat-horizontal-content-container {
+      //padding: 0 !important;
+      //flex: 0 0 calc(66.6666666667% - 30px);
+      //max-width: calc(66.6666666667% - 30px);
+
+    }
+  }
+
+}

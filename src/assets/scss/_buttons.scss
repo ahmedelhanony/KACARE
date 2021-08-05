@@ -173,12 +173,13 @@
       background-color: $light-gray !important;
       //font-size: 1.2rem;
       .mat-button-focus-overlay{
-        background-color: $light-gray;
+        //background-color: $light-gray;
+        display: none;
       }
       &:hover{
-        .mat-button-focus-overlay{
-          background-color: rgba($gray, 25%);
-        }
+        //.mat-button-focus-overlay{
+        //  background-color: rgba($gray, 25%);
+        //}
       }
     }
 

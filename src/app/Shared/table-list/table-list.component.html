@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="primary-table">
+<table mat-table [dataSource]="dataSource" class="primary-table {{className}}">
     <ng-container *ngFor="let column of columns; let i = index;">
       <ng-container [matColumnDef]="column">
         <th mat-header-cell *matHeaderCellDef> {{columnsConfig[i].label}} </th>
@@ -10,17 +10,22 @@
             <span class="{{element[column].type}}" [ngClass]="columnsConfig[i].type" *ngSwitchCase="'status'">
               {{ element[column].label }}
             </span>
+            <div [ngClass]="columnsConfig[i].type" *ngSwitchCase="'input'">
+
+              <mat-form-field appearance="fill" floatLabel="never">
+                <input matInput [placeholder]="element[column]" >
+              </mat-form-field>
+            </div>
             <div class="d-flex" *ngSwitchCase="'action'">
               <ng-container *ngFor="let action of element[column]">
                 <button mat-flat-button class="btn primary-button font-weight-bolder" *ngIf="action === 'download'">
                   <span class="btn-icon fi fi-download"></span>
                   <span>{{ element[column] }}</span>
                 </button>
-                <button class="square-btn {{action}} font-18" *ngIf="action === 'delete'" (click)="delete()">
-                  <span class="fi fi-delete"></span>
-                </button>
-                <button class="square-btn edit font-18" *ngIf="action === 'edit'">
-                  <span class="fi fi-edit"></span>
+                <button mat-icon-button class="btn square button-white" type="button" *ngIf="action === 'delete'" (click)="delete()"><span class="fi fi-trash text-color-red"></span></button>
+
+                <button class="btn action-button square-btn edit font-18" *ngIf="action === 'edit'">
+                  <span class="fi fi-pen"></span>
                 </button>
               </ng-container>
 

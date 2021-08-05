@@ -24,6 +24,10 @@
   box-shadow: 0 20px 40px rgba($black, 7%);
 }
 
+.rotate{
+  transform: rotateY(180deg)
+}
+
 
 .h-55 {
   height: 55px !important;

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">Technology </label>
+      <mat-select disableOptionCentering required placeholder="Choose Application">
+        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3 mb-3">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">Role</label>
+      <mat-select disableOptionCentering required placeholder="Choose REP Topic">
+        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3"></div>
+  <div class="col-md-3">
+    <mat-form-field appearance="fill" class="fill-white" floatLabel="never">
+      <input matInput placeholder="Search..">
+      <mat-icon matPrefix class="fi fi-search font-14 text-color-gray rotate"></mat-icon>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let company of companies">
+    <app-match-making-card routerLink="/match-making/match-making-details/organization" className="gray" [title]="company.name" [description]="company.description" [name]="company.name"
+                           [email]="company.email" [technology]="company.technology" [role]="company.role"
+    >
+      <div class="actions mx-n2" actions>
+        <button mat-icon-button class="btn square small button-white mx-2" (click)="edit(); $event.stopPropagation()">
+          <span class="fi fi-pen text-color-onyx font-16-imp"></span>
+        </button>
+        <button mat-icon-button class="btn square small button-white mx-2" (click)="delete(); $event.stopPropagation()">
+          <span class="fi fi-trash text-color-onyx font-16-imp"></span>
+        </button>
+      </div>
+    </app-match-making-card>
+  </div>
+</div>

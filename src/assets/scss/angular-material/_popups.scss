@@ -23,13 +23,17 @@
     height: 100%;
     bottom: 0 !important;
     position: absolute !important;
+    .mat-dialog-container{
+      border-radius: 0;
+    }
     .mat-dialog-content{
       margin: -24px;
       max-height: none;
+      border-radius: 0;
     }
   }
   .mat-dialog-container{
-    border-radius: 0;
+    border-radius: 15px;
   }
   .popup-container{
     display: flex;
@@ -56,15 +60,19 @@
     //max-height: initial;
     flex-grow: 1;
 
-    .general-box{
-      border: 0 !important;
-      padding: 0 !important;
-    }
   }
 
   .mat-dialog-actions{
     background-color: $white;
-    margin-bottom: 0 !important;
+    margin: -24px;
+    height: 110px;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    &.default-footer{
+      background: $light-gray;
+      border-top: 1px solid $white;
+    }
     button{
       min-width:100px;
     }
@@ -81,7 +89,7 @@
     height: 100%;
     bottom: 0 !important;
     position: absolute !important;
-    &.delete-popup{
+    &.confirm-popup{
       width: 450px !important;
       max-width: none !important;
       height: auto;
@@ -109,7 +117,7 @@
 
 @include media-breakpoint-down(sm){
   .main-popup {
-    &.delete-popup{
+    &.confirm-popup{
       width: 100% !important;
       position: absolute !important;
     }

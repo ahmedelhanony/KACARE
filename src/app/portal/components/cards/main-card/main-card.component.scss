@@ -91,6 +91,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      border: 0;
       &.last-card{
         &:before{
           display: none;
@@ -120,72 +121,6 @@
     }
 
 
-    &.company-card{
-      background: $white;
-      position: relative;
-      overflow: hidden;
-      padding: 30px 20px;
-      box-shadow: 0 20px 40px rgba($onyx, 7%);
 
-      &:before{
-        content: '';
-        width: 300px;
-        height: 300px;
-        background-color: transparent;
-        border-radius: 50%;
-        border: 70px solid #F8F8FB;
-        position: absolute;
-        left: -150px;
-        top: -150px;
-      }
-      .text-avatar{
-        position: relative;
-        border-radius: 6px;
-        width: 57px;
-        height: 57px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .card-content{
-        position: relative;
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        h3{
-          font-size: 1.3rem;
-          margin-bottom: 0.5rem;
-          line-height: 1;
-        }
-        h6{
-          height: 120px;
-          overflow: hidden;
-
-        }
-      }
-      .company-details{
-        display: flex;
-        flex-wrap: wrap;
-        margin: .75rem -1rem 0;
-        .detail{
-          margin: 0 1rem;
-          background: $light-gray;
-          border-radius: 7px;
-          text-align: center;
-          flex-grow: 1;
-          justify-content: center;
-          padding: 10px;
-          &.email{
-            width: 100%;
-            margin-bottom: 1rem;
-          }
-        }
-      }
-      &:hover{
-        box-shadow: none;
-      }
-    }
   }
 }

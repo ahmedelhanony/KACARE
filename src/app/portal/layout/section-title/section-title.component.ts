@@ -8,9 +8,17 @@ import {Component, Input, OnInit} from '@angular/core';
 export class SectionTitleComponent implements OnInit {
   @Input() title = '';
   @Input() subTitle = '';
+  @Input() orgEmail = '';
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  getFirstChar(text: string){
+    let characters = text.match(/\b(\w)/g);
+    if(characters) {
+      return characters.join('');
+    }else {
+      return false
+    }
+  }
 }

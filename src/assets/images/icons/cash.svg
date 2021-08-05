@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25.327" height="21.107" viewBox="0 0 25.327 21.107">
+  <g id="cash" transform="translate(-11.395 -14.496)">
+    <g id="color" transform="translate(12.193 15.287)">
+      <g id="Group_15467" data-name="Group 15467" transform="translate(0 2.529)">
+        <path id="Path_14672" data-name="Path 14672" d="M7.932,23.794l16.356,4.383a1.583,1.583,0,0,0,1.939-1.12l2.555-9.535a1.583,1.583,0,0,0-1.12-1.939L11.3,11.2a1.583,1.583,0,0,0-1.939,1.12L6.811,21.856a1.584,1.584,0,0,0,1.121,1.939Z" transform="translate(-6.757 -11.147)" fill="#f3f3f1"/>
+      </g>
+      <g id="Group_15468" data-name="Group 15468" transform="translate(0.001 2.53)">
+        <path id="Path_14673" data-name="Path 14673" d="M10.306,24.322a1.583,1.583,0,0,1-1.12-1.939l2.555-9.535a1.579,1.579,0,0,1,1.377-1.161L11.305,11.2a1.583,1.583,0,0,0-1.939,1.12L6.812,21.857A1.583,1.583,0,0,0,7.932,23.8l16.357,4.383a1.566,1.566,0,0,0,.561.042Z" transform="translate(-6.758 -11.148)" fill="#d5dbe1"/>
+      </g>
+      <g id="Group_15469" data-name="Group 15469" transform="translate(4.214)">
+        <path id="Path_14674" data-name="Path 14674" d="M12.333,21.414H28.691a1.584,1.584,0,0,0,1.583-1.583v-9.5A1.584,1.584,0,0,0,28.691,8.75H12.333a1.584,1.584,0,0,0-1.583,1.583v9.5A1.584,1.584,0,0,0,12.333,21.414Z" transform="translate(-10.75 -8.75)" fill="#f3f3f1"/>
+      </g>
+      <g id="Group_15470" data-name="Group 15470" transform="translate(4.214)">
+        <path id="Path_14675" data-name="Path 14675" d="M12.333,21.414H28.691a1.584,1.584,0,0,0,1.583-1.583v-9.5A1.584,1.584,0,0,0,28.691,8.75H12.333a1.584,1.584,0,0,0-1.583,1.583v9.5A1.584,1.584,0,0,0,12.333,21.414Z" transform="translate(-10.75 -8.75)" fill="#00adee"/>
+      </g>
+      <g id="Group_15471" data-name="Group 15471" transform="translate(4.214)">
+        <path id="Path_14676" data-name="Path 14676" d="M13.125,19.831v-9.5A1.584,1.584,0,0,1,14.708,8.75H12.333a1.584,1.584,0,0,0-1.583,1.583v9.5a1.584,1.584,0,0,0,1.583,1.583h2.375A1.584,1.584,0,0,1,13.125,19.831Z" transform="translate(-10.75 -8.75)" fill="#0080c5"/>
+      </g>
+      <g id="Group_15472" data-name="Group 15472" transform="translate(11.601 3.958)">
+        <circle id="Ellipse_674" data-name="Ellipse 674" cx="2.375" cy="2.375" r="2.375" transform="translate(0)" fill="#f3f3f1"/>
+      </g>
+    </g>
+    <g id="line" transform="translate(11.395 14.496)">
+      <g id="Group_15479" data-name="Group 15479" transform="translate(4.221)">
+        <path id="Path_14682" data-name="Path 14682" d="M28.732,22.247H12.375A2.377,2.377,0,0,1,10,19.873v-9.5A2.377,2.377,0,0,1,12.375,8H28.732a2.377,2.377,0,0,1,2.375,2.375v9.5A2.377,2.377,0,0,1,28.732,22.247ZM12.375,9.583a.792.792,0,0,0-.792.792v9.5a.792.792,0,0,0,.792.792H28.732a.792.792,0,0,0,.792-.792v-9.5a.792.792,0,0,0-.792-.792Z" transform="translate(-10 -8)"/>
+      </g>
+      <g id="Group_15480" data-name="Group 15480" transform="translate(0 6.909)">
+        <path id="Path_14683" data-name="Path 14683" d="M24.683,28.744a2.4,2.4,0,0,1-.606-.078L7.758,24.3a2.4,2.4,0,0,1-1.68-2.907l1.835-6.842,1.529.411L7.608,21.8a.8.8,0,0,0,.565.973l16.31,4.368a.792.792,0,0,0,.6-.08.771.771,0,0,0,.362-.475l.611-2.264,1.528.413-.61,2.258a2.366,2.366,0,0,1-2.29,1.756Z" transform="translate(-6.001 -14.547)"/>
+      </g>
+      <g id="Group_15481" data-name="Group 15481" transform="translate(11.608 3.958)">
+        <path id="Path_14684" data-name="Path 14684" d="M20.166,18.082a3.166,3.166,0,1,1,3.166-3.166A3.17,3.17,0,0,1,20.166,18.082Zm0-4.749a1.583,1.583,0,1,0,1.583,1.583A1.585,1.585,0,0,0,20.166,13.333Z" transform="translate(-17 -11.75)"/>
+      </g>
+      <g id="Group_15482" data-name="Group 15482" transform="translate(8.178 3.166)">
+        <path id="Path_14685" data-name="Path 14685" d="M13.75,11h1.583v1.583H13.75Z" transform="translate(-13.75 -11)"/>
+      </g>
+      <g id="Group_15483" data-name="Group 15483" transform="translate(19.787 9.498)">
+        <path id="Path_14686" data-name="Path 14686" d="M24.75,17h1.583v1.583H24.75Z" transform="translate(-24.75 -17)"/>
+      </g>
+    </g>
+  </g>
+</svg>

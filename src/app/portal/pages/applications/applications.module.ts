@@ -14,7 +14,7 @@ import { BenefitCostComponent } from './components/apply-for-application/benefit
 import {PortalModule} from "../../portal.module";
 import {SharedModule} from "../../../Shared/shared.module";
 import { ApplicationQuizComponent } from './components/application-quiz/application-quiz.component';
-import { QuizResultComponent } from './components/application-quiz/quiz-result/quiz-result.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,13 +29,13 @@ import { QuizResultComponent } from './components/application-quiz/quiz-result/q
     StrategyTeamsComponent,
     BenefitCostComponent,
     ApplicationQuizComponent,
-    QuizResultComponent
   ],
   imports: [
     CommonModule,
     ApplicationsRoutingModule,
     PortalModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class ApplicationsModule { }

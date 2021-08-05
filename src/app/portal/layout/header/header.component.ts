@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
   @Input() className = '';
   @Input() title = '';
   @Input() subTitle = '';
+  @Input() orgEmail = '';
   constructor() { }
 
   ngOnInit(): void {

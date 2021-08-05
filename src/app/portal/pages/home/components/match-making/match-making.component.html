@@ -8,18 +8,9 @@
 
         <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let company of companies">
-            <app-main-card
-              className="company-card" [title]="company.name" [description]="company.description">
-              <span class="text-avatar font-20 font-weight-bolder text-color-white bg-color-light-blue" shape>{{ getFirstChar(company.name) }}</span>
-              <div class="company-details font-14" card-details>
-                <span class="detail email d-flex align-items-center">
-                  <i class="fi fi-contact font-18 text-color-light-blue mx-2"></i>
-                  {{ company.email }}
-                </span>
-                <span class="detail">{{ company.technology }}</span>
-                <span class="detail">{{ company.role }}</span>
-              </div>
-            </app-main-card>
+            <app-match-making-card className="white" [title]="company.name" [description]="company.description" [name]="company.name"
+                                   [email]="company.email" [technology]="company.technology" [role]="company.role"
+            ></app-match-making-card>
           </div>
         </div>
 

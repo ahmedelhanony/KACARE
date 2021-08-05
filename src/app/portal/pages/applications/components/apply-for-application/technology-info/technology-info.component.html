@@ -1,1 +1,69 @@
-<p>technology-info works!</p>
+<div class="row justify-content-center">
+  <div class="col-md-7 mb-2">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">Project Title</label>
+      <input matInput placeholder="Project Title" required>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">RFP Topics Area</label>
+      <input matInput placeholder="RFP Topics Area" required>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+      <label class="form-label">Market Need</label>
+      <textarea matInput placeholder="Market Need"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-7 mb-3">
+    <h3 class="font-24 font-md-18 font-weight-bolder mb-0">Project Description</h3>
+    <p class="font-16 font-md-14 text-color-gray mb-0">Provide a brief description of the proposed project including</p>
+  </div>
+
+  <div class="col-md-7 mb-2">
+    <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+      <label class="form-label">Technical Concept </label>
+      <textarea matInput placeholder="Technical Concept "></textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+      <label class="form-label">Major work Elements</label>
+      <textarea matInput placeholder="Major work Elements"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+      <label class="form-label">Technical Performance</label>
+      <textarea matInput placeholder="Technical Performance"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+      <label class="form-label">Technology Redlines </label>
+      <textarea matInput placeholder="Technology Redlines "></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-7 mb-2">
+    <label class="form-label mb-2">Does this technology resemble past project that KACARE has already funded? </label>
+    <mat-radio-group class="d-flex flex-column">
+      <mat-radio-button value="yes">Yes</mat-radio-button>
+      <mat-radio-button value="no">No</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="col-md-7 mb-2">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <label class="form-label">Project Duration</label>
+      <input matInput placeholder="Project Duration" required>
+    </mat-form-field>
+  </div>
+  <div class="col-md-7 mb-2">
+    <app-docs-uploader
+
+      label="A concept diagram of the proposed system including all major elements. an indication of energy flows elementssystem and the estimated capacity of each system component"></app-docs-uploader>
+  </div>
+</div>

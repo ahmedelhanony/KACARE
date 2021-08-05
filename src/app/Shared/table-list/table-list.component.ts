@@ -12,6 +12,7 @@ export class TableListComponent implements OnInit {
   @Input() columns: any;
   @Input() columnsConfig: any;
   @Input() rows: any;
+  @Input() className = '';
   public dataSource = new MatTableDataSource<any>();
   constructor( public dialog: MatDialog ) { }
 
@@ -21,8 +22,8 @@ export class TableListComponent implements OnInit {
 
   delete(): void {
     const dialogRef = this.dialog.open(DeletePopupComponent, {
-      width: '750px',
-      panelClass: ['delete-popup', 'main-popup'],
+      width: '700px',
+      panelClass: ['confirm-popup', 'main-popup'],
     });
 
     dialogRef.afterClosed().subscribe(() => {

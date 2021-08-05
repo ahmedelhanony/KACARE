@@ -5,12 +5,12 @@
 }
 
 .upload-file-input {
-  height: 112px;
+  height: 150px;
   width: 100%;
   border-radius: 10px;
   position: relative;
-  background: $off-white;
-  border: .5px dashed $dark-gray;
+  background: $light-gray;
+  border: 2px dashed $blue;
   overflow: hidden;
   display: inline-flex;
   align-items: center;
@@ -21,15 +21,16 @@
 }
 
 .uploaded-file-item{
-  background-color: $off-white;
+  background-color: #F8F8FD;
   padding: 15px;
   display: flex;
   align-items: center;
+  border-radius: 5px;
   &.medium{
     .uploaded-icon{
       min-width: 36px;
       height: 36px;
-      .sfi{
+      .fi{
         font-size: 21px;
       }
     }
@@ -47,7 +48,7 @@
     .uploaded-icon{
       min-width: 24px;
       height: 24px;
-      .sfi{
+      .fi{
         font-size: 15px;
       }
     }
@@ -65,12 +66,12 @@
     }
   }
   .uploaded-icon{
-    min-width: 70px;
-    height: 70px;
+    min-width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $light-blue;
+
     &.progress-upload{
       position: relative;
       overflow: hidden;
@@ -91,14 +92,14 @@
         bottom: 0;
         animation: slideHeight 3s ease-in forwards;
       }
-      .sfi{
+      .fi{
         opacity: 0;
         animation: fadein .1s ease-in 3s forwards;
       }
     }
-    .sfi{
+    .fi{
       font-size: 40px;
-      color: $white;
+      color: $light-blue;
     }
   }
   .file-name{
@@ -116,8 +117,8 @@
   }
   .uploaded-file-actions {
     display: flex;
-    align-items: flex-start;
-    align-self: flex-start;
+    //align-items: flex-start;
+    //align-self: flex-start;
     button{
       border: none;
       box-shadow: none;
@@ -128,8 +129,8 @@
       justify-content: center;
       padding: 5px;
       margin: 0 3px;
-      width: 24px;
-      height: 24px;
+      width: 38px;
+      height: 38px;
       position: relative;
       // top: 10px;
       transition: all .3s ease-in;

@@ -1,0 +1,19 @@
+<div class="card match-making-card" [ngClass]="className">
+  <ng-content select="[actions]"></ng-content>
+  <div class="shape">
+    <span class="text-avatar font-20 font-weight-bolder text-color-white bg-color-light-blue">{{ getFirstChar(name) }}</span>
+  </div>
+  <div class="card-content">
+    <ng-content select="[date]"></ng-content>
+    <h3>{{title}}</h3>
+    <h6 *ngIf="description">{{description}}</h6>
+    <div class="company-details font-14">
+                <span class="detail email d-flex align-items-center">
+                  <i class="fi fi-contact font-18 text-color-light-blue mx-2"></i>
+                  {{ email }}
+                </span>
+      <span class="detail">{{ technology }}</span>
+      <span class="detail">{{ role }}</span>
+    </div>
+  </div>
+</div>

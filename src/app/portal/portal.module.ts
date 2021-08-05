@@ -18,6 +18,7 @@ import { ProjectCardComponent } from './components/cards/project-card/project-ca
 import { ArticleSectionComponent } from './components/sections/article-section/article-section.component';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
 import { ApplicationSectionComponent } from './components/sections/application-section/application-section.component';
+import { MatchMakingCardComponent } from './components/cards/match-making-card/match-making-card.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ApplicationSectionComponent } from './components/sections/application-s
     ArticleSectionComponent,
     NewsPageComponent,
     ApplicationSectionComponent,
+    MatchMakingCardComponent,
   ],
     exports: [
         SectionTitleComponent,
@@ -47,7 +49,8 @@ import { ApplicationSectionComponent } from './components/sections/application-s
         ProjectCardComponent,
         BreadcrumbComponent,
         ApplicationSectionComponent,
-        ArticleSectionComponent
+        ArticleSectionComponent,
+        MatchMakingCardComponent
     ],
   imports: [
     CommonModule,

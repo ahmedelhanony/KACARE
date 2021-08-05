@@ -39,12 +39,39 @@
             margin-right: .5rem;
           }
         }
+
+        .input{
+          mat-form-field{
+            height: 55px;
+            .mat-form-field-wrapper {
+              padding-bottom: 0;
+              padding-top: 0;
+            }
+          }
+        }
       }
     }
   }
 }
 
-
+.table-2 {
+  thead {
+    tr{
+      th{
+        background: $gray-1;
+        color: $onyx;
+      }
+    }
+  }
+  tbody{
+    tr{
+      height: 70px;
+      td{
+        padding: 7px !important;
+      }
+    }
+  }
+}
 .collapsible-table {
   tbody {
     tr.mat-row.element-row:nth-child(even) {

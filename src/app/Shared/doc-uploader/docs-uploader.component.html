@@ -1,11 +1,13 @@
-<span class="form-label" *ngIf="label">{{label}}</span>
+<span class="form-label mb-2" *ngIf="label">{{label}}</span>
 <div (click)="fileAttached.click()"
      class="upload-file-input mb-3">
-  <div class="align-items-center d-flex">
-    <i class="sfi sfi-upload-to-cloud text-color-coral font-25"></i>
-    <span class="mx-1"></span>
-    <p class="text-color-onyx font-16 font-md-14-imp text-center mb-0">
-      Drag and Drop or <strong class="font-weight-bold">Browse</strong>
+  <div class="align-items-center d-flex flex-column">
+    <i class="fi fi-shared-folder text-color-blue font-45"></i>
+    <p class="text-color-onyx font-16 font-md-14 font-weight-medium text-center my-2">
+      Drag and Drop file here or Browse
+    </p>
+    <p class="text-color-dark-gray-1 font-16 font-md-14 font-weight-medium text-center mb-0">
+      Supported files: .Png .JPEG, with maximum size of 5MB
     </p>
   </div>
   <input type="file" class="d-none" #fileAttached>
@@ -17,7 +19,7 @@
     <div class="col-12 col-md-{{styleWidth}} mb-3" *ngFor="let i of [1,2,3]">
       <div class="uploaded-file-item {{styleHeight}}">
         <div class="uploaded-icon">
-          <span class="sfi sfi-pdf"></span>
+          <span class="fi fi-file"></span>
         </div>
         <div class="d-flex flex-column justify-content-center flex-grow-1 mx-3 text-truncate">
           <p class="file-name d-flex align-items-center">
@@ -27,11 +29,7 @@
         </div>
         <div class="uploaded-file-actions">
           <button class="delete">
-            <span class="sfi sfi-trash font-13 text-color-danger"></span>
-          </button>
-          <span class="mx-1"></span>
-          <button class="download">
-            <span class="sfi sfi-download font-13 text-color-secondary-purple"></span>
+            <span class="fi fi-trash font-16 text-color-red"></span>
           </button>
         </div>
       </div>

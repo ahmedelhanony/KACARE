@@ -1,8 +1,8 @@
 <header class="{{className}}">
   <div class="custom-container">
     <div class="header-container">
-      <app-section-title [title]="title" [subTitle]="subTitle"></app-section-title>
-      <app-breadcrumb></app-breadcrumb>
+      <app-section-title [title]="title" [subTitle]="subTitle" [orgEmail]="orgEmail"></app-section-title>
+      <app-breadcrumb *ngIf="!orgEmail"></app-breadcrumb>
     </div>
   </div>
 </header>

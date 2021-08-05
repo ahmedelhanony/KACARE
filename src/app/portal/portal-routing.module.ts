@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import(`./pages/home/home.module`).then(m => m.HomeModule)
       },
       {
+        path: 'match-making',
+        loadChildren: () => import(`./pages/match-making/match-making.module`).then(m => m.MatchMakingModule)
+      },
+      {
         path: 'applications',
         loadChildren: () => import(`./pages/applications/applications.module`).then(m => m.ApplicationsModule)
       },
