@@ -1,18 +1,22 @@
 <div class="row">
   <div class="col-md-3 mb-3">
-    <mat-form-field appearance="fill" floatLabel="never">
+    <mat-form-field>
       <label class="form-label">Application </label>
+      <div class="input-content">
       <mat-select disableOptionCentering required placeholder="Choose Application">
         <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
       </mat-select>
+      </div>
     </mat-form-field>
   </div>
   <div class="col-md-3 mb-3">
-    <mat-form-field appearance="fill" floatLabel="never">
+    <mat-form-field>
       <label class="form-label">REP Topic</label>
+      <div class="input-content">
       <mat-select disableOptionCentering required placeholder="Choose REP Topic">
         <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
       </mat-select>
+      </div>
     </mat-form-field>
   </div>
 </div>

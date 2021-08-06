@@ -1,70 +1,26 @@
 //mat-form-field
 
-mat-form-field {
+mat-form-field{
   width: 100%;
-  display: inline-block !important;
-  padding: 0 !important;
-  height: 100px;
-  &.mat-form-field-can-float {
-    &.mat-form-field-should-float {
+
+    &.mat-form-field-should-float, &.mat-focused {
+    .mat-form-field-wrapper {
       .mat-form-field-flex {
-        .mat-form-field-infix {
-          .mat-form-field-label-wrapper {
-            overflow: visible;
-            .mat-form-field-label {
-              font-size: .9rem;
-              font-weight: $font-regular;
-              transform: translateY(-2.9em) !important;
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.mat-form-field-appearance-legacy{
-    &.mat-form-field-can-float {
-      &.mat-form-field-should-float {
-        .mat-form-field-flex {
-          .mat-form-field-infix {
-            .mat-form-field-label-wrapper {
-              .mat-form-field-label {
-                transform: translateY(-1.7em) !important;
-              }
-            }
-          }
-
-        }
-      }
-    }
-    .mat-form-field-suffix{
-      margin-bottom: -10px;
-    }
-  }
-
-
-  &.mat-form-field-appearance-fill{
-    &.mat-form-field-should-float, &.mat-focused{
-      .mat-form-field-wrapper{
-        .mat-form-field-flex{
+        .input-content {
           background-color: $white;
           border-color: $light-gray;
-          .mat-form-field-label-wrapper{
-            overflow: visible;
-            .mat-form-field-label{
-              margin: 0 -1em;
-            }
-          }
         }
       }
     }
+  }
 
     &.fill-white{
       .mat-form-field-wrapper{
         .mat-form-field-flex{
-          border-color: $light-gray !important;
-          background-color: $white;
+          .input-content {
+            border-color: $light-gray;
+            background-color: $white;
+          }
         }
       }
     }
@@ -72,7 +28,9 @@ mat-form-field {
     &.mat-focused{
       .mat-form-field-wrapper{
         .mat-form-field-flex{
-          border-color: $light-blue !important;
+          .input-content {
+            border-color: $light-blue !important;
+          }
         }
       }
     }
@@ -80,251 +38,563 @@ mat-form-field {
     &.mat-form-field-invalid{
       .mat-form-field-wrapper{
         .mat-form-field-flex{
-          border-color: $red !important;
-          background-color: $white !important;
+          .input-content{
+            border-color: $red !important;
+            background-color: $white !important;
+          }
         }
       }
     }
 
-    &.mat-form-field-can-float {
-      &.mat-form-field-has-label{
-        .mat-form-field-label-wrapper {
-          top: 0;
-          margin-top: 0;
-        }
-      }
-    }
+
 
     &.mat-form-field-type-mat-select{
       .mat-form-field-wrapper{
         .mat-form-field-flex{
-          border-color: $light-gray !important;
-          background-color: $light-gray !important;
-        }
-      }
-    }
-
-    .mat-form-field-underline {
-      display: none !important;
-    }
-
-    .mat-form-field-wrapper{
-      .mat-form-field-flex{
-        background-color: $light-gray;
-        border-color: $light-gray;
-        padding: 0 1em;
-        .mat-form-field-infix {
-          border: 0;
-          padding: 0;
-          .form-label{
-            position: absolute;
-            top: -40px;
-            margin: 0 -1em;
+          .input-content{
+            border-color: $light-gray !important;
+            background-color: $light-gray !important;
           }
         }
-        .mat-form-field-label {
-          top: 0;
-          margin-top: 0;
-        }
       }
     }
-  }
 
-
-  &.mat-focused{
-
-    .mat-form-field-underline {
-      .mat-form-field-ripple{
-        background-color: $onyx !important;
-      }
-    }
-  }
-
-  &.custom-textarea {
-    height: 170px;
-    .mat-form-field-flex {
-      height: 120px;
-      padding: 16px;
-      align-items: baseline;
-
-      .mat-form-field-infix {
+    &.custom-textarea{
+    .input-content{
+      height: 120px !important;
+      padding: 16px !important;
+      textarea.mat-input-element{
         height: 100%;
-        padding: 16px 0 !important;
-        .form-label{
-          top: -25px !important;
-        }
-        textarea {
-          height: 100% !important;
+        overflow: auto;
+        resize: none;
+        padding: 0;
+        margin: 0;
+      }
 
-          resize: none;
+    }
+    .mat-form-field-label-wrapper{
+      height: 120px !important;
+      padding: 17px !important;
+      .mat-form-field-label{
+        align-items: flex-start !important;
+      }
+    }
+  }
+
+
+
+    &.icon-before-after{
+    .mat-form-field-flex{
+      .mat-form-field-infix{
+        .input-content{
+          .mat-input-element, .mat-select{
+            padding: 0 10px;
+          }
+        }
+        .mat-form-field-label-wrapper{
+          left: 34px;
+          right: 34px;
+          //width: calc(100% - 80px);
+        }
+      }
+    }
+  }
+
+  .mat-form-field-flex{
+    border-radius: 0;
+    padding: 0 !important;
+    background-color: transparent !important;
+    .mat-form-field-infix{
+      border: 0;
+      padding: 0;
+      width: 100%;
+      .input-content{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        background-color: $light-gray;
+        border: 1px solid $light-gray;
+        border-radius: 6px;
+        padding: 0 16px;
+
+
+
+        .mat-input-element, .mat-select{
+          margin: 0 !important;
+
           box-sizing: border-box;
+          color: $onyx !important;
+          font-weight: $font-bold;
+          font-size: 1rem;
+          -moz-appearance: textfield;
+          &::placeholder{
+            color: $gray !important;
+            font-weight: $font-bold;
+          }
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus,
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus,
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus {
+            background-color: transparent !important;
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+          }
+
+
+          &:not(:last-child){
+            padding-right: 16px;
+          }
+
+          //+ .form-icon{
+          //  padding-right: 16px;
+          //}
+
         }
 
-        .mat-form-field-label-wrapper {
-          .mat-form-field-label {
-            display: block !important;
+        .mat-select {
+          .mat-select-trigger {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+            .mat-select-value {
+              display: flex;
+              max-width: 100%;
+              height: 100%;
+
+              .mat-select-value-text, .mat-select-placeholder {
+                display: flex;
+                align-items: center;
+                font-weight: $font-bold;
+              }
+            }
+          }
+
+          .mat-select-arrow-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: none;
+            //min-width: 40px;
+            //width: 40px;
+
+            .mat-select-arrow {
+              width: 10px;
+              height: 10px;
+              border: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              &:before {
+                content: "\e908";
+                font-family: 'kacare-font-icons';
+                font-size: .8rem;
+                color: $onyx;
+              }
+            }
+          }
+
+        }
+
+        .form-icon{
+          min-width: 24px;
+          width: 24px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          //font-size: 1rem;
+          + .mat-input-element, + .mat-select {
+            //padding-left: 0;
           }
         }
       }
 
-    }
-  }
+      .mat-form-field-label-wrapper{
+        //display: none;
 
-  .mat-form-field-label{
-    color: $onyx !important;
-  }
+        top: auto;
+        padding: 0 16px;
+        bottom: 0;
+        height: 50px;
+        //width: calc(100% - 34px);
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        .mat-form-field-label{
+          top: 0;
+          transform:  none !important;
+          height: 100%;
+          position: relative;
+          margin: 0;
+          display: none;
+          color: $gray !important;
+          font-weight: $font-medium;
 
-  .mat-form-field-underline {
-    .mat-form-field-ripple{
-      background-color: $dark-gray !important;
-    }
-  }
 
-  .mat-form-field-subscript-wrapper{
-    padding: 0 !important;
-    height: 20px;
-  }
-
-  .mat-form-field-wrapper {
-    padding-bottom: 20px;
-    padding-top: 30px;
-  }
-
-  .mat-form-field-flex {
-    align-items: center;
-    height: 50px;
-    padding: 0;
-    border-radius: 6px !important;
-    border: 1px solid transparent;
-    transition: all .2s linear;
-
-    .mat-form-field-prefix {
-      margin-right: .5em;
-      [dir=rtl] &{
-        margin-right: 0;
-        margin-left: .5em;
-      }
-    }
-
-    .mat-form-field-suffix {
-      margin-left: .5em;
-      [dir=rtl] & {
-        margin-left: 0;
-        margin-right: .5em;
+          &.mat-empty{
+            display: flex;
+            align-items: center;
+          }
+        }
       }
 
       .mat-icon-button {
         width: auto !important;
         height: auto !important;
         padding: 0 !important;
-        .mat-ripple{
+        .mat-ripple, .mat-button-focus-overlay{
           display: none;
         }
       }
-
-    }
-    .mat-icon {
-      height: 24px;
-      width: 24px;
-      display: flex !important;
-      align-items: center;
-      font-size: 1.2rem;
-      justify-content: center;
-    }
-    .mat-form-field-infix{
-      //border: 0;
-      //padding: 0;
       .mat-input-element {
-        color: $onyx !important;
-        font-weight: $font-extra-bold;
-        font-size: 1rem;
-        //line-height: 1.5;
-        -moz-appearance: textfield;
-        &::placeholder{
-          color: $dark-gray !important;
-          font-weight: $font-medium;
-        }
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus,
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus,
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus {
-          background-color: transparent !important;
-          -webkit-box-shadow: 0 0 0 1000px white inset;
-        }
+        caret-color: $onyx !important;
       }
 
-      .mat-icon {
-        height: 24px;
-        width: 24px;
-        display: flex !important;
-        align-items: center;
-        font-size: 1.2rem;
-        justify-content: center;
-        & + .mat-input-element {
-          padding: 0 16px;
-        }
-      }
-    }
-
-  }
-
-
-
-  .mat-select {
-    .mat-select-trigger {
-      display: flex;
-      align-items: center;
-
-      .mat-select-value {
-        display: flex;
-        max-width: 100%;
-        flex-grow: 1;
-        .mat-select-placeholder, .mat-select-value-text{
-          font-weight: $font-medium;
-        }
-      }
-
-      .mat-select-arrow-wrapper {
-        display: flex;
-        align-items: center;
-        transform: none;
-        .mat-select-arrow {
-          width: 10px;
-          height: 10px;
-          border: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          &:before {
-            content: "\e908";
-            font-family: 'kacare-font-icons';
-            font-size: 1rem;
-            color: $onyx;
-          }
-        }
-      }
-    }
-    .mat-form-field-underline{
-      display: none;
     }
   }
 
-  .mat-input-element {
-    caret-color: $onyx !important;
+  .mat-form-field-underline{
+    display: none;
   }
-
 }
+
+//mat-form-field {
+//  width: 100%;
+//  display: inline-block !important;
+//  padding: 0 !important;
+//  height: 100px;
+//  &.mat-form-field-can-float {
+//    &.mat-form-field-should-float {
+//      .mat-form-field-flex {
+//        .mat-form-field-infix {
+//          .mat-form-field-label-wrapper {
+//            overflow: visible;
+//            .mat-form-field-label {
+//              font-size: .9rem;
+//              font-weight: $font-regular;
+//              transform: translateY(-2.9em) !important;
+//              width: 100%;
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  &.mat-form-field-appearance-legacy{
+//    &.mat-form-field-can-float {
+//      &.mat-form-field-should-float {
+//        .mat-form-field-flex {
+//          .mat-form-field-infix {
+//            .mat-form-field-label-wrapper {
+//              .mat-form-field-label {
+//                transform: translateY(-1.7em) !important;
+//              }
+//            }
+//          }
+//
+//        }
+//      }
+//    }
+//    .mat-form-field-suffix{
+//      margin-bottom: -10px;
+//    }
+//  }
+//
+//
+//  &.mat-form-field-appearance-fill{
+//    &.mat-form-field-should-float, &.mat-focused{
+//      .mat-form-field-wrapper{
+//        .mat-form-field-flex{
+//          background-color: $white;
+//          border-color: $light-gray;
+//          .mat-form-field-label-wrapper{
+//            overflow: visible;
+//            .mat-form-field-label{
+//              margin: 0 -1em;
+//            }
+//          }
+//        }
+//      }
+//    }
+//
+//    &.fill-white{
+//      .mat-form-field-wrapper{
+//        .mat-form-field-flex{
+//          border-color: $light-gray !important;
+//          background-color: $white;
+//        }
+//      }
+//    }
+//
+//    &.mat-focused{
+//      .mat-form-field-wrapper{
+//        .mat-form-field-flex{
+//          border-color: $light-blue !important;
+//        }
+//      }
+//    }
+//
+//    &.mat-form-field-invalid{
+//      .mat-form-field-wrapper{
+//        .mat-form-field-flex{
+//          border-color: $red !important;
+//          background-color: $white !important;
+//        }
+//      }
+//    }
+//
+//    &.mat-form-field-can-float {
+//      &.mat-form-field-has-label{
+//        .mat-form-field-label-wrapper {
+//          top: 0;
+//          margin-top: 0;
+//        }
+//      }
+//    }
+//
+//    &.mat-form-field-type-mat-select{
+//      .mat-form-field-wrapper{
+//        .mat-form-field-flex{
+//          border-color: $light-gray !important;
+//          background-color: $light-gray !important;
+//        }
+//      }
+//    }
+//
+//    .mat-form-field-underline {
+//      display: none !important;
+//    }
+//
+//    .mat-form-field-wrapper{
+//      .mat-form-field-flex{
+//        background-color: $light-gray;
+//        border-color: $light-gray;
+//        padding: 0 1em;
+//        .mat-form-field-infix {
+//          border: 0;
+//          padding: 0;
+//          .form-label{
+//            position: absolute;
+//            top: -40px;
+//            margin: 0 -1em;
+//          }
+//        }
+//        .mat-form-field-label {
+//          top: 0;
+//          margin-top: 0;
+//        }
+//      }
+//    }
+//  }
+//
+//
+//  &.mat-focused{
+//
+//    .mat-form-field-underline {
+//      .mat-form-field-ripple{
+//        background-color: $onyx !important;
+//      }
+//    }
+//  }
+//
+//  &.custom-textarea {
+//    height: 170px;
+//    .mat-form-field-flex {
+//      height: 120px;
+//      padding: 16px;
+//      align-items: baseline;
+//
+//      .mat-form-field-infix {
+//        height: 100%;
+//        padding: 16px 0 !important;
+//        .form-label{
+//          top: -25px !important;
+//        }
+//        textarea {
+//          height: 100% !important;
+//
+//          resize: none;
+//          box-sizing: border-box;
+//        }
+//
+//        .mat-form-field-label-wrapper {
+//          .mat-form-field-label {
+//            display: block !important;
+//          }
+//        }
+//      }
+//
+//    }
+//  }
+//
+//  .mat-form-field-label{
+//    color: $onyx !important;
+//  }
+//
+//  .mat-form-field-underline {
+//    .mat-form-field-ripple{
+//      background-color: $dark-gray !important;
+//    }
+//  }
+//
+//  .mat-form-field-subscript-wrapper{
+//    padding: 0 !important;
+//    height: 20px;
+//  }
+//
+//  .mat-form-field-wrapper {
+//    padding-bottom: 20px;
+//    padding-top: 30px;
+//  }
+//
+//  .mat-form-field-flex {
+//    align-items: center;
+//    height: 50px;
+//    padding: 0;
+//    border-radius: 6px !important;
+//    border: 1px solid transparent;
+//    transition: all .2s linear;
+//
+//    .mat-form-field-prefix {
+//      margin-right: .5em;
+//      [dir=rtl] &{
+//        margin-right: 0;
+//        margin-left: .5em;
+//      }
+//    }
+//
+//    .mat-form-field-suffix {
+//      margin-left: .5em;
+//      [dir=rtl] & {
+//        margin-left: 0;
+//        margin-right: .5em;
+//      }
+//
+//      .mat-icon-button {
+//        width: auto !important;
+//        height: auto !important;
+//        padding: 0 !important;
+//        .mat-ripple{
+//          display: none;
+//        }
+//      }
+//
+//    }
+//    .mat-icon {
+//      height: 24px;
+//      width: 24px;
+//      display: flex !important;
+//      align-items: center;
+//      font-size: 1.2rem;
+//      justify-content: center;
+//    }
+//    .mat-form-field-infix{
+//      //border: 0;
+//      //padding: 0;
+//      .mat-input-element {
+//        color: $onyx !important;
+//        font-weight: $font-extra-bold;
+//        font-size: 1rem;
+//        //line-height: 1.5;
+//        -moz-appearance: textfield;
+//        &::placeholder{
+//          color: $dark-gray !important;
+//          font-weight: $font-medium;
+//        }
+//        &::-webkit-outer-spin-button,
+//        &::-webkit-inner-spin-button {
+//          -webkit-appearance: none;
+//          margin: 0;
+//        }
+//        &:-webkit-autofill,
+//        &:-webkit-autofill:hover,
+//        &:-webkit-autofill:focus,
+//        &:-webkit-autofill,
+//        &:-webkit-autofill:hover,
+//        &:-webkit-autofill:focus,
+//        &:-webkit-autofill,
+//        &:-webkit-autofill:hover,
+//        &:-webkit-autofill:focus {
+//          background-color: transparent !important;
+//          -webkit-box-shadow: 0 0 0 1000px white inset;
+//        }
+//      }
+//
+//      .mat-icon {
+//        height: 24px;
+//        width: 24px;
+//        display: flex !important;
+//        align-items: center;
+//        font-size: 1.2rem;
+//        justify-content: center;
+//        & + .mat-input-element {
+//          padding: 0 16px;
+//        }
+//      }
+//    }
+//
+//  }
+//
+//
+//
+//  .mat-select {
+//    .mat-select-trigger {
+//      display: flex;
+//      align-items: center;
+//
+//      .mat-select-value {
+//        display: flex;
+//        max-width: 100%;
+//        flex-grow: 1;
+//        .mat-select-placeholder, .mat-select-value-text{
+//          font-weight: $font-medium;
+//        }
+//      }
+//
+//      .mat-select-arrow-wrapper {
+//        display: flex;
+//        align-items: center;
+//        transform: none;
+//        .mat-select-arrow {
+//          width: 10px;
+//          height: 10px;
+//          border: 0;
+//          display: flex;
+//          align-items: center;
+//          justify-content: center;
+//
+//          &:before {
+//            content: "\e908";
+//            font-family: 'kacare-font-icons';
+//            font-size: 1rem;
+//            color: $onyx;
+//          }
+//        }
+//      }
+//    }
+//    .mat-form-field-underline{
+//      display: none;
+//    }
+//  }
+//
+//  .mat-input-element {
+//    caret-color: $onyx !important;
+//  }
+//
+//}
 
 
 // mat-select-panel-wrap
@@ -474,7 +744,7 @@ mat-form-field {
         .mat-calendar-table-header {
           tr:first-child {
             th {
-              color: $dark-gray;
+              color: $gray;
               font-weight: bold;
             }
           }
@@ -535,6 +805,6 @@ mat-form-field {
 .form-label{
   font-size: 14px;
   color: $onyx;
-  margin-bottom: .2rem;
+  margin-bottom: .5rem;
   display: block;
 }

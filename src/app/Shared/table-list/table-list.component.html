@@ -12,8 +12,10 @@
             </span>
             <div [ngClass]="columnsConfig[i].type" *ngSwitchCase="'input'">
 
-              <mat-form-field appearance="fill" floatLabel="never">
-                <input matInput [placeholder]="element[column]" >
+              <mat-form-field>
+                <div class="input-content">
+                  <input matInput [placeholder]="element[column]" >
+                </div>
               </mat-form-field>
             </div>
             <div class="d-flex" *ngSwitchCase="'action'">

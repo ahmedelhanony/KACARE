@@ -8,7 +8,7 @@ import {AddMatchMakingComponent} from "./components/add-match-making/add-match-m
   styleUrls: ['./match-making.component.scss']
 })
 export class MatchMakingComponent implements OnInit {
-  isRegistered = false;
+  isRegistered = true;
   constructor( public dialog: MatDialog ) { }
 
   ngOnInit(): void {

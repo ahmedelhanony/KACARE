@@ -1,15 +1,19 @@
 <h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">Login</h2>
 <p class="font-20 font-weight-normal text-color-gray mb-4">Login into your account</p>
 <form action="">
-  <mat-form-field appearance="fill" floatLabel="never">
+  <mat-form-field>
     <label class="form-label">Email</label>
-    <input matInput type="email" placeholder="Type your email" required>
+    <div class="input-content">
+      <input matInput type="email" placeholder="Type your email" required>
+    </div>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" floatLabel="never">
+  <mat-form-field>
     <label class="form-label">Password</label>
-    <input matInput type="password" placeholder="Type your password" required>
-    <mat-icon class="fi fi-eye text-color-dark-gray-1 font-19" matSuffix></mat-icon>
+    <div class="input-content">
+      <input matInput type="password" placeholder="Type your password" required>
+      <span class="form-icon fi fi-eye text-color-dark-gray-1 font-19"></span>
+    </div>
   </mat-form-field>
 
   <div class="d-flex justify-content-between align-items-center mb-3 mt-n1">

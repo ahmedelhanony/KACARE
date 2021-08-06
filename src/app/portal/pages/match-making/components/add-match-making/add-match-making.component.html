@@ -9,31 +9,39 @@
     <div class="p-3">
       <div class="row">
         <div class="col-12 mb-2">
-          <mat-form-field appearance="fill" floatLabel="never">
+          <mat-form-field>
             <label class="form-label">Technology </label>
+            <div class="input-content">
             <mat-select disableOptionCentering required placeholder="Choose Technology ">
               <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
             </mat-select>
+            </div>
           </mat-form-field>
         </div>
         <div class="col-12 mb-2">
-          <mat-form-field appearance="fill" floatLabel="never">
+          <mat-form-field>
             <label class="form-label">Role </label>
+            <div class="input-content">
             <mat-select disableOptionCentering required placeholder="Choose Role ">
               <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
             </mat-select>
+            </div>
           </mat-form-field>
         </div>
         <div class="col-12 mb-2">
-          <mat-form-field appearance="fill" floatLabel="never">
+          <mat-form-field>
             <label class="form-label">Contact Info</label>
+            <div class="input-content">
             <input matInput placeholder="Type Contact Info" required>
+            </div>
           </mat-form-field>
         </div>
         <div class="col-12 mb-2">
-          <mat-form-field class="custom-textarea" appearance="fill" floatLabel="never">
+          <mat-form-field class="custom-textarea">
             <label class="form-label">Details</label>
+            <div class="input-content">
             <textarea matInput placeholder="Type Match Making Details here.."></textarea>
+            </div>
           </mat-form-field>
         </div>
       </div>
