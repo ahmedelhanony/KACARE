@@ -1,6 +1,15 @@
 // mat-slide-toggle
 
 mat-slide-toggle{
+  &.reverse-toggle{
+    .mat-slide-toggle-label{
+      flex-direction: row-reverse;
+      .mat-slide-toggle-bar{
+        margin-left: 20px;
+        margin-right: 0;
+      }
+    }
+  }
   &.mat-checked{
     .mat-slide-toggle-bar {
       border-color: $light-blue !important;
@@ -41,6 +50,7 @@ mat-slide-toggle{
       }
     }
   }
+
 }
 
 

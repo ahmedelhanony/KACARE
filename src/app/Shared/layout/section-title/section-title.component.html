@@ -1,4 +1,4 @@
-<div class="inner-section-title">
+<div class="inner-section-title" [ngClass]="className">
   <span class="img-card circled-img shape" *ngIf="orgEmail">{{ getFirstChar(title) }}</span>
   <h1 class="main-title" *ngIf="title">{{title}}</h1>
   <h2 class="sub-title" *ngIf="subTitle && !orgEmail">{{subTitle}}</h2>

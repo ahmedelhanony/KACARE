@@ -1,0 +1,28 @@
+:host ::ng-deep{
+  .admin-layout{
+    display: flex;
+    flex-direction: row;
+    main{
+      margin-top: 0 !important;
+      padding: 40px 1.5rem;
+      width: calc(100% - 280px);
+      .admin-header{
+        margin-top: 30px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        .mat-checkbox{
+          margin-top: 12px;
+        }
+        .form-field{
+          width: 180px;
+        }
+
+        .datepicker{
+          width: 230px;
+        }
+      }
+    }
+  }
+
+}

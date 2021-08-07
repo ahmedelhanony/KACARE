@@ -13,7 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: SigninComponent
+        component: SigninComponent,
+        data : {isPortalView : true}
       },
       {
         path: 'signup',
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetPasswordComponent
+  },
+  {
+    path: 'admin-login',
+    component: SigninComponent,
+    data : {isPortalView : false}
   },
 ];
 

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,53 @@ export class NavbarComponent implements OnInit {
   @Input() isPortal = true;
   navOpened = false;
   dropdownOpened = false;
+  menuList: any;
   activeMenuItem = -1;
 
-  menuList = [
+  adminMenuList = [
+    {
+      label: 'Match making',
+      link: 'match-making',
+      image: 'match-making',
+      items: 2
+    },
+    {
+      label: 'Applications',
+      link: 'applications',
+      image: 'applications',
+      hasChildren: true,
+      children: [
+        {
+          label: 'Proof Of Concept',
+          link: 'applications/proof-of-concept',
+        },
+        {
+          label: 'Product Development',
+          link: 'applications/Product-Development',
+        },
+        {
+          label: 'Feasibility Study Program',
+          link: 'applications/Feasibility-Study-Program',
+        },
+        {
+          label: 'Demonstration Projects ',
+          link: 'applications/Demonstration-Projects',
+        },
+      ]
+    },
+    {
+      label: 'News',
+      link: 'news',
+      image: 'news',
+    },
+    {
+      label: 'FAQ',
+      link: 'faqs',
+      image: 'faqs'
+    },
+  ]
+
+  portalList = [
     {
       label: 'Home',
       link: '/home',
@@ -66,9 +111,14 @@ export class NavbarComponent implements OnInit {
     img: null,
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (this.isPortal){
+      this.menuList = this.portalList
+    } else{
+      this.menuList = this.adminMenuList
+    }
   }
 
   toggleNav(): void {
@@ -76,19 +126,19 @@ export class NavbarComponent implements OnInit {
     this.activeMenuItem = -1;
   }
 
-  toggleDropDown(): void {
-    this.dropdownOpened = !this.dropdownOpened;
-  }
 
   setActiveIndex(index: number) {
     this.activeMenuItem = index;
-    // console.log(index);
-    // console.log(this.activeMenuItem)
+    this.dropdownOpened = !this.dropdownOpened;
+
   }
 
-  getActiveClass(i: number) {
-    return this.activeMenuItem == i ? 'collapse-dropdown' : '';
+  routeFalse(event: MouseEvent){
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
   }
+
 
   getFirstChar(text: string){
     let characters = text.match(/\b(\w)/g);

@@ -1,1 +1,17 @@
-<p>admin-news works!</p>
+<app-section-title className="admin-title" title="News"></app-section-title>
+<div class="admin-header">
+  <mat-form-field class="form-field">
+    <div class="input-content">
+      <mat-select disableOptionCentering required placeholder="Status">
+        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      </mat-select>
+    </div>
+  </mat-form-field>
+  <span class="mx-3"></span>
+  <button mat-flat-button class="btn light-blue-button px-4" (click)="addArticle()">
+    <mat-icon class="mx-1">add</mat-icon>
+    <span class="mx-1">Add Article</span>
+  </button>
+</div>
+
+<app-table-list className="admin-table" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns" ></app-table-list>

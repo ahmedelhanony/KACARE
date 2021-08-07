@@ -1,31 +1,40 @@
-<h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">Login</h2>
-<p class="font-20 font-weight-normal text-color-gray mb-4">Login into your account</p>
-<form action="">
-  <mat-form-field>
-    <label class="form-label">Email</label>
-    <div class="input-content">
-      <input matInput type="email" placeholder="Type your email" required>
-    </div>
-  </mat-form-field>
+<section class="login-section" [ngClass]="{'admin-view': !isPortalView}">
+  <figure *ngIf="!isPortalView">
+    <img src="assets/images/logo.svg" alt="">
+  </figure>
+  <div class="login-form-section">
+    <h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">
+      {{isPortalView ? 'Login' : 'Welcome Back!'}}
+    </h2>
+    <p class="font-20 font-weight-normal text-color-gray mb-4">Login into your account</p>
+    <form action="">
+      <mat-form-field>
+        <label class="form-label">Email</label>
+        <div class="input-content">
+          <input matInput type="email" placeholder="Type your email" required>
+        </div>
+      </mat-form-field>
 
-  <mat-form-field>
-    <label class="form-label">Password</label>
-    <div class="input-content">
-      <input matInput type="password" placeholder="Type your password" required>
-      <span class="form-icon fi fi-eye text-color-dark-gray-1 font-19"></span>
-    </div>
-  </mat-form-field>
+      <mat-form-field>
+        <label class="form-label">Password</label>
+        <div class="input-content">
+          <input matInput type="password" placeholder="Type your password" required>
+          <span class="form-icon fi fi-eye text-color-dark-gray-1 font-19"></span>
+        </div>
+      </mat-form-field>
 
-  <div class="d-flex justify-content-between align-items-center mb-3 mt-n1">
-    <a routerLink="/reset-password" class="underline text-color-light-blue font-13 font-weight-medium">Reset Password!</a>
-    <mat-checkbox>
-      <span class="font-13 font-weight-medium text-color-black">Keep me sign in</span>
-    </mat-checkbox>
+      <div class="d-flex justify-content-between align-items-center mb-3 mt-n1">
+        <a routerLink="/reset-password" class="underline text-color-light-blue font-13 font-weight-medium" *ngIf="isPortalView">Reset Password!</a>
+        <mat-checkbox>
+          <span class="font-13 font-weight-medium text-color-black">Keep me sign in</span>
+        </mat-checkbox>
+      </div>
+      <button routerLink="/home" mat-flat-button class="btn light-blue-button only-shadow font-16 font-weight-bold w-100 my-3">
+        Login
+      </button>
+      <p class="font-16 font-weight-medium text-color-gray mt-4 mb-2" *ngIf="isPortalView">
+        Don't have an account? <a routerLink="/signup" class="text-color-light-blue">Create account</a>
+      </p>
+    </form>
   </div>
-  <button routerLink="/home" mat-flat-button class="btn light-blue-button only-shadow font-16 font-weight-bold w-100 my-3">
-    Login
-  </button>
-  <p class="font-16 font-weight-medium text-color-gray mt-4 mb-2">
-    Don't have an account? <a routerLink="/signup" class="text-color-light-blue">Create account</a>
-  </p>
-</form>
+</section>

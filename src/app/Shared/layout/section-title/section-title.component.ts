@@ -9,6 +9,7 @@ export class SectionTitleComponent implements OnInit {
   @Input() title = '';
   @Input() subTitle = '';
   @Input() orgEmail = '';
+  @Input() className = '';
   constructor() { }
 
   ngOnInit(): void {

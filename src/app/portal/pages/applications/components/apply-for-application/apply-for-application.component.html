@@ -1,17 +1,8 @@
-<span class="d-none" #target></span>
 <app-header className="header-2" title="Demonstration Submission" ></app-header>
 <section class="mt-4">
   <div class="custom-container" >
     <div class="stepper-progress">
       <span class="bar" [style.width.%]="(100 * (stepper.selectedIndex + 1)) / stepper.steps.length"></span>
-<!--      <mat-slider-->
-<!--        class="example-margin"-->
-<!--        [value]="(100 * (stepper.selectedIndex + 1)) / stepper.steps.length"-->
-<!--        min="0"-->
-<!--        max="100"-->
-<!--        disabled-->
-<!--        aria-labelledby="example-name-label">-->
-<!--      </mat-slider>-->
     </div>
     <mat-stepper class="details-stepper" [linear]="true" #stepper>
       <mat-step>

@@ -1,20 +1,25 @@
-<span class="form-label mb-2" *ngIf="label">{{label}}</span>
-<div (click)="fileAttached.click()"
-     class="upload-file-input mb-3">
-  <div class="align-items-center d-flex flex-column">
-    <i class="fi fi-shared-folder text-color-blue font-45"></i>
-    <p class="text-color-onyx font-16 font-md-14 font-weight-medium text-center my-2">
-      Drag and Drop file here or Browse
-    </p>
-    <p class="text-color-dark-gray-1 font-16 font-md-14 font-weight-medium text-center mb-0">
-      Supported files: .Png .JPEG, with maximum size of 5MB
-    </p>
-  </div>
-  <input type="file" class="d-none" #fileAttached>
-
+<ng-container *ngIf="display !== 'files-only'">
+<div class="d-flex align-items-center form-label mb-2" *ngIf="label">
+  <span *ngIf="label">{{label}}</span>
+  <span class="mx-1 text-color-gray" *ngIf="labelHint">{{labelHint}}</span>
 </div>
-<div class="text-center font-12 text-color-dark-gray mt-n2 mb-3" *ngIf="hint">{{hint}}</div>
-<ng-container>
+  <div (click)="fileAttached.click()"
+       class="upload-file-input mb-3">
+    <div class="align-items-center d-flex flex-column">
+      <i class="fi fi-shared-folder text-color-blue font-45"></i>
+      <p class="text-color-onyx font-16 font-md-14 font-weight-medium text-center my-2">
+        Drag and Drop file here or Browse
+      </p>
+      <p class="text-color-dark-gray-1 font-16 font-md-14 font-weight-medium text-center mb-0">
+        Supported files: .Png .JPEG, with maximum size of 5MB
+      </p>
+    </div>
+    <input type="file" class="d-none" #fileAttached>
+
+  </div>
+  <div class="text-center font-12 text-color-dark-gray mt-n2 mb-3" *ngIf="hint">{{hint}}</div>
+</ng-container>
+<ng-container *ngIf="display === 'files-only'">
   <div class="row">
     <div class="col-12 col-md-{{styleWidth}} mb-3" *ngFor="let i of [1,2,3]">
       <div class="uploaded-file-item {{styleHeight}}">

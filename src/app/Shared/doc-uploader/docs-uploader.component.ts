@@ -10,6 +10,8 @@ export class DocsUploaderComponent implements OnInit {
   @Input() styleWidth = 6;
   @Input() hint = '';
   @Input() label = '';
+  @Input() labelHint = '';
+  @Input() display = '';
 
 
   constructor(public dialog: MatDialog) { }

@@ -25,11 +25,19 @@
         font-size: 1rem;
         font-weight: $font-medium;
         border: none;
-        line-height: 1;
+        line-height: 1.2;
         padding: 15px 24px !important;
         border: 0;
-        .link{
+        &.image{
+          width: 100px;
+        }
+        .details{
+          width: 200px;
+          display: block;
+        }
+        .link, .popup{
           color: $light-blue;
+          cursor: pointer;
         }
         .file{
           display: flex;
@@ -68,6 +76,32 @@
       height: 70px;
       td{
         padding: 7px !important;
+      }
+    }
+  }
+}
+
+.admin-table{
+  thead, tbody{
+    tr{
+      td,th{
+        font-size: 0.875rem;
+      }
+    }
+  }
+  tbody{
+    tr{
+      height: 70px;
+    }
+  }
+}
+
+.popup-table{
+  thead, tbody{
+    tr{
+      height: 45px;
+      td,th{
+        font-size: 0.75rem;
       }
     }
   }

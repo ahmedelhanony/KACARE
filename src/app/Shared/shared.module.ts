@@ -36,6 +36,7 @@ import {RouterModule} from "@angular/router";
     TableListComponent,
     HeaderComponent,
     SectionTitleComponent,
+    LayoutComponent,
 
   ]
 })

@@ -122,6 +122,40 @@
     }
 
 
+    &.publish-button{
+      width: 130px;
+      padding: 0;
+      height: 44px;
+      &.publish{
+        background-color: $green;
+        color: $white;
+
+      }
+
+      &.published{
+        background-color: $light-gray;
+        color: $gray;
+
+        &:hover{
+          background-color: $red;
+          color: $white;
+          .text{
+            display: none;
+          }
+          .unpublished{
+            display: block;
+          }
+        }
+
+      }
+
+      .unpublished{
+        display: none;
+      }
+
+    }
+
+
 
   }
 
@@ -172,11 +206,31 @@
     &.action-button{
       background-color: $light-gray !important;
       //font-size: 1.2rem;
+      &.delete{
+        &:hover{
+          background-color: $red !important;
+        }
+      }
+      &.edit{
+        &:hover{
+          background-color: $light-blue !important;
+
+        }
+      }
+
+      &.delete, &.edit{
+        &:hover{
+          .fi{
+            color: $white;
+          }
+        }
+      }
       .mat-button-focus-overlay{
         //background-color: $light-gray;
         display: none;
       }
       &:hover{
+        //background-color: rgba($gray, 50%) !important;
         //.mat-button-focus-overlay{
         //  background-color: rgba($gray, 25%);
         //}

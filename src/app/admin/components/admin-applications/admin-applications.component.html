@@ -1,1 +1,31 @@
-<p>admin-applications works!</p>
+<app-section-title className="admin-title" title="Demonstration Projects "></app-section-title>
+<div class="admin-header">
+  <div class="d-flex">
+    <mat-checkbox>
+      <span class="font-13 font-weight-medium text-color-black">Need To action</span>
+    </mat-checkbox>
+    <span class="mx-3"></span>
+    <mat-form-field class="form-field">
+      <div class="input-content">
+        <mat-select disableOptionCentering required placeholder="Status">
+          <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+        </mat-select>
+      </div>
+    </mat-form-field>
+  </div>
+  <span class="mx-3"></span>
+  <mat-form-field class="datepicker">
+    <div class="input-content">
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <i class="fi fi-calendar text-color-gray font-19" matDatepickerToggleIcon></i>
+      </mat-datepicker-toggle>
+    </div>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</div>
+
+<app-table-list className="admin-table" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns" ></app-table-list>
