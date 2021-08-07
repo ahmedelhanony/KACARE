@@ -1,0 +1,5 @@
+<app-navbar [isPortal]="isPortal"></app-navbar>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<app-footer *ngIf="isPortal"></app-footer>
