@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LayoutComponent} from "./layout/layout.component";
-import {LoginComponent} from "./pages/login/login.component";
+import {LayoutComponent} from "../Shared/layout/layout.component";
 import {InfographicsPageComponent} from "./pages/infographics-page/infographics-page.component";
 import {FaqPageComponent} from "./pages/faq-page/faq-page.component";
 
@@ -44,10 +43,6 @@ const routes: Routes = [
         loadChildren: () => import(`./pages/news-page/news-page.module`).then(m => m.NewsPageModule)
       },
     ],
-  },
-  {
-    path: '',
-    loadChildren: () => import(`./pages/login/login.module`).then(m => m.LoginModule),
   },
 ];
 

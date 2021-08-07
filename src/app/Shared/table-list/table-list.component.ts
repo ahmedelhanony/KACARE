@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from "@angular/material/dialog";
-import {DeletePopupComponent} from "../delete-popup/delete-popup.component";
+import {ConfirmationPopupComponent} from "../confirmation-popup/confirmation-popup.component";
+
 
 @Component({
   selector: 'app-table-list',
@@ -21,7 +22,7 @@ export class TableListComponent implements OnInit {
   }
 
   delete(): void {
-    const dialogRef = this.dialog.open(DeletePopupComponent, {
+    const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       width: '700px',
       panelClass: ['confirm-popup', 'main-popup'],
     });

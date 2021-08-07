@@ -24,7 +24,6 @@ import { DefaultMatchMakingComponent } from './components/default-match-making/d
     imports: [
         CommonModule,
         MatchMakingRoutingModule,
-        SharedModule,
         PortalModule
     ]
 })

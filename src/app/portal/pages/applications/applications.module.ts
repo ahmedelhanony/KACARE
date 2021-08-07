@@ -34,7 +34,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     ApplicationsRoutingModule,
     PortalModule,
-    SharedModule,
     ReactiveFormsModule,
   ]
 })

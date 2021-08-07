@@ -17,7 +17,6 @@ import {HighchartsChartModule} from "highcharts-angular";
     imports: [
         CommonModule,
         ProjectsPageRoutingModule,
-        SharedModule,
         HighchartsChartModule,
         PortalModule
     ]

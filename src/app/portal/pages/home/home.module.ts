@@ -37,7 +37,6 @@ import { FaqsComponent } from './components/faqs/faqs.component';
     CommonModule,
     HomeRoutingModule,
     NgxUsefulSwiperModule,
-    SharedModule,
     PortalModule
   ]
 })
