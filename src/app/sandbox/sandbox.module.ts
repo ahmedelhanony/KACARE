@@ -7,7 +7,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../Shared/shared.module';
 
 import {SatPopoverModule} from '@ncstate/sat-popover';
-import { StcIconsComponent } from './stc-icons/stc-icons.component';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 
@@ -15,7 +14,6 @@ import { ButtonsComponent } from './buttons/buttons.component';
 @NgModule({
   declarations: [
     SandboxComponent,
-    StcIconsComponent,
     FormFieldComponent,
     ButtonsComponent,
   ],
