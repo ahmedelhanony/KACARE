@@ -1,25 +1,61 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 :host ::ng-deep{
   .admin-layout{
     display: flex;
     flex-direction: row;
     main{
-      margin-top: 0 !important;
+
       padding: 40px 1.5rem;
       width: calc(100% - 280px);
+      @include media-breakpoint-up(lg){
+        margin-top: 0 !important;
+      }
       .admin-header{
         margin-top: 30px;
         margin-bottom: 0;
         display: flex;
         justify-content: space-between;
+        @include media-breakpoint-down(sm){
+          flex-wrap: wrap;
+          //max-width: 230px;
+        }
         .mat-checkbox{
           margin-top: 12px;
         }
         .form-field{
           width: 180px;
+          @media (max-width: 639px){
+            //max-width: 230px;
+            //max-width: 100%;
+            width: auto;
+            flex-grow: 1;
+          }
         }
 
         .datepicker{
-          width: 230px;
+          //width: 230px;
+          @media (min-width: 639px){
+            max-width: 230px;
+            //flex-grow: 1;
+          }
+          @media (max-width: 639px){
+            //max-width: 230px;
+            //max-width: 100%;
+            width: 100%;
+            flex-grow: 1;
+          }
+
+        }
+        .light-blue-button {
+          @media (max-width: 639px){
+            width: 50px !important;
+            min-width: 50px !important;
+            height: 50px;
+          }
+
         }
       }
     }

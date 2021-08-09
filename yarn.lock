@@ -6570,7 +6570,7 @@ safe-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha1-RPoWGwGHuVSd2Eu5GAL5vYOFzWo=
 
-sass-loader@12.1.0:
+sass-loader@12.1.0, sass-loader@^12.1.0:
   version "12.1.0"
   resolved "https://registry.nlark.com/sass-loader/download/sass-loader-12.1.0.tgz#b73324622231009da6fba61ab76013256380d201"
   integrity sha1-tzMkYiIxAJ2m+6Yat2ATJWOA0gE=

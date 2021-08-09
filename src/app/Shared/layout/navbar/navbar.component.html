@@ -2,10 +2,6 @@
   <div class="custom-container">
     <nav class="main-nav">
       <div class="navbar-brand">
-        <button mat-icon-button class="btn toggle-menu-btn font-18 d-flex d-xl-none" disableRipple (click)="toggleNav()">
-          <mat-icon class="font-22" *ngIf="!navOpened">menu</mat-icon>
-          <mat-icon class="fi fi-close font-22" *ngIf="navOpened"></mat-icon>
-        </button>
         <a routerLink="/" class="logo">
           <img src="assets/images/logo.svg" alt="logo" />
         </a>
@@ -15,7 +11,7 @@
           <ng-container *ngFor="let item of menuList; let i = index">
             <li class="nav-item" [ngClass]="{'has-dropdown': item.hasChildren, 'collapse-dropdown': activeMenuItem == i && item.hasChildren && dropdownOpened}" >
 
-              <a class="nav-link" *ngIf="item.hasChildren" [routerLink]="item.link" routerLinkActive="active" (click)="setActiveIndex(i);routeFalse($event)">
+              <a class="nav-link" *ngIf="item.hasChildren" (click)="setActiveIndex(i);">
                 <span class="icon" *ngIf="!isPortal">
                   <img class="dimmed" src="assets/images/menu/{{item.image}}.svg" alt="">
                   <img class="icon-active" src="assets/images/menu/{{item.image}}-active.svg" alt="">
@@ -24,7 +20,7 @@
               </a>
 
 
-              <a class="nav-link" *ngIf="!item.hasChildren" (click)="setActiveIndex(i)" [routerLink]="item.link" routerLinkActive="active"
+              <a class="nav-link" *ngIf="!item.hasChildren" (click)="setActiveIndex(i); toggleNav()" [routerLink]="item.link" routerLinkActive="active"
                  >
                 <span class="icon" *ngIf="!isPortal">
                   <img class="dimmed" src="assets/images/menu/{{item.image}}.svg" alt="">
@@ -33,9 +29,9 @@
                 <span class="nav-label">{{ item.label }}</span>
                 <span class="badge" *ngIf="item.items">{{item.items}}</span>
               </a>
-              <ul class="nav-dropdown" *ngIf="item.children !== null">
+              <ul class="nav-dropdown" *ngIf="item.children">
                 <li class="nav-item" *ngFor="let child of item.children">
-                  <a class="nav-link"  [routerLink]="child.link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+                  <a class="nav-link" (click)="toggleNav()" [routerLink]="child.link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
                     <span class="nav-label">{{ child.label }}</span>
                     <span class="badge" *ngIf="child.items">{{child.items}}</span>
                   </a>
@@ -44,99 +40,73 @@
             </li>
           </ng-container>
 
-        </ul>
-        <ul class="nav-list" *ngIf="false">
-          <li class="nav-item">
-            <a class="nav-link"  routerLink="/" routerLinkActive="active">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  [routerLink]="['/match-making']" routerLinkActive="active">Match making</a>
-          </li>
-          <li class="nav-item has-dropdown">
-            <div class="nav-link">
-              <div class="d-flex">
-                <span>Applications</span>
-                <span class="fi fi-arrow-down mx-1"></span>
-              </div>
-            </div>
-            <ul class="nav-dropdown">
-              <li class="nav-item">
-                <a class="nav-link"  [routerLink]="['/match-making']" routerLinkActive="active">Proof Of Concept</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  [routerLink]="['/match-making']" routerLinkActive="active">Product Development</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  [routerLink]="['/match-making']" routerLinkActive="active">Feasibility Study Program</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  [routerLink]="['/match-making']" routerLinkActive="active">Demonstration Projects </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  [routerLink]="['/infographics']" routerLinkActive="active">Infographics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  [routerLink]="['/news']" routerLinkActive="active">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  [routerLink]="['/past-projects',]" routerLinkActive="active">Past Projects</a>
+          <li class="nav-item" *ngIf="!isPortal">
+            <a routerLink="/admin-login" class="d-lg-none d-flex align-items-center nav-link">
+              <span class="icon fi fi-sign-out text-color-red font-20"></span>
+              <span class="nav-label text-color-red logout-text">Logout</span>
+            </a>
           </li>
         </ul>
+        <div class="login-actions" *ngIf="isPortal">
+          <button mat-flat-button class="btn login-btn">
+            Login
+          </button>
+          <span class="mx-1"></span>
+          <button mat-flat-button class="btn create-btn">
+            Create Account
+          </button>
+        </div>
       </div>
       <div class="menu-actions">
         <ng-container *ngIf="isPortal">
-          <ng-container *ngIf="false">
-            <button mat-flat-button class="btn button-white">
-              Login
-            </button>
-            <span class="mx-1"></span>
-            <button mat-flat-button class="btn primary-button">
-              Create Account
-            </button>
-          </ng-container>
-            <button mat-button [matMenuTriggerFor]="menu" class="logged-user-btn">
+
+            <ng-container *ngIf="false">
+              <button mat-button [matMenuTriggerFor]="menu" class="logged-user-btn">
               <span class="avatar">
                 <span class="text-avatar font-15 font-weight-bolder text-color-white" *ngIf="!user.img">{{ getFirstChar(user.name) }}</span>
                 <img [src]="user.img" *ngIf="user.img" alt="">
               </span>
-              <span class="font-17 font-weight-bold text-color-onyx mx-2">{{user.name}}</span>
-            </button>
-            <mat-menu #menu="matMenu" classList="logged-user-dropdown">
-              <button mat-menu-item>
+                <span class="font-17 font-weight-bold text-color-onyx mx-2 text">{{user.name}}</span>
+              </button>
+              <mat-menu #menu="matMenu" classList="logged-user-dropdown">
+                <button mat-menu-item>
               <span class="icon">
                 <img src="assets/images/user.svg" alt="">
               </span>
-                <span class="font-15 font-weight-medium text-color-gray mx-3">My Profile</span>
-              </button>
-              <button mat-menu-item>
+                  <span class="font-15 font-weight-medium text-color-gray mx-3">My Profile</span>
+                </button>
+                <button mat-menu-item>
               <span class="icon">
                 <img src="assets/images/lock.svg" alt="">
               </span>
-                <span class="font-15 font-weight-medium text-color-gray mx-3">Forgot Password</span>
-              </button>
-              <button mat-menu-item>
-                <span class="icon fi fi-sign-out text-color-red font-20"></span>
-                <span class="font-15 font-weight-medium text-color-red mx-3">Logout</span>
-              </button>
-            </mat-menu>
+                  <span class="font-15 font-weight-medium text-color-gray mx-3">Forgot Password</span>
+                </button>
+                <button mat-menu-item>
+                  <span class="icon fi fi-sign-out text-color-red font-20"></span>
+                  <span class="font-15 font-weight-medium text-color-red mx-3">Logout</span>
+                </button>
+              </mat-menu>
+            </ng-container>
           </ng-container>
 
-        <div class="d-flex flex-column p-4" *ngIf="!isPortal">
+        <div class="d-flex flex-column p-lg-4" *ngIf="!isPortal">
           <button mat-button class="logged-user-btn">
             <span class="avatar">
               <span class="text-avatar font-15 font-weight-bolder text-color-white" *ngIf="!user.img">{{ getFirstChar(user.name) }}</span>
               <img [src]="user.img" *ngIf="user.img" alt="">
             </span>
-            <span class="font-17 font-weight-bold text-color-onyx mx-2">{{user.name}}</span>
+            <span class="font-17 font-weight-bold text-color-onyx mx-2 text">{{user.name}}</span>
           </button>
-          <a routerLink="/admin-login" class="d-flex align-items-center mt-3">
+          <a routerLink="/admin-login" class="d-lg-flex d-none align-items-center mt-3">
             <span class="icon fi fi-sign-out text-color-red font-20"></span>
             <span class="font-15 font-weight-medium text-color-red mx-2">Logout</span>
           </a>
         </div>
       </div>
+      <button mat-icon-button class="btn toggle-menu-btn d-flex d-lg-none" [ngClass]="{'active': navOpened}"  disableRipple (click)="toggleNav()">
+        <span class="fi fi-menu font-20-imp text-color-gray" *ngIf="!navOpened"></span>
+        <span class="fi fi-close font-14-imp text-onyx" *ngIf="navOpened"></span>
+      </button>
     </nav>
   </div>
 </div>
