@@ -91,6 +91,9 @@
             &:before{
               display: none;
             }
+            @include media-breakpoint-down(md){
+              font-size: 1.125rem;
+            }
           }
           .sub-title{
             display: none;
@@ -111,12 +114,19 @@
         padding-top: 60px;
         padding-bottom: 40px;
         height: 260px;
-
+        @include media-breakpoint-down(md){
+          padding-top: 20px;
+          padding-bottom: 20px;
+          height: auto;
+        }
         .sub-title{
           text-transform: capitalize;
         }
         .main-title{
           font-size: 2.4375rem;
+          @include media-breakpoint-down(md){
+            font-size: 1.125rem;
+          }
         }
 
         .sub-title{
@@ -124,6 +134,9 @@
           font-weight: $font-medium;
           color: $gray;
           margin-bottom: 0;
+          @include media-breakpoint-down(md){
+            font-size: 1rem;
+          }
         }
       }
     }

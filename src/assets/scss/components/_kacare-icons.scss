@@ -1,3 +1,9 @@
+.fi-add:before {
+  content: "\e919";
+}
+.fi-menu:before {
+  content: "\e91a";
+}
 .fi-calendar:before {
   content: "\e900";
 }

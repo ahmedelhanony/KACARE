@@ -10,18 +10,30 @@
   }
   .details-stepper {
     background-color: transparent;
-    display: flex;
-    flex-direction: row;
+
     height: 100%;
+    @include media-breakpoint-up(md){
+      display: flex;
+      flex-direction: row;
+    }
     .mat-ripple.mat-step-header-ripple {
       display: none;
     }
 
     .mat-horizontal-stepper-header-container {
+      overflow: scroll;
       border: 0;
-      //border-top: 1px solid #EDEDED;
-      width: 30%;
-      flex-direction: column;
+      border-bottom: 1px solid #EDEDED;
+      position: sticky;
+      top: 0;
+      background: white;
+
+      @include media-breakpoint-up(md){
+        width: 30%;
+        flex-direction: column;
+        border-bottom: 0;
+        overflow: hidden;
+      }
 
       .mat-stepper-horizontal-line {
         display: none;
@@ -34,6 +46,12 @@
         display: flex;
         justify-content: flex-start;
         background: transparent;
+
+        @include media-breakpoint-down(md){
+          padding: 15px;
+          width: auto;
+          overflow: visible;
+        }
 
         &[aria-selected="true"] {
           //background-color: $light-blue;
@@ -48,11 +66,9 @@
           color: $gray;
           font-weight: $font-medium;
 
-          //&:not(.mat-step-label-active){
-          //  path, circle{
-          //    fill: #706F73;
-          //  }
-          //}
+          @include media-breakpoint-down(md){
+            font-size: .92rem;
+          }
 
 
           &.mat-step-label-selected{
@@ -115,9 +131,12 @@
 
     .mat-horizontal-content-container {
       //padding: 0 !important;
-      flex: 0 0 calc(70% - 30px);
-      max-width: calc(70% - 30px);
-      border-left: 1px solid rgba($light-gray, .46);
+      @include media-breakpoint-up(md){
+        flex: 0 0 calc(70% - 30px);
+        max-width: calc(70% - 30px);
+        border-left: 1px solid rgba($light-gray, .46);
+      }
+
       overflow: auto;
       margin-top: 20px;
 
