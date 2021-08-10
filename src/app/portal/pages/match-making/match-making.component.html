@@ -1,15 +1,22 @@
-<app-header [className]="isRegistered ? 'header-2' : ''" title="Match Making" subTitle="Start matching with More than 2k connected companies"></app-header>
+<app-header
+  [className]="isRegistered ? 'header-2' : ''"
+  title="Match Making"
+  subTitle="find your partners"
+></app-header>
 <section class="secondary-section" *ngIf="!isRegistered">
   <div class="custom-container mb-5">
     <app-default-match-making></app-default-match-making>
   </div>
 </section>
 
-
 <div class="custom-container mt-4 mb-5" *ngIf="isRegistered">
   <div class="d-flex justify-content-end position-relative">
     <div class="add-new">
-      <button mat-flat-button class="btn light-blue-button px-4" (click)="Add()">
+      <button
+        mat-flat-button
+        class="btn light-blue-button px-4"
+        (click)="Add()"
+      >
         <mat-icon class="mx-1">add</mat-icon>
         <span class="mx-1">New Member</span>
       </button>
@@ -26,7 +33,6 @@
       <div class="py-4 my-2">
         <app-all-match-making></app-all-match-making>
       </div>
-
     </mat-tab>
 
     <mat-tab>

@@ -1,12 +1,26 @@
-<app-header title="Infographics" subTitle="Let’s See How It Work"></app-header>
+<app-header
+  title="TECHNOLOGY AREAS"
+  subTitle="TECHNOLOGIES THAT WE FOCUS ON"
+></app-header>
 <section class="secondary-section">
   <div class="custom-container">
     <div class="row">
       <div class="col-md-6 mb-4" *ngFor="let infographic of infographics">
         <app-main-card
-          className="infographics-card" [title]="infographic.title" [description]="infographic.description">
-          <span class="fi fi-statistics font-30 text-color-light-blue" shape></span>
-          <button mat-flat-button class="btn primary-button font-weight-bolder align-self-end" [routerLink]="infographic.fileLink" link>
+          className="infographics-card"
+          [title]="infographic.title"
+          [description]="infographic.description"
+        >
+          <span
+            class="fi fi-statistics font-30 text-color-light-blue"
+            shape
+          ></span>
+          <button
+            mat-flat-button
+            class="btn primary-button font-weight-bolder align-self-end"
+            [routerLink]="infographic.fileLink"
+            link
+          >
             <span class="btn-icon fi fi-download"></span>
             Download
           </button>

@@ -1,28 +1,43 @@
 <section class="main-section bg-color-light-gray">
   <div class="custom-container">
-  <app-section-title title="Match making" subTitle="Start matching with More than 2k connected companies"></app-section-title>
+    <app-section-title
+      title="Match making"
+      subTitle="find your partners"
+    ></app-section-title>
 
     <div class="my-4">
       <app-how-it-works *ngIf="!isRegister"></app-how-it-works>
       <swiper [config]="config" class="default-swiper" *ngIf="isRegister">
-
         <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let company of companies">
-            <app-match-making-card className="white" [title]="company.name" [description]="company.description" [name]="company.name"
-                                   [email]="company.email" [technology]="company.technology" [role]="company.role"
+            <app-match-making-card
+              className="white"
+              [title]="company.name"
+              [description]="company.description"
+              [name]="company.name"
+              [email]="company.email"
+              [technology]="company.technology"
+              [role]="company.role"
             ></app-match-making-card>
           </div>
         </div>
 
         <div class="swiper-controls">
-
           <div class="add-rows">
             <!-- Add Arrows -->
-            <button mat-icon-button class="btn arrow-button button-next white" type="button">
+            <button
+              mat-icon-button
+              class="btn arrow-button button-next white"
+              type="button"
+            >
               <span class="fi fi-arrow-right-long"></span>
             </button>
             <span class="mx-1"></span>
-            <button mat-icon-button class="btn arrow-button button-prev white" type="button">
+            <button
+              mat-icon-button
+              class="btn arrow-button button-prev white"
+              type="button"
+            >
               <span class="fi fi-arrow-left-long"></span>
             </button>
           </div>
@@ -30,15 +45,36 @@
       </swiper>
       <div class="d-flex align-items-center flex-column mt-5">
         <div *ngIf="isRegister" class="hint mb-3">
-        <span class="icon">
-          <img src="assets/images/icons/lamp.svg" alt="">
-        </span>
-          <p class="font-24 text-color-onyx mb-0 mx-3">if you don't know what's the perfect application fit with your company   </p>
+          <span class="icon">
+            <img src="assets/images/icons/lamp.svg" alt="" />
+          </span>
+          <p class="font-24 text-color-onyx mb-0 mx-3">
+            if you don't know what's the perfect application fit with your
+            company
+          </p>
         </div>
         <div class="btn-section">
-          <button mat-flat-button class="btn light-blue-button shadow-hover px-5" *ngIf="!isRegister">Get Started</button>
-          <button mat-flat-button class="btn light-blue-button shadow-hover px-5" *ngIf="isRegister">Start a new match</button>
-          <button mat-stroked-button class="btn light-blue-button shadow-hover px-5" *ngIf="isRegister">View all</button>
+          <button
+            mat-flat-button
+            class="btn light-blue-button shadow-hover px-5"
+            *ngIf="!isRegister"
+          >
+            Get Started
+          </button>
+          <button
+            mat-flat-button
+            class="btn light-blue-button shadow-hover px-5"
+            *ngIf="isRegister"
+          >
+            Start a new match
+          </button>
+          <button
+            mat-stroked-button
+            class="btn light-blue-button shadow-hover px-5"
+            *ngIf="isRegister"
+          >
+            View all
+          </button>
         </div>
       </div>
     </div>

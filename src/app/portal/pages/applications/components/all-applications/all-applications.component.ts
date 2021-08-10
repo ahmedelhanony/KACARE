@@ -3,19 +3,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-all-applications',
   templateUrl: './all-applications.component.html',
-  styleUrls: ['./all-applications.component.scss']
+  styleUrls: ['./all-applications.component.scss'],
 })
 export class AllApplicationsComponent implements OnInit {
   applications = [
     {
       title: 'PROOF OF CONCEPT',
-      description: 'Supporting Prototype development and testing for new technology',
+      description:
+        'Supporting Prototype development and testing for new technology',
       image: '1',
       link: '/applications/application-details/Demonstration-Projects',
     },
     {
       title: 'PRODUCT DEVELOPMENT',
-      description: 'Supporting businesses to develop commercial Products that meet local Saudi market needs',
+      description:
+        'Supporting businesses to develop commercial Products that meet local Saudi market needs',
       image: '2',
       link: '/applications/application-details/Demonstration-Projects',
     },
@@ -27,14 +29,13 @@ export class AllApplicationsComponent implements OnInit {
     },
     {
       title: 'DEMONSTRATION PROJECTS',
-      description: 'Our demonstration project program supports  technology implementation  ',
+      description:
+        'Our demonstration project program supports  technology implementation  ',
       image: '4',
       link: '/applications/application-details/Demonstration-Projects',
     },
-  ]
-  constructor() { }
+  ];
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

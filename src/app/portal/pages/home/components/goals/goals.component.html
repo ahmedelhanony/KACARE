@@ -1,13 +1,23 @@
 <section class="main-section">
   <div class="custom-container">
-  <app-section-title title="GOALS" subTitle="Let’s See OUR STRATEGIC GOALS"></app-section-title>
+    <app-section-title
+      title="GOALS"
+      subTitle="OUR STRATEGIC GOALS"
+    ></app-section-title>
 
     <div class="my-4">
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0" *ngFor="let goal of goals">
           <app-main-card
-            className="goals-card" [title]="goal.title" [description]="goal.description">
-            <img [src]="'assets/images/goals/' + goal.icon + '.svg'" alt="icon" shape>
+            className="goals-card"
+            [title]="goal.title"
+            [description]="goal.description"
+          >
+            <img
+              [src]="'assets/images/goals/' + goal.icon + '.svg'"
+              alt="icon"
+              shape
+            />
           </app-main-card>
         </div>
       </div>

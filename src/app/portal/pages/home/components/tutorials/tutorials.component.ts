@@ -3,57 +3,51 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-tutorials',
   templateUrl: './tutorials.component.html',
-  styleUrls: ['./tutorials.component.scss']
+  styleUrls: ['./tutorials.component.scss'],
 })
 export class TutorialsComponent implements OnInit {
-  columns = ['name', 'lastModified', 'size', 'actions'];
+  columns = ['name', 'lastModified', 'actions'];
   columnsConfig = [
     {
       label: 'File Name',
-      type: 'file'
+      type: 'file',
     },
     {
       label: 'Last Modified',
-      type: 'text'
-    },
-    {
-      label: 'Size',
-      type: 'text'
+      type: 'text',
     },
     {
       label: 'Action',
-      type: 'action'
+      type: 'action',
     },
   ];
   dataSource = [
     {
       name: 'Proof Of concept webinar Presentation',
-      lastModified: '23 Feb 2021',
-      size: '23 MB',
-      actions: ['download']
+      lastModified: '1 Jun 2020',
+
+      actions: ['download'],
     },
     {
       name: 'Proof Of concept webinar Presentation',
-      lastModified: '23 Feb 2021',
-      size: '23 MB',
-      actions: ['download']
+      lastModified: '1 Jun 2020',
+
+      actions: ['download'],
     },
     {
       name: 'Proof Of concept webinar Presentation',
-      lastModified: '23 Feb 2021',
-      size: '23 MB',
-      actions: ['download']
+      lastModified: '1 Jun 2020',
+
+      actions: ['download'],
     },
     {
       name: 'Proof Of concept webinar Presentation',
-      lastModified: '23 Feb 2021',
-      size: '23 MB',
-      actions: ['download']
+      lastModified: '1 Jun 2020',
+
+      actions: ['download'],
     },
   ];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

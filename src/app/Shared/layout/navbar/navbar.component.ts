@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   @Input() isPortal = true;
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
       label: 'Match making',
       link: 'match-making',
       image: 'match-making',
-      items: 2
+      items: 2,
     },
     {
       label: 'Applications',
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
           label: 'Demonstration Projects ',
           link: 'applications/Demonstration-Projects',
         },
-      ]
+      ],
     },
     {
       label: 'News',
@@ -52,9 +52,9 @@ export class NavbarComponent implements OnInit {
     {
       label: 'FAQ',
       link: 'faqs',
-      image: 'faqs'
+      image: 'faqs',
     },
-  ]
+  ];
 
   portalList = [
     {
@@ -90,11 +90,11 @@ export class NavbarComponent implements OnInit {
           label: 'Demonstration Projects ',
           link: '/applications/application-details/Demonstration-Projects',
         },
-      ]
+      ],
     },
     {
-      label: 'Infographics',
-      link: 'infographics'
+      label: 'Technology Areas',
+      link: 'infographics',
     },
     {
       label: 'News',
@@ -109,15 +109,15 @@ export class NavbarComponent implements OnInit {
   user = {
     name: 'Ahmed Elhanony',
     img: null,
-  }
+  };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    if (this.isPortal){
-      this.menuList = this.portalList
-    } else{
-      this.menuList = this.adminMenuList
+    if (this.isPortal) {
+      this.menuList = this.portalList;
+    } else {
+      this.menuList = this.adminMenuList;
     }
   }
 
@@ -126,27 +126,23 @@ export class NavbarComponent implements OnInit {
     this.activeMenuItem = -1;
   }
 
-
   setActiveIndex(index: number) {
     this.activeMenuItem = index;
     this.dropdownOpened = !this.dropdownOpened;
-
   }
 
-  routeFalse(event: MouseEvent){
+  routeFalse(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
     return false;
   }
 
-
-  getFirstChar(text: string){
+  getFirstChar(text: string) {
     let characters = text.match(/\b(\w)/g);
-    if(characters) {
+    if (characters) {
       return characters.join('');
-    }else {
-      return false
+    } else {
+      return false;
     }
   }
-
 }
