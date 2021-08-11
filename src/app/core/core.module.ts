@@ -9,7 +9,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 
 import { ServicesModule } from './services/services.module';
 
-export const NB_CORE_PROVIDERS = [...ServicesModule.forRoot().providers];
+export const NB_CORE_PROVIDERS = [ServicesModule.forRoot().providers];
 
 @NgModule({
   imports: [CommonModule],
@@ -19,8 +19,8 @@ export class CoreModule {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
 
-  static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+  static forRoot(): ModuleWithProviders<{}> {
+    return <ModuleWithProviders<{}>>{
       ngModule: CoreModule,
       providers: [...NB_CORE_PROVIDERS],
     };

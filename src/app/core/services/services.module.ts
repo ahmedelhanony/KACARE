@@ -19,8 +19,8 @@ const SERVICES = [
   providers: [...SERVICES],
 })
 export class ServicesModule {
-  static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+  static forRoot(): ModuleWithProviders<{}> {
+    return <ModuleWithProviders<{}>>{
       ngModule: ServicesModule,
       providers: [...SERVICES],
     };
