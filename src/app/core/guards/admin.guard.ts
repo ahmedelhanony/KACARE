@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import {
+  CanActivate, 
+  Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { NAVIGATIONS, ROLES } from 'src/app/Shared/utils/enums';
+import { ProfileService } from '../services/profile.service';
+
+import('@angular/router'); 
+@Injectable()
+export class AdminGuard implements CanActivate {
+  constructor(private profileService: ProfileService, private router: Router) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (!this.profileService.authorize(ROLES.Admin)) {
+      this.router.navigate([NAVIGATIONS.accessDeniedPageUrl]);
+      return false;
+    }
+    return true;
+  }
+}

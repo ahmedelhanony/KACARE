@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base_URL: "http://tlcdev:3033/api/",
+  captcha_URL:"http://tlcdev:3033/simple-captcha-endpoint.ashx",
 };
 
 /*

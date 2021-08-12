@@ -18,6 +18,8 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         switch (error.status) {
           case 400:
+            // debugger
+            // alert(error.status)
             // this.toastr.error('Sorry, ' + 'Item Not Found', 'Error');
             break;
           // case 404:

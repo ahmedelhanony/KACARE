@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import {SharedModule} from "../Shared/shared.module";
-import { MainCardComponent } from './components/cards/main-card/main-card.component';
+// import { MainCardComponent } from './components/cards/main-card/main-card.component';
 import { FaqComponent } from './components/sections/faq/faq.component';
 import { HowItWorksComponent } from './components/sections/how-it-works/how-it-works.component';
 import {InfographicsPageComponent} from "./pages/infographics-page/infographics-page.component";
@@ -17,7 +17,7 @@ import { MatchMakingCardComponent } from './components/cards/match-making-card/m
 
 @NgModule({
   declarations: [
-    MainCardComponent,
+    // MainCardComponent,
     FaqComponent,
     HowItWorksComponent,
     InfographicsPageComponent,
@@ -29,7 +29,7 @@ import { MatchMakingCardComponent } from './components/cards/match-making-card/m
     MatchMakingCardComponent,
   ],
   exports: [
-    MainCardComponent,
+    // MainCardComponent,
     FaqComponent,
     HowItWorksComponent,
     ProjectCardComponent,

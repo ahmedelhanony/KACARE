@@ -22,7 +22,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
     SandBoxRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
+    // ReactiveFormsModule,
     SatPopoverModule,
   ],
 })

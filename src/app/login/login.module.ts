@@ -7,8 +7,8 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
-import {SharedModule} from "../Shared/shared.module";
-
+import { SharedModule } from '../Shared/shared.module';
+import { BotDetectCaptchaModule } from 'angular-captcha';
 
 @NgModule({
   declarations: [
@@ -16,12 +16,8 @@ import {SharedModule} from "../Shared/shared.module";
     SigninComponent,
     SignupComponent,
     ResetPasswordComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    LoginRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, LoginRoutingModule,BotDetectCaptchaModule],
 })
-export class LoginModule { }
+export class LoginModule {}
