@@ -1,5 +1,5 @@
 <ng-container *ngIf="display !== 'files-only'">
-<div class="d-flex align-items-center form-label mb-2" *ngIf="label">
+<div class="d-flex align-items-center form-label mb-2" data-aos="zoom-in" *ngIf="label">
   <span *ngIf="label">{{label}}</span>
   <span class="mx-1 text-color-gray" *ngIf="labelHint">{{labelHint}}</span>
 </div>
@@ -21,7 +21,7 @@
 </ng-container>
 <ng-container *ngIf="display === 'files-only'">
   <div class="row">
-    <div class="col-12 col-md-{{styleWidth}} mb-3" *ngFor="let i of [1,2,3]">
+    <div class="col-12 col-md-{{styleWidth}} mb-3" data-aos="zoom-in" *ngFor="let i of [1,2,3]">
       <div class="uploaded-file-item {{styleHeight}}">
         <div class="uploaded-icon">
           <span class="fi fi-file"></span>

@@ -3,7 +3,9 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-
+:host{
+  margin-bottom: 30px;
+}
 :host ::ng-deep {
   .stepper-progress{
     background: #EDEDED;
@@ -53,6 +55,10 @@
       border: 0;
       border-top: 1px solid #EDEDED;
 
+      @include media-breakpoint-down(md){
+        overflow: auto;
+      }
+
       .mat-stepper-horizontal-line {
         display: none;
       }
@@ -64,6 +70,11 @@
         display: flex;
         justify-content: center;
         background: transparent;
+        @include media-breakpoint-down(md){
+          padding: 15px;
+          width: auto;
+          overflow: visible;
+        }
 
         &[aria-selected="true"] {
           //background-color: $light-blue;
@@ -77,6 +88,9 @@
           font-size: 1.125rem;
           color: $gray;
           font-weight: $font-medium;
+          @include media-breakpoint-down(md){
+            font-size: .92rem;
+          }
 
            &:not(.mat-step-label-active){
             path, circle{
@@ -148,6 +162,13 @@
       //flex: 0 0 calc(66.6666666667% - 30px);
       //max-width: calc(66.6666666667% - 30px);
 
+    }
+  }
+
+  @include media-breakpoint-down(sm){
+    .btn{
+      min-width: auto !important;
+      padding: 0 14px !important;
     }
   }
 

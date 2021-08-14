@@ -24,7 +24,7 @@
           box-shadow: none;
           border-right: 1px solid $light-gray;
           width: 280px;
-          position: relative;
+          //position: relative;
           .custom-container{
             height: 100%;
             padding: 0;
@@ -47,6 +47,7 @@
               .nav-list{
                 flex-direction: column;
                 align-items: baseline;
+                justify-content: flex-start;
                 margin: 1rem 0;
                 .nav-item{
                   width: 100%;
@@ -137,6 +138,23 @@
                       }
                     }
                   }
+                }
+              }
+            }
+            @include media-breakpoint-up(md) {
+              .logged-user-btn {
+                width: auto !important;
+                height: 55px !important;
+                padding: 10px !important;
+                border-radius: 29px !important;
+                background-color: $light-gray !important;
+                //padding: 0;
+                //background-color: transparent;
+                //min-width: auto;
+                //height: 37px;
+                //width: 37px;
+                .text {
+                  display: block !important;
                 }
               }
             }
@@ -412,7 +430,7 @@
             padding: 10px;
             border-radius: 29px;
             background-color: $light-gray;
-            @include media-breakpoint-down(md){
+            @include media-breakpoint-down(lg){
               padding: 0;
               background-color: transparent;
               min-width: auto;
@@ -531,6 +549,7 @@
             .nav-list{
               flex-direction: column;
               align-items: baseline;
+              justify-content: flex-start;
               margin: 1rem 0;
               .nav-item{
                 width: 100%;

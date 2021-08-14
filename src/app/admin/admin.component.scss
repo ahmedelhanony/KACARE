@@ -6,11 +6,15 @@
   .admin-layout{
     display: flex;
     flex-direction: row;
+    @include media-breakpoint-up(lg){
+      justify-content: flex-end;
+    }
     main{
 
       padding: 40px 1.5rem;
-      width: calc(100% - 280px);
+
       @include media-breakpoint-up(lg){
+        max-width: calc(100% - 280px);
         margin-top: 0 !important;
       }
       .admin-header{

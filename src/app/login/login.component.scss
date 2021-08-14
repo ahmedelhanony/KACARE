@@ -21,7 +21,11 @@
       height: 100vh;
       position: sticky;
       top: 0;
-      display: flex;
+      display: none;
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+      }
 
       //&:before {
       //  content: '';
@@ -55,9 +59,16 @@
       background-image: url("/assets/images/login-pattern.svg");
       background-position: bottom right;
       background-repeat: no-repeat;
+      max-width: 100%;
       //background-size: cover;
       .login-title, .login-subtitle{
         line-height: 1.2;
+      }
+
+      @include media-breakpoint-up(md){
+        .login-logo{
+          display: none;
+        }
       }
 
     }

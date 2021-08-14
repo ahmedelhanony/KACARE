@@ -4,7 +4,7 @@
 @import "~bootstrap/scss/mixins";
 
 :host{
-  background: $blue;
+  background-color: $light-gray;
   .logo-links{
     margin-top: 1.2rem;
   }
@@ -14,19 +14,26 @@
     list-style: none;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    @include media-breakpoint-down(md){
+      justify-content: center;
+      li{
+        margin-bottom: .5rem;
+      }
+    }
     li{
       display: flex;
       align-items: center;
       padding: 0 1rem;
-      border-right: 1px solid $white;
+      border-right: 1px solid $dark-gray;
       &:last-child{
         border-right: 0;
       }
       a{
-        color: $white;
+        color: $onyx;
         transition: all .3s linear;
         &:hover{
-          color: $yellow;
+          color: $blue;
         }
       }
     }
@@ -35,5 +42,6 @@
     border-top: 1px solid $white;
     margin-top: 1.2rem;
     padding: 1.2rem 0;
+    background: $blue;
   }
 }

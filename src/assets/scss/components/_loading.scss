@@ -1,11 +1,11 @@
 .loading-bg {
   min-height: 30px;
-  background-color: #eeeeee;
-  background-image: linear-gradient(90deg, #eeeeee 25%, #e6e6e6 37%, #eeeeee 63%);
-  background-size: 400% 100%;
+  background-color: #eeeeee !important;
+  background-image: linear-gradient(90deg, #eeeeee 25%, #e6e6e6 37%, #eeeeee 63%) !important;
+  background-size: 400% 100% !important;
   -webkit-animation: loading-background 1.4s ease infinite;
   animation: loading-background 1.4s ease infinite;
-  width: 100%;
+  //width: 100%;
 }
 
 .loading-bg-white {
@@ -20,6 +20,18 @@
 .loading-btn {
   height: 55px;
   width: 150px;
+}
+
+.spin{
+  animation-name: spin;
+  animation-duration: 400ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
 }
 
 @keyframes loading-background {

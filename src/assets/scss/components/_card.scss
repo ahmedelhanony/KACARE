@@ -5,6 +5,7 @@
   border-radius: 10px;
   border: 1px solid $light-gray;
   transition: all .3s linear;
+  height: 100%;
 
   h3 {
     font-weight: $font-bold;
@@ -15,6 +16,16 @@
     color: $gray;
     font-size: 1rem;
     font-weight: $font-regular;
+  }
+
+  &.loading{
+    .shape, h3, h6, .company-details .detail, .text-avatar, .project-details .primary-label{
+      @extend .loading-bg;
+    }
+    h3,h6{
+      width: 100%;
+    }
+    
   }
 
   &.image-card, &.applications-card{
@@ -41,9 +52,13 @@
     }
     .card-content{
       padding: 30px 20px;
+      width: 100%;
       h3{
         font-size: 1.75rem;
         margin-bottom: 0.5rem;
+        @include media-breakpoint-down(sm){
+          font-size: 1.25rem;
+        }
       }
       h6{
         height: 80px;

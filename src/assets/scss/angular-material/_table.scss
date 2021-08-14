@@ -42,6 +42,7 @@
         .file{
           display: flex;
           align-items: center;
+          white-space: nowrap;
           &:before{
             content: url("/assets/images/file.svg");
             margin-right: .5rem;

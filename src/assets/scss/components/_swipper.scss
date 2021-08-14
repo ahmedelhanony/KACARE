@@ -2,6 +2,22 @@
   .swiper-container{
     overflow: visible;
 
+    @media (max-width: 1440px) {
+      display: flex;
+      flex-direction: column-reverse;
+      .swiper-controls{
+        position: static !important;
+        .add-rows{
+          display: flex;
+          flex-direction: row-reverse;
+          margin-bottom: 1rem;
+          .arrow-button{
+            position: static;
+          }
+        }
+      }
+    }
+
     .swiper-slide {
       opacity: 0;
       &.swiper-slide-visible{

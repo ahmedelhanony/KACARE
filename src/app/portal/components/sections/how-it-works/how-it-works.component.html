@@ -1,5 +1,5 @@
 <div class="row mt-4">
-  <div class="col-md-3 mb-4 mb-md-0" *ngFor="let item of workSteps; let last = last;">
+  <div class="col-md-3 mb-4 mb-md-0" data-aos="zoom-in" *ngFor="let item of workSteps; let last = last;">
     <app-main-card
       className="how-it-works-card {{last ? 'last-card' : ''}}" [title]="item.title" [description]="item.description">
       <img [src]="'assets/images/match-making/' + item.icon + '.svg'" alt="icon" shape>

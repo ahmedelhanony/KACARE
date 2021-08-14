@@ -1,4 +1,4 @@
-<div class="card project-card" [ngClass]="className">
+<div class="card project-card" [ngClass]="className" data-aos="zoom-in">
   <div class="shape">
     <img [src]="image" [alt]="title">
     <ng-content select="[logo]"></ng-content>
@@ -9,16 +9,16 @@
     <div class="project-details d-flex flex-column align-items-baseline font-14 mx-n2">
         <div class="d-flex">
           <span class="primary-label bg-color-white-imp d-inline-flex mb-3 align-items-center mx-2">
-            <i class="fi fi-contract font-18 text-color-light-blue mx-2"></i>
+<!--            <i class="fi fi-contract font-18 text-color-light-blue mx-2"></i>-->
             {{ technology }}
           </span>
           <span class="primary-label bg-color-white-imp d-inline-flex mb-3 align-items-center mx-2">
-            <i class="fi fi-clock font-18 text-color-light-blue mx-2"></i>
+<!--            <i class="fi fi-clock font-18 text-color-light-blue mx-2"></i>-->
             {{ date }}
           </span>
       </div>
       <span class="primary-label bg-color-white-imp d-inline-flex mb-2 align-items-center mx-2">
-        <i class="fi fi-location font-18 text-color-light-blue mx-2"></i>
+<!--        <i class="fi fi-location font-18 text-color-light-blue mx-2"></i>-->
         {{ location }}
       </span>
     </div>

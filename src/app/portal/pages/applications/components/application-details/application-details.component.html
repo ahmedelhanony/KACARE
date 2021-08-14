@@ -10,57 +10,34 @@
       [image]="image"
     >
     </app-article-section>
-    <div class="app-info default-shadow">
-      <div class="app-info-item">
-        <div class="icon">
-          <img src="assets/images/applications/pay.svg" alt="" />
-        </div>
-        <span class="font-18 font-md-16 text-color-gray my-2"
-          >Maximum KACARE Contribution</span
-        >
-        <h5 class="font-24 font-md-20 text-color-black mb-0 line-height-1">
-          50% of project cost
-        </h5>
-      </div>
-      <div class="app-info-item">
-        <div class="icon">
-          <img src="assets/images/applications/hourglass.svg" alt="" />
-        </div>
-        <span class="font-18 font-md-16 text-color-gray my-2"
-          >Maximum Project Duration</span
-        >
-        <h5 class="font-24 font-md-20 text-color-black mb-0 line-height-1">
-          36 Months
-        </h5>
-      </div>
-      <div class="app-info-item">
-        <div class="icon">
-          <img src="assets/images/applications/cash.svg" alt="" />
-        </div>
-        <span class="font-18 text-color-gray my-2">Maximum KACAR Funding </span>
-        <h5 class="font-24 font-md-20 text-color-black mb-0 line-height-1">
-          <span class="text-color-light-blue">20 Million</span> SAR
-        </h5>
-      </div>
-    </div>
-
-    <div class="hint bg-color-light-gray p-4">
-      <div class="icon">
-        <img src="assets/images/applications/check.svg" alt="" />
-      </div>
-      <span class="mx-3"></span>
-      <p class="font-16 text-color-gray m-0">
-        <strong>El EUGIBIUTY</strong>: All organizations located globally are
-        encouraged to participate in project teams. However, demonstrations
-        projects awarded under this RFP must be led by a Saudi company that is
-        registered to do 'limy business in Saudi Arabia. Foreign technology
-        firms, universities and research institutions, and potential limit
-        offtakes may participate as team members, under the lead of a local
-        Saudi company.
-      </p>
-    </div>
   </div>
-  <div class="bg-color-light-gray position-relative overflow-hidden">
+
+  <div class="inner-application-details my-5" data-aos="zoom-in">
+    <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab">
+      <mat-tab *ngFor="let item of detailsList">
+        <ng-template mat-tab-label>
+          <div class="d-flex align-items-center font-18 font-weight-medium">
+            <span>{{item.label}}</span>
+          </div>
+        </ng-template>
+        <div class="custom-container">
+          <section class="inner-details mt-4 mx-n3" *ngFor="let details of item.details">
+            <div class="section-title mx-3 mb-3">
+              <h4 class="font-34 font-md-24 font-weight-bold line-height-1">{{details.title}}</h4>
+            </div>
+            <div class="section-description mx-3">
+              <div *ngFor="let subdetails of details.description" class="mb-3">
+                <h6 class="font-24 font-md-18 font-weight-bold" *ngIf="subdetails.subHeader">{{subdetails.subHeader}}</h6>
+                <p class="font-16 font-weight-medium">{{subdetails.info}}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="position-relative" data-aos="zoom-in">
     <div class="custom-container">
       <div
         class="

@@ -1,5 +1,5 @@
 <div class="overflow-auto">
-  <table mat-table [dataSource]="dataSource" class="primary-table {{className}}">
+  <table mat-table [dataSource]="dataSource" class="primary-table {{className}}" >
     <ng-container *ngFor="let column of columns; let i = index;">
       <ng-container [matColumnDef]="column">
         <th mat-header-cell *matHeaderCellDef> {{columnsConfig[i].label}} </th>

@@ -18,7 +18,152 @@ export class ApplicationDetailsComponent implements OnInit {
     'to enact their business plans, and continue to pursue commercialization of the \n' +
     'proposed renewable energy technology, here in the KSA.';
 
-  image = '/assets/images/applications/application-details.jpg'
+  image = '/assets/images/applications/application-details.jpg';
+
+
+  detailsList = [
+    {
+      label: 'Eligibility',
+      details: [
+        {
+          title: 'Eligibility',
+          description: [
+            {
+              subHeader: 'Your project',
+              info: 'start by 1 March 2022\n' +
+                'end by 29 February 2024\n' +
+                'have total eligible project costs from £50,000 to £150,000 inclusive of VAT\n' +
+                'Projects can last up to 24 months.\n'
+            },
+            {
+              subHeader: 'Applicant',
+              info: 'To lead a project, you must:\n' +
+                'be an organisation of any size\n' +
+                'work alone or with other organisations as subcontractors\n' +
+                'exist wholly to provide benefits for society\n' +
+                'have stated commitment to social outcomes for an identified set of beneficiaries related to your social or environmental mission\n' +
+                'have objects in your constitutional documents, which form a constitutional lock, that protect your social or environmental mission\n' +
+                'have a policy to distribute profits after tax so surpluses are used to achieve social or environmental impacts\n' +
+                'Contracts will be awarded only to a single legal entity.\n' +
+                '\n' +
+                'However, if you can justify subcontracting components of the work, you can employ specialist consultants or advisers. This work will still be the responsibility of the main contractor.\n' +
+                '\n' +
+                'Previously submitted applications'
+            },
+
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Scope',
+      details: [
+        {
+          title: 'Scope',
+          description: [
+            {
+              subHeader: '',
+              info: 'The aim of this competition is to enable businesses with a social purpose to develop and deliver innovative products and services.\n' +
+                'Your project must:\n' +
+                'address one or more of the 7 themes identified by the Healthy Ageing Challenge Framework to support people as they age\n' +
+                'identify a clear route to market, scalability and sustainability for your product or service\n' +
+                'have a clearly identified and existing lead customer\n' +
+                'demonstrate the technical, development and market feasibility of your proposed innovation\n' +
+                'describe how your innovation is addressing critical social or environmental challenges\n' +
+                'demonstrate a causal link between your business activities and achievement of your declared social or environmental impact\n' +
+                'describe how all social impact will be measured, evidenced, and reported\n' +
+                'outline your commitment to specific social outcomes, clearly identifying beneficiaries related to your social or environmental mission\n' +
+                'explain how any profits after tax will be distributed so surpluses are used to achieve future social or environmental impacts\n' +
+                'establish ongoing collaboration between all members of the project team\n' +
+                'formalise any required ethical approvals, data sharing agreements and contracts\n' +
+                'Products and services benefitting the general public must be accessible without restrictions and barriers such as affordability.\n' +
+                '\n' +
+                'You must demonstrate a credible and practical route to market, so your application must include a plan to commercialise your results.'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Dates',
+      details: [
+        {
+          title: '19 July 2021',
+          description: [
+            {
+              subHeader: '',
+              info: 'Competition opens'
+            }
+          ]
+        },
+        {
+          title: '19 July 2021',
+          description: [
+            {
+              subHeader: '',
+              info: 'Online briefing event'
+            }
+          ]
+        },
+        {
+          title: '19 July 2021',
+          description: [
+            {
+              subHeader: '',
+              info: 'Competition opens'
+            }
+          ]
+        },
+        {
+          title: '19 July 2021',
+          description: [
+            {
+              subHeader: '',
+              info: 'Online briefing event'
+            }
+          ]
+        },
+      ]
+    },
+    {
+      label: 'How To apply',
+      details: [
+        {
+          title: 'Before you start',
+          description: [
+            {
+              subHeader: '',
+              info: 'By submitting an application, you agree to the terms of the draft contract which is available once you start your application.\n' +
+                '\n' +
+                'The final contract will include any details you have agreed with the funding authority and will be sent to you if your application is successful. The contract is binding once the contract is returned by the applicant and signed by both parties. The terms and conditions included in the draft contract should not substantially change.\n' +
+                '\n' +
+                'When you start an application on the Innovation Funding Service you will be prompted to create an account as the lead applicant or sign in as a representative of your organisation. You will need an account to track the progress of your application.\n' +
+                '\n' +
+                'As the lead applicant you will be responsible for:\n' +
+                '\n' +
+                'collecting the information for your application\n' +
+                'representing your organisation in leading the project if your application is successful\n' +
+                'You will be able to invite colleagues from your organisation to contribute to the application.'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Supporting Information',
+      details: [
+        {
+          title: 'Supporting Information',
+          description: [
+            {
+              subHeader: '',
+              info: 'Supporting Information'
+            }
+          ]
+        }
+      ]
+    },
+  ]
   constructor() { }
 
   ngOnInit(): void {

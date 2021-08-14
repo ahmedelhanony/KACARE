@@ -7,16 +7,16 @@
           <div class="hero-slide">
             <div class="row">
               <div class="col-md-6">
-                <div class="hero-text">
-                  <h1 class="font-50 font-weight-bolder text-color-onyx">{{item.title}}</h1>
-                  <h5 class="font-24 font-weight-normal text-color-gray">{{item.description}}</h5>
+                <div class="hero-text zoom-animation left">
+                  <h1 class="font-50 font-lg-34 font-weight-bolder text-color-onyx">{{item.title}}</h1>
+                  <h5 class="font-24 font-md-18 font-weight-normal text-color-gray">{{item.description}}</h5>
                   <button mat-flat-button class="btn light-blue-button shadow">
                     Get Consultation
                   </button>
                 </div>
               </div>
               <div class="col-md-6 hero-img">
-                <img [src]="item.imageUrl" [alt]="item.title">
+                <img [src]="item.imageUrl" [alt]="item.title" class="zoom-animation right">
               </div>
             </div>
 

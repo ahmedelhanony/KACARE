@@ -3,6 +3,36 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
+
+:host{
+  ::ng-deep{
+    .inner-application-details{
+      .primary-tab {
+        .mat-tab-header{
+          border-top: 0 !important;
+        }
+      }
+
+      .inner-details{
+        display: flex;
+
+        @include media-breakpoint-down(md){
+          flex-direction: column;
+        }
+        @include media-breakpoint-up(md){
+          .section-title{
+            width: 230px;
+          }
+          .section-description{
+            width: calc(100% - 230px);
+          }
+        }
+      }
+    }
+  }
+}
+
+
 .app-info{
   display: grid;
   justify-content: space-between;
@@ -68,6 +98,8 @@
   }
 }
 
+
+
 .apply-section{
 
   position: relative;
@@ -80,7 +112,7 @@
     height: 300px;
     background-color: transparent;
     border-radius: 50%;
-    border: 60px solid rgba($white, 44%);
+    border: 60px solid rgba($light-gray, 44%);
     position: absolute;
     right: -100px;
     top: -50px;

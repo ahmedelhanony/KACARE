@@ -1,5 +1,5 @@
 <section class="login-section" [ngClass]="{ 'admin-view': !isPortalView }">
-  <figure *ngIf="!isPortalView">
+  <figure class="login-logo">
     <img src="assets/images/logo.svg" alt="" />
   </figure>
   <div class="login-form-section">
@@ -40,7 +40,7 @@
         </div>
       </mat-form-field>
 
-      <div class="col-12">
+      <div>
         <botdetect-captcha
           captchaStyleName="tlcCaptcha"
           codeLength="4"
@@ -49,16 +49,18 @@
         ></botdetect-captcha>
 
         <div class="hidebotdetect"></div>
-        <mat-form-field class="form-label" appearance="outline">
+        <mat-form-field>
           <mat-label>Code</mat-label>
-          <input
-            class="input-content"
-            matInput
-            type="text"
-            required
-            name="tlcCaptchaInput"
-            id="tlcCaptchaInput"
-          />
+          <div class="input-content">
+            <input
+              class="input-content"
+              matInput
+              type="text"
+              required
+              name="tlcCaptchaInput"
+              id="tlcCaptchaInput"
+            />
+          </div>
         </mat-form-field>
       </div>
 
@@ -89,7 +91,8 @@
           my-3
         "
       >
-        Login
+        <span class="mx-1 fi fi-spinner spin"></span>
+        <span class="mx-1">Login</span>
       </button>
       <p
         class="font-16 font-weight-medium text-color-gray mt-4 mb-2"

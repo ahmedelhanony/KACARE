@@ -88,6 +88,12 @@ app-root {
 .hint{
   display: flex;
   justify-content: center;
+  .icon{
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+
+  }
 }
 
 

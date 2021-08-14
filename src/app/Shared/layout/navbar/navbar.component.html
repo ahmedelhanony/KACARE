@@ -1,4 +1,6 @@
 <div
+  data-aos="fade-up"
+  data-aos-anchor-placement="top-bottom"
   class="main-menu"
   [ngClass]="{ 'active-nav': navOpened, 'admin-nav': !isPortal }"
 >
@@ -91,7 +93,7 @@
             </a>
           </li>
         </ul>
-        <div class="login-actions" *ngIf="isPortal">
+        <div class="login-actions" *ngIf="false">
           <button mat-flat-button class="btn login-btn">Login</button>
           <span class="mx-1"></span>
           <button mat-flat-button class="btn create-btn" routerLink='/signup'>Create Account</button>
@@ -99,7 +101,7 @@
       </div>
       <div class="menu-actions">
         <ng-container *ngIf="isPortal">
-          <ng-container *ngIf="false">
+
             <button
               mat-button
               [matMenuTriggerFor]="menu"
@@ -146,7 +148,7 @@
                 >
               </button>
             </mat-menu>
-          </ng-container>
+
         </ng-container>
 
         <div class="d-flex flex-column p-lg-4" *ngIf="!isPortal">

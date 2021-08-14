@@ -11,10 +11,10 @@
 
 <div class="custom-container mt-4 mb-5" *ngIf="isRegistered">
   <div class="d-flex justify-content-end position-relative">
-    <div class="add-new">
+    <div class="add-new" data-aos="zoom-in">
       <button
         mat-flat-button
-        class="btn light-blue-button px-4"
+        class="btn light-blue-button px-4 mb-4"
         (click)="Add()"
       >
         <mat-icon class="mx-1">add</mat-icon>
@@ -22,7 +22,7 @@
       </button>
     </div>
   </div>
-  <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab">
+  <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab" data-aos="zoom-in">
     <mat-tab>
       <ng-template mat-tab-label>
         <div class="d-flex align-items-center font-18 font-weight-medium">

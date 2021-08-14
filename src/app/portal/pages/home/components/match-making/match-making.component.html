@@ -43,7 +43,7 @@
           </div>
         </div>
       </swiper>
-      <div class="d-flex align-items-center flex-column mt-5">
+      <div class="d-flex align-items-center flex-column mt-5" data-aos="zoom-in">
         <div *ngIf="isRegister" class="hint mb-3">
           <span class="icon">
             <img src="assets/images/icons/lamp.svg" alt="" />
@@ -53,17 +53,17 @@
             company
           </p>
         </div>
-        <div class="btn-section">
+        <div class="btn-section flex-wrap justify-content-center">
           <button
             mat-flat-button
-            class="btn light-blue-button shadow-hover px-5"
+            class="btn light-blue-button shadow-hover px-5 mb-2 mb-md-0"
             *ngIf="!isRegister"
           >
             Get Started
           </button>
           <button
             mat-flat-button
-            class="btn light-blue-button shadow-hover px-5"
+            class="btn light-blue-button shadow-hover px-5 mb-2 mb-md-0"
             *ngIf="isRegister"
           >
             Start a new match

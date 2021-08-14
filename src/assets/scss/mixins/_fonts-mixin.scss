@@ -12,6 +12,12 @@
       font-size: unquote(math.div($i,$font-size-base) + 'rem') !important;
     }
 
+    @media(max-width: 1200px) {
+      .font-lg-#{$i} {
+        font-size: unquote(math.div($i,$font-size-base) + 'rem') !important;
+      }
+    }
+
     @media(max-width: 768px) {
       .font-md-#{$i} {
         font-size: unquote(math.div($i,$font-size-base) + 'rem') !important;

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <ng-container *ngFor="let faq of faqs; even as isEven;">
-        <mat-expansion-panel class="mb-4" *ngIf="isEven">
+        <mat-expansion-panel class="mb-4" *ngIf="isEven" data-aos="zoom-in">
           <mat-expansion-panel-header>
             <div class="panel-title">
               <h4 class="font-18 font-md-12 font-weight-bolder m-0"> {{faq.title}}</h4>
@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-6">
       <ng-container *ngFor="let faq of faqs; odd as isOdd;">
-        <mat-expansion-panel class="mb-4" *ngIf="isOdd">
+        <mat-expansion-panel class="mb-4" *ngIf="isOdd" data-aos="zoom-in">
           <mat-expansion-panel-header>
             <div class="panel-title">
               <h4 class="font-18 font-md-12 font-weight-bolder m-0"> {{faq.title}}</h4>
