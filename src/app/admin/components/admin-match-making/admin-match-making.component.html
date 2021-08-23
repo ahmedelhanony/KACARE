@@ -1,5 +1,8 @@
-<app-section-title className="admin-title" title="All Match Making"></app-section-title>
-<div class="admin-header" data-aos="zoom-in">
+<app-section-title
+  className="admin-title"
+  title="All Match Making"
+></app-section-title>
+<!-- <div class="admin-header" data-aos="zoom-in">
   <div class="d-flex flex-grow-1">
     <mat-checkbox>
       <span class="font-13 font-weight-medium text-color-black">Need To action</span>
@@ -26,6 +29,21 @@
     </div>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-</div>
+</div> -->
 
-<app-table-list className="admin-table" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns" ></app-table-list>
+<app-shared-filters
+  *ngIf="isAdmin"
+  [selectedFilters]='filters'
+  (emitFilters)="onFilterChanges($event)"
+></app-shared-filters>
+<div *ngIf="showSpinner" class="d-flex justify-content-center mt-5">
+  <mat-spinner></mat-spinner>
+</div>
+<app-table-list
+  className="admin-table"
+  [columnsConfig]="columnsConfig"
+  [rows]="dataSource"
+  [columns]="columns"
+  [actions]="actions"
+  (emitData)="onReceiveStatus($event)"
+></app-table-list>

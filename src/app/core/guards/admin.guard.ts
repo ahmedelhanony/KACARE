@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  CanActivate, 
+  CanActivate,
   Router,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
@@ -8,7 +8,7 @@ import {
 import { NAVIGATIONS, ROLES } from 'src/app/Shared/utils/enums';
 import { ProfileService } from '../services/profile.service';
 
-import('@angular/router'); 
+import('@angular/router');
 @Injectable()
 export class AdminGuard implements CanActivate {
   constructor(private profileService: ProfileService, private router: Router) {}

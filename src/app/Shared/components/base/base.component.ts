@@ -52,13 +52,13 @@ export class BaseComponent implements OnInit {
   }
 
   navigateAfterLogin() {
-    var returnURL = '';
-    this.route.queryParams.subscribe((params: Params) => {
-      if (params && params['returnurl']) returnURL = params['returnurl'];
-    });
+    // var returnURL = '';
+    // this.route.queryParams.subscribe((params: Params) => {
+    //   if (params && params['returnurl']) returnURL = params['returnurl'];
+    // });
 
-    if (returnURL) this.router.navigateByUrl(returnURL);
-    else this.router.navigate([NAVIGATIONS.homePage]);
+    // if (returnURL) this.router.navigateByUrl(returnURL);
+    // else this.router.navigate([NAVIGATIONS.homePage]);
   }
 
   validateForm(form: any) {

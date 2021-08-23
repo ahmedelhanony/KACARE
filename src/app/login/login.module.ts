@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { SharedModule } from '../Shared/shared.module';
 import { BotDetectCaptchaModule } from 'angular-captcha';
+import { VerfiyAccountComponent } from './components/verfiy-account/verfiy-account.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { BotDetectCaptchaModule } from 'angular-captcha';
     SignupComponent,
     ResetPasswordComponent,
     ForgetPasswordComponent,
+    VerfiyAccountComponent,
   ],
-  imports: [CommonModule, SharedModule, LoginRoutingModule,BotDetectCaptchaModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    LoginRoutingModule,
+    // BotDetectCaptchaModule,
+  ],
 })
 export class LoginModule {}

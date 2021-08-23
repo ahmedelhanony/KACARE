@@ -7,20 +7,19 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<any> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         switch (error.status) {
           case 400:
-            // debugger
             // alert(error.status)
-            // this.toastr.error('Sorry, ' + 'Item Not Found', 'Error');
+            this.toastr.error(error.error.errorMessage, 'Error!');
             break;
           // case 404:
           //     this.router.navigateByUrl('/not-found');
@@ -43,8 +42,11 @@ export class ErrorInterceptor implements HttpInterceptor {
               // this.toastr.error('Sorry, ' + error.error.message);
             }
             break;
+          case 404:
+            this.toastr.error('Sorry, ' + 'Something unexpected went wrong maybe the url is wrong!');
+            break;
           default:
-            // this.toastr.error('Sorry, ' + 'Something unexpected went wrong');
+            this.toastr.error('Sorry, ' + 'Something unexpected went wrong!');
             break;
         }
 

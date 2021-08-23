@@ -5,6 +5,7 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {SigninComponent} from "./components/signin/signin.component";
 import {ForgetPasswordComponent} from "./components/forget-password/forget-password.component";
 import {ResetPasswordComponent} from "./components/reset-password/reset-password.component";
+import { VerfiyAccountComponent } from './components/verfiy-account/verfiy-account.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetPasswordComponent
+  },
+  {
+    path: 'verify',
+    component: VerfiyAccountComponent
   },
   {
     path: 'admin-login',

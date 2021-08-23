@@ -7,7 +7,7 @@ import {
 } from '@rxweb/reactive-form-validators';
 import { BaseModel } from '../BaseModel';
 
-export class RequestResetModel extends BaseModel {
+export class ForgetPassModel extends BaseModel {
   @required()
   @email()
   email!: string;
@@ -18,7 +18,7 @@ export class RequestResetModel extends BaseModel {
   userEnteredCaptchaCode!: string;
 }
 
-export class ResetModel extends BaseModel {
+export class ResetPassModel extends BaseModel {
   @required()
   @email()
   email!: string;

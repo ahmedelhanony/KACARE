@@ -1,6 +1,26 @@
-<app-header title="FAQ" subTitle="Frequently Asked Questions"></app-header>
-<section class="secondary-section">
-  <div class="custom-container mb-5">
-    <app-faq [faqs]="faqs"></app-faq>
+
+
+<div *ngIf="showSpinner; else first" class="row">
+  <div class="d-flex justify-content-center center-loading m-5">
+    <mat-spinner></mat-spinner>
   </div>
-</section>
+</div>
+
+<ng-template #first>
+  <ng-container *ngIf="!showSpinner && faqs.length; else noDataFound">
+    <app-header title="FAQ" subTitle="Frequently Asked Questions"></app-header>
+    <section class="secondary-section">
+      <div class="custom-container mb-5">
+        <app-faq [faqs]="faqs"></app-faq>
+      </div>
+    </section>
+  </ng-container>
+</ng-template>
+
+<ng-template #noDataFound>
+  <div class="row" *ngIf="!showSpinner">
+    <div class="col-md-12 text-cenetr">
+      <img src="assets/images/noDataFound.png" />
+    </div>
+  </div>
+</ng-template>

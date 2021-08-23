@@ -6,7 +6,6 @@ import { AuthService } from './services/auth.service';
 import { SharedDataService } from './services/sharedData.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { AccountService } from './services/account.service';
 import { BaseService } from './services/base.service';
 import { DemoService } from './services/demo.service';
 import { FAQService } from './services/faq.service';
@@ -18,9 +17,12 @@ import { POCService } from './services/poc.service';
 import { ProfileService } from './services/profile.service';
 import { ProgramsService } from './services/program.service';
 import { TokenInterceptorService } from './interceptors/token.interceptor';
-import { HttpErrorInterceptor } from './interceptors/http.interceptor';
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
+import { DialogService } from './services/dialog-service/dialog.service';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { FiltersService } from './services/filters/filters.service';
+import { FilterLookupsResolver } from './resolvers/filters-lookups.resolver';
 
 const SERVICES = [
   AuthService,
@@ -36,24 +38,32 @@ const SERVICES = [
   POCService,
   ProfileService,
   ProgramsService,
+  FiltersService,
   AdminGuard,
   UserGuard,
-  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  // FilterLookupsResolver,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true,
   },
-  { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
 ];
 
 @NgModule({
-  imports: [CommonModule],
-  providers: [...SERVICES],
+  imports: [CommonModule, MatDialogModule],
+  providers: [
+    ...SERVICES,
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
+    DialogService,
+  ],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
 }
-

@@ -1,11 +1,17 @@
 <div class="row">
-  <div class="col-md-3 mb-3">
+  <!-- <div class="col-md-3 mb-3">
     <mat-form-field>
       <label class="form-label">Technology </label>
       <div class="input-content">
-      <mat-select disableOptionCentering required placeholder="Choose Application">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-      </mat-select>
+        <mat-select
+          disableOptionCentering
+          required
+          placeholder="Choose Application"
+        >
+          <mat-option value="option-{{ i }}" *ngFor="let i of [1, 2, 3, 4]"
+            >Option {{ i }}</mat-option
+          >
+        </mat-select>
       </div>
     </mat-form-field>
   </div>
@@ -13,27 +19,66 @@
     <mat-form-field>
       <label class="form-label">Role</label>
       <div class="input-content">
-      <mat-select disableOptionCentering required placeholder="Choose REP Topic">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-      </mat-select>
+        <mat-select
+          disableOptionCentering
+          required
+          placeholder="Choose REP Topic"
+        >
+          <mat-option value="option-{{ i }}" *ngFor="let i of [1, 2, 3, 4]"
+            >Option {{ i }}</mat-option
+          >
+        </mat-select>
       </div>
     </mat-form-field>
   </div>
+
   <div class="col-md-3"></div>
   <div class="col-md-3 mb-3 align-self-end">
     <mat-form-field class="fill-white icon-before-after">
       <div class="input-content">
-        <span class="form-icon fi fi-search font-16 text-color-gray rotate"></span>
-        <input matInput placeholder="Search..">
+        <span
+          class="form-icon fi fi-search font-16 text-color-gray rotate"
+        ></span>
+        <input matInput placeholder="Search.." />
       </div>
     </mat-form-field>
+  </div> -->
+
+  <app-shared-filters
+    [selectedFilters]="filters"
+    (emitFilters)="onFilterChanges($event)"
+  ></app-shared-filters>
+</div>
+
+<div *ngIf="showSpinner; else first" class="row">
+  <div class="col-md-4 mb-4" *ngFor="let company of [1, 2, 3, 4, 5, 6]">
+    <app-match-making-card className="gray loading"></app-match-making-card>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-4 mb-4" *ngFor="let company of companies">
-    <app-match-making-card routerLink="/match-making/match-making-details/organization" className="gray" [title]="company.name" [description]="company.description" [name]="company.name"
-                           [email]="company.email" [technology]="company.technology" [role]="company.role"
-    ></app-match-making-card>
+<ng-template #first>
+  <ng-container *ngIf="!showSpinner && companies.length; else noDataFound">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let company of companies">
+        <app-match-making-card
+          [routerLink]="['/match-making/match-making-details', company.userId]"
+          className="gray"
+          [title]="company.organizationName"
+          [description]="company.details"
+          [name]="company.organizationName"
+          [email]="company.contactInfo"
+          [technology]="company.technology.nameEn"
+          [role]="company.matchMakingRole.nameEn"
+        ></app-match-making-card>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #noDataFound>
+  <div class="row">
+    <div class="col-md-12 text-cenetr">
+      <img src="assets/images/noDataFound.png" />
+    </div>
   </div>
-</div>
+</ng-template>

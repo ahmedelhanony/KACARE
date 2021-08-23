@@ -17,6 +17,14 @@ export class FAQService extends BaseService {
         return this.http.post(environment.base_URL + `${this.serviceName}/addQuestion/`, model, options);
     }
 
+    editQuestion(model: any) {
+        const options = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
+        };
+        return this.http.post(environment.base_URL + `${this.serviceName}/EditQuestion/`, model, options);
+    }
+
+
     answerQuestion(model: any) {
         const options = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })

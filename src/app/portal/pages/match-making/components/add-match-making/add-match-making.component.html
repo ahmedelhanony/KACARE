@@ -1,62 +1,143 @@
 <div class="popup-container">
-  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
-    <h3 class="mb-0 font-24 font-md-20 font-weight-semi-bold">Add New Match Making</h3>
+  <div
+    class="d-flex align-items-center justify-content-between"
+    mat-dialog-title
+  >
+    <h3 class="mb-0 font-24 font-md-20 font-weight-semi-bold">
+      {{
+        actionType === ACTIONS.ADD
+          ? FORMLABELS.ADD_MATCH_MAKING
+          : FORMLABELS.EDIT_MATCH_MAKING
+      }}
+    </h3>
     <button class="mat-close-modal" matDialogClose>
       <span class="fi fi-close text-color-black"></span>
     </button>
   </div>
-  <mat-dialog-content>
-    <div class="p-3">
-      <div class="row">
-        <div class="col-12 mb-2">
-          <mat-form-field>
-            <label class="form-label">Technology </label>
-            <div class="input-content">
-            <mat-select disableOptionCentering required placeholder="Choose Technology ">
-              <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-            </mat-select>
-            </div>
-          </mat-form-field>
-        </div>
-        <div class="col-12 mb-2">
-          <mat-form-field>
-            <label class="form-label">Role </label>
-            <div class="input-content">
-            <mat-select disableOptionCentering required placeholder="Choose Role ">
-              <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-            </mat-select>
-            </div>
-          </mat-form-field>
-        </div>
-        <div class="col-12 mb-2">
-          <mat-form-field>
-            <label class="form-label">Contact Info</label>
-            <div class="input-content">
-            <input matInput placeholder="Type Contact Info" required>
-            </div>
-          </mat-form-field>
-        </div>
-        <div class="col-12 mb-2">
-          <mat-form-field class="custom-textarea">
-            <label class="form-label">Details</label>
-            <div class="input-content">
-            <textarea matInput placeholder="Type Match Making Details here.."></textarea>
-            </div>
-          </mat-form-field>
+  <form [formGroup]="matchMakingForm">
+    <mat-dialog-content>
+      <div *ngIf="!showSpinner" class="p-3">
+        <div class="row">
+          <div class="col-12 mb-2">
+            <mat-form-field>
+              <label class="form-label"> {{ FORMLABELS.TECHNOLOGY }} </label>
+              <div class="input-content">
+                <mat-select
+                  disableOptionCentering
+                  required
+                  placeholder="Choose Technology "
+                  formControlName="technologyId"
+                >
+                  <mat-option
+                    [value]="tech.id"
+                    *ngFor="let tech of technologies"
+                    >{{ tech.nameEn }}
+                  </mat-option>
+                </mat-select>
+              </div>
+              <mat-error
+                *ngIf="
+                  matchMakingForm?.controls?.technologyId?.errors &&
+                  matchMakingForm?.controls?.technologyId?.errors?.required
+                "
+              >
+                {{ FORMLABELS.TECHNOLOGY + FORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mb-2">
+            <mat-form-field>
+              <label class="form-label">{{ FORMLABELS.ROLE }} </label>
+              <div class="input-content">
+                <mat-select
+                  disableOptionCentering
+                  required
+                  placeholder="Choose Role "
+                  formControlName="matchMakingRoleId"
+                >
+                  <mat-option
+                    [value]="tech.id"
+                    *ngFor="let tech of ProjectRoles"
+                    >{{ tech.nameEn }}
+                  </mat-option>
+                </mat-select>
+              </div>
+              <mat-error
+                *ngIf="
+                  matchMakingForm?.controls?.matchMakingRoleId?.errors &&
+                  matchMakingForm?.controls?.matchMakingRoleId?.errors?.required
+                "
+              >
+                {{ FORMLABELS.ROLE + FORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mb-2">
+            <mat-form-field>
+              <label class="form-label">{{ FORMLABELS.CONTACT_INFO }}</label>
+              <div class="input-content">
+                <input
+                  matInput
+                  placeholder="Type Contact Info"
+                  formControlName="contactInfo"
+                  required
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  matchMakingForm?.controls?.contactInfo?.errors &&
+                  matchMakingForm?.controls?.contactInfo?.errors?.required
+                "
+              >
+                {{ FORMLABELS.CONTACT_INFO + FORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mb-2">
+            <mat-form-field class="custom-textarea">
+              <label class="form-label">{{ FORMLABELS.DETAILS }}</label>
+              <div class="input-content">
+                <textarea
+                  matInput
+                  placeholder="Type Match Making Details here.."
+                  formControlName="details"
+                  required
+                ></textarea>
+              </div>
+              <mat-error
+                *ngIf="
+                  matchMakingForm?.controls?.details?.errors &&
+                  matchMakingForm?.controls?.details?.errors?.required
+                "
+              >
+                {{ FORMLABELS.DETAILS + FORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
       </div>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions class="default-footer">
-    <div class="d-flex justify-content-end w-100">
-      <button mat-flat-button class="btn button-white px-4" matDialogClose>
-        Cancel
-      </button>
-      <span class="mx-2"></span>
-      <button mat-flat-button class="btn light-blue-button shadow-hover px-4" matDialogClose (click)="done()">
-        Submit
-      </button>
-    </div>
-  </mat-dialog-actions>
-
+      <div *ngIf="showSpinner" class="d-flex justify-content-center m-5">
+        <mat-spinner></mat-spinner>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="default-footer">
+      <div class="d-flex justify-content-end w-100">
+        <button mat-flat-button class="btn button-white px-4" matDialogClose>
+          Cancel
+        </button>
+        <span class="mx-2"></span>
+        <button
+          mat-flat-button
+          class="btn light-blue-button shadow-hover px-4"
+          [disabled]="matchMakingForm.invalid"
+          [appSpinnerButton]="showButtonSpinner"
+          (click)="onSaveMatchMaking()"
+        >
+          <span class="mx-1">{{
+            actionType === ACTIONS.ADD ? FORMLABELS.SUBMIT : FORMLABELS.EDIT
+          }}</span>
+        </button>
+      </div>
+    </mat-dialog-actions>
+  </form>
 </div>

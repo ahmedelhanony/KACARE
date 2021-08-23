@@ -16,6 +16,12 @@ import { TechnologAreasCardComponent } from './components/technolog-areas-card/t
 import { MainCardComponent } from '../portal/components/cards/main-card/main-card.component';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthComponent } from './components/auth/auth.component';
+import { BotDetectCaptchaModule } from 'angular-captcha';
+import { SpinnerButtonDirective } from './directives/spinner-button.directive';
+import { FiltersComponent } from './components/filters/filters.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { GlobalSearchComponent } from './components/global-search/global-search.component';
 @NgModule({
   declarations: [
     DocsUploaderComponent,
@@ -29,6 +35,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     SectionTitleComponent,
     TechnologAreasCardComponent,
     MainCardComponent,
+    AuthComponent,
+    SpinnerButtonDirective,
+    FiltersComponent,
+    AccessDeniedComponent,
+    GlobalSearchComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     RxReactiveFormsModule,
     ReactiveFormsModule,
+    BotDetectCaptchaModule
   ],
   exports: [
     MaterialModule,
@@ -48,6 +60,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainCardComponent,
     RxReactiveFormsModule,
     ReactiveFormsModule,
+    AuthComponent,
+    BotDetectCaptchaModule,
+    SpinnerButtonDirective,
+    FiltersComponent,
+    AccessDeniedComponent,
+    GlobalSearchComponent
   ],
 })
 export class SharedModule {}

@@ -1,13 +1,11 @@
-<div class="card loading" [ngClass]="className" data-aos="zoom-in">
+<div class="card" [ngClass]="className" data-aos="zoom-in">
   <div class="shape">
-    <!--    <span class="fi fi-{{iconName}}" *ngIf="iconType === 'font'"></span>-->
-    <!--    <img [src]="iconName" *ngIf="iconType === 'img'" alt="icon"/>-->
     <ng-content select="[shape]"></ng-content>
   </div>
   <div class="card-content">
     <ng-content select="[date]"></ng-content>
-    <h3>{{title}}</h3>
-    <h6 *ngIf="description">{{description}}</h6>
+    <h3>{{ title }}</h3>
+    <h6 *ngIf="description">{{ description }}</h6>
     <ng-content select="[card-details]"></ng-content>
     <ng-content select="[link]"></ng-content>
   </div>

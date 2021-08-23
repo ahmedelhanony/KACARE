@@ -11,26 +11,42 @@
     </p>
     <form [formGroup]="loginForm">
       <mat-form-field>
-        <label class="form-label">Email</label>
+        <label class="form-label">{{ SINGINFORMLABELS.EMAIL }}</label>
         <div class="input-content">
           <input
             matInput
             type="email"
-            placeholder="Type your email"
+            [placeholder]="SINGINFORMLABELS.EMAIL"
             formControlName="email"
             required
           />
         </div>
+        <mat-error
+          *ngIf="
+            loginForm.controls.email.errors &&
+            loginForm.controls.email.errors.required
+          "
+        >
+          {{ SINGINFORMLABELS.EMAIL + SINGINFORMLABELS.IS_REQUIRED }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            loginForm.controls.email.errors &&
+            loginForm.controls.email.errors.email
+          "
+        >
+          {{ SINGINFORMLABELS.EMAIL + " is not a valid email." }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <label class="form-label">Password</label>
+        <label class="form-label">{{ SINGINFORMLABELS.PASSWORD }}</label>
         <div class="input-content">
           <input
             matInput
             [type]="passwordFieldType ? 'text' : 'password'"
             formControlName="password"
-            placeholder="Type your password"
+            [placeholder]="SINGINFORMLABELS.PASSWORD"
             required
           />
           <span
@@ -38,6 +54,22 @@
             (click)="toggleFieldType()"
           ></span>
         </div>
+        <mat-error
+          *ngIf="
+            loginForm.controls.password.errors &&
+            loginForm.controls.password.errors.required
+          "
+        >
+          {{ SINGINFORMLABELS.PASSWORD + SINGINFORMLABELS.IS_REQUIRED }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            loginForm.controls.password.errors &&
+            loginForm.controls.password.errors.pattern
+          "
+        >
+          {{ SINGINFORMLABELS.PASSWORD + " is not a strong password." }}
+        </mat-error>
       </mat-form-field>
 
       <div>
@@ -53,14 +85,22 @@
           <mat-label>Code</mat-label>
           <div class="input-content">
             <input
-              class="input-content"
               matInput
               type="text"
               required
+              formControlName="userEnteredCaptchaCode"
               name="tlcCaptchaInput"
               id="tlcCaptchaInput"
             />
           </div>
+          <mat-error
+            *ngIf="
+              loginForm.controls.userEnteredCaptchaCode.errors &&
+              loginForm.controls.userEnteredCaptchaCode.errors.required
+            "
+          >
+            {{ SINGINFORMLABELS.CODE + SINGINFORMLABELS.IS_REQUIRED }}
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -71,11 +111,11 @@
           *ngIf="isPortalView"
           >Reset Password!</a
         >
-        <mat-checkbox>
+        <!-- <mat-checkbox>
           <span class="font-13 font-weight-medium text-color-black"
             >Keep me sign in</span
           >
-        </mat-checkbox>
+        </mat-checkbox> -->
       </div>
       <button
         type="submit"
@@ -90,8 +130,8 @@
           w-100
           my-3
         "
+        [appSpinnerButton]="showSpinner"
       >
-        <span class="mx-1 fi fi-spinner spin"></span>
         <span class="mx-1">Login</span>
       </button>
       <p

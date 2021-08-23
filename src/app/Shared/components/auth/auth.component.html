@@ -1,0 +1,207 @@
+<section class="custom-container">
+  <div
+    class="my-4 d-flex justify-content-center d-flex justify-content-md-start"
+  >
+    <img src="assets/images/logo.svg" alt="logo" />
+  </div>
+  <form [formGroup]="authForm" class="form-section">
+    <div class="form-icon">
+      <img [src]="authConfig?.icon" alt="" />
+    </div>
+    <h2 class="font-32 font-weight-bolder text-color-onyx my-3">
+      {{ authConfig?.title }}
+    </h2>
+    <p *ngIf="authConfig?.description" class="font-16 text-color-gray mb-3">
+      {{ authConfig?.description }}
+    </p>
+
+    <mat-form-field
+      *ngIf="
+        authConfig.pageName === AUTHPAGESNAME.FORGETPASS ||
+        authConfig.pageName === AUTHPAGESNAME.VERFIYACCOUNT
+      "
+    >
+      <label class="form-label">Email</label>
+      <div class="input-content">
+        <input
+          matInput
+          autocomplete="off"
+          type="email"
+          placeholder="Type your email"
+          formControlName="email"
+          required
+        />
+      </div>
+      <mat-error
+        *ngIf="
+          authForm.controls.email.errors &&
+          authForm.controls.email.errors.required
+        "
+      >
+        {{ AUTHFORMLABELS.EMAIL + AUTHFORMLABELS.IS_REQUIRED }}
+      </mat-error>
+      <mat-error
+        *ngIf="
+          authForm.controls.email.errors && authForm.controls.email.errors.email
+        "
+      >
+        {{ AUTHFORMLABELS.EMAIL + " is not a valid email." }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field *ngIf="authConfig.pageName === AUTHPAGESNAME.RESETPASS">
+      <label class="form-label">Enter New Password</label>
+      <div class="input-content">
+        <input
+          matInput
+          autocomplete="off"
+          type="password"
+          placeholder="Enter New Password"
+          required
+        />
+        <span class="form-icon fi fi-eye text-color-dark-gray-1 font-15"></span>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="authConfig.pageName === AUTHPAGESNAME.RESETPASS">
+      <label class="form-label">Confirm a New Password </label>
+      <div class="input-content">
+        <input
+          matInput
+          autocomplete="off"
+          type="password"
+          placeholder="Confirm a New Password "
+          required
+        />
+        <span class="form-icon fi fi-eye text-color-dark-gray-1 font-15"></span>
+      </div>
+    </mat-form-field> -->
+
+    <ng-container *ngIf="authConfig.pageName === AUTHPAGESNAME.RESETPASS">
+      <mat-form-field>
+        <label class="form-label">{{ AUTHFORMLABELS.PASSWORD }}</label>
+        <div class="input-content">
+          <input
+            matInput
+            [placeholder]="AUTHFORMLABELS.PASSWORD"
+            [type]="passwordFieldType ? 'text' : 'password'"
+            formControlName="newPassword"
+          />
+          <span
+            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
+            (click)="toggleFieldType()"
+          ></span>
+        </div>
+        <mat-error
+          *ngIf="
+            authForm.controls.newPassword.errors &&
+            authForm.controls.newPassword.errors.required
+          "
+        >
+          {{ AUTHFORMLABELS.PASSWORD + AUTHFORMLABELS.IS_REQUIRED }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            authForm.controls.newPassword.errors &&
+            authForm.controls.newPassword.errors.pattern
+          "
+        >
+          {{ AUTHFORMLABELS.PASSWORD + " is not a strong password." }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label class="form-label">{{ AUTHFORMLABELS.CONFIRM_PASSWORD }} </label>
+        <div class="input-content">
+          <input
+            matInput
+            [placeholder]="AUTHFORMLABELS.CONFIRM_PASSWORD"
+            [type]="passwordConfirmFieldType ? 'text' : 'password'"
+            formControlName="confirmPassword"
+          />
+          <!-- [ngClass]="{'fi fi-eye':!passwordConfirmFieldType, 'fi fi-eye': passwordConfirmFieldType}" (click)="toggleFieldConfirm()" -->
+          <span
+            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
+          ></span>
+        </div>
+        <mat-error
+          *ngIf="
+            authForm.controls.confirmPassword.errors &&
+            authForm.controls.confirmPassword.errors.compare &&
+            !authForm.controls.confirmPassword.errors.required
+          "
+        >
+          {{
+            AUTHFORMLABELS.PASSWORD +
+              " and " +
+              AUTHFORMLABELS.CONFIRM_PASSWORD +
+              " is not matching."
+          }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            authForm.controls.confirmPassword.errors &&
+            authForm.controls.confirmPassword.errors.required
+          "
+        >
+          {{ AUTHFORMLABELS.CONFIRM_PASSWORD + AUTHFORMLABELS.IS_REQUIRED }}
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <botdetect-captcha
+      captchaStyleName="tlcCaptcha"
+      codeLength="4"
+      imageWidth="150"
+      imageStyle="GRAFFITI2"
+    ></botdetect-captcha>
+
+    <div class="hidebotdetect"></div>
+    <mat-form-field>
+      <mat-label>Code</mat-label>
+      <div class="input-content">
+        <input
+          matInput
+          type="text"
+          name="tlcCaptchaInput"
+          id="tlcCaptchaInput"
+          formControlName="userEnteredCaptchaCode"
+          required
+        />
+      </div>
+      <mat-error
+        *ngIf="
+          authForm.controls.userEnteredCaptchaCode.errors &&
+          authForm.controls.userEnteredCaptchaCode.errors.required
+        "
+      >
+        {{ AUTHFORMLABELS.CODE + AUTHFORMLABELS.IS_REQUIRED }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- routerLink="/home" -->
+    <button
+      mat-flat-button
+      class="
+        btn
+        light-blue-button
+        only-shadow
+        font-16 font-weight-bold
+        w-100
+        my-3
+      "
+      (click)="onEmitForm()"
+      [disabled]="!authForm.valid"
+    >
+      <span *ngIf="showSpinner" class="mx-1 fi fi-spinner spin"></span>
+      {{ authConfig?.btnName }}
+    </button>
+    <p class="font-16 font-weight-medium text-color-gray text-center mt-4 mb-2">
+      <a
+        routerLink="/login"
+        class="text-color-light-blue underline hover-underline"
+        >Back to login?</a
+      >
+    </p>
+  </form>
+</section>

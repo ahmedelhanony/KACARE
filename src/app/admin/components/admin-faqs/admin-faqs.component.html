@@ -3,7 +3,9 @@
   <mat-form-field class="form-field">
     <div class="input-content">
       <mat-select disableOptionCentering required placeholder="Status">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+        <mat-option value="option-{{ i }}" *ngFor="let i of [1, 2, 3, 4]"
+          >Option {{ i }}</mat-option
+        >
       </mat-select>
     </div>
   </mat-form-field>
@@ -14,4 +16,29 @@
   </button>
 </div>
 
-<app-table-list className="admin-table" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns" ></app-table-list>
+<div *ngIf="showSpinner; else first" class="row">
+  <div class="d-flex justify-content-center center-loading m-5">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+<ng-template #first>
+  <ng-container *ngIf="!showSpinner && dataSource.length; else noDataFound">
+    <app-table-list
+      className="admin-table"
+      [columnsConfig]="columnsConfig"
+      [rows]="dataSource"
+      [columns]="columns"
+      [actions]="actions"
+      (emitData)="onReceiveFAQItem($event)"
+    ></app-table-list>
+  </ng-container>
+</ng-template>
+
+<ng-template #noDataFound>
+  <div class="row" *ngIf="!showSpinner">
+    <div class="col-md-12 text-cenetr">
+      <img src="assets/images/noDataFound.png" />
+    </div>
+  </div>
+</ng-template>

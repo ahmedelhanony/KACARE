@@ -40,9 +40,9 @@ export class ProfileService {
     this._currentUser.generalRole = data.generalRole;
 
     //User
-    this._currentUser.isUserOnly = this.isRoleOf(ROLES.User);
+    this._currentUser.isUserOnly = this.isRoleOf(ROLES[ROLES.User]);
 
-    this._currentUser.isAdminOnly = this.isRoleOf(ROLES.Admin);
+    this._currentUser.isAdminOnly = this.isRoleOf(ROLES[ROLES.Admin]);
 
     this.utilityService.setWithExpiry(
       'userdata',
@@ -78,27 +78,24 @@ export class ProfileService {
     ) {
       this.router.navigate([NAVIGATIONS.loginPageUrl]);
     }
-
-    var roleitem = this.currentUser.roles.find(
-      (x: any) => x == ROLES.Admin || x == role
-    );
-    if (roleitem) return true;
-    else return false;
+    return this.currentUser.roles.find((x: any) => x == ROLES[role])
+      ? true
+      : false;
   }
 
-  authorizeUser() {
-    if (
-      !this.currentUser ||
-      this.currentUser.roles === undefined ||
-      this.currentUser.roles.length === 0
-    ) {
-      this.router.navigate([NAVIGATIONS.loginPageUrl]);
-    }
+  // authorizeUser() {
+  //   if (
+  //     !this.currentUser ||
+  //     this.currentUser.roles === undefined ||
+  //     this.currentUser.roles.length === 0
+  //   ) {
+  //     this.router.navigate([NAVIGATIONS.loginPageUrl]);
+  //   }
 
-    var roleitem = this.currentUser.roles.find((x: any) => x == ROLES.User);
-    if (roleitem) return true;
-    else return false;
-  }
+  //   var roleitem = this.currentUser.roles.find((x: any) => x == ROLES.User);
+  //   if (roleitem) return true;
+  //   else return false;
+  // }
 
   isRoleOf(role: any) {
     let hasRole = this._currentUser.roles.find((x: any) => x == role);

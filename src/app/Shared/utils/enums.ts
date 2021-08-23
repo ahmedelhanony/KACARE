@@ -22,24 +22,26 @@ export enum DATEFORMAT {
   date = 'DD/MM/YYYY',
   dateWithTime = 'DD/MM/YYYY h:mm:ss A',
   apiDate = 'MM/DD/YYYY',
-  apiDateWithTime = 'MM/DD/YYYY HH:mm',
+  apiDateWithTime = 'dd/MM/yyyy HH:MM',
+  angularMaterilaFormat = 'EEEE, MMMM d, y, h:mm:ss a zzzz',
   apiTime = 'HH:mm',
   calendarDate = 'dd/mm/yy',
 }
 
 export enum SECURITY {
-  AccessTokenExpiration = 1800000,
+  // AccessTokenExpiration = 1800000,
+  AccessTokenExpiration = 18000000,
   allowForAnnonymous = 'true',
 }
 
 export enum NAVIGATIONS {
   homePage = '/home',
-  loginPageUrl = '/account/login',
+  loginPageUrl = '/login',
   verifyPageUrl = '/account/verify',
-  accessDeniedPageUrl = '/accessdenied',
+  accessDeniedPageUrl = '/access-denied',
   resetPageUrl = '/account/reset',
   sendresetPageURL = 'account/sendreset',
-  registerPageUrl = '/account/register',
+  registerPageUrl = '/signup',
   FAQPage = '/faq/all',
   UserMatchMakingPage = '/matchmaking/mine',
   UserDemoPage = '/demo/mine',
@@ -112,4 +114,71 @@ export enum GridTypeEnum {
   FAQ = <number>3,
   Program = <number>4,
   MyProgram = <number>5,
+}
+
+export enum FORMLABELS {
+  PERSONAL_NAME = 'Personal Name',
+  ORGANIZATION_NAME = 'Organization Name',
+  EMAIL = 'Email',
+  PHONE_NUMBER = 'Phone Number',
+  JOB_TITLE = 'Job Title',
+  REGISTRATION_TYPE = 'Registration Type',
+  PASSWORD = 'Password',
+  CONFIRM_PASSWORD = 'Confirm Password',
+  EXPERIENCE_FIELD = 'Organization Field of experience',
+  CODE = 'Code',
+  IS_REQUIRED = ' is required.',
+  ADD_NEW_QUESTION = 'Add New Question',
+  EDIT_QUESTION = 'Edit Question',
+  QUESTION = 'Question',
+  ANSWER = 'Answer',
+  WRITE_ANSWER = 'Write answer here..',
+  //////////////////////////////
+  // Match Making Form
+  TECHNOLOGY = 'Technology',
+  ROLE = 'Role',
+  CONTACT_INFO = 'Contact Info',
+  DETAILS = 'Details',
+  ADD_MATCH_MAKING = 'Add New Match Making',
+  EDIT_MATCH_MAKING = 'Edit Match Making',
+  SUBMIT = 'Submit',
+  EDIT = 'Edit'
+}
+
+export enum AUTHPAGESNAME {
+  FORGETPASS = 'FORGETPASS',
+  RESETPASS = 'RESETPASS',
+  VERFIYACCOUNT = 'VERFIYACCOUNT',
+}
+
+export enum TABLELISTACTIONS {
+  ADD = 'Add',
+  EDIT = 'Edit',
+  DELETE = 'Delete',
+  PUBLISH = 'Publish',
+}
+
+export class AuthPages {
+  modelName: any;
+  pageName: string;
+  icon: string;
+  btnName: string;
+  title: string;
+  description?: string;
+
+  constructor(
+    _modelName: any,
+    _pageName: string,
+    _icon: string,
+    _title: string,
+    _btnName: string,
+    _description?: string
+  ) {
+    this.modelName = _modelName;
+    this.pageName = _pageName;
+    this.icon = _icon;
+    this.btnName = _btnName;
+    this.title = _title;
+    this.description = _description;
+  }
 }

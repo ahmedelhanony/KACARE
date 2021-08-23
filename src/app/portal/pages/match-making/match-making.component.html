@@ -10,7 +10,10 @@
 </section>
 
 <div class="custom-container mt-4 mb-5" *ngIf="isRegistered">
-  <div class="d-flex justify-content-end position-relative">
+  <div
+    *ngIf="showAddButton()"
+    class="d-flex justify-content-end position-relative"
+  >
     <div class="add-new" data-aos="zoom-in">
       <button
         mat-flat-button
@@ -22,28 +25,18 @@
       </button>
     </div>
   </div>
-  <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab" data-aos="zoom-in">
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <div class="d-flex align-items-center font-18 font-weight-medium">
-          <span>All Match Making</span>
-        </div>
-      </ng-template>
 
-      <div class="py-4 my-2">
-        <app-all-match-making></app-all-match-making>
-      </div>
-    </mat-tab>
-
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <div class="d-flex align-items-center font-18 font-weight-medium">
-          <span>My Match Making</span>
-        </div>
-      </ng-template>
-      <div class="py-4 my-2">
-        <app-my-match-making></app-my-match-making>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+  <nav mat-tab-nav-bar class="primary-tab" data-aos="zoom-in">
+    <a
+      mat-tab-link
+      *ngFor="let link of matchMakingTabs"
+      [routerLink]="link.link"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ link.name }}
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

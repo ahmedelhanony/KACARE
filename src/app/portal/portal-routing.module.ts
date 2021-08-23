@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LayoutComponent} from "../Shared/layout/layout.component";
-import {InfographicsPageComponent} from "./pages/infographics-page/infographics-page.component";
-import {FaqPageComponent} from "./pages/faq-page/faq-page.component";
+import { LayoutComponent } from '../Shared/layout/layout.component';
+import { InfographicsPageComponent } from './pages/infographics-page/infographics-page.component';
+import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { UserGuard } from '../core/guards/user.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '',
@@ -16,31 +17,44 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import(`./pages/home/home.module`).then(m => m.HomeModule)
+        loadChildren: () =>
+          import(`./pages/home/home.module`).then((m) => m.HomeModule),
       },
       {
         path: 'match-making',
-        loadChildren: () => import(`./pages/match-making/match-making.module`).then(m => m.MatchMakingModule)
+        loadChildren: () =>
+          import(`./pages/match-making/match-making.module`).then(
+            (m) => m.MatchMakingModule
+          ),
       },
       {
         path: 'applications',
-        loadChildren: () => import(`./pages/applications/applications.module`).then(m => m.ApplicationsModule)
+        loadChildren: () =>
+          import(`./pages/applications/applications.module`).then(
+            (m) => m.ApplicationsModule
+          ),
       },
       {
         path: 'infographics',
-        component: InfographicsPageComponent
+        component: InfographicsPageComponent,
       },
       {
         path: 'faqs',
-        component: FaqPageComponent
+        component: FaqPageComponent,
       },
       {
         path: 'past-projects',
-        loadChildren: () => import(`./pages/projects-page/projects-page.module`).then(m => m.ProjectsPageModule)
+        loadChildren: () =>
+          import(`./pages/projects-page/projects-page.module`).then(
+            (m) => m.ProjectsPageModule
+          ),
       },
       {
         path: 'news',
-        loadChildren: () => import(`./pages/news-page/news-page.module`).then(m => m.NewsPageModule)
+        loadChildren: () =>
+          import(`./pages/news-page/news-page.module`).then(
+            (m) => m.NewsPageModule
+          ),
       },
     ],
   },
@@ -48,6 +62,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PortalRoutingModule { }
+export class PortalRoutingModule {}

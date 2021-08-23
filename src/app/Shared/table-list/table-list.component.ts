@@ -1,40 +1,46 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from "@angular/material/dialog";
-import {ConfirmationPopupComponent} from "../confirmation-popup/confirmation-popup.component";
-import {AdminApplicationDetailsComponent} from "../../admin/components/admin-applications/admin-application-details/admin-application-details.component";
-
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminApplicationDetailsComponent } from '../../admin/components/admin-applications/admin-application-details/admin-application-details.component';
+import * as _ from 'lodash';
+import { TABLELISTACTIONS } from '../utils/enums';
+import { downloadFile } from '../utils/utils';
 
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.scss']
+  styleUrls: ['./table-list.component.scss'],
 })
-export class TableListComponent implements OnInit {
+export class TableListComponent implements OnInit, OnChanges {
   @Input() columns: any;
   @Input() columnsConfig: any;
   @Input() rows: any;
+  @Input() actions: any = [];
   @Input() className = '';
-  public dataSource = new MatTableDataSource<any>();
-  constructor( public dialog: MatDialog ) { }
+  @Output() emitData = new EventEmitter();
 
-  ngOnInit(): void {
+  dataSource = new MatTableDataSource<any>();
+  get ACTIONS(): typeof TABLELISTACTIONS {
+    return TABLELISTACTIONS;
+  }
+
+  constructor(public dialog: MatDialog) {}
+  ngOnChanges(changes: SimpleChanges): void {
     this.dataSource.data = this.rows;
-    // this.togglePublishBtn(this.publishedText)
   }
 
-  togglePublishBtn(element: any): void{
-    console.log(element.status)
-    if (element.status === 'published'){
-      element.status = 'publish'
-    } else{
-      element.status = 'published'
-    }
-  }
-
+  ngOnInit(): void {}
 
   openPopup(type: string): void {
-    if(type === 'application'){
+    if (type === 'application') {
       const dialogRef = this.dialog.open(AdminApplicationDetailsComponent, {
         width: '950px',
         height: '90%',
@@ -45,25 +51,13 @@ export class TableListComponent implements OnInit {
         // closed
       });
     }
-
-  }
-  delete(): void {
-    const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
-      width: '700px',
-      panelClass: ['confirm-popup', 'main-popup'],
-      data: {
-        title : 'Delete Match',
-        message : 'Are you sure you want delete',
-        confirmText : 'match making example name',
-        moreText : '',
-        type : 'delete',
-        icon : 'delete-match',
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      // closed
-    });
   }
 
+  onTakeAction(item: any, action: TABLELISTACTIONS) {
+    this.emitData.emit({ item, action });
+  }
+
+  onDownLoadFile({ link, name }: any) {
+    downloadFile(link, name);
+  }
 }

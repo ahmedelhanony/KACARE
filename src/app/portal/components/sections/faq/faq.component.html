@@ -1,33 +1,36 @@
-<mat-accordion class="primary-accordion" *ngIf="faqs !== ''">
+<mat-accordion class="primary-accordion loading" *ngIf="faqs !== ''">
   <div class="row">
     <div class="col-md-6">
-      <ng-container *ngFor="let faq of faqs; even as isEven;">
+      <ng-container *ngFor="let faq of faqs; even as isEven">
         <mat-expansion-panel class="mb-4" *ngIf="isEven" data-aos="zoom-in">
           <mat-expansion-panel-header>
             <div class="panel-title">
-              <h4 class="font-18 font-md-12 font-weight-bolder m-0"> {{faq.title}}</h4>
+              <h4 class="font-18 font-md-12 font-weight-bolder m-0">
+                {{ faq.question }}
+              </h4>
             </div>
           </mat-expansion-panel-header>
           <p class="m-0 p-0 font-16 text-color-gray">
-            {{ faq.description }}
+            {{ faq.answer }}
           </p>
         </mat-expansion-panel>
       </ng-container>
     </div>
     <div class="col-md-6">
-      <ng-container *ngFor="let faq of faqs; odd as isOdd;">
+      <ng-container *ngFor="let faq of faqs; odd as isOdd">
         <mat-expansion-panel class="mb-4" *ngIf="isOdd" data-aos="zoom-in">
           <mat-expansion-panel-header>
             <div class="panel-title">
-              <h4 class="font-18 font-md-12 font-weight-bolder m-0"> {{faq.title}}</h4>
+              <h4 class="font-18 font-md-12 font-weight-bolder m-0">
+                {{ faq.question }}
+              </h4>
             </div>
           </mat-expansion-panel-header>
           <p class="m-0 p-0 font-16 text-color-gray">
-            {{ faq.description }}
+            {{ faq.answer }}
           </p>
         </mat-expansion-panel>
       </ng-container>
     </div>
   </div>
-
 </mat-accordion>

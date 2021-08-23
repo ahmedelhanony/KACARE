@@ -17,8 +17,8 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <div class="d-flex justify-content-center w-100 mb-4 px-md-5" *ngIf="data.type === 'delete'">
-      <button mat-flat-button class="btn button-red">
+    <div class="d-flex justify-content-center w-100 mb-4 px-md-5"  *ngIf="data.type === 'delete'">
+      <button mat-flat-button class="btn button-red" [mat-dialog-close]='true' >
         Delete
       </button>
       <span class="mx-2"></span>

@@ -15,12 +15,21 @@ export class TokenInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.profileService.currentUser.accessToken}`,
-        Accept_Language: 'en-US',
-      },
-    });
+    const token = this.profileService.currentUser.accessToken;
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+          Accept_Language: 'en-US',
+        },
+      });
+    } else {
+      request = request.clone({
+        setHeaders: {
+          Accept_Language: 'en-US',
+        },
+      });
+    }
 
     return next.handle(request);
   }

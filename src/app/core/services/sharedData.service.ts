@@ -7,8 +7,8 @@ export class SharedDataService {
   public hideOrShowFiltersSubject = new BehaviorSubject<any>(null);
   public hideOrShowFilters$ = this.hideOrShowFiltersSubject.asObservable();
 
-  public isFiltersChangedSubject = new BehaviorSubject<any>(null);
-  public isFiltersChanged$ = this.isFiltersChangedSubject.asObservable();
+  public isMatchMakingAddedSubject = new BehaviorSubject<any>(null);
+  public isMatchMakingAdded$ = this.isMatchMakingAddedSubject.asObservable();
 
   public lsitingBaseRefreshDataSubject = new BehaviorSubject<boolean>(false);
   public lsitingBaseRefreshData$ =
@@ -24,6 +24,11 @@ export class SharedDataService {
       return;
     }
     this.router.navigate([url]);
+  }
+
+  refreshMatchMaking() {
+    this.isMatchMakingAddedSubject.next(true);
+    this.isMatchMakingAddedSubject.next(false);
   }
 
   refreshGridData() {

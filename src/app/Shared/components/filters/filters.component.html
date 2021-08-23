@@ -1,0 +1,81 @@
+<form [formGroup]="filtersForm">
+  <div class="row admin-header" data-aos="zoom-in">
+    <div class="d-flex flex-grow-1">
+      <mat-form-field class="form-field">
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            placeholder="Status"
+            formControlName="visible"
+            (valueChange)="onStatusChanged($event)"
+          >
+            <mat-option [value]="ele.value" *ngFor="let ele of status"
+              >{{ ele.viewValue }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <span class="mx-sm-3"></span>
+    <div class="d-flex flex-grow-1">
+      <mat-form-field class="form-field">
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            placeholder="Technologies"
+            formControlName="technologyId"
+            (valueChange)="onTechnologyChanged($event)"
+          >
+            <mat-option [value]="tech.id" *ngFor="let tech of technologies"
+              >{{ tech.nameEn }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <span class="mx-sm-3"></span>
+    <div class="d-flex flex-grow-1">
+      <mat-form-field class="form-field">
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            placeholder="Roles"
+            formControlName="matchMakingRoleId"
+            (valueChange)="onRoleChanged($event)"
+          >
+            <mat-option [value]="role.id" *ngFor="let role of ProjectRoles"
+              >{{ role.nameEn }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <span class="mx-sm-3"></span>
+    <mat-form-field class="datepicker">
+      <div class="input-content">
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            #dateRangeStart
+            matStartDate
+            placeholder="Start date"
+            formControlName="dateFrom"
+          />
+          <input
+            #dateRangeEnd
+            matEndDate
+            placeholder="End date"
+            formControlName="dateTo"
+            (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <i
+            class="fi fi-calendar text-color-gray font-19"
+            matDatepickerToggleIcon
+          ></i>
+        </mat-datepicker-toggle>
+      </div>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+</form>

@@ -93,13 +93,13 @@
             </a>
           </li>
         </ul>
-        <div class="login-actions" *ngIf="false">
-          <button mat-flat-button class="btn login-btn">Login</button>
+        <div class="login-actions" *ngIf="true">
+          <button mat-flat-button routerLink='/login' class="btn login-btn">Login</button>
           <span class="mx-1"></span>
           <button mat-flat-button class="btn create-btn" routerLink='/signup'>Create Account</button>
         </div>
       </div>
-      <div class="menu-actions">
+      <div class="menu-actions" *ngIf="false">
         <ng-container *ngIf="isPortal">
 
             <button
@@ -133,14 +133,14 @@
                   >My Profile</span
                 >
               </button>
-              <button mat-menu-item>
+              <!-- <button mat-menu-item>
                 <span class="icon">
                   <img src="assets/images/lock.svg" alt="" />
                 </span>
                 <span class="font-15 font-weight-medium text-color-gray mx-3"
                   >Forgot Password</span
                 >
-              </button>
+              </button> -->
               <button mat-menu-item>
                 <span class="icon fi fi-sign-out text-color-red font-20"></span>
                 <span class="font-15 font-weight-medium text-color-red mx-3"

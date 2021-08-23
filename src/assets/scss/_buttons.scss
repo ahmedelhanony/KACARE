@@ -1,15 +1,15 @@
-.btn{
+.btn {
   height: 55px;
   min-width: 140px !important;
   border-radius: 6px !important;
   box-shadow: none !important;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 
-  .btn-icon{
+  .btn-icon {
     margin-right: 5px;
   }
 
-  .mat-button-wrapper{
+  .mat-button-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,30 +20,29 @@
     transition: all 0.1s;
   }
 
-  &.square{
+  &.square {
     min-width: 42px !important;
     width: 42px !important;
     height: 42px !important;
     padding: 0 !important;
-    &.large{
+    &.large {
       min-width: 55px !important;
       width: 55px !important;
       height: 55px !important;
     }
-    &.small{
+    &.small {
       min-width: 38px !important;
       width: 38px !important;
       height: 38px !important;
     }
   }
 
-  &.mat-flat-button{
-
+  &.mat-flat-button {
     font-size: 1.0625rem;
     font-weight: $font-bold;
     padding: 0 30px;
 
-    @include gen-buttons('flat');
+    @include gen-buttons("flat");
 
     //.mat-button-ripple{
     //  display: none !important;
@@ -52,14 +51,13 @@
     &.primary-button {
       background-color: $light-gray;
       color: $light-blue;
-      .mat-button-ripple{
+      .mat-button-ripple {
         background-color: rgba($light-gray, 20%);
       }
       &:hover {
         background-color: $blue;
         color: $white;
       }
-
     }
 
     &.secondary-button {
@@ -76,28 +74,27 @@
       background-color: $light-blue;
       color: $white;
 
-      &.only-shadow{
+      &.only-shadow {
         box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
-        &:hover{
+        &:hover {
           box-shadow: none !important;
           background-color: $light-blue;
           color: $white;
         }
-        &:disabled{
+        &:disabled {
           box-shadow: none !important;
         }
       }
 
-      &.shadow{
+      &.shadow {
         box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
-        &:hover{
+        &:hover {
           box-shadow: none !important;
         }
-
       }
 
-      &.shadow-hover{
-        &:hover{
+      &.shadow-hover {
+        &:hover {
           background-color: $light-blue !important;
           color: $white !important;
           box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
@@ -113,7 +110,7 @@
       background-color: $light-gray;
       color: $gray;
       &.bordered {
-        border: 1px solid #E4E7EE;
+        border: 1px solid #e4e7ee;
         color: $onyx;
       }
       &:hover {
@@ -121,45 +118,37 @@
       }
     }
 
-
-    &.publish-button{
+    &.publish-button {
       width: 130px;
       padding: 0;
       height: 44px;
-      &.publish{
+      &.false {
         background-color: $green;
         color: $white;
-
       }
 
-      &.published{
+      &.true {
         background-color: $light-gray;
         color: $gray;
 
-        &:hover{
+        &:hover {
           background-color: $red;
           color: $white;
-          .text{
+          .text {
             display: none;
           }
-          .unpublished{
+          .unpublished {
             display: block;
           }
         }
-
       }
-
-      .unpublished{
+      .unpublished {
         display: none;
       }
-
     }
-
-
-
   }
 
-  &.mat-stroked-button{
+  &.mat-stroked-button {
     font-size: 1.0625rem;
     font-weight: $font-bold;
     padding: 0 30px;
@@ -167,14 +156,14 @@
       background-color: $transparent;
       color: $light-blue;
       border: 2px solid $light-blue;
-      &.shadow{
+      &.shadow {
         box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
-        &:hover{
+        &:hover {
           box-shadow: none !important;
         }
       }
-      &.shadow-hover{
-        &:hover{
+      &.shadow-hover {
+        &:hover {
           box-shadow: 0 20px 34px rgba($light-blue, 20%) !important;
         }
       }
@@ -185,16 +174,16 @@
     }
   }
 
-  &.mat-icon-button{
+  &.mat-icon-button {
     border-width: 0;
     border-radius: 5px;
     overflow: hidden;
     @extend .square;
-    .fi{
+    .fi {
       font-size: 1.3rem;
     }
-    @include gen-buttons('square');
-    .mat-button-focus-overlay{
+    @include gen-buttons("square");
+    .mat-button-focus-overlay {
       transition: all 0.4s;
       opacity: 1 !important;
       top: 0;
@@ -203,33 +192,33 @@
       right: 0;
       width: 100%;
     }
-    &.action-button{
+    &.action-button {
       background-color: $light-gray !important;
       //font-size: 1.2rem;
-      &.delete{
-        &:hover{
+      &.delete {
+        &:hover {
           background-color: $red !important;
         }
       }
-      &.edit{
-        &:hover{
+      &.edit {
+        &:hover {
           background-color: $light-blue !important;
-
         }
       }
 
-      &.delete, &.edit{
-        &:hover{
-          .fi{
+      &.delete,
+      &.edit {
+        &:hover {
+          .fi {
             color: $white;
           }
         }
       }
-      .mat-button-focus-overlay{
+      .mat-button-focus-overlay {
         //background-color: $light-gray;
         display: none;
       }
-      &:hover{
+      &:hover {
         //background-color: rgba($gray, 50%) !important;
         //.mat-button-focus-overlay{
         //  background-color: rgba($gray, 25%);
@@ -237,31 +226,31 @@
       }
     }
 
-    &.arrow-button{
+    &.arrow-button {
       background-color: $light-gray;
       color: $light-blue;
 
-      &.white{
+      &.white {
         background-color: $white;
       }
-      .mat-button-focus-overlay{
+      .mat-button-focus-overlay {
         background-color: transparent;
       }
-      &:hover{
+      &:hover {
         background-color: $light-blue;
         color: $white;
       }
     }
-    &.button-transparent{
+    &.button-transparent {
       color: $onyx !important;
       background-color: transparent !important;
-      .mat-button-focus-overlay{
+      .mat-button-focus-overlay {
         background-color: transparent;
       }
     }
-    &:hover{
-      .mat-button-focus-overlay{
-        opacity: .9 !important;
+    &:hover {
+      .mat-button-focus-overlay {
+        opacity: 0.9 !important;
         width: 0;
       }
     }
@@ -274,15 +263,8 @@
     cursor: not-allowed !important;
     box-shadow: none !important;
 
-    .mat-button-focus-overlay{
+    .mat-button-focus-overlay {
       display: none !important;
     }
   }
-
 }
-
-
-
-
-
-

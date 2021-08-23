@@ -6,13 +6,12 @@
   <div class="row">
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Personal Name</label>
+        <label class="form-label">{{ SINGUPFORMLABELS.PERSONAL_NAME }}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type Personal Name"
+            [placeholder]="SINGUPFORMLABELS.PERSONAL_NAME"
             formControlName="fullName"
-            required
           />
         </div>
         <mat-error
@@ -21,20 +20,22 @@
             registerForm.controls.fullName.errors.required
           "
         >
-          {{ "validationMessage.fullName.required" }}
+          {{ SINGUPFORMLABELS.PERSONAL_NAME + SINGUPFORMLABELS.IS_REQUIRED }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Organization Name</label>
+        <label class="form-label">{{
+          SINGUPFORMLABELS.ORGANIZATION_NAME
+        }}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type Organization Name"
+            [placeholder]="SINGUPFORMLABELS.ORGANIZATION_NAME"
             formControlName="organizationName"
-            required
+            
           />
         </div>
         <mat-error
@@ -43,20 +44,22 @@
             registerForm.controls.organizationName.errors.required
           "
         >
-          {{ "validationMessage.organizationName.required" }}
+          {{
+            SINGUPFORMLABELS.ORGANIZATION_NAME + SINGUPFORMLABELS.IS_REQUIRED
+          }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Email</label>
+        <label class="form-label">{{ SINGUPFORMLABELS.EMAIL }}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type Email"
+            [placeholder]="SINGUPFORMLABELS.EMAIL"
             formControlName="email"
-            required
+            
           />
         </div>
         <mat-error
@@ -65,7 +68,7 @@
             registerForm.controls.email.errors.required
           "
         >
-          {{ "validationMessage.email.required" }}
+          {{ SINGUPFORMLABELS.EMAIL + SINGUPFORMLABELS.IS_REQUIRED }}
         </mat-error>
         <mat-error
           *ngIf="
@@ -73,20 +76,20 @@
             registerForm.controls.email.errors.email
           "
         >
-          {{ "validationMessage.email.email" }}
+          {{ SINGUPFORMLABELS.EMAIL + " is not a valid email." }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Phone Number</label>
+        <label class="form-label">{{SINGUPFORMLABELS.PHONE_NUMBER}}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type Phone Number"
+            [placeholder]="SINGUPFORMLABELS.PHONE_NUMBER"
             formControlName="mobileNumber"
-            required
+            
           />
         </div>
         <mat-error
@@ -95,7 +98,7 @@
             registerForm.controls.mobileNumber.errors.required
           "
         >
-          {{ "validationMessage.mobileNumber.required" }}
+          {{ SINGUPFORMLABELS.PHONE_NUMBER + SINGUPFORMLABELS.IS_REQUIRED }}
         </mat-error>
         <mat-error
           *ngIf="
@@ -103,20 +106,20 @@
             registerForm.controls.mobileNumber.errors.pattern
           "
         >
-          {{ "validationMessage.mobileNumber.mobilePattern" }}
+          {{ SINGUPFORMLABELS.PHONE_NUMBER + ' is not a valid phone number.' }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Job Title</label>
+        <label class="form-label">{{SINGUPFORMLABELS.JOB_TITLE}}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type Job Title"
+            [placeholder]="SINGUPFORMLABELS.JOB_TITLE"
             formControlName="jobTitle"
-            required
+            
           />
         </div>
         <mat-error
@@ -125,21 +128,21 @@
             registerForm.controls.jobTitle.errors.required
           "
         >
-          {{ "validationMessage.jobTitle.required" }}
+          {{ SINGUPFORMLABELS.JOB_TITLE + SINGUPFORMLABELS.IS_REQUIRED }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Registration Type </label>
+        <label class="form-label">{{SINGUPFORMLABELS.REGISTRATION_TYPE}}</label>
         <div class="input-content">
           <mat-select
             disableOptionCentering
             required
-            placeholder="Choose Registration Type "
+            [placeholder]="SINGUPFORMLABELS.REGISTRATION_TYPE "
             formControlName="generalRoleId"
-            required
+            
           >
             <mat-option [value]="role.id" *ngFor="let role of generalRoles">{{
               role.nameEn
@@ -147,28 +150,27 @@
           </mat-select>
         </div>
         <mat-error
-        *ngIf="registerForm.controls.generalRoleId.errors && registerForm.controls.generalRoleId.errors.required">
-        {{ 'validationMessage.required'}}
-      </mat-error>
+          *ngIf="
+            registerForm.controls.generalRoleId.errors &&
+            registerForm.controls.generalRoleId.errors.required
+          "
+        >
+          {{ SINGUPFORMLABELS.REGISTRATION_TYPE + SINGUPFORMLABELS.IS_REQUIRED }}
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Password</label>
+        <label class="form-label">{{SINGUPFORMLABELS.PASSWORD}}</label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Type your password"
+            [placeholder]="SINGUPFORMLABELS.PASSWORD"
             [type]="passwordFieldType ? 'text' : 'password'"
             formControlName="password"
-            required
+            
           />
-          <!-- fi fi-eye -->
-          <!-- [ngClass]="{
-            'fi fi-eye': !passwordFieldType,
-            'fi fi-eye': passwordFieldType
-          }" -->
           <span
             class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
             (click)="toggleFieldType()"
@@ -180,7 +182,7 @@
             registerForm.controls.password.errors.required
           "
         >
-          {{ "validationMessage.required" }}
+          {{ SINGUPFORMLABELS.PASSWORD + SINGUPFORMLABELS.IS_REQUIRED }}
         </mat-error>
         <mat-error
           *ngIf="
@@ -188,21 +190,21 @@
             registerForm.controls.password.errors.pattern
           "
         >
-          {{ "validationMessage.StrongPasswordRequired" }}
+          {{ SINGUPFORMLABELS.PASSWORD + " is not a strong password." }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
       <mat-form-field>
-        <label class="form-label">Confirm Password </label>
+        <label class="form-label">{{SINGUPFORMLABELS.CONFIRM_PASSWORD}} </label>
         <div class="input-content">
           <input
             matInput
-            placeholder="Confirm Password "
+            [placeholder]="SINGUPFORMLABELS.CONFIRM_PASSWORD"
             [type]="passwordConfirmFieldType ? 'text' : 'password'"
             formControlName="confirmPassword"
-            required
+            
           />
           <!-- [ngClass]="{'fi fi-eye':!passwordConfirmFieldType, 'fi fi-eye': passwordConfirmFieldType}" (click)="toggleFieldConfirm()" -->
           <span
@@ -210,30 +212,44 @@
           ></span>
         </div>
         <mat-error
-        *ngIf="registerForm.controls.confirmPassword.errors && registerForm.controls.confirmPassword.errors.compare && !registerForm.controls.confirmPassword.errors.required">
-        {{ 'validationMessage.compare'}}
-      </mat-error>
-      <mat-error
-        *ngIf="registerForm.controls.confirmPassword.errors && registerForm.controls.confirmPassword.errors.required">
-        {{ 'validationMessage.required'}}
-      </mat-error>
+          *ngIf="
+            registerForm.controls.confirmPassword.errors &&
+            registerForm.controls.confirmPassword.errors.compare &&
+            !registerForm.controls.confirmPassword.errors.required
+          "
+        >
+          {{ SINGUPFORMLABELS.PASSWORD + ' and ' +SINGUPFORMLABELS.CONFIRM_PASSWORD + ' is not matching.' }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            registerForm.controls.confirmPassword.errors &&
+            registerForm.controls.confirmPassword.errors.required
+          "
+        >
+          {{ SINGUPFORMLABELS.CONFIRM_PASSWORD + SINGUPFORMLABELS.IS_REQUIRED }}
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-12">
       <mat-form-field class="custom-textarea">
-        <label class="form-label">Organization Field of experience </label>
+        <label class="form-label">{{SINGUPFORMLABELS.EXPERIENCE_FIELD}} </label>
         <div class="input-content">
           <textarea
             matInput
-            placeholder="Organization Field of experience"
-            formControlName="experienceFields" required
+            [placeholder]="SINGUPFORMLABELS.EXPERIENCE_FIELD"
+            formControlName="experienceFields"
+            
           ></textarea>
         </div>
         <mat-error
-        *ngIf="registerForm.controls.experienceFields.errors && registerForm.controls.experienceFields.errors.required">
-        {{ 'validationMessage.required' }}
-      </mat-error>
+          *ngIf="
+            registerForm.controls.experienceFields.errors &&
+            registerForm.controls.experienceFields.errors.required
+          "
+        >
+          {{ SINGUPFORMLABELS.EXPERIENCE_FIELD + SINGUPFORMLABELS.IS_REQUIRED }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -250,14 +266,21 @@
         <mat-label>Code</mat-label>
         <div class="input-content">
           <input
-            class="input-content"
             matInput
             type="text"
-            required
+            formControlName='userEnteredCaptchaCode'
             name="tlcCaptchaInput"
             id="tlcCaptchaInput"
           />
         </div>
+        <mat-error
+        *ngIf="
+          registerForm.controls.userEnteredCaptchaCode.errors &&
+          registerForm.controls.userEnteredCaptchaCode.errors.required
+        "
+      >
+        {{ SINGUPFORMLABELS.CODE + SINGUPFORMLABELS.IS_REQUIRED }}
+      </mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -270,7 +293,7 @@
     </mat-slide-toggle>
   </div>
 
-  <button
+  <!-- <button
     (click)="register()"
     mat-flat-button
     class="
@@ -282,8 +305,27 @@
       mb-3
     "
   >
-    Sign up
-  </button>
+  <span class="mx-1 fi fi-spinner spin"></span>
+  <span class="mx-1">Sign up</span>
+    
+  </button> -->
+  <button
+  type="submit"
+  (click)="register()"
+  [disabled]="registerForm.invalid"
+  mat-flat-button
+  class="
+    btn
+    light-blue-button
+    only-shadow
+    font-16 font-weight-bold
+    w-100
+    my-3
+  "
+>
+  [appSpinnerButton]="showSpinner"
+  <span class="mx-1">Sign up</span>
+</button>
   <p class="font-16 font-weight-medium text-color-gray mt-4 mb-2">
     You have an account?
     <a routerLink="/login" class="text-color-light-blue">Login</a>

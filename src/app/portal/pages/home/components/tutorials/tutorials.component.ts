@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tutorials',
   templateUrl: './tutorials.component.html',
   styleUrls: ['./tutorials.component.scss'],
 })
-export class TutorialsComponent implements OnInit {
-  columns = ['name', 'lastModified', 'actions'];
+export class TutorialsComponent {
+  columns = ['name', 'actions'];
   columnsConfig = [
     {
       label: 'File Name',
       type: 'file',
-    },
-    {
-      label: 'Last Modified',
-      type: 'text',
     },
     {
       label: 'Action',
@@ -23,31 +19,21 @@ export class TutorialsComponent implements OnInit {
   ];
   dataSource = [
     {
-      name: 'Proof Of concept webinar Presentation',
-      lastModified: '1 Jun 2020',
-
-      actions: ['download'],
+      name: 'Proof of Concept Webinar Presentation',
+      link: 'https://www.kacare.gov.sa/ar/tut/Proof%20of%20Concept%20Webinar%20Presentation.pptx',
     },
     {
-      name: 'Proof Of concept webinar Presentation',
-      lastModified: '1 Jun 2020',
-
-      actions: ['download'],
+      name: 'Product Development Webinar Presentation',
+      link: 'https://www.kacare.gov.sa/ar/tut/Product%20Development%20Webinar%20Presentation.pptx',
     },
     {
-      name: 'Proof Of concept webinar Presentation',
-      lastModified: '1 Jun 2020',
-
-      actions: ['download'],
+      name: 'Feasibility Studies Webinar Presentation',
+      link: 'https://www.kacare.gov.sa/ar/tut/Feasibility%20Studies%20Webinar%20Presentation.pptx',
     },
     {
-      name: 'Proof Of concept webinar Presentation',
-      lastModified: '1 Jun 2020',
-
-      actions: ['download'],
+      name: 'Demonstration Webinar Presentation',
+      link: 'https://www.kacare.gov.sa/ar/tut/Demonstration%20Webinar%20Presentation.pptx',
     },
   ];
-  constructor() {}
-
-  ngOnInit(): void {}
+  actions: any = ['download'];
 }

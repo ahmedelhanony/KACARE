@@ -49,6 +49,7 @@ export class NewAccount extends BaseModel {
 
   @prop()
   captchaId!: string;
-  @prop()
+
+  @required()
   userEnteredCaptchaCode!: string;
 }
