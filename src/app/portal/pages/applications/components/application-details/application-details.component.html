@@ -1,34 +1,44 @@
 <app-header
-  title="Demonstration Projects "
-  subTitle="Demonstration project program supports technology implementation"
+  [title]="appDetails.title"
+  [subTitle]="appDetails.subTitle"
 ></app-header>
 <section class="secondary-section pb-0">
   <div class="custom-container">
     <app-article-section
       title="Overview"
-      [description]="description"
-      [image]="image"
+      [description]="appDetails.description"
+      [image]="appDetails.image"
     >
     </app-article-section>
   </div>
 
   <div class="inner-application-details my-5" data-aos="zoom-in">
     <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab">
-      <mat-tab *ngFor="let item of detailsList">
+      <mat-tab *ngFor="let item of appDetails.detailsList">
         <ng-template mat-tab-label>
           <div class="d-flex align-items-center font-18 font-weight-medium">
-            <span>{{item.label}}</span>
+            <span>{{ item.label }}</span>
           </div>
         </ng-template>
         <div class="custom-container">
-          <section class="inner-details mt-4 mx-n3" *ngFor="let details of item.details">
+          <section
+            class="inner-details mt-4 mx-n3"
+            *ngFor="let details of item.details"
+          >
             <div class="section-title mx-3 mb-3">
-              <h4 class="font-34 font-md-24 font-weight-bold line-height-1">{{details.title}}</h4>
+              <h4 class="font-34 font-md-24 font-weight-bold line-height-1">
+                {{ details.title }}
+              </h4>
             </div>
             <div class="section-description mx-3">
               <div *ngFor="let subdetails of details.description" class="mb-3">
-                <h6 class="font-24 font-md-18 font-weight-bold" *ngIf="subdetails.subHeader">{{subdetails.subHeader}}</h6>
-                <p class="font-16 font-weight-medium">{{subdetails.info}}</p>
+                <h6
+                  class="font-24 font-md-18 font-weight-bold"
+                  *ngIf="subdetails.subHeader"
+                >
+                  {{ subdetails.subHeader }}
+                </h6>
+                <p class="font-16 font-weight-medium">{{ subdetails.info }}</p>
               </div>
             </div>
           </section>

@@ -36,9 +36,8 @@
   [selectedFilters]='filters'
   (emitFilters)="onFilterChanges($event)"
 ></app-shared-filters>
-<div *ngIf="showSpinner" class="d-flex justify-content-center mt-5">
-  <mat-spinner></mat-spinner>
-</div>
+
+<ng-container *ngIf="dataSource.length; else noDataFound">
 <app-table-list
   className="admin-table"
   [columnsConfig]="columnsConfig"
@@ -47,3 +46,10 @@
   [actions]="actions"
   (emitData)="onReceiveStatus($event)"
 ></app-table-list>
+</ng-container>
+
+<ng-template #noDataFound>
+  <app-shared-no-data-found
+    *ngIf="!(loading$ | async) && !dataSource.length"
+  ></app-shared-no-data-found>
+</ng-template>

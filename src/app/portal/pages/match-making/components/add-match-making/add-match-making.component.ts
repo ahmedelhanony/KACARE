@@ -16,6 +16,7 @@ import { NewMatchMakingModel } from 'src/app/core/models/matchmaking/new-match-m
 import { LookupService } from 'src/app/core/services/lookup.service';
 import { forkJoin } from 'rxjs';
 import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
+import { LoadingService } from 'src/app/core/services/loading/loading.service';
 
 @Component({
   selector: 'app-add-match-making',
@@ -34,10 +35,12 @@ export class AddMatchMakingComponent implements OnInit {
     return TABLELISTACTIONS;
   }
   actionType!: string;
-  showSpinner = false;
+  loading$ = this.loader.loading$;
+
   showButtonSpinner = false;
 
   constructor(
+    private loader: LoadingService,
     private lookupService: LookupService,
     private matchMakingService: MatchMakingService,
     public dialog: MatDialog,
@@ -68,19 +71,13 @@ export class AddMatchMakingComponent implements OnInit {
   }
 
   getLookupsData() {
-    this.showSpinner = true;
-
     forkJoin({
       Technologies: this.lookupService.getAll(SERVICES.Technology),
       ProjectRoles: this.lookupService.getAll(SERVICES.ProjectRole),
-    }).subscribe(
-      ({ Technologies, ProjectRoles }) => {
-        this.technologies = Technologies;
-        this.ProjectRoles = ProjectRoles;
-        this.showSpinner = false;
-      },
-      () => (this.showSpinner = false)
-    );
+    }).subscribe(({ Technologies, ProjectRoles }) => {
+      this.technologies = Technologies;
+      this.ProjectRoles = ProjectRoles;
+    });
   }
 
   onSaveMatchMaking() {
@@ -140,13 +137,12 @@ export class AddMatchMakingComponent implements OnInit {
       panelClass: ['confirm-popup', 'main-popup'],
       data: {
         title: 'Almost done!',
-        message: `${
-          this.actionType === this.ACTIONS.ADD
-            ? 'Your match making has been submitted Your Information will be reviewed with our team before publishing'
-            : 'Your match making has been edited Your Information will be reviewed by our team before publishing'
-        }  `,
+        message: `Your match making has been ${
+          this.actionType === this.ACTIONS.ADD ? 'submitted' : 'edited'
+        }.`,
         confirmText: '',
-        moreText: '',
+        moreText:
+          'Your Information will be reviewed by our team before publishing.',
         type: 'done',
         icon: 'verify',
       },

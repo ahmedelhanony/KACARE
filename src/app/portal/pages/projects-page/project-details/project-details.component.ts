@@ -18,16 +18,33 @@ noData(Highcharts);
 })
 export class ProjectDetailsComponent implements OnInit {
   projectDetails = {
-    overview: [
-      'PV-diesel hybrid systems in the Kingdom.',
-      'Economic competitiveness of PV-diesel hybrid systems compared to conventional fuel systems. ',
-      'Competitive business case to deploy PV-diesel hybrid systems in the Kingdom. ',
-      'PV/diesel hybrids represent a major opportunity for a \'quick win" for solar energy in the Kingdom with clear and immediate economic benefit '
-    ],
-    date: '27 Months',
+    title: 'Composite Hydrogen Storage Tanks for Fuel Cell Vehicles',
+    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type.',
     image: 'assets/images/project.svg',
-    technology: 'Desert Technologies ',
+    technology: 'Desert Technologies',
     location:'Jeddah Makkah Highway',
+    date: '27 Months',
+    bidder: 'Novel Non-Metallic Solutions Manufacturing',
+    value: 4000000,
+    partners: 'Baker Hughes Dhahran Technology Center, ABCO Consulting, Gordon Plastics, Boston Materials',
+    area: 'Green Hydrogen',
+    type: 'Proof of Concept',
+    overview: [
+      'Design, manufacture and validate a prototype thermoplastic composite hydrogen storage tank (type IV) for use in fuel cell electric vehicles',
+      'Demonstrate functionality and applicability of a new liner technology (ZRT) that eliminates hydrogen precooling needs',
+      'All design and modelling will be done locally & component testing, manufacturing at a leading supplier, certification at a third-party supplier',
+      'Breakthrough in “Green Hydrogen”; in line with current KSA and Aramco efforts to reduce carbon footprint using hydrogen as an alternative fuel.  This will complement current projects; opening of 1st hydrogen station, plant and pipeline',
+      'Prime bidder is a Saudi JV (Aramco and BH) for nonmetallic products'
+    ],
+    innovation: [
+      'First commercial thermoplastic pressure vessel (green field)',
+      'Monolithic tank ensures compatibility between liner and composite',
+      'ZRT material eliminates the hydrogen precooling needs',
+      'Lower cost of manufacturing, no need for refrigeration or oven curing, unlimited shelf life',
+      'Recyclable material will boost sales as environment-friendly product',
+      'Better performance (durability and impact strength)'
+    ],
+    id: '1'
   }
 
 

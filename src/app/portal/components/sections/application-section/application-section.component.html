@@ -5,11 +5,11 @@
   >
     <app-main-card
       className="applications-card cursor-pointer"
-      [routerLink]="application.link"
       [title]="application.title"
       [description]="application.description"
     >
       <img
+        [routerLink]="application.link"
         [src]="'assets/images/applications/' + application.image + '.jpg'"
         alt="icon"
         shape
@@ -18,9 +18,9 @@
         <button
           mat-flat-button
           class="btn primary-button w-100 font-weight-bolder"
-          (click)="$event.stopPropagation()"
-          routerLink="/applications/apply"
+          (click)="onApplyClicked(application.link)"
         >
+          <!-- routerLink="/applications/apply" -->
           Apply Now
         </button>
       </div>

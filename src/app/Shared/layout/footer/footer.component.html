@@ -1,12 +1,20 @@
 <footer>
   <div class="custom-container">
-    <div class="logo-links d-flex flex-column flex-md-row align-items-center justify-content-between">
-      <div class="d-flex flex-column" >
+    <div
+      class="
+        logo-links
+        d-flex
+        flex-column flex-md-row
+        align-items-center
+        justify-content-between
+      "
+    >
+      <div class="d-flex flex-column">
         <a routerLink="/" class="footer-logo mb-2">
-          <img src="assets/images/logo.svg" alt="">
+          <img src="assets/images/logo.svg" alt="" />
         </a>
         <a href="/" class="footer-logo">
-          <img src="assets/images/nidlp.png" alt="">
+          <img src="assets/images/nidlp.png" alt="" />
         </a>
       </div>
       <ul class="footer-links">
@@ -14,13 +22,19 @@
           <a href="">Home</a>
         </li>
         <li>
-          <a href="">Match making</a>
+          <a
+            [routerLink]="
+              isAuthenticated ? '/match-making/all-match-making' : '/login'
+            "
+            href=""
+            >Match making</a
+          >
         </li>
         <li>
-          <a href="">Applications</a>
+          <a routerLink="/applications" href="">Applications</a>
         </li>
         <li>
-          <a routerLink="/home/tutorials" href="">Tutorials </a>
+          <a routerLink="/home/tutorials">Tutorials </a>
         </li>
         <li>
           <a routerLink="faqs">FAQ</a>
@@ -28,9 +42,12 @@
       </ul>
     </div>
   </div>
-<div class="copyright">
-  <div class="custom-container">
-    <p class="font-14 text-color-white mb-0 text-center">All rights reserved King Abdullah City for Atomic and Renewable Energy © 2021</p>
+  <div class="copyright">
+    <div class="custom-container">
+      <p class="font-14 text-color-white mb-0 text-center">
+        All rights reserved King Abdullah City for Atomic and Renewable Energy ©
+        2021
+      </p>
+    </div>
   </div>
-</div>
 </footer>

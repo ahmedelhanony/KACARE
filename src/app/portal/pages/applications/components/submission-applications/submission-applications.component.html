@@ -1,23 +1,54 @@
+<form [formGroup]="filtersForm">
 <div class="row" data-aos="zoom-in">
-  <div class="col-md-3 mb-3">
-    <mat-form-field>
-      <label class="form-label">Application </label>
-      <div class="input-content">
-      <mat-select disableOptionCentering required placeholder="Choose Application">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-      </mat-select>
-      </div>
-    </mat-form-field>
+    <div class="col-md-3 mb-3">
+      <mat-form-field>
+        <label class="form-label">Application </label>
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            formControlName="appId"
+            (selectionChange)='onAppNameChanged($event)'
+            placeholder="Choose Application"
+          >
+            <mat-option 
+              [value]="app.serviceName"
+              *ngFor="let app of applications"
+            >
+              {{ app.description }}</mat-option
+            >
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 mb-3">
+      <mat-form-field>
+        <label class="form-label">RFP Topic</label>
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            placeholder="Choose RFP Topic"
+            formControlName="rfpTopicId"
+            (valueChange)="onRFPTopicChanged($event)"
+          >
+            <mat-option [value]="topic.id" *ngFor="let topic of RFPTopics">{{
+              topic.nameEn
+            }}</mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
   </div>
-  <div class="col-md-3 mb-3">
-    <mat-form-field>
-      <label class="form-label">REP Topic</label>
-      <div class="input-content">
-      <mat-select disableOptionCentering required placeholder="Choose REP Topic">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
-      </mat-select>
-      </div>
-    </mat-form-field>
-  </div>
-</div>
-<app-table-list [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns"></app-table-list>
+</form>
+<ng-container *ngIf="dataSource.length; else noDataFound">
+<app-table-list
+  [columnsConfig]="columnsConfig"
+  [rows]="dataSource"
+  [columns]="columns"
+></app-table-list>
+</ng-container>
+
+<ng-template #noDataFound>
+  <app-shared-no-data-found
+    *ngIf="!(loading$ | async) && !dataSource.length"
+  ></app-shared-no-data-found>
+</ng-template>

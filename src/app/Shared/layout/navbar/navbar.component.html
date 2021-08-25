@@ -93,13 +93,13 @@
             </a>
           </li>
         </ul>
-        <div class="login-actions" *ngIf="true">
+        <div class="login-actions" *ngIf="!isAuthenticated">
           <button mat-flat-button routerLink='/login' class="btn login-btn">Login</button>
           <span class="mx-1"></span>
           <button mat-flat-button class="btn create-btn" routerLink='/signup'>Create Account</button>
         </div>
       </div>
-      <div class="menu-actions" *ngIf="false">
+      <div class="menu-actions" *ngIf="isAuthenticated">
         <ng-container *ngIf="isPortal">
 
             <button
@@ -125,7 +125,7 @@
               >
             </button>
             <mat-menu #menu="matMenu" classList="logged-user-dropdown">
-              <button mat-menu-item>
+              <button mat-menu-item [routerLink]="['/my-profile']" >
                 <span class="icon">
                   <img src="assets/images/user.svg" alt="" />
                 </span>
@@ -141,7 +141,7 @@
                   >Forgot Password</span
                 >
               </button> -->
-              <button mat-menu-item>
+              <button mat-menu-item (click)="logout()">
                 <span class="icon fi fi-sign-out text-color-red font-20"></span>
                 <span class="font-15 font-weight-medium text-color-red mx-3"
                   >Logout</span
@@ -151,7 +151,7 @@
 
         </ng-container>
 
-        <div class="d-flex flex-column p-lg-4" *ngIf="!isPortal">
+        <div class="d-flex flex-column p-lg-4" *ngIf="isAuthenticated && !isPortal">
           <button mat-button class="logged-user-btn">
             <span class="avatar">
               <span

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/core/services/profile.service';
 
 @Component({
   selector: 'app-navbar',
@@ -27,20 +28,24 @@ export class NavbarComponent implements OnInit {
       hasChildren: true,
       children: [
         {
+          label: 'All Applications',
+          link: '/applications',
+        },
+        {
           label: 'Proof Of Concept',
-          link: 'applications/proof-of-concept',
+          link: '/applications/application-details/Proof-Of-Concept',
         },
         {
           label: 'Product Development',
-          link: 'applications/Product-Development',
+          link: '/applications/application-details/Product-Development',
         },
         {
           label: 'Feasibility Study Program',
-          link: 'applications/Feasibility-Study-Program',
+          link: '/applications/application-details/Feasibility-Studies',
         },
         {
           label: 'Demonstration Projects ',
-          link: 'applications/Demonstration-Projects',
+          link: '/applications/application-details/Demonstration-Projects',
         },
       ],
     },
@@ -76,7 +81,7 @@ export class NavbarComponent implements OnInit {
         },
         {
           label: 'Proof Of Concept',
-          link: '/applications/application-details/proof-of-concept',
+          link: '/applications/application-details/Proof-Of-Concept',
         },
         {
           label: 'Product Development',
@@ -84,7 +89,7 @@ export class NavbarComponent implements OnInit {
         },
         {
           label: 'Feasibility Study Program',
-          link: '/applications/application-details/Feasibility-Study-Program',
+          link: '/applications/application-details/Feasibility-Studies',
         },
         {
           label: 'Demonstration Projects ',
@@ -107,13 +112,20 @@ export class NavbarComponent implements OnInit {
   ];
 
   user = {
-    name: 'Ahmed Elhanony',
+    name: '',
     img: null,
   };
 
-  constructor(private router: Router) {}
+  isAuthenticated = false;
+
+  constructor(private router: Router, private profileService: ProfileService) {}
 
   ngOnInit(): void {
+    this.isAuthenticated = this.profileService.currentUser.isAuthenticated;
+    if (this.isAuthenticated) {
+      this.user.name = this.profileService.currentUser.fullName;
+    }
+
     if (this.isPortal) {
       this.menuList = this.portalList;
     } else {
@@ -144,5 +156,9 @@ export class NavbarComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  logout(){
+    this.profileService.clearProfile();
   }
 }

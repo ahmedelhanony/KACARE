@@ -6,22 +6,21 @@
     ></app-section-title>
 
     <div class="my-4">
-      <app-how-it-works *ngIf="!isRegister"></app-how-it-works>
-      <swiper [config]="config" class="default-swiper" *ngIf="isRegister">
+      <app-how-it-works *ngIf="!isAuthenticated"></app-how-it-works>
+      <swiper [config]="config" class="default-swiper" *ngIf="isAuthenticated">
         <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let company of companies">
             <app-match-making-card
-              className="white"
-              [title]="company.name"
-              [description]="company.description"
-              [name]="company.name"
-              [email]="company.email"
-              [technology]="company.technology"
-              [role]="company.role"
+              [className]="showSpinner ? 'white loading' : 'white'"
+              [title]="company.organizationName"
+              [description]="company.details"
+              [name]="company.organizationName"
+              [email]="company.contactInfo"
+              [technology]="company.technology.nameEn"
+              [role]="company.matchMakingRole.nameEn"
             ></app-match-making-card>
           </div>
         </div>
-
         <div class="swiper-controls">
           <div class="add-rows">
             <!-- Add Arrows -->
@@ -43,8 +42,11 @@
           </div>
         </div>
       </swiper>
-      <div class="d-flex align-items-center flex-column mt-5" data-aos="zoom-in">
-        <div *ngIf="isRegister" class="hint mb-3">
+      <div
+        class="d-flex align-items-center flex-column mt-5"
+        data-aos="zoom-in"
+      >
+        <div *ngIf="isAuthenticated" class="hint mb-3">
           <span class="icon">
             <img src="assets/images/icons/lamp.svg" alt="" />
           </span>
@@ -57,21 +59,24 @@
           <button
             mat-flat-button
             class="btn light-blue-button shadow-hover px-5 mb-2 mb-md-0"
-            *ngIf="!isRegister"
+            *ngIf="!isAuthenticated"
+            routerLink='/login'
           >
             Get Started
           </button>
           <button
             mat-flat-button
             class="btn light-blue-button shadow-hover px-5 mb-2 mb-md-0"
-            *ngIf="isRegister"
+            *ngIf="isUser"
+            routerLink='/match-making/my-match-making'
           >
             Start a new match
           </button>
           <button
             mat-stroked-button
             class="btn light-blue-button shadow-hover px-5"
-            *ngIf="isRegister"
+            *ngIf="isAuthenticated"
+            routerLink='/match-making/all-match-making'
           >
             View all
           </button>

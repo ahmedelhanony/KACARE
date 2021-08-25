@@ -23,6 +23,8 @@ import { DialogService } from './services/dialog-service/dialog.service';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FiltersService } from './services/filters/filters.service';
 import { FilterLookupsResolver } from './resolvers/filters-lookups.resolver';
+import { LoadingService } from './services/loading/loading.service';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 const SERVICES = [
   AuthService,
@@ -41,7 +43,13 @@ const SERVICES = [
   FiltersService,
   AdminGuard,
   UserGuard,
+  LoadingService,
   // FilterLookupsResolver,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true,
+  },
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

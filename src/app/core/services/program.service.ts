@@ -5,9 +5,16 @@ import { BaseService } from './base.service';
 
 @Injectable()
 export class ProgramsService extends BaseService {
+  protected serviceName!: string;
+
   constructor(public injector: Injector) {
     super(injector);
   }
+
+  setProgServiceName(name: string) {
+    this.serviceName = name;
+  }
+
   addProgram(model: any) {
     let formData = this.modelToFormData(model);
     const options = {
@@ -74,13 +81,13 @@ export class ProgramsService extends BaseService {
     );
   }
 
-  getProgram(id :number) {
+  getProgram(id: number) {
     return this.http.get<any[]>(
       environment.base_URL + `${this.serviceName}/GetProgram/${id}?`
     );
   }
 
-  getPrograms(query:any) {
+  getPrograms(query: any) {
     return this.http.post<any[]>(
       environment.base_URL + `${this.serviceName}/GetAll/`,
       query,
@@ -88,7 +95,7 @@ export class ProgramsService extends BaseService {
     );
   }
 
-  getMyPrograms(query:any) {
+  getMyPrograms(query: any) {
     return this.http.post<any[]>(
       environment.base_URL + `${this.serviceName}/GetMyPrograms/`,
       query,

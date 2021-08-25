@@ -1,10 +1,10 @@
 <app-navbar [isPortal]="isPortal"></app-navbar>
 <main>
-  <router-outlet></router-outlet>
+  <router-outlet *ngIf="!showSpinner"></router-outlet>
 </main>
 <app-footer *ngIf="isPortal"></app-footer>
 
 
-<div class="page-loading" *ngIf="false">
+<div class="page-loading" *ngIf="showSpinner">
   <img src="assets/images/logo-icon.svg" alt="">
 </div>

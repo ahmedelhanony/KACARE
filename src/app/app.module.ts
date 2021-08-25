@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { AccessDeniedComponent } from './Shared/components/access-denied/access-denied.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,6 +30,7 @@ import { AccessDeniedComponent } from './Shared/components/access-denied/access-
     HttpClientModule,
     CoreModule,
     AppRoutingModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

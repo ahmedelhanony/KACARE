@@ -1,15 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
   @Input() isPortal = true;
-  constructor() { }
+  showSpinner = true;
+
+  constructor() {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 2000);
   }
-
 }

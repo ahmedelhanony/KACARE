@@ -1,98 +1,93 @@
-import { Component, OnInit } from '@angular/core';
-import {SwiperOptions} from "swiper";
+import { Component, Input, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
+import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
+import { ProfileService } from 'src/app/core/services/profile.service';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-match-making',
   templateUrl: './match-making.component.html',
-  styleUrls: ['./match-making.component.scss']
+  styleUrls: ['./match-making.component.scss'],
 })
 export class MatchMakingComponent implements OnInit {
-  isRegister = true;
-
-
-  companies = [
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-    {
-      name: 'Organization Name',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      email: 'Email@companyname.com.sa',
-      technology: 'Solar Cooling',
-      role:'Off Takers'
-    },
-
-  ]
+  companies: any = [];
   config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 20,
     // pagination: { el: '.swiper-pagination', clickable: true},
     navigation: {
       nextEl: '.button-next',
-      prevEl: '.button-prev'
+      prevEl: '.button-prev',
     },
     loop: true,
-    watchSlidesVisibility:true,
+    watchSlidesVisibility: true,
     breakpoints: {
       480: {
         slidesPerView: 1,
-        freeMode: true
+        freeMode: true,
       },
       600: {
-        slidesPerView: 2
+        slidesPerView: 2,
       },
       991: {
-        slidesPerView: 3
+        slidesPerView: 3,
       },
       1200: {
-        slidesPerView: 4
-      }
-    }
+        slidesPerView: 4,
+      },
+    },
   };
-  constructor() { }
+
+  isAuthenticated!: boolean;
+  isUser = false;
+  showSpinner = false;
+
+  constructor(
+    private matchMakingService: MatchMakingService,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit(): void {
-  }
+    this.isAuthenticated = this.profileService.currentUser.isAuthenticated;
 
-  getFirstChar(text: string){
-    let characters = text.match(/\b(\w)/g);
-    if(characters) {
-      return characters.join('');
-    }else {
-      return false
+    if (this.isAuthenticated) {
+      this.isUser = this.profileService.currentUser.isUserOnly;
+
+      this.getMatchMakings();
     }
   }
 
+  getMatchMakings() {
+    this.showSpinner = true;
+
+    const params: any = {
+      pageNumber: 1,
+      pageSize: 10,
+      visible: true,
+    };
+
+    this.matchMakingService
+      .getMatchMakings(params)
+      .pipe(
+        finalize(() => {
+          this.showSpinner = false;
+        })
+      )
+      .subscribe((response: any) => {
+        if (response && response.body && response.body.length) {
+          this.companies = [...response.body];
+        } else {
+          this.companies = [];
+        }
+      });
+  }
+
+  getFirstChar(text: string) {
+    let characters = text.match(/\b(\w)/g);
+    if (characters) {
+      return characters.join('');
+    } else {
+      return false;
+    }
+  }
 }

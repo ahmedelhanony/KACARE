@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogService } from 'src/app/core/services/dialog-service/dialog.service';
 import { FAQService } from 'src/app/core/services/faq.service';
+import { LoadingService } from 'src/app/core/services/loading/loading.service';
 import { DefaultDeletionOptions } from 'src/app/Shared/utils/dialog-options';
 import { TABLELISTACTIONS } from 'src/app/Shared/utils/enums';
 import { AdminAddFaqComponent } from './admin-add-faq/admin-add-faq.component';
@@ -33,13 +34,22 @@ export class AdminFaqsComponent implements OnInit {
   ];
   dataSource: any = [];
   actions: any = ['edit', 'delete'];
+
+  status: any = [
+    { value: null, viewValue: 'All' },
+    { value: 1, viewValue: 'Published' },
+    { value: 0, viewValue: 'UnPublished' },
+  ];
+  statusFilter: any = null;
+
   selectedFAQId!: number;
-  showSpinner = false;
+  loading$ = this.loader.loading$;
 
   constructor(
     public dialog: MatDialog,
     private FAQService: FAQService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    public loader: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -47,27 +57,44 @@ export class AdminFaqsComponent implements OnInit {
   }
 
   getAllFAQS() {
-    this.showSpinner = true;
-    const query: any = {
+    let query: any = {
       pageNumber: 1,
-      pageSize: 50,
+      pageSize: 30,
+      visible: this.statusFilter,
     };
 
-    this.FAQService.getQuestions(query).subscribe(
-      (response: any) => {
-        if (response && response.body && response.body.length) {
-          this.dataSource = [...response.body];
-        } else {
-          this.dataSource = [];
-        }
-
-        this.showSpinner = false;
-      },
-      () => {
-        this.showSpinner = false;
+    this.FAQService.getQuestions(query).subscribe((response: any) => {
+      if (response && response.body && response.body.length) {
+        this.dataSource = [...response.body];
+      } else {
+        this.dataSource = [];
       }
-    );
+    });
   }
+
+  onStatusChanged({ value }: any) {
+    this.statusFilter = value;
+    this.getAllFAQS();
+  }
+
+  //#region Receving Data From Child Component
+
+  onReceiveFAQItem({ item, action }: any) {
+    switch (action) {
+      case TABLELISTACTIONS.DELETE:
+        this.onDeleteFAQ(item);
+        break;
+
+      case TABLELISTACTIONS.EDIT:
+        this.selectedFAQId = item.id;
+        this.onEditFAQ(item, TABLELISTACTIONS.EDIT);
+        break;
+    }
+  }
+
+  //#endregion
+
+  //#region Add FAQ Functions
 
   addFaq(): void {
     const dialogRef = this.dialog.open(AdminAddFaqComponent, {
@@ -84,27 +111,12 @@ export class AdminFaqsComponent implements OnInit {
   }
 
   addNewQuestion(formValues: any) {
-    this.showSpinner = true;
-    this.FAQService.addQuestion(formValues).subscribe(
-      (response: any) => {
-        this.handleDataAfterActionDone(response);
-      },
-      () => (this.showSpinner = false)
-    );
+    this.FAQService.addQuestion(formValues).subscribe((response: any) => {
+      this.handleDataAfterActionDone(response);
+    });
   }
 
-  onReceiveFAQItem({ item, action }: any) {
-    switch (action) {
-      case TABLELISTACTIONS.DELETE:
-        this.onDeleteFAQ(item);
-        break;
-
-      case TABLELISTACTIONS.EDIT:
-        this.selectedFAQId = item.id;
-        this.onEditFAQ(item, TABLELISTACTIONS.EDIT);
-        break;
-    }
-  }
+  //#endregion
 
   //#region Add / Update FAQ Actions
 
@@ -123,17 +135,13 @@ export class AdminFaqsComponent implements OnInit {
   }
 
   editFAQ(formValues: any) {
-    this.showSpinner = true;
     formValues.id = this.selectedFAQId;
-    this.FAQService.editQuestion(formValues).subscribe(
-      (res: any) => {
-        this.handleDataAfterActionDone(res);
-      },
-      () => (this.showSpinner = false)
-    );
+    this.FAQService.editQuestion(formValues).subscribe((res: any) => {
+      this.handleDataAfterActionDone(res);
+    });
   }
 
-  //#region
+  //#endregion
 
   //#region Delete FAQ Functions
 
@@ -152,13 +160,9 @@ export class AdminFaqsComponent implements OnInit {
   }
 
   deleteFAQ(id: number) {
-    this.showSpinner = true;
-    this.FAQService.deleteQuestion(id).subscribe(
-      (response: any) => {
-        this.handleDataAfterActionDone(response);
-      },
-      () => (this.showSpinner = false)
-    );
+    this.FAQService.deleteQuestion(id).subscribe((response: any) => {
+      this.handleDataAfterActionDone(response);
+    });
   }
 
   //#endregion
@@ -167,7 +171,6 @@ export class AdminFaqsComponent implements OnInit {
     if (response && !response.status) {
       this.getAllFAQS();
     } else {
-      this.showSpinner = false;
     }
   }
 }

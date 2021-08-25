@@ -7,6 +7,7 @@ import {
   filters,
   FiltersService,
 } from 'src/app/core/services/filters/filters.service';
+import { LoadingService } from 'src/app/core/services/loading/loading.service';
 import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
 import { BaseComponent } from 'src/app/Shared/components/base/base.component';
 
@@ -87,16 +88,17 @@ export class AdminMatchMakingComponent
     // },
   ];
   actions: any = ['publish'];
-  showSpinner = false;
   filters!: filters;
-  dropDownIds = ['visible', 'technologyId', 'matchMakingRoleId']
+  dropDownIds = ['visible', 'technologyId', 'matchMakingRoleId'];
   destoryed$: Subject<any> = new Subject<any>();
   subscriptions: Subscription = new Subscription();
+  loading$ = this.loader.loading$;
 
   constructor(
     private matchMakingService: MatchMakingService,
     private toastrService: ToastrService,
     private filtersService: FiltersService,
+    public loader: LoadingService,
     public injector: Injector
   ) {
     super(injector);
@@ -112,7 +114,6 @@ export class AdminMatchMakingComponent
   }
 
   ngOnInit(): void {
-    this.showSpinner = true;
     this.onParamsChanges();
 
     this.router.events.pipe(takeUntil(this.destoryed$)).subscribe((event) => {
@@ -123,7 +124,6 @@ export class AdminMatchMakingComponent
   }
 
   onParamsChanges() {
-    this.showSpinner = true;
     const params: any = this.filtersService.getParams();
     this.filters = this.filtersService.getDropdownFilters(params);
     // this.searchOptions = this.filtersService.getSearchOptions(params);
@@ -144,15 +144,8 @@ export class AdminMatchMakingComponent
   }
 
   fetchData(params: object = {}) {
-    this.showSpinner = true;
-
     this.matchMakingService
       .getMatchMakings(params)
-      .pipe(
-        finalize(() => {
-          this.showSpinner = false;
-        })
-      )
       .subscribe((response: any) => {
         if (response && response.body && response.body.length) {
           this.dataSource = [...response.body];
@@ -172,12 +165,10 @@ export class AdminMatchMakingComponent
   }
 
   onReceiveStatus(data: any) {
-    this.showSpinner = true;
     this.toggleMatchMakingStatus(data.item);
   }
 
   toggleMatchMakingStatus(item: any) {
-    this.showSpinner = true;
 
     if (item.visible) {
       this.matchMakingService
@@ -193,7 +184,6 @@ export class AdminMatchMakingComponent
         });
     }
 
-    this.showSpinner = true;
   }
 
   afterStatusChanged(approved: boolean) {

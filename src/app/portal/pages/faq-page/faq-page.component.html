@@ -1,26 +1,14 @@
-
-
-<div *ngIf="showSpinner; else first" class="row">
-  <div class="d-flex justify-content-center center-loading m-5">
-    <mat-spinner></mat-spinner>
-  </div>
-</div>
-
-<ng-template #first>
-  <ng-container *ngIf="!showSpinner && faqs.length; else noDataFound">
-    <app-header title="FAQ" subTitle="Frequently Asked Questions"></app-header>
-    <section class="secondary-section">
-      <div class="custom-container mb-5">
-        <app-faq [faqs]="faqs"></app-faq>
-      </div>
-    </section>
-  </ng-container>
-</ng-template>
+<ng-container *ngIf="faqs.length; else noDataFound">
+  <app-header title="FAQ" subTitle="Frequently Asked Questions"></app-header>
+  <section class="secondary-section">
+    <div class="custom-container mb-5">
+      <app-faq [faqs]="faqs"></app-faq>
+    </div>
+  </section>
+</ng-container>
 
 <ng-template #noDataFound>
-  <div class="row" *ngIf="!showSpinner">
-    <div class="col-md-12 text-cenetr">
-      <img src="assets/images/noDataFound.png" />
-    </div>
-  </div>
+  <app-shared-no-data-found
+    *ngIf="!(loading$ | async) && !faqs.length"
+  ></app-shared-no-data-found>
 </ng-template>

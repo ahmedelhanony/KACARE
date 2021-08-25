@@ -1,9 +1,21 @@
 <section class="main-section bg-color-light-gray">
   <div class="custom-container">
-  <app-section-title title="FAQ" subTitle="Frequently Asked Questions"></app-section-title>
+    <app-section-title
+      title="FAQ"
+      subTitle="Frequently Asked Questions"
+    ></app-section-title>
 
-    <div class="my-4">
-      <app-faq [faqs]="faqs"></app-faq>
-    </div>
+    <ng-container *ngIf="faqs.length; else noDataFound">
+      <div class="my-4">
+        <app-faq [faqs]="faqs"></app-faq>
+      </div>
+    </ng-container>
+
+    <ng-template #noDataFound>
+      <app-shared-no-data-found
+        *ngIf="!(loading$ | async) && !faqs.length"
+      ></app-shared-no-data-found>
+    </ng-template>
+
   </div>
 </section>

@@ -10,6 +10,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { SharedModule } from '../Shared/shared.module';
 import { BotDetectCaptchaModule } from 'angular-captcha';
 import { VerfiyAccountComponent } from './components/verfiy-account/verfiy-account.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { VerfiyAccountComponent } from './components/verfiy-account/verfiy-accou
     ResetPasswordComponent,
     ForgetPasswordComponent,
     VerfiyAccountComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,

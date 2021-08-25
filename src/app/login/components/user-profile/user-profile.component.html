@@ -1,0 +1,51 @@
+<main>
+  <app-header
+    className="match-making-header"
+    [title]="profileDetails.organizationName"
+    [orgEmail]="profileDetails.email"
+  ></app-header>
+  <section class="py-4">
+    <div class="custom-container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <mat-list role="list">
+            <mat-list-item role="listitem" data-aos="zoom-in">
+              <label
+                class="font-20 text-color-onyx font-weight-bold mb-0"
+              >Email</label>
+              <p class="font-16 text-color-gray m-0">{{profileDetails.email}}</p>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" data-aos="zoom-in">
+              <label
+                class="font-20 text-color-onyx font-weight-bold mb-0"
+              >Job Title</label>
+              <p class="font-16 text-color-gray m-0">{{profileDetails.jobTitle}}</p>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" data-aos="zoom-in">
+              <label
+                class="font-20 text-color-onyx font-weight-bold mb-0"
+              >Phone Number</label>
+              <p class="font-16 text-color-gray m-0">{{profileDetails.mobileNumber}}</p>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" data-aos="zoom-in">
+              <label
+                class="font-20 text-color-onyx font-weight-bold mb-0"
+              >Registration Role</label>
+              <p class="font-16 text-color-gray m-0">{{profileDetails.roles[0]}}</p>
+            </mat-list-item>
+
+            <mat-list-item role="listitem" data-aos="zoom-in">
+              <label
+                class="font-20 text-color-onyx font-weight-bold mb-0"
+              >Organization Field of experience</label>
+              <p class="font-16 text-color-gray m-0">{{profileDetails.organizationName}}</p>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
