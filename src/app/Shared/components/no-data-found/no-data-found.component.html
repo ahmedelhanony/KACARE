@@ -1,5 +1,5 @@
-<div class="row text-center">
-  <div class="col-md-12 ">
+<div *ngIf="!(loading$ | async) && showImage" class="row text-center">
+  <div class="col-md-12">
     <img src="assets/images/noDataFound.png" />
   </div>
 </div>

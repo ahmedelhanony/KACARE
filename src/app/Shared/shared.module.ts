@@ -23,6 +23,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
+import { GeneralInfoComponent } from '../portal/pages/applications/components/apply-for-application/general-info/general-info.component';
 @NgModule({
   declarations: [
     DocsUploaderComponent,
@@ -41,7 +42,8 @@ import { NoDataFoundComponent } from './components/no-data-found/no-data-found.c
     FiltersComponent,
     AccessDeniedComponent,
     GlobalSearchComponent,
-    NoDataFoundComponent
+    NoDataFoundComponent,
+    GeneralInfoComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { NoDataFoundComponent } from './components/no-data-found/no-data-found.c
     FiltersComponent,
     AccessDeniedComponent,
     GlobalSearchComponent,
-    NoDataFoundComponent
+    NoDataFoundComponent,
+    GeneralInfoComponent
   ],
 })
 export class SharedModule {}

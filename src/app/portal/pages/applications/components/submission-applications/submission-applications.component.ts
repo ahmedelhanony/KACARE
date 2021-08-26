@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { Subject, Subscription } from 'rxjs';
-import { filter, finalize, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { AppFiltersModel } from 'src/app/core/models/common/app-filters.model';
 import {
   AppFilters,
@@ -20,8 +20,10 @@ import { LoadingService } from 'src/app/core/services/loading/loading.service';
   templateUrl: './submission-applications.component.html',
   styleUrls: ['./submission-applications.component.scss'],
 })
-export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
-  columns = ['title', 'rfpTopic', 'SubmissionDate', 'Status'];
+export class SubmissionApplicationsComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
+  columns = ['title', 'rfpTopic', 'creationDate', 'Status'];
   columnsConfig = [
     {
       label: 'Title',
@@ -33,7 +35,7 @@ export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
     },
     {
       label: 'Submission Date',
-      type: 'text',
+      type: 'date',
     },
     {
       label: 'Status',
@@ -86,13 +88,9 @@ export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
       AppFiltersModel,
       new AppFiltersModel()
     );
-    this.filtersForm.controls['appId'].setValue(SERVICES.POC, {
-      onlySelf: true,
-    });
   }
 
   ngOnInit(): void {
-    debugger;
     this.programsService.setProgServiceName(this.applications[0].serviceName);
 
     this.getRFPTopics();
@@ -101,10 +99,18 @@ export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
 
     this.router.events.pipe(takeUntil(this.destoryed$)).subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        debugger;
         this.onParamsChanges();
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    const params: any = this.filtersService.getParams();
+    if (!params.appId) {
+      this.filtersForm.controls['appId'].setValue(SERVICES.POC, {
+        onlySelf: true,
+      });
+    }
   }
 
   getRFPTopics() {
@@ -167,7 +173,7 @@ export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
           };
         } else if (ele.isSubmitted) {
           ele.Status = {
-            label: 'Summitted',
+            label: 'Submitted',
             type: 'waiting',
           };
         } else {
@@ -180,29 +186,19 @@ export class SubmissionApplicationsComponent implements OnInit, OnDestroy {
     }
   }
 
-  // onFilterChanges(selectedFilters: any) {
-  //   this.filters = { ...selectedFilters };
-  //   this.changeRouterParams();
-  // }
-
   changeRouterParams() {
-    debugger;
     this.filtersService.changeParams(this.filters, '/applications');
   }
 
   onAppNameChanged(data: any) {
-    debugger;
     this.filters.appId = data.value;
     this.programsService.setProgServiceName(data.value);
     this.changeRouterParams();
-    // this.emitFilters.emit({ ...this.filters });
   }
 
   onRFPTopicChanged(value: any) {
-    debugger;
     this.filters.rfpTopicId = value;
     this.changeRouterParams();
-    // this.emitFilters.emit({ ...this.filters });
   }
 
   ngOnDestroy(): void {

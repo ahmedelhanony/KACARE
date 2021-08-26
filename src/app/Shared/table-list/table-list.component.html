@@ -1,7 +1,4 @@
-<div
-  class="overflow-auto"
-  *ngIf="dataSource.data && dataSource.data.length"
->
+<div class="overflow-auto" *ngIf="dataSource.data && dataSource.data.length">
   <table
     mat-table
     [dataSource]="dataSource"
@@ -22,7 +19,9 @@
             <span
               [ngClass]="columnsConfig[i].type"
               *ngSwitchCase="'popup'"
-              (click)="openPopup(columnsConfig[i].popupType)"
+              (click)="
+                openPopup(columnsConfig[i].popupType, element.id)
+              "
             >
               {{ element[column] }}
             </span>
@@ -34,7 +33,10 @@
               {{ element[column].label }}
             </span>
             <div class="{{ element[column].type }}" *ngSwitchCase="'toggle'">
-              <mat-slide-toggle [checked]="element[column]" disabled></mat-slide-toggle>
+              <mat-slide-toggle
+                [checked]="element[column]"
+                disabled
+              ></mat-slide-toggle>
             </div>
             <div class="img-card table-img" *ngSwitchCase="'image'">
               <img [src]="element[column]" alt="" />
@@ -46,6 +48,11 @@
                 </div>
               </mat-form-field>
             </div>
+
+            <div *ngSwitchCase="'date'">
+              {{ element[column] | date }}
+            </div>
+
             <ng-container *ngSwitchCase="'action'">
               <div class="d-flex mx-n2" *ngIf="actions && actions.length">
                 <ng-container *ngFor="let action of actions">
@@ -54,7 +61,7 @@
                     mat-flat-button
                     class="btn primary-button font-weight-bolder mx-2"
                     *ngIf="action === 'download'"
-                    (click)='onDownLoadFile(element)'
+                    (click)="onDownLoadFile(element)"
                   >
                     <span class="btn-icon fi fi-download"></span>
                     <span>{{ action }}</span>
@@ -66,7 +73,7 @@
                     class="btn publish-button {{
                       element.visible
                     }} font-weight-bolder mx-2"
-                    (click)="onTakeAction(element , ACTIONS.PUBLISH)"
+                    (click)="onTakeAction(element, ACTIONS.PUBLISH)"
                     *ngIf="action === 'publish'"
                   >
                     <span class="text">{{
@@ -81,7 +88,7 @@
                     class="btn square action-button delete mx-2"
                     type="button"
                     *ngIf="action === 'delete'"
-                    (click)="onTakeAction(element , ACTIONS.DELETE)"
+                    (click)="onTakeAction(element, ACTIONS.DELETE)"
                   >
                     <span class="fi fi-trash text-color-red"></span>
                   </button>
@@ -91,7 +98,7 @@
                     mat-icon-button
                     class="btn square action-button edit font-18 mx-2"
                     *ngIf="action === 'edit'"
-                    (click)="onTakeAction(element , ACTIONS.EDIT)"
+                    (click)="onTakeAction(element, ACTIONS.EDIT)"
                   >
                     <span class="fi fi-pen text-color-gray"></span>
                   </button>
@@ -115,8 +122,8 @@
     <tr mat-row *matRowDef="let row; columns: columns"></tr>
   </table>
 </div>
-<div *ngIf="!dataSource.data || !dataSource.data.length" class="row ">
+<div *ngIf="!dataSource.data || !dataSource.data.length" class="row">
   <div class="col-md-12 text-cenetr">
-   <img src="assets/images/noDataFound.png">
+    <img src="assets/images/noDataFound.png" />
   </div>
 </div>

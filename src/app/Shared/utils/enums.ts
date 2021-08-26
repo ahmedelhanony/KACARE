@@ -51,6 +51,9 @@ export enum NAVIGATIONS {
   DemoProgramLink = '/demo/form/',
   FeasProgramLink = '/feas/form/',
 
+  ApplicationsPage = '/applications',
+  ApplyApplication = '/applications/apply',
+
   AllProgramsPage = '/programs/home',
 
   AllQuestionsPage = '/faq/edit',
@@ -142,7 +145,7 @@ export enum FORMLABELS {
   ADD_MATCH_MAKING = 'Add New Match Making',
   EDIT_MATCH_MAKING = 'Edit Match Making',
   SUBMIT = 'Submit',
-  EDIT = 'Edit'
+  EDIT = 'Edit',
 }
 
 export enum AUTHPAGESNAME {
@@ -156,6 +159,13 @@ export enum TABLELISTACTIONS {
   EDIT = 'Edit',
   DELETE = 'Delete',
   PUBLISH = 'Publish',
+}
+
+export enum APPLICATION {
+  'Proof-Of-Concept' = SERVICES.POC,
+  'Product-Development' = SERVICES.Pdevelopment,
+  'Feasibility-Studies' = SERVICES.Feas,
+  'Demonstration-Projects' = SERVICES.Demo,
 }
 
 export class AuthPages {

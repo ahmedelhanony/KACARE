@@ -24,7 +24,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     SubmissionApplicationsComponent,
     ApplicationDetailsComponent,
     ApplyForApplicationComponent,
-    GeneralInfoComponent,
+    // GeneralInfoComponent,
     TechnologyInfoComponent,
     StrategyTeamsComponent,
     BenefitCostComponent,

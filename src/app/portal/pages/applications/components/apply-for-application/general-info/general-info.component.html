@@ -1,65 +1,104 @@
-<div class="row justify-content-center">
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Institutional Name</label>
-      <div class="input-content">
-      <input matInput placeholder="Institutional Name" required>
-      </div>
-    </mat-form-field>
+<form [formGroup]="generalInfoForm">
+  <div class="row justify-content-center">
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Institutional Name</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Institutional Name"
+            required
+            formControlName="bidderInstitiutionalName"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Institutional Address</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Institutional Address"
+            required
+            formControlName="bidderInstitiutionalAddress"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Registration Number </label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Registration Number "
+            required
+            formControlName="bidderCorporateRegNumber"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Investigator Name</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Investigator Name"
+            required
+            formControlName="principalInvestigator"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Investigator Email</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Investigator Email"
+            required
+            formControlName="principalInvestigatorEmail"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Investigator phone</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Investigator phone"
+            required
+            formControlName="principalInvestigatorPhone"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Investigator Address</label>
+        <div class="input-content">
+          <input
+            matInput
+            placeholder="Investigator Address"
+            required
+            formControlName="principalInvestigatorAddress"
+          />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <label class="form-label mb-2"
+        >Is the prime bidder a saudi company?</label
+      >
+      <mat-radio-group class="d-flex flex-column" formControlName="saudiBidder">
+        <mat-radio-button value="true">Yes</mat-radio-button>
+        <mat-radio-button value="false">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Institutional Address</label>
-      <div class="input-content">
-      <input matInput placeholder="Institutional Address" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Registration Number </label>
-      <div class="input-content">
-      <input matInput placeholder="Registration Number " required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Investigator Name</label>
-      <div class="input-content">
-      <input matInput placeholder="Investigator Name" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Investigator Email</label>
-      <div class="input-content">
-      <input matInput placeholder="Investigator Email" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Investigator phone</label>
-      <div class="input-content">
-      <input matInput placeholder="Investigator phone" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Investigator Address</label>
-      <div class="input-content">
-      <input matInput placeholder="Investigator Address" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <label class="form-label mb-2">Is the prime bidder a saudi company?</label>
-    <mat-radio-group class="d-flex flex-column">
-      <mat-radio-button value="yes">Yes</mat-radio-button>
-      <mat-radio-button value="no">No</mat-radio-button>
-    </mat-radio-group>
-  </div>
-</div>
+</form>

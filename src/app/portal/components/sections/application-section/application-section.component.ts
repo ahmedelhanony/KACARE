@@ -20,13 +20,13 @@ export class ApplicationSectionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onApplyClicked(applicationURL: string) {
-    if (!this.profileService._currentUser.isAuthenticated) {
-      this.router.navigate([NAVIGATIONS.loginPageUrl]);
-    }else{
-      this.router.navigate([applicationURL]);
-    }
-  }
+  // onApplyClicked(applicationURL: string) {
+  //   if (!this.profileService._currentUser.isAuthenticated) {
+  //     this.router.navigate([NAVIGATIONS.loginPageUrl]);
+  //   }else{
+  //     this.router.navigate([applicationURL]);
+  //   }
+  // }
 
   takeQuiz(): void {
     const dialogRef = this.dialog.open(ApplicationQuizComponent, {

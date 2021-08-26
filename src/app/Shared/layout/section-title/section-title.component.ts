@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./section-title.component.scss']
 })
 export class SectionTitleComponent implements OnInit {
-  @Input() title = '';
+  @Input() title :any = '';
   @Input() subTitle = '';
   @Input() orgEmail = '';
   @Input() className = '';

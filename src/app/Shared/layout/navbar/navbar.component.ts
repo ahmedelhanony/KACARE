@@ -33,19 +33,19 @@ export class NavbarComponent implements OnInit {
         },
         {
           label: 'Proof Of Concept',
-          link: '/applications/application-details/Proof-Of-Concept',
+          link: '/admin/applications/Proof-Of-Concept',
         },
         {
           label: 'Product Development',
-          link: '/applications/application-details/Product-Development',
+          link: '/admin/applications/Product-Development',
         },
         {
           label: 'Feasibility Study Program',
-          link: '/applications/application-details/Feasibility-Studies',
+          link: '/admin/applications/Feasibility-Studies',
         },
         {
           label: 'Demonstration Projects ',
-          link: '/applications/application-details/Demonstration-Projects',
+          link: '/admin/applications/Demonstration-Projects',
         },
       ],
     },

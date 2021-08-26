@@ -39,11 +39,13 @@ export class TableListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  openPopup(type: string): void {
+  openPopup(type: string, id: any): void {
+    debugger;
     if (type === 'application') {
       const dialogRef = this.dialog.open(AdminApplicationDetailsComponent, {
         width: '950px',
         height: '90%',
+        data: { id },
         panelClass: ['main-popup'],
       });
 

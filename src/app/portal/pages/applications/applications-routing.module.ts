@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ApplicationsComponent} from "./applications.component";
-import {ApplicationDetailsComponent} from "./components/application-details/application-details.component";
-import {ApplyForApplicationComponent} from "./components/apply-for-application/apply-for-application.component";
+import { ApplyAppGuard } from 'src/app/core/guards/apply-app.guard';
+import { ApplicationsComponent } from './applications.component';
+import { ApplicationDetailsComponent } from './components/application-details/application-details.component';
+import { ApplyForApplicationComponent } from './components/apply-for-application/apply-for-application.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,12 @@ const routes: Routes = [
   {
     path: 'apply',
     component: ApplyForApplicationComponent,
+    canActivate: [ApplyAppGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ApplicationsRoutingModule { }
+export class ApplicationsRoutingModule {}

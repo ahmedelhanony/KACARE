@@ -28,7 +28,7 @@ export class FiltersService {
       ...params,
       // pageNumber: page + 1,
       pageNumber: 1,
-      pageSize: 10, //gridModel.state.take,
+      pageSize: 25, //gridModel.state.take,
     };
     this.router.navigate([url], {
       queryParams,
@@ -55,6 +55,12 @@ export class FiltersService {
       ? params['rfpTopicId']
       : null;
     dropdownFilters.appId = params['appId'] ? params['appId'] : null;
+    dropdownFilters.reviewed =
+      params['reviewed'] || params['reviewed'] === false
+        ? params['reviewed']
+        : null;
+    dropdownFilters.dateFrom = params['dateFrom'] ? params['dateFrom'] : null;
+    dropdownFilters.dateTo = params['dateTo'] ? params['dateTo'] : null;
     return dropdownFilters;
   }
 
@@ -82,4 +88,7 @@ export class filters {
 export class AppFilters {
   rfpTopicId!: number;
   appId!: string;
+  reviewed!: boolean;
+  dateFrom!: Date;
+  dateTo!: Date;
 }
