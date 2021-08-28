@@ -34,8 +34,10 @@
     border: 1px solid $gray-1 !important;
     box-shadow: none !important;
     cursor: pointer;
+    transition: all .2s linear;
     .primary-label{
       background-color: $white;
+      transition: all .2s linear;
     }
     .button-white{
       background-color: transparent;

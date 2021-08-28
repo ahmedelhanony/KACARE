@@ -1,9 +1,9 @@
 <app-header title="PV-Diesel Hybrid Systems"></app-header>
 <section class="secondary-section">
   <div class="custom-container mb-5">
-    <div class="row flex-lg-row flex-column-reverse">
+    <div class="row flex-lg-row flex-column-reverse align-items-baseline">
       <div class="col-xl-8 col-lg-7 mb-4">
-        <div class="row" data-aos="zoom-in">
+        <div class="row pt-4" data-aos="zoom-in">
           <div class="col-md-3 mb-3">
             <span class="font-19 text-color-blue font-weight-bold">Prime bidder:</span>
           </div>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="pt-4" data-aos="zoom-in">
-          <h5 class="font-24 text-color-onyx my-4">PROJECT OVERVIEW AND BENEFIT</h5>
+          <h5 class="font-24 text-color-onyx my-4">Objective</h5>
           <ul class="default-list dashed-list">
             <li *ngFor="let item of projectDetails.overview" class="font-16 text-color-gray font-weight-medium">{{item}}</li>
           </ul>
@@ -35,7 +35,30 @@
             <li *ngFor="let item of projectDetails.overview" class="font-16 text-color-gray font-weight-medium">{{item}}</li>
           </ul>
         </div>
+        <div class="pt-4" data-aos="zoom-in">
+          <h5 class="font-24 text-color-onyx my-4">Project Cost Breakdown</h5>
+          <div class="project-chart d-flex flex-column flex-md-row align-items-center flex-wrap">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="OutstandingAmount"></highcharts-chart>
+            <div class="d-flex flex-column my-4" data-aos="zoom-in">
+              <div class="tooltip-chart" [ngClass]="{'mb-4': i===0}" *ngFor="let chartItem of chartLegend; let i = index">
+                <span class="circle" [style.background-color]="chartItem.color"></span>
+                <div class="info">
+                  <span class="font-16 font-weight-bold text-color-onyx">{{chartItem.name}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pt-4" data-aos="zoom-in">
+          <h5 class="font-24 text-color-onyx my-4">The point-focus Fresnel collector (PFFC)developed by KSU is the main innovation
+            in this system</h5>
+          <ul class="default-list dashed-list">
+            <li *ngFor="let item of projectDetails.overview" class="font-16 text-color-gray font-weight-medium">{{item}}</li>
+          </ul>
+        </div>
+
       </div>
+
       <div class="col-xl-4 col-lg-5 mb-4">
         <app-project-card className="no-shadow details-page" [date]="projectDetails.date" [technology]="projectDetails.technology"
                           [location]="projectDetails.location" [image]="projectDetails.image"
@@ -43,6 +66,11 @@
           <img src="assets/images/logo.svg" alt="logo" logo>
         </app-project-card>
       </div>
+    </div>
+
+    <div class="pt-4" data-aos="zoom-in">
+      <h5 class="font-24 text-color-onyx my-4">Gallery</h5>
+      <app-project-gallery></app-project-gallery>
     </div>
 
   </div>

@@ -5,10 +5,14 @@
         transform: scaleX(.6);
         background-color: $light-blue !important;
     }
-    .mat-tab-label {
+  .mat-tab-links{
+    justify-content: center;
+  }
+    .mat-tab-label, .mat-tab-link{
         height: auto;
         padding: 20px 24px;
         opacity: 1;
+      color: $gray;
         @include media-breakpoint-down(md){
           padding: 20px 1rem;
         }
@@ -16,6 +20,8 @@
             color: $gray;
         }
         &.mat-tab-label-active {
+          color: $onyx;
+          font-weight: $font-medium;
             .mat-tab-label-content {
                 color: $onyx;
                 font-weight: $font-medium;

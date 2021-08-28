@@ -25,9 +25,9 @@
       </button>
     </div>
   </div>
-
-  <nav mat-tab-nav-bar class="primary-tab" data-aos="zoom-in">
-    <a
+  <section class="primary-tab">
+    <nav mat-tab-nav-bar  data-aos="zoom-in">
+    <span
       mat-tab-link
       *ngFor="let link of matchMakingTabs"
       [routerLink]="link.link"
@@ -36,7 +36,11 @@
       [active]="rla.isActive"
     >
       {{ link.name }}
-    </a>
-  </nav>
-  <router-outlet></router-outlet>
+    </span>
+    </nav>
+    <div class="py-4 mat-tab-body-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+
 </div>
