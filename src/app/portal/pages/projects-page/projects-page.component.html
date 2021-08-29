@@ -1,34 +1,18 @@
 <app-header title="FAQ" subTitle="Frequently Asked Questions"></app-header>
-<section class="secondary-section pt-0">
+<section class="secondary-section">
   <div class="custom-container mb-5">
-    <mat-tab-group disableRipple mat-align-tabs="center" class="primary-tab">
-      <mat-tab *ngFor="let round of projectsRound">
-        <ng-template mat-tab-label>
-          <div class="d-flex align-items-center font-18 font-weight-medium">
-            <span>{{round}}</span>
-          </div>
-        </ng-template>
+    <div class="row">
+      <div class="col-md-6 mb-4" *ngFor="let project of projects">
+        <app-project-card routerLink="/past-projects/project-details"
+          className="page-project-card image-card" [title]="project.title" [description]="project.description"
+          [image]="project.image" [location]="project.location" [technology]="project.technology" [date]="project.date"
+        >
 
-        <div class="py-4 my-2">
-          <div class="row">
-            <div class="col-md-6 mb-4" *ngFor="let project of projects">
-              <app-project-card routerLink="/past-projects/project-details"
-                                className="page-project-card image-card" [title]="project.title" [description]="project.description"
-                                [image]="project.image" [location]="project.location" [technology]="project.technology" [date]="project.date"
-              >
-
-              </app-project-card>
-            </div>
-          </div>
-          <div class="d-flex justify-content-center mt-5">
-            <mat-spinner></mat-spinner>
-          </div>
-        </div>
-
-      </mat-tab>
-    </mat-tab-group>
-
-
-
+        </app-project-card>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <mat-spinner></mat-spinner>
+    </div>
   </div>
 </section>

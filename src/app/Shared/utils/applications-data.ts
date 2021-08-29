@@ -1,8 +1,9 @@
+import * as _ from 'lodash';
+
 export const ApplicationsData: any = {
   'Proof-Of-Concept': {
     title: 'Proof Of Concept',
-    subTitle:
-      'Proof Of Concept program supports technology implementation',
+    subTitle: 'Proof Of Concept program supports technology implementation',
     description:
       'Proof-Of-Concept The demonstration projects request for proposals (RFP) provides financial support for \n' +
       'selected bidders to conduct full-scale demonstrations of commercially ready renewable \n' +
@@ -165,8 +166,8 @@ export const ApplicationsData: any = {
   },
 
   'Product-Development': {
-    title : 'Product Development',
-    subTitle:'Product Development program supports technology implementation',
+    title: 'Product Development',
+    subTitle: 'Product Development program supports technology implementation',
     description:
       'Product-Development The demonstration projects request for proposals (RFP) provides financial support for \n' +
       'selected bidders to conduct full-scale demonstrations of commercially ready renewable \n' +
@@ -329,8 +330,8 @@ export const ApplicationsData: any = {
   },
 
   'Feasibility-Studies': {
-    title : 'Feasibility Studies',
-    subTitle:'Feasibility Studies program supports technology implementation',
+    title: 'Feasibility Studies',
+    subTitle: 'Feasibility Studies program supports technology implementation',
     description:
       'Feasibility-Studies The demonstration projects request for proposals (RFP) provides financial support for \n' +
       'selected bidders to conduct full-scale demonstrations of commercially ready renewable \n' +
@@ -653,6 +654,334 @@ export const ApplicationsData: any = {
             ],
           },
         ],
+      },
+    ],
+  },
+};
+
+export enum APPCONTROLTYPE {
+  FILE = 'FILE',
+  TEXTAREA = 'TEXTAREA',
+  DROPDOWN = 'DROPDOWN',
+  CHECKBOX = 'CHECKBOX',
+  RADIOBUTTON = 'RADIOBUTTON',
+  OBJECT = 'OBJECT',
+}
+
+export const SharedGeneralInformation: any = [
+  {
+    label: 'Institutional Name',
+    field: 'bidderInstitiutionalName',
+  },
+  {
+    label: 'Institutional Address',
+    field: 'bidderInstitiutionalAddress',
+  },
+  {
+    label: 'Registration Number',
+    field: 'bidderCorporateRegNumber',
+  },
+  {
+    label: 'Investigator Name',
+    field: 'principalInvestigator',
+  },
+  {
+    label: 'Investigator Email',
+    field: 'principalInvestigatorEmail',
+  },
+  {
+    label: 'Investigator Phone',
+    field: 'principalInvestigatorPhone',
+  },
+  {
+    label: 'Investigator Address',
+    field: 'principalInvestigatorAddress',
+  },
+  {
+    label: 'Is the prime bidder a saudi company?',
+    field: 'saudiBidder',
+  },
+];
+
+export const ApplicationsStructures: any = {
+  'Proof-Of-Concept': {
+    GeneralInformation: [
+      ...SharedGeneralInformation,
+      {
+        label: 'Does the prime bidder have an account in ETIMAD?',
+        field: 'isEtmad',
+      },
+      {
+        label: 'Etimad Account Name',
+        field: 'etmadName',
+      },
+      {
+        label: 'Bidder Classification',
+        field: 'bidderClassification',
+      },
+    ],
+    TechnologyInfo: [
+      {
+        label: 'Project Title',
+        field: 'title',
+      },
+      {
+        label: 'RFP Topic Area',
+        field: 'rfpTopic',
+      },
+      {
+        label: 'Technical Abstract',
+        field: 'technicalAbstract',
+      },
+      {
+        label: 'Technical Performance Target',
+        field: 'technicalPerformanceTarget',
+      },
+      {
+        label: 'Technology Readiness Level',
+        field: 'technologyReadinessLevel',
+      },
+      {
+        label: 'Project Execution Location',
+        field: 'projectExecutionLocation',
+      },
+      {
+        label: 'Technical Abstract Diagram',
+        field: 'tptDiagram',
+        type: APPCONTROLTYPE.FILE,
+      },
+      {
+        label: 'Does the project scope include prototype testing?',
+        field: 'hasPrototypeTesting',
+      },
+      {
+        label: 'Does the technology has background intellectual property?',
+        field: 'hasIntellectualProp',
+      },
+      {
+        label: 'Patent File Diagram',
+        field: 'patentAttachement',
+        type: APPCONTROLTYPE.FILE,
+      },
+      {
+        label:
+          'Is it expected to produce foreground intellectual property after building the prototype?',
+        field: 'isForegroundProp',
+      },
+    ],
+    StrategyAndTeams: [],
+    BenefitAndCost: [
+      {
+        label: 'Total project cost',
+        field: 'projectCost',
+      },
+      {
+        label: 'Expected cost contribution from the bidder',
+        field: 'anticipatedCost',
+      },
+      {
+        label: 'Expected cost contribution from K∙A∙CARE',
+        field: 'shareResourcesCost',
+      },
+    ],
+  },
+  'Product-Development': {
+    GeneralInformation: [...SharedGeneralInformation],
+    TechnologyInfo: [
+      {
+        label: 'Project Title',
+        field: 'title',
+      },
+      {
+        label: 'RFP Topic Area',
+        field: 'rfpTopic',
+      },
+      {
+        label: 'Market need in KSA',
+        field: 'marketNeed',
+      },
+      {
+        label: 'Scope of the project',
+        field: 'projectScope',
+      },
+      {
+        label: 'Product Description',
+        field: 'background',
+      },
+      {
+        label: 'Product Applicability',
+        field: 'productApplicability',
+      },
+      {
+        label: 'Product Advantage',
+        field: 'productAdvantage',
+      },
+      {
+        label: 'Product Novelty',
+        field: 'productNovelty',
+      },
+      {
+        label: 'A concept diagram of the proposed system',
+        field: 'diagram',
+        type: APPCONTROLTYPE.FILE,
+      },
+    ],
+    StrategyAndTeams: [
+      {
+        label: 'Brief Summary Of The Business Strategy',
+        field: 'businessCase',
+      },
+      {
+        label: ' Plans for targeting and securing a local off-taker',
+        field: 'offTakerPlan',
+      },
+    ],
+    BenefitAndCost: [
+      {
+        label: 'Benefit to Saudi Arabia',
+        field: 'ksaBenefit',
+      },
+      {
+        label: 'Anticipated Cost',
+        field: 'anticipatedCost',
+      },
+      {
+        label: 'Project Cost',
+        field: 'projectCost',
+      },
+      {
+        label: 'Share Resources Cost',
+        field: 'shareResourcesCost',
+      },
+    ],
+  },
+  'Feasibility-Studies': {
+    GeneralInformation: [...SharedGeneralInformation],
+    TechnologyInfo: [
+      {
+        label: 'Project Title',
+        field: 'title',
+      },
+      {
+        label: 'RFP Topic Area',
+        field: 'rfpTopic',
+      },
+
+      {
+        label: 'Technology Description',
+        field: 'technologyDescription',
+      },
+      {
+        label: 'Operation Principals',
+        field: 'operationPrincipals',
+      },
+      {
+        label: 'Technology Applicability',
+        field: 'technologyApplicability',
+      },
+      {
+        label: 'A concept diagram of the proposed system',
+        field: 'diagram',
+        type: APPCONTROLTYPE.FILE,
+      },
+    ],
+    StrategyAndTeams: [],
+    BenefitAndCost: [
+      {
+        label: 'Anticipated Cost',
+        field: 'anticipatedCost',
+      },
+      {
+        label: 'Project Cost',
+        field: 'projectCost',
+      },
+      {
+        label: 'Share Resources Cost',
+        field: 'shareResourcesCost',
+      },
+    ],
+  },
+  'Demonstration-Projects': {
+    GeneralInformation: [...SharedGeneralInformation],
+    TechnologyInfo: [
+      {
+        label: 'Project Title',
+        field: 'title',
+      },
+      {
+        label: 'RFP Topic Area',
+        field: 'rfpTopic',
+      },
+      {
+        label: 'Market need in KSA',
+        field: 'marketNeed',
+      },
+      {
+        label: 'Technical Concept',
+        field: 'technicalConcept',
+      },
+      {
+        label: 'Major Work Elements',
+        field: 'workElements',
+      },
+      {
+        label: 'Technical Performance',
+        field: 'techPerformance',
+      },
+      {
+        label: 'Technology Readiness',
+        field: 'techReadiness',
+      },
+      {
+        label: 'What is the project duration?',
+        field: 'projectDuration',
+      },
+      {
+        label:
+          'Does this technology resemble a past project that KACARE has already funded?',
+        field: 'resembledTechnology',
+      },
+      {
+        label:
+          ' Indicate the differences that distinguish this project from the past projects.',
+        field: 'distinguishProject',
+      },
+      {
+        label: 'A concept diagram of the proposed system',
+        field: 'diagram',
+        type: APPCONTROLTYPE.FILE,
+      },
+    ],
+    StrategyAndTeams: [
+      {
+        label: 'Brief Summary Of The Business Strategy',
+        field: 'businessCase',
+      },
+      {
+        label: 'IP ownership or licensing',
+        field: 'ipOwnership',
+      },
+      {
+        label: 'Plans for targeting and securing a local off-taker',
+        field: 'offTakerPlan',
+      },
+    ],
+    BenefitAndCost: [
+      {
+        label: 'Benefit to Saudi Arabia',
+        field: 'ksaBenefit',
+      },
+      {
+        label: 'Anticipated Cost',
+        field: 'anticipatedCost',
+      },
+      {
+        label: 'Project Cost',
+        field: 'projectCost',
+      },
+      {
+        label: 'Share Resources Cost',
+        field: 'shareResourcesCost',
       },
     ],
   },

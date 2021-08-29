@@ -22,7 +22,6 @@ export class ApplicationDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((data: any) => {
-      debugger;
       this.appName = data.params.id;
       if (this.appName && this.appNames.includes(this.appName)) {
         this.appDetails = ApplicationsData[this.appName];

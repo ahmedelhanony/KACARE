@@ -1,6 +1,6 @@
 <form [formGroup]="filtersForm">
-  <div class="admin-header" data-aos="zoom-in">
-    <div class="d-flex">
+  <div class="row admin-header" data-aos="zoom-in">
+    <div class="d-flex flex-grow-1">
       <mat-form-field class="form-field">
         <div class="input-content">
           <mat-select
@@ -10,12 +10,14 @@
             (valueChange)="onStatusChanged($event)"
           >
             <mat-option [value]="ele.value" *ngFor="let ele of status"
-            >{{ ele.viewValue }}
+              >{{ ele.viewValue }}
             </mat-option>
           </mat-select>
         </div>
       </mat-form-field>
-      <span class="mx-sm-3"></span>
+    </div>
+    <span class="mx-sm-3"></span>
+    <div class="d-flex flex-grow-1">
       <mat-form-field class="form-field">
         <div class="input-content">
           <mat-select
@@ -25,12 +27,14 @@
             (valueChange)="onTechnologyChanged($event)"
           >
             <mat-option [value]="tech.id" *ngFor="let tech of technologies"
-            >{{ tech.nameEn }}
+              >{{ tech.nameEn }}
             </mat-option>
           </mat-select>
         </div>
       </mat-form-field>
-      <span class="mx-sm-3"></span>
+    </div>
+    <span class="mx-sm-3"></span>
+    <div class="d-flex flex-grow-1">
       <mat-form-field class="form-field">
         <div class="input-content">
           <mat-select
@@ -40,7 +44,7 @@
             (valueChange)="onRoleChanged($event)"
           >
             <mat-option [value]="role.id" *ngFor="let role of ProjectRoles"
-            >{{ role.nameEn }}
+              >{{ role.nameEn }}
             </mat-option>
           </mat-select>
         </div>

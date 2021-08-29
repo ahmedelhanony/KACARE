@@ -25,6 +25,7 @@ import { FiltersService } from './services/filters/filters.service';
 import { LoadingService } from './services/loading/loading.service';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ApplyAppGuard } from './guards/apply-app.guard';
+import { FilesService } from './services/file-service/file.service';
 
 const SERVICES = [
   AuthService,
@@ -41,6 +42,7 @@ const SERVICES = [
   ProfileService,
   ProgramsService,
   FiltersService,
+  FilesService,
   AdminGuard,
   UserGuard,
   ApplyAppGuard,

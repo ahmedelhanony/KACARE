@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
@@ -15,13 +15,16 @@ import { ProgramsService } from 'src/app/core/services/program.service';
 import { APPLICATION, NAVIGATIONS, SERVICES } from 'src/app/Shared/utils/enums';
 import * as _ from 'lodash';
 import { ApplicationsData } from 'src/app/Shared/utils/applications-data';
+import { SharedDataService } from 'src/app/core/services/sharedData.service';
 
 @Component({
   selector: 'app-admin-applications',
   templateUrl: './admin-applications.component.html',
   styleUrls: ['./admin-applications.component.scss'],
 })
-export class AdminApplicationsComponent implements OnInit, OnDestroy {
+export class AdminApplicationsComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   columns = ['title', 'rfpTopic', 'creationDate', 'Status'];
   columnsConfig = [
     {
@@ -81,6 +84,7 @@ export class AdminApplicationsComponent implements OnInit, OnDestroy {
     private filtersService: FiltersService,
     private programsService: ProgramsService,
     private loader: LoadingService,
+    private sharedDataService: SharedDataService,
     private fb: RxFormBuilder,
     private router: Router,
     private route: ActivatedRoute
@@ -101,6 +105,18 @@ export class AdminApplicationsComponent implements OnInit, OnDestroy {
         this.router.navigate([NAVIGATIONS.ApplicationsPage]);
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.subs.add(
+      this.sharedDataService.isAppFeedbackSubmited$.subscribe(
+        (confirmed: boolean) => {
+          if (confirmed) {
+            this.onParamsChanges();
+          }
+        }
+      )
+    );
   }
 
   getAppName() {

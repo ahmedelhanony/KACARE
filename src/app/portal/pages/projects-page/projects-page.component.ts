@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects-page.component.scss']
 })
 export class ProjectsPageComponent implements OnInit {
-  projectsRound = ['Round One', 'Round Two', 'Round three', 'Round four']
   projects = [
     {
       title: 'Composite Hydrogen Storage Tanks for Fuel Cell Vehicles',

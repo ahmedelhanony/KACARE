@@ -48,18 +48,6 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
 
-  chartLegend = [
-    {
-      name: 'K.A.CARE Share',
-      color: '#00ADEE'
-    },
-    {
-      name: 'Desert Technologie\'s Share',
-      color: '#0080C5'
-    },
-  ]
-
-
   Highcharts: typeof Highcharts = Highcharts;
   OutstandingAmount: any = {
     chart: {
@@ -108,15 +96,8 @@ export class ProjectDetailsComponent implements OnInit {
     //   // symbolWidth: .001,
     //   // symbolRadius: .001,
     //
-    //   // align: 'right',
-    //   // verticalAlign: 'center',
-    //   align: 'right',
-    //   verticalAlign: 'center',
-    //   layout: 'vertical',
-    //   x: 0,
-    //   y: 100,
     //   useHTML: true,
-    //   pointFormat: function (){
+    //   labelFormatter: function (){
     //     return '<div class="wrapper"><div class="square" style="background: {point.color}"></div><div class="label"> {point.name} : {point.y} </div></div>';
     //   }
     //
@@ -128,10 +109,10 @@ export class ProjectDetailsComponent implements OnInit {
         // showInLegend: true,
         // cursor: 'pointer',
         startAngle: 270,
-        // colors: [
-        //   '#00ADEE',
-        //   '#0080C5',
-        // ],
+        colors: [
+          '#00ADEE',
+          '#0080C5',
+        ],
         dataLabels: {
           enabled: true,
           useHTML: true,
@@ -144,11 +125,11 @@ export class ProjectDetailsComponent implements OnInit {
     },
 
     series: [{
-      // name: 'Share',
-      // colorByPoint: true,
+      name: 'Share',
+      colorByPoint: true,
       data: [
-        { name: this.chartLegend[0].name, y: 5702350,  sliced: true, selected: true, color: this.chartLegend[0].color },
-        { name: this.chartLegend[1].name, y: 9702350, sliced: true, selected: true, color: this.chartLegend[1].color},
+        { name: 'K.A.CARE Share', y: 5702350,  sliced: true, selected: true },
+        { name: 'The Total Cost of the project', y: 9702350, sliced: true, selected: true },
       ],
 
     }],
