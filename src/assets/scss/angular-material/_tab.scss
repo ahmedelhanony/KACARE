@@ -35,6 +35,10 @@
       box-shadow: none !important;
     }
   }
+  .mat-tab-link-body-wrapper{
+    border-top: 1px solid $gray-1 !important;
+    margin-top: -3px;
+  }
   .mat-tab-body-wrapper{
     border-top: 1px solid $gray-1 !important;
     margin-top: -3px;
