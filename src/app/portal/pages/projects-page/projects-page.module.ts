@@ -7,18 +7,27 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import {PortalModule} from "../../portal.module";
 import {SharedModule} from "../../../Shared/shared.module";
 import {HighchartsChartModule} from "highcharts-angular";
-
+import { ProjectGalleryComponent } from './project-details/project-gallery/project-gallery.component';
+import {MasonryGalleryModule} from "ngx-masonry-gallery";
+import {LightgalleryModule} from "lightgallery/angular";
+import {NgxMasonryModule} from "ngx-masonry";
+// Import NgMasonryGridModule
 
 @NgModule({
   declarations: [
     ProjectsPageComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    ProjectGalleryComponent
   ],
-    imports: [
-        CommonModule,
-        ProjectsPageRoutingModule,
-        HighchartsChartModule,
-        PortalModule
-    ]
+  imports: [
+    CommonModule,
+    ProjectsPageRoutingModule,
+    HighchartsChartModule,
+    PortalModule,
+    MasonryGalleryModule,
+    LightgalleryModule,
+    NgxMasonryModule
+
+  ]
 })
 export class ProjectsPageModule { }
