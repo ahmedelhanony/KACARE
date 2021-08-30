@@ -4,7 +4,7 @@
     mat-dialog-title
   >
     <h3 class="mb-0 font-24 font-md-20 font-weight-semi-bold">
-      Add New Match Making
+      Application Details
     </h3>
     <button class="mat-close-modal" matDialogClose>
       <span class="fi fi-close text-color-black"></span>
@@ -145,22 +145,22 @@
           </div>
           <span class="mx-2">General Information</span>
         </ng-template>
-        <div class="step-content">
-          <div class="application-details">
-            <app-general-info
-              [appDetails]="appDetails"
-              [disabled]="true"
-            ></app-general-info>
-          </div>
-          <!-- <div class="application-details mb-4" *ngFor="let item of data">
+        <div *ngIf="appDetails" class="step-content">
+          <div
+            class="application-details mb-4"
+            *ngFor="let item of applicationData.GeneralInformation"
+          >
             <h4 class="font-20 font-md-18 font-weight-bold mb-3">
-              {{ item.title }}
+              {{ item.label }}
             </h4>
-            <div class="details" *ngFor="let child of item.details">
-              <label class="font-14 text-color-gray">{{ child.label }}</label>
-              <p class="font-14 font-weight-medium">{{ child.text }}</p>
+            <div class="details">
+              <label class="font-14 text-color-gray">{{
+                appDetails[item.field] || appDetails[item.field] == false
+                  ? appDetails[item.field]
+                  : "---"
+              }}</label>
             </div>
-          </div> -->
+          </div>
         </div>
       </mat-step>
       <mat-step>
@@ -301,17 +301,29 @@
           </div>
           <span class="mx-2">Technology Info</span>
         </ng-template>
-        <div class="step-content">
-          <div class="application-details mb-4" *ngFor="let item of data">
+        <div *ngIf="appDetails" class="step-content">
+          <div
+            class="application-details mb-4"
+            *ngFor="let item of applicationData.TechnologyInfo"
+          >
             <h4 class="font-20 font-md-18 font-weight-bold mb-3">
-              {{ item.title }}
+              {{ item.label }}
             </h4>
-            <div class="details" *ngFor="let child of item.details">
-              <label class="font-14 text-color-gray">{{ child.label }}</label>
-              <p class="font-14 font-weight-medium">{{ child.text }}</p>
-            </div>
+            <ng-container [ngSwitch]="item.type">
+              <app-docs-uploader
+                *ngSwitchCase="CONTROLTYPE.FILE"
+                display="single-file-only"
+                [singleFileBase64]="appDetails[item.field]"
+              ></app-docs-uploader>
+              <div class="details" *ngSwitchDefault>
+                <label class="font-14 text-color-gray">{{
+                  appDetails[item.field] || appDetails[item.field] == false
+                    ? appDetails[item.field]
+                    : "---"
+                }}</label>
+              </div>
+            </ng-container>
           </div>
-          <app-docs-uploader display="files-only"></app-docs-uploader>
         </div>
       </mat-step>
       <mat-step>
@@ -472,20 +484,11 @@
           </div>
           <span class="mx-2">Strategy& Teams</span>
         </ng-template>
-        <div class="step-content">
-          <div class="application-details mb-4" *ngFor="let item of data">
-            <h4 class="font-20 font-md-18 font-weight-bold mb-3">
-              {{ item.title }}
-            </h4>
-            <div class="details" *ngFor="let child of item.details">
-              <label class="font-14 text-color-gray">{{ child.label }}</label>
-              <p class="font-14 font-weight-medium">{{ child.text }}</p>
-            </div>
-          </div>
+        <div *ngIf="appDetails" class="step-content">
           <app-table-list
             className="popup-table"
             [columnsConfig]="columnsConfig"
-            [rows]="dataSource"
+            [rows]="teamMembers"
             [columns]="columns"
           ></app-table-list>
         </div>
@@ -649,14 +652,20 @@
           </div>
           <span class="mx-2">Benefit & Cost</span>
         </ng-template>
-        <div class="step-content">
-          <div class="application-details mb-4" *ngFor="let item of data">
+        <div *ngIf="appDetails" class="step-content">
+          <div
+            class="application-details mb-4"
+            *ngFor="let item of applicationData.BenefitAndCost"
+          >
             <h4 class="font-20 font-md-18 font-weight-bold mb-3">
-              {{ item.title }}
+              {{ item.label }}
             </h4>
-            <div class="details" *ngFor="let child of item.details">
-              <label class="font-14 text-color-gray">{{ child.label }}</label>
-              <p class="font-14 font-weight-medium">{{ child.text }}</p>
+            <div class="details">
+              <label class="font-14 text-color-gray">{{
+                appDetails[item.field] || appDetails[item.field] == false
+                  ? appDetails[item.field]
+                  : "---"
+              }}</label>
             </div>
           </div>
         </div>
@@ -780,36 +789,41 @@
           </div>
           <span class="mx-2">Review&feedback </span>
         </ng-template>
-        <div class="step-content">
-          <div class="application-details mb-4">
-            <h4 class="font-20 font-md-18 font-weight-bold mb-3">
-              Submit and review
-            </h4>
-          </div>
-          <mat-form-field class="custom-textarea">
-            <div class="input-content">
-              <textarea
-                matInput
-                placeholder="Write your comments here"
-              ></textarea>
+        <form [formGroup]="feedBackForm">
+          <div class="step-content">
+            <div class="application-details mb-4">
+              <h4 class="font-20 font-md-18 font-weight-bold mb-3">
+                Submit and review
+              </h4>
             </div>
-          </mat-form-field>
+            <mat-form-field class="custom-textarea">
+              <div class="input-content">
+                <textarea
+                  matInput
+                  placeholder="Write your comments here"
+                  formControlName="generalFeedback"
+                ></textarea>
+              </div>
+            </mat-form-field>
 
-          <div class="d-flex justify-content-end flex-grow-1">
-            <button
-              mat-stroked-button
-              class="btn light-blue-button shadow-hover px-4 mx-2"
-            >
-              Save as Draft
-            </button>
-            <button
-              mat-flat-button
-              class="btn light-blue-button shadow-hover px-4 mx-2"
-            >
-              Submit
-            </button>
+            <div class="d-flex justify-content-end flex-grow-1">
+              <button
+                mat-stroked-button
+                class="btn light-blue-button shadow-hover px-4 mx-2"
+                (click)="onSaveDraft()"
+              >
+                Save as Draft
+              </button>
+              <button
+                mat-flat-button
+                class="btn light-blue-button shadow-hover px-4 mx-2"
+                (click)="onSubmitApp()"
+              >
+                Submit
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       </mat-step>
     </mat-stepper>
   </mat-dialog-content>

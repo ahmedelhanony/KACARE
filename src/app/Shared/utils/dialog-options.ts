@@ -3,8 +3,7 @@ export const DefaultConfirmationOptions = (options?: any) => {
     title: options?.title || 'Congratulations!',
     message: options?.message || 'Your application has been submitted',
     confirmText: options?.confirmText || '',
-    moreText:
-      options?.moreText || 'Your Information will be reviewed by our team',
+    moreText: '' || options?.moreText,
     type: 'done' || options?.type,
     icon: 'done' || options?.icon,
   };

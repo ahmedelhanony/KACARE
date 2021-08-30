@@ -61,11 +61,6 @@ mat-form-field{
     }
 
     &.custom-textarea{
-      &.small-custom-textarea{
-        .input-content, .mat-form-field-label-wrapper{
-          height: 80px !important;
-        }
-      }
     .input-content{
       height: 120px !important;
       padding: 16px !important;
@@ -102,14 +97,6 @@ mat-form-field{
           right: 34px;
           //width: calc(100% - 80px);
         }
-      }
-    }
-  }
-
-  &.small-input{
-    .mat-form-field-infix {
-      .input-content, .mat-form-field-label-wrapper{
-        height: 40px !important;
       }
     }
   }

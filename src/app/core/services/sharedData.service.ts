@@ -10,6 +10,9 @@ export class SharedDataService {
   public isMatchMakingAddedSubject = new BehaviorSubject<any>(null);
   public isMatchMakingAdded$ = this.isMatchMakingAddedSubject.asObservable();
 
+  public isAppFeedbackSubmitedSubject = new BehaviorSubject<any>(null);
+  public isAppFeedbackSubmited$ = this.isAppFeedbackSubmitedSubject.asObservable();
+
   public lsitingBaseRefreshDataSubject = new BehaviorSubject<boolean>(false);
   public lsitingBaseRefreshData$ =
     this.lsitingBaseRefreshDataSubject.asObservable();
@@ -29,6 +32,11 @@ export class SharedDataService {
   refreshMatchMaking() {
     this.isMatchMakingAddedSubject.next(true);
     this.isMatchMakingAddedSubject.next(false);
+  }
+
+  refreshAdminApps() {
+    this.isAppFeedbackSubmitedSubject.next(true);
+    this.isAppFeedbackSubmitedSubject.next(false);
   }
 
   refreshGridData() {

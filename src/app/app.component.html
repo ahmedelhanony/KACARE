@@ -1,14 +1,5 @@
 <router-outlet></router-outlet>
-<div class="contact-popup-btn">
-  <div class="default-tooltip" *ngIf="!popover.isOpen()"> Contact us? </div>
-  <button type="button" [ngClass]="{'active': popover.isOpen()}" [satPopoverAnchor]="popover" (click)="popover.toggle()">
-    <i class="fi fi-contact-2 font-35 text-color-white" *ngIf="!popover.isOpen()"></i>
-    <i class="fi fi-close font-25 text-color-onyx" *ngIf="popover.isOpen()"></i>
-  </button>
-</div>
-<sat-popover #popover [hasBackdrop]="true" verticalAlign="above" horizontalAlign="end">
-  <app-contact-us></app-contact-us>
-</sat-popover>
+
 <mat-progress-spinner
   [mode]="'indeterminate'"
   *ngIf="loading$ | async"

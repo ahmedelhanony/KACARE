@@ -8,7 +8,42 @@
     .leave-quiz{
       display: flex;
       align-items: center;
+      .quiz-tooltip{
+        background: $white;
+        border-radius: 8px;
+        position: relative;
+        margin: 0 20px;
+        padding: 10px 20px;
+        height: 40px;
+        box-shadow: 0 3px 14px rgba($black, 6%);
 
+        &:after, &:before{
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          margin-left: 0;
+          bottom: 0;
+          top: calc(50% - 7px);
+          right: -7px;
+          box-sizing: border-box;
+          border: 7px solid black;
+          border-color: transparent transparent #ffffff #ffffff;
+          transform: rotate(225deg);
+          transform-origin: center;
+
+
+        }
+
+        &::after{
+          z-index: -10;
+          box-shadow: 0 3px 14px rgba($black, 6%);
+        }
+        &::before{
+          z-index: 10;
+
+        }
+      }
     }
     .stepper-result{
       min-height: calc(100% - 110px);
