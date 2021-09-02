@@ -9,6 +9,7 @@ import { LoadingService } from './core/services/loading/loading.service';
 })
 export class AppComponent implements OnInit {
   title = 'starter-angular';
+  showSpinner = true;
 
   loading$!: Observable<any>;
   constructor(private loader: LoadingService) {
@@ -17,5 +18,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     AOS.init();
+    
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 2000);
   }
 }

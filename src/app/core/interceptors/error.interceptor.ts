@@ -8,10 +8,12 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { DialogService } from '../services/dialog-service/dialog.service';
+import { DefaultErrorOptions } from 'src/app/Shared/utils/dialog-options';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService , private dialogService : DialogService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<any> {
     return next.handle(request).pipe(
@@ -19,7 +21,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch (error.status) {
           case 400:
             // alert(error.status)
-            this.toastr.error(error.error.errorMessage, 'Error!');
+            this.dialogService.open(DefaultErrorOptions({message :error.error.errorMessage }));
+            // this.toastr.error(error.error.errorMessage, 'Error!');
+
             break;
           // case 404:
           //     this.router.navigateByUrl('/not-found');

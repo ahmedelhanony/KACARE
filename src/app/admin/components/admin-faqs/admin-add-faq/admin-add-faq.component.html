@@ -70,7 +70,11 @@
             mat-flat-button
             class="btn light-blue-button shadow-hover px-4"
           >
-            {{ actionType === TABLELISTACTIONS.ADD ? "Submit" : "Edit" }}
+            {{
+              actionType === TABLELISTACTIONS.ADD
+                ? FAQSFORMLABELS.SUBMIT
+                : FAQSFORMLABELS.EDIT
+            }}
           </button>
         </div>
       </div>

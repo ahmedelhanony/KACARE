@@ -3,13 +3,19 @@
   <div class="custom-container">
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-4" *ngFor="let newsItem of news">
-        <app-main-card routerLink="/news/news-details"
-          className="news-card image-card" [title]="newsItem.title">
-          <img [src]="newsItem.image" [alt]="newsItem.title" shape>
+        <app-main-card
+          [routerLink]="['/news/news-details', newsItem.id]"
+          routerLinkActive="router-link-active"
+          className="news-card image-card"
+          [title]="newsItem.title"
+        >
+          <img [src]="newsItem.imageSrc" [alt]="newsItem.title" shape />
           <div class="primary-label mb-3" date>
             <span class="fi fi-calendar-1 text-color-light-blue"></span>
             <span class="mx-1"></span>
-            <span class="font-weight-medium">{{ newsItem.date }}</span>
+            <span class="font-weight-medium">{{
+              newsItem.publishDate | date: "d/M/yyyy"
+            }}</span>
           </div>
           <button mat-flat-button class="btn button-white px-0" link>
             Read more
@@ -17,9 +23,6 @@
           </button>
         </app-main-card>
       </div>
-    </div>
-    <div class="d-flex justify-content-center mt-5">
-      <mat-spinner></mat-spinner>
     </div>
   </div>
 </section>

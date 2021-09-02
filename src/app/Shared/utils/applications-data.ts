@@ -659,6 +659,13 @@ export const ApplicationsData: any = {
   },
 };
 
+export enum APPLICATIONAMES {
+  POC = 'Proof-Of-Concept',
+  PD = 'Product-Development',
+  FS = 'Feasibility-Studies',
+  DEMO = 'Demonstration-Projects',
+}
+
 export enum APPCONTROLTYPE {
   FILE = 'FILE',
   TEXTAREA = 'TEXTAREA',
@@ -986,3 +993,9 @@ export const ApplicationsStructures: any = {
     ],
   },
 };
+
+export enum APPLICATIONSFORMLABELS {
+  bidderInstitiutionalName = 'Institutional Name',
+  bidderInstitiutionalAddress = 'Institutional Address',
+  bidderCorporateRegNumber = 'bidderCorporateRegNumber',
+}

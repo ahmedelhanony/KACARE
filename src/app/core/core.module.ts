@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
 import { AuthService } from './services/auth.service';
@@ -26,11 +26,16 @@ import { LoadingService } from './services/loading/loading.service';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ApplyAppGuard } from './guards/apply-app.guard';
 import { FilesService } from './services/file-service/file.service';
+import { ContactUsService } from './services/contact-us.service';
+import { NewsResolver } from './resolvers/news.resolver';
+import { NewsService } from './services/news.service';
+import { BreadcrumbService } from './services/breadcrumb/breadcrumb.service';
 
 const SERVICES = [
   AuthService,
+  BreadcrumbService,
   SharedDataService,
-  // AccountService,
+  ContactUsService,
   BaseService,
   DemoService,
   FAQService,
@@ -47,6 +52,9 @@ const SERVICES = [
   UserGuard,
   ApplyAppGuard,
   LoadingService,
+  NewsResolver,
+  NewsService,
+  DatePipe,
   // FilterLookupsResolver,
   {
     provide: HTTP_INTERCEPTORS,

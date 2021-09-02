@@ -13,6 +13,7 @@ export class AllApplicationsComponent implements OnInit {
         'Supporting Prototype development and testing for new technology',
       image: '1',
       link: '/applications/application-details/Proof-Of-Concept',
+      appName: 'Proof-Of-Concept'
     },
     {
       title: 'PRODUCT DEVELOPMENT',
@@ -20,12 +21,14 @@ export class AllApplicationsComponent implements OnInit {
         'Supporting businesses to develop commercial Products that meet local Saudi market needs',
       image: '2',
       link: '/applications/application-details/Product-Development',
+      appName: 'Product-Development',
     },
     {
       title: 'FEASIBILITY STUDIES',
       description: 'Supporting business plan development',
       image: '3',
       link: '/applications/application-details/Feasibility-Studies',
+      appName: 'Feasibility-Studies',
     },
     {
       title: 'DEMONSTRATION PROJECTS',
@@ -33,6 +36,7 @@ export class AllApplicationsComponent implements OnInit {
         'Our demonstration project program supports technology implementation  ',
       image: '4',
       link: '/applications/application-details/Demonstration-Projects',
+      appName: 'Demonstration-Projects',
     },
   ];
   constructor() {}

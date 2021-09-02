@@ -1,59 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
+import { RxFormBuilder } from '@rxweb/reactive-form-validators';
+import { TeamMember } from 'src/app/core/models/program/team-member';
+import { APPLICATIONAMES } from 'src/app/Shared/utils/applications-data';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-strategy-teams',
   templateUrl: './strategy-teams.component.html',
-  styleUrls: ['./strategy-teams.component.scss']
+  styleUrls: ['./strategy-teams.component.scss'],
 })
-export class StrategyTeamsComponent implements OnInit {
-  columns = ['Member', 'InstitutionName ', 'Role', 'KeyQualifications', 'ExperienceYears', 'actions'];
+export class StrategyTeamsComponent implements OnInit, OnChanges {
+  columns = [
+    'name',
+    'institutionName ',
+    'memberRole',
+    'qualifications',
+    'pastExperience',
+    'actions',
+  ];
   columnsConfig = [
     {
       label: 'Member',
-      type: 'input'
+      type: 'input',
     },
     {
       label: 'Institution Name',
-      type: 'input'
+      type: 'input',
     },
     {
       label: 'Role',
-      type: 'input'
+      type: 'input',
     },
     {
       label: 'KeyQualifications',
-      type: 'input'
+      type: 'input',
     },
     {
       label: 'Experience Years',
-      type: 'input'
+      type: 'input',
     },
     {
       label: '',
-      type: 'action'
+      type: 'action',
     },
   ];
-  dataSource = [
-    {
-      Member: 'Name',
-      InstitutionName: 'Green Hydrogen',
-      Role: 'Role',
-      KeyQualifications: 'Key Qualifications',
-      ExperienceYears: 'Experience Years',
-      actions: ['delete']
-    },
-    {
-      Member: 'My Demonstration Project One',
-      InstitutionName: 'Institution name ',
-      Role: 'Role',
-      KeyQualifications: 'Key Qualifications',
-      ExperienceYears: 'Experience Years',
-      actions: ['delete']
-    },
-  ];
-  constructor() { }
+  actions: any = ['delete'];
 
-  ngOnInit(): void {
+  @Input() strategyForm!: FormGroup;
+  @Input() appName!: string;
+  public get APPNAMES(): typeof APPLICATIONAMES {
+    return APPLICATIONAMES;
   }
 
+  teamMembers!: FormArray;
+
+  constructor(private fb: RxFormBuilder) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes &&
+      !_.isEmpty(changes.strategyForm) &&
+      !_.isEqual(
+        changes.strategyForm.currentValue,
+        changes.strategyForm.previousValue
+      )
+    ){
+      this.teamMembers = this.strategyForm.controls.teamMembers as FormArray;
+    }
+  }
+
+  ngOnInit(): void {}
+
+  onAddNewMember() {
+    this.teamMembers.push(this.fb.formGroup(new TeamMember()));
+  }
+
+  onDeleteMember(index: number) {
+    this.teamMembers.removeAt(index);
+  }
 }

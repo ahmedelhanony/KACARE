@@ -50,19 +50,6 @@ export class AuthComponent implements OnInit {
     this.captchaComponent.captchaEndpoint = environment.captcha_URL;
 
     this.addAuthModel(this.authConfig.modelName);
-
-    // switch (this.authConfig.pageName) {
-    //   case AUTHPAGESNAME.FORGETPASS:
-    //     this.addAuthModel(ForgetPassModel);
-    //     break;
-    //   case AUTHPAGESNAME.RESETPASS:
-    //     this.addAuthModel(ResetPassModel);
-    //     break;
-    //   case AUTHPAGESNAME.VERFIYACCOUNT:
-    //     this.addAuthModel(VerifyModel);
-    //     break;
-    // }
-
     this.authForm = this.fb.formGroup(this.baseClassModel, this.authModel);
 
     this.getTokenFromQueryParams();

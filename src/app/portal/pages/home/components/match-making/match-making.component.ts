@@ -81,13 +81,4 @@ export class MatchMakingComponent implements OnInit {
         }
       });
   }
-
-  getFirstChar(text: string) {
-    let characters = text.match(/\b(\w)/g);
-    if (characters) {
-      return characters.join('');
-    } else {
-      return false;
-    }
-  }
 }

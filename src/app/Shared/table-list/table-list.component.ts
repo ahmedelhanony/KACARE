@@ -25,6 +25,7 @@ export class TableListComponent implements OnInit, OnChanges {
   @Input() rows: any;
   @Input() actions: any = [];
   @Input() className = '';
+  @Input() link = '';
   @Output() emitData = new EventEmitter();
 
   dataSource = new MatTableDataSource<any>();

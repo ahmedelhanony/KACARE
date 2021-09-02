@@ -37,10 +37,12 @@ const routes: Routes = [
       {
         path: 'infographics',
         component: InfographicsPageComponent,
+        data: { breadcrumb: 'Infographics' },
       },
       {
         path: 'faqs',
         component: FaqPageComponent,
+        data:{breadcrumb : 'FAQS'}
       },
       {
         path: 'past-projects',

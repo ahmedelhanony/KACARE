@@ -2,16 +2,42 @@
 <div class="admin-header" data-aos="zoom-in">
   <mat-form-field class="form-field">
     <div class="input-content">
-      <mat-select disableOptionCentering required placeholder="Status">
-        <mat-option value="option-{{i}}" *ngFor="let i of [1,2,3,4]">Option {{i}}</mat-option>
+      <mat-select
+        (selectionChange)="onStatusChanged($event)"
+        disableOptionCentering
+        required
+        placeholder="Status"
+      >
+        <mat-option [value]="ele.value" *ngFor="let ele of status"
+          >{{ ele.viewValue }}
+        </mat-option>
       </mat-select>
     </div>
   </mat-form-field>
   <span class="mx-3"></span>
-  <button mat-flat-button class="btn light-blue-button px-4" (click)="addArticle()">
+  <button
+    mat-flat-button
+    class="btn light-blue-button px-4"
+    (click)="saveNews()"
+  >
     <mat-icon class="mx-1">add</mat-icon>
     <span class="mx-1 d-none d-md-inline-block">Add Article</span>
   </button>
 </div>
 
-<app-table-list className="admin-table" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns" ></app-table-list>
+<ng-container *ngIf="news.length; else noDataFound">
+  <app-table-list
+    className="admin-table"
+    [columnsConfig]="columnsConfig"
+    [rows]="news"
+    [columns]="columns"
+    [actions]="actions"
+    (emitData)="onReceiveFAQItem($event)"
+  ></app-table-list>
+</ng-container>
+
+<ng-template #noDataFound>
+  <app-shared-no-data-found
+    *ngIf="!(loading$ | async) && !news.length"
+  ></app-shared-no-data-found>
+</ng-template>

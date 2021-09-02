@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProjectsPageComponent,
+    data: { breadcrumb: 'Past Projects' }
   },
   {
     path: 'project-details',

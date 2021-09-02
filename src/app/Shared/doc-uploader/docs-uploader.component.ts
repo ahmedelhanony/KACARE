@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as _ from 'lodash';
-import { FilesService } from 'src/app/core/services/file-service/file.service';
+import { ToastrService } from 'ngx-toastr';
+import {
+  FileModel,
+  FilesService,
+} from 'src/app/core/services/file-service/file.service';
 @Component({
   selector: 'app-docs-uploader',
   templateUrl: './docs-uploader.component.html',
@@ -12,18 +17,23 @@ export class DocsUploaderComponent implements OnInit {
   @Input() styleWidth = 6;
   @Input() hint = '';
   @Input() label = '';
+  @Input() showLabel!: string;
   @Input() labelHint = '';
   @Input() display = '';
+  @Input() showDeletionIcon = false;
 
   @Input() singleFileBase64!: string;
+  @Input() ItemFormGroup!: FormGroup;
+  @Input() ItemFormControlName!: string;
 
-  typeFile: any;
-  binaryToBase64: any;
-  fileUpload: any;
-  srcImg: any;
-  imgSize!: string;
+  selectedFile!: File;
+  file!: FileModel;
 
-  constructor(public dialog: MatDialog, private fileService: FilesService) {}
+  constructor(
+    public dialog: MatDialog,
+    private fileService: FilesService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     if (this.singleFileBase64) {
@@ -37,5 +47,38 @@ export class DocsUploaderComponent implements OnInit {
 
   onDownLoadFile() {
     this.fileService.download();
+  }
+
+  onFileChanged(evt: any) {
+    let file: any = evt.target.files[0];
+
+    if (file) {
+      let filtType = file.type.split('/');
+
+      if (filtType[0] === 'image' || filtType[0] === 'pdf') {
+        this.selectedFile = evt.target.files[0];
+
+        this.file = {
+          name: this.selectedFile.name,
+          size: this.selectedFile.size,
+          mimeType: this.selectedFile.type,
+          content: this.selectedFile,
+        };
+
+        this.ItemFormGroup.patchValue({
+          [this.ItemFormControlName]: this.selectedFile,
+        });
+
+        this.display = 'files-only';
+      } else {
+        this.toastr.error('Sorry, File must be of type image or pdf only');
+      }
+    }
+  }
+
+  onDeleteFile() {
+    this.display = '';
+    this.file = {};
+    this.ItemFormGroup.patchValue({ [this.ItemFormControlName]: this.file });
   }
 }

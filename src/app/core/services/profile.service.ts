@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NAVIGATIONS, ROLES, SECURITY } from 'src/app/Shared/utils/enums';
 import { IUserProfile } from '../models/user/IUserProfile';
+import { SharedDataService } from './sharedData.service';
 import { UtilityService } from './utility.service';
 
 @Injectable()
 export class ProfileService {
   _currentUser: IUserProfile = <IUserProfile>{};
-  constructor(private utilityService: UtilityService, private router: Router) {}
+  constructor(
+    private utilityService: UtilityService,
+    private router: Router,
+    private sharedDataService: SharedDataService
+  ) {}
 
   setToken(accessToken: string) {
     this._currentUser.accessToken = accessToken;
@@ -56,7 +61,8 @@ export class ProfileService {
     this.utilityService.removeKey('usertoken');
     this.utilityService.removeKey('userdata');
     this._currentUser = <IUserProfile>{};
-    this.router.navigate([NAVIGATIONS.loginPageUrl]);
+    this.router.navigate([NAVIGATIONS.homePage]);
+    this.sharedDataService.logUserOut();
   }
 
   //clear with no redirect

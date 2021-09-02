@@ -14,6 +14,7 @@ import { ProgramsService } from 'src/app/core/services/program.service';
 import { SERVICES } from 'src/app/Shared/utils/enums';
 import * as _ from 'lodash';
 import { LoadingService } from 'src/app/core/services/loading/loading.service';
+import { APPLICATIONAMES } from 'src/app/Shared/utils/applications-data';
 
 @Component({
   selector: 'app-submission-applications',
@@ -72,6 +73,8 @@ export class SubmissionApplicationsComponent
   ];
   RFPTopics: any = [];
 
+  appDetailsLink = '/applications/apply';
+
   destoryed$: Subject<any> = new Subject<any>();
   loading$ = this.loader.loading$;
   subs: Subscription = new Subscription();
@@ -92,6 +95,7 @@ export class SubmissionApplicationsComponent
 
   ngOnInit(): void {
     this.programsService.setProgServiceName(this.applications[0].serviceName);
+    this.setAppLink(this.applications[0].appId);
 
     this.getRFPTopics();
 
@@ -142,6 +146,7 @@ export class SubmissionApplicationsComponent
       this.updateFormValues(selectedFilters);
       if (selectedFilters.appId) {
         this.programsService.setProgServiceName(selectedFilters.appId);
+        this.setAppLink(selectedFilters.appId);
       }
     }
 
@@ -193,12 +198,34 @@ export class SubmissionApplicationsComponent
   onAppNameChanged(data: any) {
     this.filters.appId = data.value;
     this.programsService.setProgServiceName(data.value);
+    this.setAppLink(data.value);
     this.changeRouterParams();
   }
 
   onRFPTopicChanged(value: any) {
     this.filters.rfpTopicId = value;
     this.changeRouterParams();
+  }
+
+  setAppLink(appId: string) {
+    this.appDetailsLink = '/applications/apply/';
+    switch (appId) {
+      case SERVICES.POC:
+        this.appDetailsLink += APPLICATIONAMES.POC;
+        break;
+
+      case SERVICES.Pdevelopment:
+        this.appDetailsLink += APPLICATIONAMES.PD;
+        break;
+
+      case SERVICES.Feas:
+        this.appDetailsLink += APPLICATIONAMES.FS;
+        break;
+
+      case SERVICES.Demo:
+        this.appDetailsLink += APPLICATIONAMES.DEMO;
+        break;
+    }
   }
 
   ngOnDestroy(): void {

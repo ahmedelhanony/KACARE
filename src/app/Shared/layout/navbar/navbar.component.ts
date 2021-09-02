@@ -1,13 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProfileService } from 'src/app/core/services/profile.service';
+import { SharedDataService } from 'src/app/core/services/sharedData.service';
+import { getFirstChar } from '../../utils/utils';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() isPortal = true;
   navOpened = false;
   dropdownOpened = false;
@@ -98,8 +106,19 @@ export class NavbarComponent implements OnInit {
       ],
     },
     {
-      label: 'Technology Areas',
-      link: 'infographics',
+      label: 'Resources',
+      link: '/infographics',
+      hasChildren: true,
+      children: [
+        {
+          label: 'Technology Areas',
+          link: '/infographics',
+        },
+        {
+          label: 'Tutorials',
+          link: '/home/tutorials',
+        },
+      ],
     },
     {
       label: 'News',
@@ -117,10 +136,30 @@ export class NavbarComponent implements OnInit {
   };
 
   isAuthenticated = false;
+  subs: Subscription = new Subscription();
 
-  constructor(private router: Router, private profileService: ProfileService) {}
+  constructor(
+    private sharedDataService: SharedDataService,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit(): void {
+    this.handleViewBasedOnUserAuth();
+  }
+
+  ngAfterViewInit(): void {
+    this.subs.add(
+      this.sharedDataService.isUserLoggedOut$.subscribe(
+        (isUserLogedOut: boolean) => {
+          if (isUserLogedOut) {
+            this.handleViewBasedOnUserAuth();
+          }
+        }
+      )
+    );
+  }
+
+  handleViewBasedOnUserAuth() {
     this.isAuthenticated = this.profileService.currentUser.isAuthenticated;
     if (this.isAuthenticated) {
       this.user.name = this.profileService.currentUser.fullName;
@@ -149,16 +188,15 @@ export class NavbarComponent implements OnInit {
     return false;
   }
 
-  getFirstChar(text: string) {
-    let characters = text.match(/\b(\w)/g);
-    if (characters) {
-      return characters.join('');
-    } else {
-      return false;
-    }
+  truncateName(text: string) {
+    getFirstChar(text);
   }
 
-  logout(){
+  logout() {
     this.profileService.clearProfile();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

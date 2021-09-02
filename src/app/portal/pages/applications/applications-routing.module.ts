@@ -9,13 +9,14 @@ const routes: Routes = [
   {
     path: '',
     component: ApplicationsComponent,
+    data: { breadcrumb: 'Applications' },
   },
   {
     path: 'application-details/:id',
     component: ApplicationDetailsComponent,
   },
   {
-    path: 'apply',
+    path: 'apply/:name',
     component: ApplyForApplicationComponent,
     canActivate: [ApplyAppGuard],
   },

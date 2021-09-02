@@ -4,20 +4,19 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SharedDataService {
-  public hideOrShowFiltersSubject = new BehaviorSubject<any>(null);
-  public hideOrShowFilters$ = this.hideOrShowFiltersSubject.asObservable();
-
   public isMatchMakingAddedSubject = new BehaviorSubject<any>(null);
   public isMatchMakingAdded$ = this.isMatchMakingAddedSubject.asObservable();
 
   public isAppFeedbackSubmitedSubject = new BehaviorSubject<any>(null);
-  public isAppFeedbackSubmited$ = this.isAppFeedbackSubmitedSubject.asObservable();
+  public isAppFeedbackSubmited$ =
+    this.isAppFeedbackSubmitedSubject.asObservable();
 
-  public lsitingBaseRefreshDataSubject = new BehaviorSubject<boolean>(false);
-  public lsitingBaseRefreshData$ =
-    this.lsitingBaseRefreshDataSubject.asObservable();
+  public isMySubmittedAppsTabSubject = new BehaviorSubject<boolean>(false);
+  public isMySubmittedAppsTab$ =
+    this.isMySubmittedAppsTabSubject.asObservable();
 
-  serviceData: any;
+  public isUserLoggedOutSubject = new BehaviorSubject<boolean>(false);
+  public isUserLoggedOut$ = this.isUserLoggedOutSubject.asObservable();
 
   constructor(private router: Router) {}
 
@@ -39,8 +38,13 @@ export class SharedDataService {
     this.isAppFeedbackSubmitedSubject.next(false);
   }
 
-  refreshGridData() {
-    this.lsitingBaseRefreshDataSubject.next(true);
-    this.lsitingBaseRefreshDataSubject.next(false);
+  setMySubmittedAppsTabIndex() {
+    this.isMySubmittedAppsTabSubject.next(true);
+    this.isMySubmittedAppsTabSubject.next(false);
+  }
+
+  logUserOut() {
+    this.isUserLoggedOutSubject.next(true);
+    this.isUserLoggedOutSubject.next(false);
   }
 }

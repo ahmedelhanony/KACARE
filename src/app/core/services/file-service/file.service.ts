@@ -82,3 +82,9 @@ export class FilesService {
       });
   }
 }
+export interface FileModel {
+  name?: string;
+  size?: number;
+  mimeType?: string;
+  content?: File;
+}

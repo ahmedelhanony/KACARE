@@ -46,19 +46,27 @@ export class BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
     this.isUserOnly = this.profileService.currentUser.isUserOnly;
     this.isAdmin = this.profileService.currentUser.isAdminOnly;
     this.organizationName = this.profileService.currentUser.organizationName;
   }
 
   navigateAfterLogin() {
-    // var returnURL = '';
-    // this.route.queryParams.subscribe((params: Params) => {
-    //   if (params && params['returnurl']) returnURL = params['returnurl'];
-    // });
+    let returnURL = '';
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params && params['returnurl']) {
+        returnURL = params['returnurl'];
+      }
+    });
 
-    // if (returnURL) this.router.navigateByUrl(returnURL);
-    // else this.router.navigate([NAVIGATIONS.homePage]);
+    if (returnURL) {
+      this.router.navigateByUrl(returnURL);
+    } else if (this.profileService.currentUser.isAdminOnly) {
+      this.router.navigate([NAVIGATIONS.Admin]);
+    } else if (this.profileService.currentUser.isUserOnly) {
+      this.router.navigate([NAVIGATIONS.homePage]);
+    }
   }
 
   validateForm(form: any) {

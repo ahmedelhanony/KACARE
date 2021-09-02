@@ -47,7 +47,3 @@ export class NewDemoModel extends NewProgramModel {
     ksaBenefit!: string;
     //submitButton: boolean = false;
 }
-
-export function testRequired(x:any) {
-    return x.isSubmitted;
-}

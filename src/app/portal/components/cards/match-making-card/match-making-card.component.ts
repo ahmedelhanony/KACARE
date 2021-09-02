@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { getFirstChar } from 'src/app/Shared/utils/utils';
 
 @Component({
   selector: 'app-match-making-card',
@@ -18,16 +19,7 @@ export class MatchMakingCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getFirstChar(text: string) {
-    if (text) {
-      let characters = text.match(/\b(\w)/g);
-      if (characters) {
-        return characters.join('');
-      } else {
-        return '';
-      }
-    } else {
-      return '';
-    }
+  truncateName(text: string) {
+    getFirstChar(text);
   }
 }

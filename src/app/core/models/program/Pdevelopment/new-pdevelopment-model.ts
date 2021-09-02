@@ -38,7 +38,7 @@ export class NewPdevelopmentModel extends NewProgramModel {
 
   @required({ conditionalExpression: (x: any) => x.isSubmitted })
   @prop()
-  ksaBenifit!: string;
+  ksaBenefit!: string;
   //submitButton: boolean = false;
 }
 

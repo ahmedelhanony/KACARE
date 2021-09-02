@@ -19,9 +19,14 @@
             <span
               [ngClass]="columnsConfig[i].type"
               *ngSwitchCase="'popup'"
-              (click)="
-                openPopup(columnsConfig[i].popupType, element.id)
-              "
+              (click)="openPopup(columnsConfig[i].popupType, element.id)"
+            >
+              {{ element[column] }}
+            </span>
+            <span
+              [ngClass]="columnsConfig[i].type"
+              *ngSwitchCase="'link'"
+              [routerLink]="[link, { id: element.id }]"
             >
               {{ element[column] }}
             </span>

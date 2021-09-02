@@ -1,85 +1,381 @@
-<div class="row justify-content-center">
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Project Title</label>
-      <div class="input-content">
-      <input matInput placeholder="Project Title" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">RFP Topics Area</label>
-      <div class="input-content">
-      <input matInput placeholder="RFP Topics Area" required>
-      </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Market Need</label>
-      <div class="input-content">
-      <textarea matInput placeholder="Market Need"></textarea>
-      </div>
-    </mat-form-field>
-  </div>
+<form [formGroup]="technologyForm">
+  <div class="row justify-content-center">
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">Project Title</label>
+        <div class="input-content">
+          <input matInput placeholder="Project Title" formControlName="title" />
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-7 mb-2">
+      <mat-form-field>
+        <label class="form-label">RFP Topics Area</label>
+        <div class="input-content">
+          <mat-select
+            disableOptionCentering
+            placeholder="Choose RFP Topic"
+            formControlName="rfpTopicId"
+          >
+            <mat-option [value]="topic.id" *ngFor="let topic of RFPTopics">{{
+              topic.nameEn
+            }}</mat-option>
+          </mat-select>
+        </div>
+      </mat-form-field>
+    </div>
+    <div
+      class="col-md-7 mb-2"
+      *ngIf="appName === APPNAMES.PD || appName === APPNAMES.DEMO"
+    >
+      <mat-form-field class="custom-textarea">
+        <label class="form-label">Market Need</label>
+        <div class="input-content">
+          <textarea
+            matInput
+            placeholder="Market Need"
+            formControlName="marketNeed"
+          ></textarea>
+        </div>
+      </mat-form-field>
+    </div>
 
-  <div class="col-md-7 mb-3">
-    <h3 class="font-24 font-md-18 font-weight-bolder mb-0">Project Description</h3>
-    <p class="font-16 font-md-14 text-color-gray mb-0">Provide a brief description of the proposed project including</p>
-  </div>
+    <ng-container *ngIf="appName === APPNAMES.DEMO">
+      <div class="col-md-7 mb-3">
+        <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+          Project Description
+        </h3>
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a brief description of the proposed project including
+        </p>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technical Concept </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technical Concept "
+              formControlName="technicalConcept"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Major work Elements</label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Major work Elements"
+              formControlName="workElements"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technical Performance</label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technical Performance"
+              formControlName="techPerformance"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technology Readiness </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technology Readiness "
+              formControlName="techReadiness"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <label class="form-label mb-2"
+          >Does this technology resemble past project that KACARE has already
+          funded?
+        </label>
+        <mat-radio-group
+          class="d-flex flex-column"
+          formControlName="resembledTechnology"
+        >
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <ng-container *ngIf="technologyForm.value.resembledTechnology">
+        <div class="col-md-7 mb-2">
+          <mat-form-field>
+            <label class="form-label">Project Duration</label>
+            <div class="input-content">
+              <input
+                matInput
+                placeholder="Project Duration"
+                formControlName="projectDuration"
+              />
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="col-md-7 mb-2">
+          <mat-form-field class="custom-textarea">
+            <label class="form-label"
+              >Indicate the differences that distinguish this project from the
+              past projects.
+            </label>
+            <div class="input-content">
+              <textarea
+                matInput
+                placeholder="Indicate the differences "
+                formControlName="distinguishProject"
+              ></textarea>
+            </div>
+          </mat-form-field>
+        </div>
+      </ng-container>
+    </ng-container>
 
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Technical Concept </label>
-      <div class="input-content">
-      <textarea matInput placeholder="Technical Concept "></textarea>
+    <ng-container *ngIf="appName === APPNAMES.FS">
+      <div class="col-md-7 mb-3">
+        <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+          Technology Description
+        </h3>
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a brief description of the proposed renewable energy
+          technology, including
+        </p>
       </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Major work Elements</label>
-      <div class="input-content">
-      <textarea matInput placeholder="Major work Elements"></textarea>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technology Description </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technology Description "
+              formControlName="technologyDescription"
+            ></textarea>
+          </div>
+        </mat-form-field>
       </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Technical Performance</label>
-      <div class="input-content">
-      <textarea matInput placeholder="Technical Performance"></textarea>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Operation Principals </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Operation Principals "
+              formControlName="operationPrincipals"
+            ></textarea>
+          </div>
+        </mat-form-field>
       </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Technology Redlines </label>
-      <div class="input-content">
-      <textarea matInput placeholder="Technology Redlines "></textarea>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technology Applicability </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technology Applicability "
+              formControlName="technologyApplicability"
+            ></textarea>
+          </div>
+        </mat-form-field>
       </div>
-    </mat-form-field>
-  </div>
+    </ng-container>
 
-  <div class="col-md-7 mb-2">
-    <label class="form-label mb-2">Does this technology resemble past project that KACARE has already funded? </label>
-    <mat-radio-group class="d-flex flex-column">
-      <mat-radio-button value="yes">Yes</mat-radio-button>
-      <mat-radio-button value="no">No</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div class="col-md-7 mb-2">
-    <mat-form-field>
-      <label class="form-label">Project Duration</label>
-      <div class="input-content">
-      <input matInput placeholder="Project Duration" required>
+    <ng-container *ngIf="appName === APPNAMES.PD">
+      <div class="col-md-7 mb-3">
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a description of the scope of the project, including a concept
+          diagram of the proposed system to be tested
+        </p>
       </div>
-    </mat-form-field>
-  </div>
-  <div class="col-md-7 mb-2">
-    <app-docs-uploader
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Project Scope </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Project Scope "
+              formControlName="projectScope"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-3">
+        <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+          Product Description
+        </h3>
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a brief description of the proposed project, including
+        </p>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Background </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Background "
+              formControlName="background"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Product Applicability </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Product Applicability "
+              formControlName="productApplicability"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Product Advantage </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Product Advantage "
+              formControlName="productAdvantage"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Product Novelty </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Product Novelty "
+              formControlName="productNovelty"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+    </ng-container>
 
-      label="A concept diagram of the proposed system including all major elements. an indication of energy flows elementssystem and the estimated capacity of each system component"></app-docs-uploader>
+    <ng-container *ngIf="appName === APPNAMES.POC">
+      <div class="col-md-7 mb-3">
+        <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+          Research Project Abstract
+        </h3>
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a brief description of the proposed research project,
+          including the renewable energy technology being targeted, the
+          prototype that will be developed, and the technical performance target
+          for the prototype.
+        </p>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technical Abstract </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technical Abstract "
+              formControlName="technicalAbstract"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technical Performance Target </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technical Performance Target "
+              formControlName="technicalPerformanceTarget"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Technology Readiness Level </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Technology Readiness Level "
+              formControlName="technologyReadinessLevel"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Project Execution Location </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Project Execution Location "
+              formControlName="projectExecutionLocation"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="appName === APPNAMES.POC">
+      <div class="col-md-7 mb-2">
+        <label class="form-label mb-2"
+          >Does the project scope include prototype testing?</label
+        >
+        <mat-radio-group
+          class="d-flex flex-column"
+          formControlName="hasPrototypeTesting"
+        >
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="col-md-7 mb-2">
+        <label class="form-label mb-2"
+          >Does the technology has background intellectual property?</label
+        >
+        <mat-radio-group
+          class="d-flex flex-column"
+          formControlName="hasIntellectualProp"
+        >
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="col-md-7 mb-2">
+        <label class="form-label mb-2"
+          >Is it expected to produce foreground intellectual property after
+          building the prototype?</label
+        >
+        <mat-radio-group
+          class="d-flex flex-column"
+          formControlName="isForegroundProp"
+        >
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </ng-container>
+
+    <div class="col-md-7 mb-2">
+      <app-docs-uploader
+        [ItemFormGroup]="technologyForm"
+        [ItemFormControlName]="'diagram'"
+        label="A concept diagram of the proposed system including all major elements. an indication of energy flows elementssystem and the estimated capacity of each system component"
+      ></app-docs-uploader>
+    </div>
   </div>
-</div>
+</form>

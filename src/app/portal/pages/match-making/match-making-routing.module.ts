@@ -14,10 +14,12 @@ const routes: Routes = [
       {
         path: 'all-match-making',
         component: AllMatchMakingComponent,
+        data: { breadcrumb: 'All Match Making' },
       },
       {
         path: 'my-match-making',
         component: MyMatchMakingComponent,
+        data: { breadcrumb: 'My Match Making' },
       },
       {
         path: '',

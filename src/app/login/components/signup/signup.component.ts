@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  Injector,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { CaptchaComponent } from 'angular-captcha';
@@ -19,10 +13,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent
-  extends BaseComponent
-  implements OnInit, AfterViewInit
-{
+export class SignupComponent extends BaseComponent implements OnInit {
   registerForm!: FormGroup;
   public get SINGUPFORMLABELS(): typeof FORMLABELS {
     return FORMLABELS;
@@ -36,12 +27,11 @@ export class SignupComponent
   constructor(public injector: Injector, private fb: RxFormBuilder) {
     super(injector);
   }
-  ngAfterViewInit(): void {}
+
   ngOnInit() {
     this.getGeneralRoles();
     this.captchaComponent.captchaEndpoint = environment.captcha_URL;
-    let user = new NewAccount();
-    this.registerForm = this.fb.formGroup(NewAccount, user);
+    this.registerForm = this.fb.formGroup(NewAccount, new NewAccount());
   }
 
   getGeneralRoles() {
@@ -69,19 +59,13 @@ export class SignupComponent
 
     this.accountService.createAccount(this.registerForm.value).subscribe(
       (response: any) => {
-        console.log(response);
         if (response.success == false) {
           this.captchaComponent.reloadImage();
           this.showSpinner = false;
           return;
         } else {
+          // TO_DO
           this.router.navigate([NAVIGATIONS.homePage]);
-
-          // this.translateService
-          //   .get('Message.RegistrationDoneSuccessfully')
-          //   .subscribe((res: string) => {
-          //     this.toastr.success(res);
-          //   });
         }
       },
       (error) => {
@@ -98,13 +82,4 @@ export class SignupComponent
   toggleFieldConfirm() {
     this.passwordConfirmFieldType = !this.passwordConfirmFieldType;
   }
-
-  // confirmValidator = (control: FormControl): { [s: string]: boolean } => {
-  //   if (!control.value) {
-  //     return { error: true, required: true };
-  //   } else if (control.value !== this.reactiveForm.controls.password.value) {
-  //     return { error: true, confirm: true };
-  //   }
-  //   return {};
-  // };
 }

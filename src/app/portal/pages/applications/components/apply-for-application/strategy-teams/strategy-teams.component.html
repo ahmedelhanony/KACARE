@@ -1,77 +1,168 @@
-<div class="row justify-content-center">
-  <div class="col-md-7 mb-3">
-    <h3 class="font-24 font-md-18 font-weight-bolder mb-0">Business Case</h3>
-    <p class="font-16 font-md-14 text-color-gray mb-0">Provide a brief summary of the business strategy of the prime bidder specifically for the business (product or service line) that is the target of the proposed project In particular.  address the ability of the prime bidder to be competitive in the target market(s) nationally. regionally. and globally.</p>
-  </div>
-
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Business Strategy </label>
-      <div class="input-content">
-      <textarea matInput placeholder="Business Strategy "></textarea>
+<form [formGroup]="strategyForm">
+  <div class="row justify-content-center">
+    <ng-container *ngIf="appName === APPNAMES.DEMO || appName === APPNAMES.PD">
+      <div class="col-md-7 mb-3">
+        <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+          Business Case
+        </h3>
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Provide a brief summary of the business strategy of the prime bidder
+          specifically for the business (product or service line) that is the
+          target of the proposed project In particular. address the ability of
+          the prime bidder to be competitive in the target market(s) nationally.
+          regionally. and globally.
+        </p>
       </div>
-    </mat-form-field>
-  </div>
-
-  <div class="col-md-7 mb-3">
-    <p class="font-16 font-md-14 text-color-gray mb-0">Indicate whether IP ownership or licensing would be required, to successfully execute the business
-      strategy. </p>
-  </div>
-
-
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">IP ownership or licensing </label>
-      <div class="input-content">
-      <textarea matInput placeholder="IP ownership or licensing "></textarea>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">Business Strategy </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Business Strategy "
+              formControlName="businessCase"
+            ></textarea>
+          </div>
+        </mat-form-field>
       </div>
-    </mat-form-field>
-  </div>
+    </ng-container>
 
-
-  <div class="col-md-7 mb-3">
-    <h3 class="font-24 font-md-18 font-weight-bolder mb-0">Team Structure and Members </h3>
-    <p class="font-16 font-md-14 text-color-gray mb-0">Provide a listing of each of the participating institutions, their role in the project, and their
-      qualifications and past experience. If an off-taker has not yet been identified at the time of concept
-      paper submission, indicate plans for targeting and securing a local off-taker, prior to submission of a
-      full proposal Also please indicate the potential location of the project. </p>
-  </div>
-
-
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">Plans for targeting and securing local off-takers </label>
-      <div class="input-content">
-      <textarea matInput placeholder="Plans for targeting and securing local off-takers "></textarea>
+    <ng-container *ngIf="appName === APPNAMES.DEMO">
+      <div class="col-md-7 mb-3">
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          Indicate whether IP ownership or licensing would be required, to
+          successfully execute the business strategy.
+        </p>
       </div>
-    </mat-form-field>
-  </div>
-
-
-  <div class="col-md-7 mb-2">
-    <mat-form-field class="custom-textarea">
-      <label class="form-label">IP ownership or licensing </label>
-      <div class="input-content">
-      <textarea matInput placeholder="IP ownership or licensing "></textarea>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <label class="form-label">IP ownership or licensing </label>
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="IP ownership or licensing "
+              formControlName="ipOwnership"
+            ></textarea>
+          </div>
+        </mat-form-field>
       </div>
-    </mat-form-field>
+    </ng-container>
+
+    <!-- Team Memebers Table -->
+    <div class="col-md-7 mb-3">
+      <h3 class="font-24 font-md-18 font-weight-bolder mb-0">
+        Team Structure and Members
+      </h3>
+      <p class="font-16 font-md-14 text-color-gray mb-0">
+        Provide a listing of each of the participating institutions, their role
+        in the project, their past experience, and their key personnel and their
+        qualifications.
+      </p>
+    </div>
+    <div class="col-12 mb-3">
+      <table class="primary-table table-2" [ngClass]="{ 'table-dark': true }">
+        <thead class="text-nowrap">
+          <th>
+            Member <span class="ui-column-resizer" dragableColumn> </span>
+          </th>
+          <th>
+            Institution Name<span class="ui-column-resizer" dragableColumn>
+            </span>
+          </th>
+          <th>Role<span class="ui-column-resizer" dragableColumn> </span></th>
+          <th>
+            KeyQualifications<span class="ui-column-resizer" dragableColumn>
+            </span>
+          </th>
+          <th>Experience Years</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <ng-container
+            formArrayName="teamMembers"
+            *ngFor="let group of teamMembers?.controls; let i = index"
+          >
+            <tr [formGroupName]="i">
+              <td>
+                <mat-form-field>
+                  <input matInput type="text" formControlName="name" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="tetx"
+                    formControlName="institutionName"
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput type="tetx" formControlName="memberRole" />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="tetx"
+                    formControlName="qualifications"
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="tetx"
+                    formControlName="pastExperience"
+                  />
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-icon class="delete" (click)="onDeleteMember(i)"
+                  >delete_forever</mat-icon
+                >
+                <!-- <mat-icon class="done" (click)="doneRow(group)">done</mat-icon> -->
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 mb-3">
+      <button
+        mat-flat-button
+        class="btn light-blue-button px-4"
+        (click)="onAddNewMember()"
+      >
+        <mat-icon class="mx-1">add</mat-icon>
+        <span class="mx-1">New Member</span>
+      </button>
+    </div>
+
+    <ng-container *ngIf="appName === APPNAMES.DEMO || appName === APPNAMES.PD">
+      <div class="col-md-7 mb-3">
+        <p class="font-16 font-md-14 text-color-gray mb-0">
+          If an off-taker has not yet been identified at the time of concept
+          paper submission, indicate plans for targeting and securing a local
+          off-taker, prior to submission of a full proposal. Also please
+          indicate the potential location of the project.
+        </p>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field class="custom-textarea">
+          <div class="input-content">
+            <textarea
+              matInput
+              placeholder="Plans for targeting and securing local off-takers "
+              formControlName="offTakerPlan"
+            ></textarea>
+          </div>
+        </mat-form-field>
+      </div>
+    </ng-container>
   </div>
-
-
-  <div class="col-md-7 mb-3">
-    <h3 class="font-24 font-md-18 font-weight-bolder mb-0">Team Structure and Members </h3>
-    <p class="font-16 font-md-14 text-color-gray mb-0">Provide a list of key personnel and their relevant qualifications and past experience.</p>
-  </div>
-
-  <div class="col-12 mb-3">
-    <app-table-list className="table-2" [columnsConfig]="columnsConfig" [rows]="dataSource" [columns]="columns"></app-table-list>
-  </div>
-
-  <div class="col-12 mb-3">
-    <button mat-flat-button class="btn light-blue-button px-4">
-      <mat-icon class="mx-1">add</mat-icon>
-      <span class="mx-1">New Member</span>
-    </button>
-  </div>
-
-</div>
+</form>

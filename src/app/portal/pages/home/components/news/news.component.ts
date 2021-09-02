@@ -1,86 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import {SwiperOptions} from "swiper";
+import { NewsModel } from 'src/app/core/models/news/news.model';
+import { NewsService } from 'src/app/core/services/news.service';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  news = [
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-1.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-2.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-3.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-1.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-1.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-1.jpg',
-      id:'1'
-    },
-    {
-      title: 'Energy storage systems are key to managing variations in energy...',
-      date: '22/11/2021',
-      image: 'assets/images/news/news-1.jpg',
-      id:'1'
-    },
-
-  ]
   config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 20,
-    // pagination: { el: '.swiper-pagination', clickable: true},
     navigation: {
       nextEl: '.button-next',
-      prevEl: '.button-prev'
+      prevEl: '.button-prev',
     },
     loop: true,
-    watchSlidesVisibility:true,
+    watchSlidesVisibility: true,
     breakpoints: {
       480: {
         slidesPerView: 1,
-        freeMode: true
+        freeMode: true,
       },
       600: {
-        slidesPerView: 2
+        slidesPerView: 2,
       },
       991: {
-        slidesPerView: 3
+        slidesPerView: 3,
       },
       1200: {
-        slidesPerView: 3
-      }
-    }
+        slidesPerView: 3,
+      },
+    },
   };
-  constructor() { }
+
+  news = new Array<NewsModel>();
+
+  constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
+    const query: any = {
+      pageNumber: 1,
+      pageSize: 25,
+      visible: true,
+    };
+    this.newsService.getNews(query).subscribe((res: any) => {
+      if (res && res.body.length) {
+        this.news = [...res.body];
+        this.news.map((news: NewsModel) => {
+          news.imageSrc = `data:image/jpeg;base64,${news.image.data}`;
+        });
+      }
+    });
   }
-
 }

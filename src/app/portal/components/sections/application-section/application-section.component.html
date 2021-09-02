@@ -18,8 +18,9 @@
         <button
           mat-flat-button
           class="btn primary-button w-100 font-weight-bolder"
-          routerLink="/applications/apply"
-        >
+          [routerLink]="['/applications/apply', application.appName]"
+          >
+          <!-- [routerLink]="/applications/apply" -->
           <!-- (click)="onApplyClicked(application.link)"  -->
           Apply Now
         </button>

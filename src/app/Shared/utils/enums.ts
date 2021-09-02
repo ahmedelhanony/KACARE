@@ -8,6 +8,7 @@ export enum SERVICES {
   Account = 'User',
   MatchMaking = 'MatchMaking',
   FAQ = 'FAQ',
+  News = 'News',
   Technology = 'Technology',
   ProjectRole = 'ProjectRole',
   RFPTopic = 'RFPTopic',
@@ -16,10 +17,12 @@ export enum SERVICES {
   POC = 'PoConcept',
   Feas = 'FeasStudy',
   Pdevelopment = 'Pdevelopment',
+  ContactUs = 'ContactUs',
 }
 
 export enum DATEFORMAT {
   date = 'DD/MM/YYYY',
+  BEDateFormat = 'dd/MM/yyyy',
   dateWithTime = 'DD/MM/YYYY h:mm:ss A',
   apiDate = 'MM/DD/YYYY',
   apiDateWithTime = 'dd/MM/yyyy HH:MM',
@@ -78,6 +81,9 @@ export enum NAVIGATIONS {
 
   InfoMatchMakingPage = '/matchmaking/info',
   InfoProgramsPage = '/programs/info',
+
+  Admin = '/admin',
+  News = '/news'
 }
 
 export enum FileTypeEnum {
@@ -132,6 +138,8 @@ export enum FORMLABELS {
   CODE = 'Code',
   IS_REQUIRED = ' is required.',
   ADD_NEW_QUESTION = 'Add New Question',
+  ADD_NEW_ARTICLE = 'Add New Article',
+  EDIT_ARTICLE = 'Edit Article',
   EDIT_QUESTION = 'Edit Question',
   QUESTION = 'Question',
   ANSWER = 'Answer',
@@ -146,6 +154,14 @@ export enum FORMLABELS {
   EDIT_MATCH_MAKING = 'Edit Match Making',
   SUBMIT = 'Submit',
   EDIT = 'Edit',
+
+  //////////////////////////
+  // Contact US Page
+  SUBJECT = 'Subject',
+  FULLNAME = 'Full Name',
+  BODY = 'Body',
+  TITLE = 'Article title',
+  DATE='Publish Date'
 }
 
 export enum AUTHPAGESNAME {

@@ -7,7 +7,6 @@
           <input
             matInput
             placeholder="Institutional Name"
-            required
             formControlName="bidderInstitiutionalName"
           />
         </div>
@@ -20,7 +19,6 @@
           <input
             matInput
             placeholder="Institutional Address"
-            required
             formControlName="bidderInstitiutionalAddress"
           />
         </div>
@@ -33,7 +31,6 @@
           <input
             matInput
             placeholder="Registration Number "
-            required
             formControlName="bidderCorporateRegNumber"
           />
         </div>
@@ -46,7 +43,6 @@
           <input
             matInput
             placeholder="Investigator Name"
-            required
             formControlName="principalInvestigator"
           />
         </div>
@@ -59,7 +55,6 @@
           <input
             matInput
             placeholder="Investigator Email"
-            required
             formControlName="principalInvestigatorEmail"
           />
         </div>
@@ -72,7 +67,6 @@
           <input
             matInput
             placeholder="Investigator phone"
-            required
             formControlName="principalInvestigatorPhone"
           />
         </div>
@@ -85,7 +79,6 @@
           <input
             matInput
             placeholder="Investigator Address"
-            required
             formControlName="principalInvestigatorAddress"
           />
         </div>
@@ -96,9 +89,52 @@
         >Is the prime bidder a saudi company?</label
       >
       <mat-radio-group class="d-flex flex-column" formControlName="saudiBidder">
-        <mat-radio-button value="true">Yes</mat-radio-button>
-        <mat-radio-button value="false">No</mat-radio-button>
+        <mat-radio-button [value]="true">Yes</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
       </mat-radio-group>
     </div>
+
+    <!-- Will be shown in case of POC -->
+    <ng-container *ngIf="appName === APPNAMES.POC">
+      <div class="col-md-7 mb-2">
+        <label class="form-label mb-2"
+          >Does the prime bidder have an account in ETIMAD?</label
+        >
+        <mat-radio-group class="d-flex flex-column" formControlName="isEtmad">
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="col-md-7 mb-2" *ngIf="generalInfoForm.value.isEtmad">
+        <mat-form-field>
+          <label class="form-label">ETIMAD Account Name</label>
+          <div class="input-content">
+            <input
+              matInput
+              placeholder="ETIMAD Account Name"
+              formControlName="etmadName"
+            />
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="col-md-7 mb-2">
+        <mat-form-field>
+          <label class="form-label">Bidder Classification</label>
+          <div class="input-content">
+            <mat-select
+              disableOptionCentering
+              placeholder="Choose Bidder Classification"
+              formControlName="bClassId"
+            >
+              <mat-option
+                [value]="bidder.id"
+                *ngFor="let bidder of bidderClassifications"
+                >{{ bidder.nameEn }}</mat-option
+              >
+            </mat-select>
+          </div>
+        </mat-form-field>
+      </div>
+    </ng-container>
   </div>
 </form>

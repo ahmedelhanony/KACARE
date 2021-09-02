@@ -7,3 +7,16 @@ export function downloadFile(fileLink: string , fileName : string): void {
   link.click();
   link.remove();
 }
+
+export function getFirstChar(text: string) {
+  if (text) {
+    let characters = text.match(/\b(\w)/g);
+    if (characters) {
+      return characters.join('');
+    } else {
+      return '';
+    }
+  } else {
+    return '';
+  }
+}

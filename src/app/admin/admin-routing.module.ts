@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdminComponent} from "./admin.component";
-import {AdminMatchMakingComponent} from "./components/admin-match-making/admin-match-making.component";
-import {AdminApplicationsComponent} from "./components/admin-applications/admin-applications.component";
-import {AdminNewsComponent} from "./components/admin-news/admin-news.component";
-import {AdminFaqsComponent} from "./components/admin-faqs/admin-faqs.component";
+import { AdminComponent } from './admin.component';
+import { AdminMatchMakingComponent } from './components/admin-match-making/admin-match-making.component';
+import { AdminApplicationsComponent } from './components/admin-applications/admin-applications.component';
+import { AdminNewsComponent } from './components/admin-news/admin-news.component';
+import { AdminFaqsComponent } from './components/admin-faqs/admin-faqs.component';
+import { NewsResolver } from '../core/resolvers/news.resolver';
 
 const routes: Routes = [
   {
@@ -13,26 +14,33 @@ const routes: Routes = [
     children: [
       {
         path: 'match-making',
-        component: AdminMatchMakingComponent
+        component: AdminMatchMakingComponent,
       },
       {
         path: 'applications/:id',
-        component: AdminApplicationsComponent
+        component: AdminApplicationsComponent,
       },
       {
         path: 'news',
-        component: AdminNewsComponent
+        component: AdminNewsComponent,
+        data: { isAdmin: true },
+        resolve: { news: NewsResolver },
       },
       {
         path: 'faqs',
-        component: AdminFaqsComponent
+        component: AdminFaqsComponent,
       },
-    ]
-  }
+      {
+        path: '',
+        redirectTo: 'match-making',
+        pathMatch: 'full',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

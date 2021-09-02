@@ -1,16 +1,11 @@
-import {
-  Component,
-  Injector,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { CaptchaComponent } from 'angular-captcha';
 import { UserModel } from 'src/app/core/models/user/UserModel';
 import { DialogService } from 'src/app/core/services/dialog-service/dialog.service';
 import { BaseComponent } from 'src/app/Shared/components/base/base.component';
+import { DefaultConfirmationOptions } from 'src/app/Shared/utils/dialog-options';
 import { FORMLABELS } from 'src/app/Shared/utils/enums';
 import { environment } from 'src/environments/environment';
 
@@ -19,10 +14,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent
-  extends BaseComponent
-  implements OnInit, OnDestroy
-{
+export class SigninComponent extends BaseComponent implements OnInit {
   adminView: any;
   isPortalView = true;
   loginForm!: FormGroup;
@@ -46,8 +38,7 @@ export class SigninComponent
   ngOnInit() {
     this.adminView = this.route.snapshot.data.isPortalView;
     this.captchaComponent.captchaEndpoint = environment.captcha_URL;
-    let user = new UserModel();
-    this.loginForm = this.fb.formGroup(UserModel, user);
+    this.loginForm = this.fb.formGroup(UserModel, new UserModel());
   }
 
   toggleFieldType() {
@@ -70,39 +61,25 @@ export class SigninComponent
     this.accountService.signIn(this.loginForm.value).subscribe(
       (response: any) => {
         this.showSpinner = false;
-
-        console.log(response);
         if (response.success == false) {
           this.captchaComponent.reloadImage();
           return;
         } else if (response.token && response.userInfo) {
+          this.dialogService.open(
+            DefaultConfirmationOptions({ message: 'Logged in successfully.' })
+          );
+          setTimeout(() => {
+            this.dialogService.closeDialog();
+          }, 3000);
+
           this.profileService.setToken(response.token);
           this.profileService.setProfile(response.userInfo);
           this.navigateAfterLogin();
-
-          // this.translateService
-          //   .get('Message.LoginSuccessfully')
-          //   .subscribe((res: string) => {
-          //     this.toastr.success(res);
-          //   });
         }
       },
       (error) => {
-        // this.captchaComponent.reloadImage();
-        // this.dialogService.open(
-        //   DefaultErrorOptions({
-        //     message: error.error.errorMessage,
-        //   })
-        // );
-        // setTimeout(() => {
-        //   this.dialogService.closeDialog();
-        // }, 3000);
         this.showSpinner = false;
       }
     );
-  }
-
-  ngOnDestroy() {
-    // this.adminView.unsubscribe();
   }
 }

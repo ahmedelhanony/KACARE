@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { DialogService } from 'src/app/core/services/dialog-service/dialog.service';
 import { FAQService } from 'src/app/core/services/faq.service';
 import { LoadingService } from 'src/app/core/services/loading/loading.service';
@@ -49,7 +50,8 @@ export class AdminFaqsComponent implements OnInit {
     public dialog: MatDialog,
     private FAQService: FAQService,
     private dialogService: DialogService,
-    public loader: LoadingService
+    public loader: LoadingService,
+    private toaster: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -112,7 +114,7 @@ export class AdminFaqsComponent implements OnInit {
 
   addNewQuestion(formValues: any) {
     this.FAQService.addQuestion(formValues).subscribe((response: any) => {
-      this.handleDataAfterActionDone(response);
+      this.handleDataAfterActionDone(response, TABLELISTACTIONS.ADD);
     });
   }
 
@@ -137,7 +139,7 @@ export class AdminFaqsComponent implements OnInit {
   editFAQ(formValues: any) {
     formValues.id = this.selectedFAQId;
     this.FAQService.editQuestion(formValues).subscribe((res: any) => {
-      this.handleDataAfterActionDone(res);
+      this.handleDataAfterActionDone(res, TABLELISTACTIONS.EDIT);
     });
   }
 
@@ -148,7 +150,10 @@ export class AdminFaqsComponent implements OnInit {
   onDeleteFAQ(item: any) {
     if (item && item.id) {
       this.dialogService.open(
-        DefaultDeletionOptions({ title: 'Delete FAQ Question!' })
+        DefaultDeletionOptions({
+          title: 'Delete FAQ Question!',
+          icon: 'delete-question',
+        })
       );
 
       this.dialogService.confirmed().subscribe((confirmed: boolean) => {
@@ -161,16 +166,24 @@ export class AdminFaqsComponent implements OnInit {
 
   deleteFAQ(id: number) {
     this.FAQService.deleteQuestion(id).subscribe((response: any) => {
-      this.handleDataAfterActionDone(response);
+      this.handleDataAfterActionDone(response, TABLELISTACTIONS.DELETE);
     });
   }
 
   //#endregion
 
-  handleDataAfterActionDone(response: any) {
+  handleDataAfterActionDone(response: any, action: TABLELISTACTIONS) {
     if (response && !response.status) {
+      this.toaster.success(
+        `Question is ${
+          action === TABLELISTACTIONS.ADD
+            ? 'added'
+            : action === TABLELISTACTIONS.EDIT
+            ? 'updated'
+            : 'deleted'
+        } successfully.`
+      ,'Success');
       this.getAllFAQS();
-    } else {
     }
   }
 }

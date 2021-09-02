@@ -1,6 +1,8 @@
 <div class="inner-section-title" data-aos="zoom-in-down" [ngClass]="className">
-  <span class="img-card circled-img shape" *ngIf="orgEmail">{{ getFirstChar(title) }}</span>
-  <h1 class="main-title" *ngIf="title">{{title}}</h1>
-  <h2 class="sub-title" *ngIf="subTitle && !orgEmail">{{subTitle}}</h2>
-  <a href="mailto:{{orgEmail}}" *ngIf="orgEmail">{{orgEmail}}</a>
+  <span class="img-card circled-img shape" *ngIf="orgEmail">{{
+    truncateName(title)
+  }}</span>
+  <h1 class="main-title" *ngIf="title">{{ title }}</h1>
+  <h2 class="sub-title" *ngIf="subTitle && !orgEmail">{{ subTitle }}</h2>
+  <a href="mailto:{{ orgEmail }}" *ngIf="orgEmail">{{ orgEmail }}</a>
 </div>

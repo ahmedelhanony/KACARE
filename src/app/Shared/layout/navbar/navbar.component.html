@@ -85,8 +85,8 @@
 
           <li class="nav-item" *ngIf="!isPortal">
             <a
-              routerLink="/admin-login"
               class="d-lg-none d-flex align-items-center nav-link"
+              (click)="logout()"
             >
               <span class="icon fi fi-sign-out text-color-red font-20"></span>
               <span class="nav-label text-color-red logout-text">Logout</span>
@@ -94,70 +94,23 @@
           </li>
         </ul>
         <div class="login-actions" *ngIf="!isAuthenticated">
-          <button mat-flat-button routerLink='/login' class="btn login-btn">Login</button>
+          <button mat-flat-button routerLink="/login" class="btn login-btn">
+            Login
+          </button>
           <span class="mx-1"></span>
-          <button mat-flat-button class="btn create-btn" routerLink='/signup'>Create Account</button>
+          <button mat-flat-button class="btn create-btn" routerLink="/signup">
+            Create Account
+          </button>
         </div>
       </div>
       <div class="menu-actions" *ngIf="isAuthenticated">
         <ng-container *ngIf="isPortal">
-
-            <button
-              mat-button
-              [matMenuTriggerFor]="menu"
-              class="logged-user-btn"
-            >
-              <span class="avatar">
-                <span
-                  class="
-                    text-avatar
-                    font-15 font-weight-bolder
-                    text-color-white
-                  "
-                  *ngIf="!user.img"
-                  >{{ getFirstChar(user.name) }}</span
-                >
-                <img [src]="user.img" *ngIf="user.img" alt="" />
-              </span>
-              <span
-                class="font-17 font-weight-bold text-color-onyx mx-2 text"
-                >{{ user.name }}</span
-              >
-            </button>
-            <mat-menu #menu="matMenu" classList="logged-user-dropdown">
-              <button mat-menu-item [routerLink]="['/my-profile']" >
-                <span class="icon">
-                  <img src="assets/images/user.svg" alt="" />
-                </span>
-                <span class="font-15 font-weight-medium text-color-gray mx-3"
-                  >My Profile</span
-                >
-              </button>
-              <!-- <button mat-menu-item>
-                <span class="icon">
-                  <img src="assets/images/lock.svg" alt="" />
-                </span>
-                <span class="font-15 font-weight-medium text-color-gray mx-3"
-                  >Forgot Password</span
-                >
-              </button> -->
-              <button mat-menu-item (click)="logout()">
-                <span class="icon fi fi-sign-out text-color-red font-20"></span>
-                <span class="font-15 font-weight-medium text-color-red mx-3"
-                  >Logout</span
-                >
-              </button>
-            </mat-menu>
-
-        </ng-container>
-
-        <div class="d-flex flex-column p-lg-4" *ngIf="isAuthenticated && !isPortal">
-          <button mat-button class="logged-user-btn">
+          <button mat-button [matMenuTriggerFor]="menu" class="logged-user-btn">
             <span class="avatar">
               <span
                 class="text-avatar font-15 font-weight-bolder text-color-white"
                 *ngIf="!user.img"
-                >{{ getFirstChar(user.name) }}</span
+                >{{ truncateName(user.name) }}</span
               >
               <img [src]="user.img" *ngIf="user.img" alt="" />
             </span>
@@ -165,9 +118,53 @@
               user.name
             }}</span>
           </button>
+          <mat-menu #menu="matMenu" classList="logged-user-dropdown">
+            <button mat-menu-item [routerLink]="['/my-profile']">
+              <span class="icon">
+                <img src="assets/images/user.svg" alt="" />
+              </span>
+              <span class="font-15 font-weight-medium text-color-gray mx-3"
+                >My Profile</span
+              >
+            </button>
+            <!-- <button mat-menu-item>
+                <span class="icon">
+                  <img src="assets/images/lock.svg" alt="" />
+                </span>
+                <span class="font-15 font-weight-medium text-color-gray mx-3"
+                  >Forgot Password</span
+                >
+              </button> -->
+            <button mat-menu-item (click)="logout()">
+              <span class="icon fi fi-sign-out text-color-red font-20"></span>
+              <span class="font-15 font-weight-medium text-color-red mx-3"
+                >Logout</span
+              >
+            </button>
+          </mat-menu>
+        </ng-container>
+
+        <div
+          class="d-flex flex-column p-lg-4"
+          *ngIf="isAuthenticated && !isPortal"
+        >
+          <button mat-button class="logged-user-btn">
+            <span class="avatar">
+              <span
+                class="text-avatar font-15 font-weight-bolder text-color-white"
+                *ngIf="!user.img"
+                >{{ truncateName(user.name) }}</span
+              >
+              <img [src]="user.img" *ngIf="user.img" alt="" />
+            </span>
+            <span [routerLink]="['/my-profile']" class="font-17 font-weight-bold text-color-onyx mx-2 text">{{
+              user.name
+            }}</span>
+          </button>
+          <!-- routerLink="/admin-login" -->
           <a
-            routerLink="/admin-login"
             class="d-lg-flex d-none align-items-center mt-3"
+            (click)="logout()"
           >
             <span class="icon fi fi-sign-out text-color-red font-20"></span>
             <span class="font-15 font-weight-medium text-color-red mx-2"

@@ -16,13 +16,13 @@ export const DefaultDeletionOptions = (options?: any) => {
     confirmText: '' || options?.confirmText,
     moreText: '' || options?.moreText,
     type: 'delete' || options?.type,
-    icon: 'delete-match' || options?.icon,
+    icon: options?.icon || 'delete-match',
   };
 };
 
 export const DefaultErrorOptions = (options?: any) => {
   return {
-    title: options?.title || 'OOPS!',
+    title: options?.title || 'Error!',
     message: options?.message || 'Something went wrong.',
     type: 'done',
     icon: 'delete-match',
