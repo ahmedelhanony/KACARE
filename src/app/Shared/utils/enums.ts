@@ -41,7 +41,7 @@ export enum NAVIGATIONS {
   homePage = '/home',
   loginPageUrl = '/login',
   verifyPageUrl = '/account/verify',
-  accessDeniedPageUrl = '/access-denied',
+  accessDeniedPageUrl = '/404',
   resetPageUrl = '/account/reset',
   sendresetPageURL = 'account/sendreset',
   registerPageUrl = '/signup',

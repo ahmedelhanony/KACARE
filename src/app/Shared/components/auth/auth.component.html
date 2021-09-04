@@ -89,9 +89,11 @@
             formControlName="newPassword"
           />
           <span
-            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
+            class="form-icon cursor-pointer text-color-dark-gray-1 font-15"
             (click)="toggleFieldType()"
-          ></span>
+          >
+          <mat-icon>{{passwordFieldType ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </span>
         </div>
         <mat-error
           *ngIf="
@@ -122,8 +124,11 @@
           />
           <!-- [ngClass]="{'fi fi-eye':!passwordConfirmFieldType, 'fi fi-eye': passwordConfirmFieldType}" (click)="toggleFieldConfirm()" -->
           <span
-            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
-          ></span>
+            class="form-icon cursor-pointer text-color-dark-gray-1 font-15"
+            (click)="toggleFieldConfirm()"
+          >
+          <mat-icon>{{passwordConfirmFieldType ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </span>
         </div>
         <mat-error
           *ngIf="

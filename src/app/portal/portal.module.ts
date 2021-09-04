@@ -13,6 +13,7 @@ import { ArticleSectionComponent } from './components/sections/article-section/a
 import { NewsPageComponent } from './pages/news-page/news-page.component';
 import { ApplicationSectionComponent } from './components/sections/application-section/application-section.component';
 import { MatchMakingCardComponent } from './components/cards/match-making-card/match-making-card.component';
+import { TutorialsPageComponent } from './pages/tutorials-page/tutorials-page.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatchMakingCardComponent } from './components/cards/match-making-card/m
     NewsPageComponent,
     ApplicationSectionComponent,
     MatchMakingCardComponent,
+    TutorialsPageComponent,
   ],
   exports: [
     // MainCardComponent,

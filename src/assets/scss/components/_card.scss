@@ -19,13 +19,24 @@
   }
 
   &.loading{
-    .shape, h3, h6, .company-details .detail, .text-avatar, .project-details .primary-label{
+    .shape{
+      img{
+        display: none
+      }
+    }
+    button{
+      pointer-events: none;
+      .mat-button-wrapper{
+        opacity: 0;
+      }
+    }
+    .shape, h3, h6, .company-details .detail, .text-avatar, .project-details .primary-label, button{
       @extend .loading-bg;
     }
     h3,h6{
       width: 100%;
     }
-    
+
   }
 
   &.image-card, &.applications-card{
@@ -56,6 +67,9 @@
       h3{
         font-size: 1.75rem;
         margin-bottom: 0.5rem;
+        @include media-breakpoint-down(xl){
+          font-size: 1.25rem;
+        }
         @include media-breakpoint-down(sm){
           font-size: 1.25rem;
         }

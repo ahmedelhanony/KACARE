@@ -24,7 +24,7 @@
     content:"";
     min-width:70px;
     width:70px;
-    height: calc(100% + 20px);
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,6 +45,7 @@
     margin-bottom: -15px;
     color:$onyx;
     font-weight: 500;
+    font-size: 1.3rem;
     line-height: 1;
   }
   &.toast-success{

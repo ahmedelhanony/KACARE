@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccessDeniedComponent } from './Shared/components/access-denied/access-denied.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LayoutComponent } from './Shared/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -24,9 +26,16 @@ const routes: Routes = [
       import(`./admin/admin.module`).then((m) => m.AdminModule),
   },
   {
-    path: 'access-denied',
-    component: AccessDeniedComponent,
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {path: 'contact-us', component: ContactUsComponent, data: {breadcrumb: 'Contact Us'}},
+      {path: '404', component: NotFoundComponent},
+
+    ]
   },
+  {path: '**', redirectTo: '/404'}
+
 ];
 
 @NgModule({

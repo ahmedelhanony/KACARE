@@ -7,6 +7,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { VerfiyAccountComponent } from './components/verfiy-account/verfiy-account.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { LayoutComponent } from '../Shared/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -42,8 +43,15 @@ const routes: Routes = [
     data: { isPortalView: false },
   },
   {
-    path: 'my-profile',
-    component: UserProfileComponent,
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'my-profile',
+        component: UserProfileComponent,
+      }
+    ]
+
   },
 ];
 

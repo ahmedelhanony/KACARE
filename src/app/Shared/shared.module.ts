@@ -20,7 +20,6 @@ import { AuthComponent } from './components/auth/auth.component';
 import { BotDetectCaptchaModule } from 'angular-captcha';
 import { SpinnerButtonDirective } from './directives/spinner-button.directive';
 import { FiltersComponent } from './components/filters/filters.component';
-import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { NoDataFoundComponent } from './components/no-data-found/no-data-found.component';
 import { GeneralInfoComponent } from '../portal/pages/applications/components/apply-for-application/general-info/general-info.component';
@@ -40,7 +39,6 @@ import { GeneralInfoComponent } from '../portal/pages/applications/components/ap
     AuthComponent,
     SpinnerButtonDirective,
     FiltersComponent,
-    AccessDeniedComponent,
     GlobalSearchComponent,
     NoDataFoundComponent,
     GeneralInfoComponent
@@ -68,7 +66,6 @@ import { GeneralInfoComponent } from '../portal/pages/applications/components/ap
     BotDetectCaptchaModule,
     SpinnerButtonDirective,
     FiltersComponent,
-    AccessDeniedComponent,
     GlobalSearchComponent,
     NoDataFoundComponent,
     GeneralInfoComponent

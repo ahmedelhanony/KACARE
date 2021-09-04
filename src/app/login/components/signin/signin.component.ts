@@ -36,7 +36,8 @@ export class SigninComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminView = this.route.snapshot.data.isPortalView;
+    this.isPortalView = this.route.snapshot.data.isPortalView;
+
     this.captchaComponent.captchaEndpoint = environment.captcha_URL;
     this.loginForm = this.fb.formGroup(UserModel, new UserModel());
   }

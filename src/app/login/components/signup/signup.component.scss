@@ -9,6 +9,9 @@
     width: 60%;
     margin: auto 130px;
   }
+  @media (max-width: 991px){
+    padding-bottom: 80px;
+  }
 }
 
 .hidebotdetect {

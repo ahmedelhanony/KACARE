@@ -11,9 +11,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import {SatPopoverModule} from "@ncstate/sat-popover";
 import {SharedModule} from "./Shared/shared.module";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactUsComponent],
+  declarations: [AppComponent, ContactUsComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

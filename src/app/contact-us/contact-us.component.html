@@ -1,145 +1,143 @@
-<div class="contact-us-popover">
-  <div class="contact-container">
-    <h3
-      class="
-        font-24 font-md-20
-        text-color-onyx
-        font-weight-bold
-        mb-3
-        text-center
-      "
-    >
-      Send Us Message
-    </h3>
-    <form [formGroup]="contactUsForm">
-      <mat-form-field class="small-input">
-        <label class="form-label">{{ CONTACTUSFORMLABELS.FULLNAME }}</label>
-        <div class="input-content">
-          <input
-            matInput
-            type="text"
-            placeholder="Enter Full Name"
-            formControlName="fullName"
-          />
-        </div>
-        <mat-error
-          *ngIf="
-            contactUsForm.controls.fullName.errors &&
-            contactUsForm.controls.fullName.errors.required
-          "
-        >
-          {{ CONTACTUSFORMLABELS.FULLNAME + CONTACTUSFORMLABELS.IS_REQUIRED }}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="small-input">
-        <label class="form-label">{{ CONTACTUSFORMLABELS.EMAIL }}</label>
-        <div class="input-content">
-          <input
-            matInput
-            type="email"
-            placeholder="Enter Email"
-            formControlName="email"
-          />
-        </div>
-        <mat-error
-          *ngIf="
-            contactUsForm.controls.email.errors &&
-            contactUsForm.controls.email.errors.required
-          "
-        >
-          {{ CONTACTUSFORMLABELS.EMAIL + CONTACTUSFORMLABELS.IS_REQUIRED }}
-        </mat-error>
-        <mat-error
-          *ngIf="
-            contactUsForm.controls.email.errors &&
-            contactUsForm.controls.email.errors.email
-          "
-        >
-          {{ CONTACTUSFORMLABELS.EMAIL + " is not a valid email." }}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="small-input">
-        <label class="form-label">{{ CONTACTUSFORMLABELS.SUBJECT }}</label>
-        <div class="input-content">
-          <input
-            matInput
-            type="text"
-            placeholder="Enter Subject"
-            formControlName="subject"
-          />
-        </div>
-        <mat-error
-          *ngIf="
-            contactUsForm.controls.subject.errors &&
-            contactUsForm.controls.subject.errors.required
-          "
-        >
-          {{ CONTACTUSFORMLABELS.SUBJECT + CONTACTUSFORMLABELS.IS_REQUIRED }}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="custom-textarea small-custom-textarea">
-        <label class="form-label">{{ CONTACTUSFORMLABELS.BODY }} </label>
-        <div class="input-content">
-          <textarea
-            matInput
-            placeholder="Enter Message here"
-            formControlName="message"
-          ></textarea>
-        </div>
-        <mat-error
-          *ngIf="
-            contactUsForm.controls.message.errors &&
-            contactUsForm.controls.message.errors.required
-          "
-        >
-          {{ CONTACTUSFORMLABELS.BODY + CONTACTUSFORMLABELS.IS_REQUIRED }}
-        </mat-error>
-      </mat-form-field>
+<app-header
+    title="Contact Us"
+    subTitle="Send Us Message"
+  ></app-header>
+  <section class="secondary-section">
+    <div class="custom-container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form [formGroup]="contactUsForm">
+            <mat-form-field>
+              <label class="form-label">{{ CONTACTUSFORMLABELS.FULLNAME }}</label>
+              <div class="input-content">
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Enter Full Name"
+                  formControlName="fullName"
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  contactUsForm.controls.fullName.errors &&
+                  contactUsForm.controls.fullName.errors.required
+                "
+              >
+                {{ CONTACTUSFORMLABELS.FULLNAME + CONTACTUSFORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label class="form-label">{{ CONTACTUSFORMLABELS.EMAIL }}</label>
+              <div class="input-content">
+                <input
+                  matInput
+                  type="email"
+                  placeholder="Enter Email"
+                  formControlName="email"
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  contactUsForm.controls.email.errors &&
+                  contactUsForm.controls.email.errors.required
+                "
+              >
+                {{ CONTACTUSFORMLABELS.EMAIL + CONTACTUSFORMLABELS.IS_REQUIRED }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  contactUsForm.controls.email.errors &&
+                  contactUsForm.controls.email.errors.email
+                "
+              >
+                {{ CONTACTUSFORMLABELS.EMAIL + " is not a valid email." }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <label class="form-label">{{ CONTACTUSFORMLABELS.SUBJECT }}</label>
+              <div class="input-content">
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Enter Subject"
+                  formControlName="subject"
+                />
+              </div>
+              <mat-error
+                *ngIf="
+                  contactUsForm.controls.subject.errors &&
+                  contactUsForm.controls.subject.errors.required
+                "
+              >
+                {{ CONTACTUSFORMLABELS.SUBJECT + CONTACTUSFORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="custom-textarea">
+              <label class="form-label">{{ CONTACTUSFORMLABELS.BODY }} </label>
+              <div class="input-content">
+                <textarea
+                  matInput
+                  placeholder="Enter Message here"
+                  formControlName="message"
+                ></textarea>
+              </div>
+              <mat-error
+                *ngIf="
+                  contactUsForm.controls.message.errors &&
+                  contactUsForm.controls.message.errors.required
+                "
+              >
+                {{ CONTACTUSFORMLABELS.BODY + CONTACTUSFORMLABELS.IS_REQUIRED }}
+              </mat-error>
+            </mat-form-field>
 
-      <div>
-        <botdetect-captcha
-          captchaStyleName="tlcCaptcha"
-          codeLength="4"
-          imageWidth="150"
-          imageStyle="GRAFFITI2"
-        ></botdetect-captcha>
+            <div>
+              <botdetect-captcha
+                captchaStyleName="tlcCaptcha"
+                codeLength="4"
+                imageWidth="150"
+                imageStyle="GRAFFITI2"
+              ></botdetect-captcha>
 
-        <div class="hidebotdetect"></div>
-        <mat-form-field>
-          <mat-label>Code</mat-label>
-          <div class="input-content">
-            <input
-              matInput
-              type="text"
-              required
-              formControlName="userEnteredCaptchaCode"
-              name="tlcCaptchaInput"
-              id="tlcCaptchaInput"
-            />
-          </div>
-          <mat-error
-            *ngIf="
-              contactUsForm.controls.userEnteredCaptchaCode.errors &&
-              contactUsForm.controls.userEnteredCaptchaCode.errors.required
-            "
-          >
-            {{ CONTACTUSFORMLABELS.CODE + CONTACTUSFORMLABELS.IS_REQUIRED }}
-          </mat-error>
-        </mat-form-field>
+              <div class="hidebotdetect"></div>
+              <mat-form-field>
+                <mat-label>Code</mat-label>
+                <div class="input-content">
+                  <input
+                    matInput
+                    type="text"
+                    required
+                    formControlName="userEnteredCaptchaCode"
+                    name="tlcCaptchaInput"
+                    id="tlcCaptchaInput"
+                  />
+                </div>
+                <mat-error
+                  *ngIf="
+                    contactUsForm.controls.userEnteredCaptchaCode.errors &&
+                    contactUsForm.controls.userEnteredCaptchaCode.errors.required
+                  "
+                >
+                  {{ CONTACTUSFORMLABELS.CODE + CONTACTUSFORMLABELS.IS_REQUIRED }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="d-flex justify-content-end my-3">
+              <button
+                type="submit"
+                mat-flat-button
+                class="btn light-blue-button font-16 font-weight-bold"
+                (click)="onSendMessage()"
+                [disabled]="contactUsForm.invalid"
+                [appSpinnerButton]="showSpinner"
+              >
+                <span class="mx-1">Send Message</span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="d-flex justify-content-end my-3">
-        <button
-          type="submit"
-          mat-flat-button
-          class="btn light-blue-button font-16 font-weight-bold"
-          (click)="onSendMessage()"
-          [disabled]="contactUsForm.invalid"
-          [appSpinnerButton]="showSpinner"
-        >
-          <span class="mx-1">Send Message</span>
-        </button>
-      </div>
-    </form>
-  </div>
-</div>

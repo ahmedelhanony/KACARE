@@ -1,6 +1,12 @@
-<h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">
-  Signup
-</h2>
+<div class="d-flex align-items-center">
+  <button mat-icon-button routerLink="/" class="btn action-button" type="button">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="mx-2"></span>
+  <h2 class="font-35 font-md-20 font-weight-extra-bold text-color-black mb-0">
+    Signup
+  </h2>
+</div>
 <p class="font-20 font-weight-normal text-color-gray mb-4">Create as account</p>
 <form [formGroup]="registerForm">
   <div class="row">
@@ -35,7 +41,7 @@
             matInput
             [placeholder]="SINGUPFORMLABELS.ORGANIZATION_NAME"
             formControlName="organizationName"
-            
+
           />
         </div>
         <mat-error
@@ -59,7 +65,7 @@
             matInput
             [placeholder]="SINGUPFORMLABELS.EMAIL"
             formControlName="email"
-            
+
           />
         </div>
         <mat-error
@@ -89,7 +95,7 @@
             matInput
             [placeholder]="SINGUPFORMLABELS.PHONE_NUMBER"
             formControlName="mobileNumber"
-            
+
           />
         </div>
         <mat-error
@@ -119,7 +125,7 @@
             matInput
             [placeholder]="SINGUPFORMLABELS.JOB_TITLE"
             formControlName="jobTitle"
-            
+
           />
         </div>
         <mat-error
@@ -142,7 +148,7 @@
             required
             [placeholder]="SINGUPFORMLABELS.REGISTRATION_TYPE "
             formControlName="generalRoleId"
-            
+
           >
             <mat-option [value]="role.id" *ngFor="let role of generalRoles">{{
               role.nameEn
@@ -169,12 +175,14 @@
             [placeholder]="SINGUPFORMLABELS.PASSWORD"
             [type]="passwordFieldType ? 'text' : 'password'"
             formControlName="password"
-            
+
           />
           <span
-            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
+            class="form-icon cursor-pointer text-color-dark-gray-1 font-15"
             (click)="toggleFieldType()"
-          ></span>
+          >
+          <mat-icon>{{passwordFieldType ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </span>
         </div>
         <mat-error
           *ngIf="
@@ -204,12 +212,15 @@
             [placeholder]="SINGUPFORMLABELS.CONFIRM_PASSWORD"
             [type]="passwordConfirmFieldType ? 'text' : 'password'"
             formControlName="confirmPassword"
-            
+
           />
           <!-- [ngClass]="{'fi fi-eye':!passwordConfirmFieldType, 'fi fi-eye': passwordConfirmFieldType}" (click)="toggleFieldConfirm()" -->
           <span
-            class="form-icon fi fi-eye text-color-dark-gray-1 font-15"
-          ></span>
+            class="form-icon cursor-pointer text-color-dark-gray-1 font-15"
+            (click)="toggleFieldConfirm()"
+          >
+          <mat-icon>{{passwordConfirmFieldType ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </span>
         </div>
         <mat-error
           *ngIf="
@@ -239,7 +250,7 @@
             matInput
             [placeholder]="SINGUPFORMLABELS.EXPERIENCE_FIELD"
             formControlName="experienceFields"
-            
+
           ></textarea>
         </div>
         <mat-error
@@ -307,7 +318,7 @@
   >
   <span class="mx-1 fi fi-spinner spin"></span>
   <span class="mx-1">Sign up</span>
-    
+
   </button> -->
   <button
   type="submit"
