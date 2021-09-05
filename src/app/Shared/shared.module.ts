@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 import { TechnologAreasCardComponent } from './components/technolog-areas-card/technolog-areas-card.component';
 import { MainCardComponent } from '../portal/components/cards/main-card/main-card.component';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
 import { BotDetectCaptchaModule } from 'angular-captcha';
 import { SpinnerButtonDirective } from './directives/spinner-button.directive';

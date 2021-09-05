@@ -15,29 +15,47 @@ export class NewsService extends BaseService {
   protected serviceName: string = SERVICES.News;
 
   addNews(model: any) {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-      }),
-    };
     return this.http.post(
       environment.base_URL + `${this.serviceName}/AddNews`,
-      this.modelToFormData(this.convertModelDate(model)),
-      options
+      this.modelToFormData(this.convertModelDate(model))
     );
   }
 
   editNews(model: any) {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-      }),
-    };
+    let blob;
+    if (model.image.id) {
+      blob = this.b64toBlob(model.image.data, model.image.fileType);
+      let file = new File(
+        [blob],
+        `${model.image.name}${model.image.extension}`,
+        { type: model.image.fileType }
+      );
+      model.image = file;
+    }
     return this.http.post(
       environment.base_URL + `${this.serviceName}/EditNews`,
-      this.modelToFormData(this.convertModelDate(model)),
-      options
+      this.modelToFormData(this.convertModelDate(model))
     );
+  }
+
+  b64toBlob(b64Data: string, contentType = '', sliceSize = 512) {
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, { type: contentType });
+    return blob;
   }
 
   convertModelDate(model: any) {

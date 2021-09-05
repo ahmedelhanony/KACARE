@@ -16,7 +16,7 @@ import { AdminAddArticleComponent } from './admin-add-article/admin-add-article.
   styleUrls: ['./admin-news.component.scss'],
 })
 export class AdminNewsComponent implements OnInit {
-  columns = ['imageSrc', 'title', 'body', 'publishDate', 'actions'];
+  columns = ['imageSrc', 'title', 'body', 'publishDate', 'visible', 'actions'];
   columnsConfig = [
     {
       label: 'Image',
@@ -29,6 +29,10 @@ export class AdminNewsComponent implements OnInit {
     {
       label: 'Body',
       type: 'details',
+    },
+    {
+      label: 'Publish Date',
+      type: 'date',
     },
     {
       label: 'Publish',

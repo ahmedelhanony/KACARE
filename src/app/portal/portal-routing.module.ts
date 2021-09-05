@@ -42,7 +42,7 @@ const routes: Routes = [
       {
         path: 'faqs',
         component: FaqPageComponent,
-        data:{breadcrumb : 'FAQS'}
+        data: { breadcrumb: 'FAQS' },
       },
       {
         path: 'past-projects',

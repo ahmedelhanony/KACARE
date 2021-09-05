@@ -29,13 +29,15 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: 'contact-us', component: ContactUsComponent, data: {breadcrumb: 'Contact Us'}},
-      {path: '404', component: NotFoundComponent},
-
-    ]
+      {
+        path: 'contact-us',
+        component: ContactUsComponent,
+        data: { breadcrumb: 'Contact Us' },
+      },
+      { path: '404', component: NotFoundComponent },
+    ],
   },
-  {path: '**', redirectTo: '/404'}
-
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import { SharedDataService } from 'src/app/core/services/sharedData.service';
 import { getFirstChar } from '../../utils/utils';
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
       label: 'Match making',
       link: 'match-making',
       image: 'match-making',
-      items: 2,
+      items: true,
     },
     {
       label: 'Applications',
@@ -135,12 +136,15 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     img: null,
   };
 
+  unPublishedMatchMakings!: number;
+
   isAuthenticated = false;
   subs: Subscription = new Subscription();
 
   constructor(
     private sharedDataService: SharedDataService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private matchMakingService: MatchMakingService
   ) {}
 
   ngOnInit(): void {
@@ -157,12 +161,25 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       )
     );
+
+    this.subs.add(
+      this.sharedDataService.isMatchMakingToggled$.subscribe(
+        (isToggled: boolean) => {
+          if (isToggled) {
+            this.getUnpublishMatchMaking();
+          }
+        }
+      )
+    );
   }
 
   handleViewBasedOnUserAuth() {
     this.isAuthenticated = this.profileService.currentUser.isAuthenticated;
     if (this.isAuthenticated) {
       this.user.name = this.profileService.currentUser.fullName;
+      if (this.profileService.currentUser.isAdminOnly) {
+        this.getUnpublishMatchMaking();
+      }
     }
 
     if (this.isPortal) {
@@ -170,6 +187,16 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.menuList = this.adminMenuList;
     }
+  }
+
+  getUnpublishMatchMaking() {
+    this.matchMakingService
+      .getUnPublishedMatchMaking()
+      .subscribe((res: any) => {
+        if (res && !res.status) {
+          this.unPublishedMatchMakings = res.result;
+        }
+      });
   }
 
   toggleNav(): void {
@@ -189,7 +216,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   truncateName(text: string) {
-    getFirstChar(text);
+    return getFirstChar(text);
   }
 
   logout() {

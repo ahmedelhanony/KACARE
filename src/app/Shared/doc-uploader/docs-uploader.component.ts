@@ -79,6 +79,9 @@ export class DocsUploaderComponent implements OnInit {
   onDeleteFile() {
     this.display = '';
     this.file = {};
-    this.ItemFormGroup.patchValue({ [this.ItemFormControlName]: this.file });
+    this.ItemFormGroup.patchValue({
+      [this.ItemFormControlName]:
+        Object.keys(this.file).length === 0 ? null : this.file,
+    });
   }
 }

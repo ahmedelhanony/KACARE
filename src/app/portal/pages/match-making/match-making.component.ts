@@ -12,7 +12,7 @@ import { AddMatchMakingComponent } from './components/add-match-making/add-match
   styleUrls: ['./match-making.component.scss'],
 })
 export class MatchMakingComponent implements OnInit {
-  isRegistered = true;
+  isAuthenticated = true;
 
   constructor(
     public dialog: MatDialog,
@@ -26,6 +26,8 @@ export class MatchMakingComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.isAuthenticated = this.profileService.currentUser.isAuthenticated;
+
     if (this.profileService.currentUser.isUserOnly) {
       this.matchMakingTabs.push({
         name: 'My Match Making',

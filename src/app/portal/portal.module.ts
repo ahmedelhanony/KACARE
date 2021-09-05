@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PortalRoutingModule } from './portal-routing.module';
-import {SharedModule} from "../Shared/shared.module";
-// import { MainCardComponent } from './components/cards/main-card/main-card.component';
+import { SharedModule } from '../Shared/shared.module';
 import { FaqComponent } from './components/sections/faq/faq.component';
 import { HowItWorksComponent } from './components/sections/how-it-works/how-it-works.component';
-import {InfographicsPageComponent} from "./pages/infographics-page/infographics-page.component";
+import { InfographicsPageComponent } from './pages/infographics-page/infographics-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { ProjectCardComponent } from './components/cards/project-card/project-card.component';
 import { ArticleSectionComponent } from './components/sections/article-section/article-section.component';
@@ -14,12 +12,12 @@ import { NewsPageComponent } from './pages/news-page/news-page.component';
 import { ApplicationSectionComponent } from './components/sections/application-section/application-section.component';
 import { MatchMakingCardComponent } from './components/cards/match-making-card/match-making-card.component';
 import { TutorialsPageComponent } from './pages/tutorials-page/tutorials-page.component';
-
+import { TutorialsTableComponent } from './components/sections/tutorials-table/tutorials-table.component';
 
 @NgModule({
   declarations: [
-    // MainCardComponent,
     FaqComponent,
+    TutorialsTableComponent,
     HowItWorksComponent,
     InfographicsPageComponent,
     FaqPageComponent,
@@ -29,21 +27,18 @@ import { TutorialsPageComponent } from './pages/tutorials-page/tutorials-page.co
     ApplicationSectionComponent,
     MatchMakingCardComponent,
     TutorialsPageComponent,
+    TutorialsTableComponent,
   ],
   exports: [
-    // MainCardComponent,
     FaqComponent,
+    TutorialsTableComponent,
     HowItWorksComponent,
     ProjectCardComponent,
     ApplicationSectionComponent,
     ArticleSectionComponent,
     MatchMakingCardComponent,
-    SharedModule
+    SharedModule,
   ],
-  imports: [
-    CommonModule,
-    PortalRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, PortalRoutingModule, SharedModule],
 })
-export class PortalModule { }
+export class PortalModule {}

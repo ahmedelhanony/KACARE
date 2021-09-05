@@ -30,6 +30,7 @@ import { ContactUsService } from './services/contact-us.service';
 import { NewsResolver } from './resolvers/news.resolver';
 import { NewsService } from './services/news.service';
 import { BreadcrumbService } from './services/breadcrumb/breadcrumb.service';
+import { BreadcrumbResolver } from './resolvers/breadcrumb.resolver';
 
 const SERVICES = [
   AuthService,
@@ -54,6 +55,7 @@ const SERVICES = [
   LoadingService,
   NewsResolver,
   NewsService,
+  BreadcrumbResolver,
   DatePipe,
   // FilterLookupsResolver,
   {

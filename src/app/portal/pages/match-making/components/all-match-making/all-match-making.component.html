@@ -47,6 +47,8 @@
 <!--  -->
 <!--</div>-->
 
+<app-global-search [searchValue]='searchOptions.searchFilter' (onSearchChage)='onSearchChanged($event)'></app-global-search>
+
 <app-shared-filters
   [selectedFilters]="filters"
   (emitFilters)="onFilterChanges($event)"
@@ -62,7 +64,6 @@
   <ng-container *ngIf="!showSpinner && companies.length; else noDataFound">
     <div class="row">
       <div class="col-md-4 mb-4" *ngFor="let company of companies">
-        <!-- [routerLink]="['/match-making/match-making-details', company.userId]" -->
         <app-match-making-card
           className="gray"
           [title]="company.organizationName"

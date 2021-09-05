@@ -62,7 +62,7 @@
                   />
                 </span>
                 <span class="nav-label">{{ item.label }}</span>
-                <span class="badge" *ngIf="item.items">{{ item.items }}</span>
+                <span class="badge" *ngIf="item.items">{{ unPublishedMatchMakings }}</span>
               </a>
               <ul class="nav-dropdown" *ngIf="item.children">
                 <li class="nav-item" *ngFor="let child of item.children">

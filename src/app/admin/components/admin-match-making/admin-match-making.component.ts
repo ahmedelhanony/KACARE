@@ -9,6 +9,7 @@ import {
 } from 'src/app/core/services/filters/filters.service';
 import { LoadingService } from 'src/app/core/services/loading/loading.service';
 import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
+import { SharedDataService } from 'src/app/core/services/sharedData.service';
 import { BaseComponent } from 'src/app/Shared/components/base/base.component';
 
 @Component({
@@ -49,44 +50,7 @@ export class AdminMatchMakingComponent
       type: 'text',
     },
   ];
-  dataSource: any = [
-    // {
-    //   organizationName: 'Organization Name One',
-    //   Technology: 'Green Hydrogen',
-    //   Details:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-    //   contactInfo: 'Email@company,com',
-    //   status: 'publish',
-    //   actions: ['publish'],
-    // },
-    // {
-    //   organizationName: 'Organization Name One',
-    //   Technology: 'Green Hydrogen',
-    //   Details:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-    //   contactInfo: 'Email@company,com',
-    //   status: 'publish',
-    //   actions: ['publish'],
-    // },
-    // {
-    //   organizationName: 'Organization Name One',
-    //   Technology: 'Green Hydrogen',
-    //   Details:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-    //   contactInfo: 'Email@company,com',
-    //   status: 'published',
-    //   actions: ['publish'],
-    // },
-    // {
-    //   organizationName: 'Organization Name One',
-    //   Technology: 'Green Hydrogen',
-    //   Details:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's",
-    //   contactInfo: 'Email@company,com',
-    //   status: 'published',
-    //   actions: ['publish'],
-    // },
-  ];
+  dataSource: any = [];
   actions: any = ['publish'];
   filters!: filters;
   dropDownIds = ['visible', 'technologyId', 'matchMakingRoleId'];
@@ -99,6 +63,7 @@ export class AdminMatchMakingComponent
     private toastrService: ToastrService,
     private filtersService: FiltersService,
     public loader: LoadingService,
+    private sharedDataService : SharedDataService,
     public injector: Injector
   ) {
     super(injector);
@@ -126,14 +91,6 @@ export class AdminMatchMakingComponent
   onParamsChanges() {
     const params: any = this.filtersService.getParams();
     this.filters = this.filtersService.getDropdownFilters(params);
-    // this.searchOptions = this.filtersService.getSearchOptions(params);
-    // this.sortOptions = this.filtersService.getSortOptions(params);
-    // this.gridModel.state.skip = this.filtersService.getSkipForGridModel(params);
-    // this.gridModel.state.take = this.filtersService.getPerPage(params);
-    // if (params && params['visible']) {
-    //   params['visible'] = +params['visible'];
-    // }
-
     Object.keys(params).forEach((key: any) => {
       if (this.dropDownIds.includes(key) && params[key]) {
         params[key] = +params[key];
@@ -169,7 +126,6 @@ export class AdminMatchMakingComponent
   }
 
   toggleMatchMakingStatus(item: any) {
-
     if (item.visible) {
       this.matchMakingService
         .disapproveMatchMaking(item.id)
@@ -183,7 +139,6 @@ export class AdminMatchMakingComponent
           this.afterStatusChanged(true);
         });
     }
-
   }
 
   afterStatusChanged(approved: boolean) {
@@ -193,6 +148,8 @@ export class AdminMatchMakingComponent
       `Match making ${approved ? 'published' : 'unpublished'} successfully`,
       'Success'
     );
+    
+    this.sharedDataService.refreshUnPublishedMatchMaking();
   }
 
   ngOnDestroy(): void {

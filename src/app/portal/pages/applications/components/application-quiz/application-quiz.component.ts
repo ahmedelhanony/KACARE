@@ -3,44 +3,79 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-application-quiz',
   templateUrl: './application-quiz.component.html',
-  styleUrls: ['./application-quiz.component.scss']
+  styleUrls: ['./application-quiz.component.scss'],
 })
 export class ApplicationQuizComponent implements OnInit {
   viewResult = false;
   stepperIndex = 1;
-  questions = [
-    {
-      label: 'Question 1 one Example ?!',
-      answer: 'no',
+  questions: any = {
+    0: {
+      label:
+        '0 Is the system, as proposed, ready for production and deployment ?!',
+      noAnswer: 1,
+      yesAnswer: 2,
+      noDecision: null,
+      yesDecision: null,
     },
-    {
-      label: 'Question 2 one Example ?!',
-      answer: 'no',
+    1: {
+      label:
+        '1 Is the system, as proposed, ready for production and deployment ?!',
+      noAnswer: 3,
+      yesAnswer: 2,
+      noDecision: null,
+      yesDecision: null,
     },
-    {
-      label: 'Question 3 one Example ?!',
-      answer: 'no',
+    2: {
+      label:
+        '2 Is the system, as proposed, ready for production and deployment ?!',
+      noAnswer: 3,
+      yesAnswer: 4,
+      noDecision: null,
+      yesDecision: null,
     },
-    {
-      label: 'Question 4 one Example ?!',
-      answer: 'no',
+    3: {
+      label:
+        '3 Is the system, as proposed, ready for production and deployment ?!',
+      noAnswer: 4,
+      yesAnswer: null,
+      noDecision: null,
+      yesDecision: 'Demo',
     },
-    {
-      label: 'Question 5 one Example ?!',
-      answer: 'no',
+    4: {
+      label:
+        '4 Is the system, as proposed, ready for production and deployment ?!',
+      noAnswer: null,
+      yesAnswer: null,
+      noDecision: 'PD',
+      yesDecision: 'Feas',
     },
-    {
-      label: 'Question 6 one Example ?!',
-      answer: 'no',
-    },
-  ]
-  constructor() { }
+  };
 
-  ngOnInit(): void {
+  currentQuestion = this.questions[0];
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  answer(action: boolean) {
+    if (action) {
+      if (this.currentQuestion.yesAnswer) {
+        this.currentQuestion = this.questions[this.currentQuestion.yesAnswer];
+      } else {
+        this.viewResult = true;
+        console.log('Decision', this.currentQuestion.yesDecision);
+      }
+    } else {
+      if (this.currentQuestion.noAnswer) {
+        this.currentQuestion = this.questions[this.currentQuestion.noAnswer];
+      } else {
+        this.viewResult = true;
+        console.log('Decision', this.currentQuestion.noDecision);
+      }
+    }
   }
 
-  changeIndex(i: number): void{
+  changeIndex(i: number): void {
     this.stepperIndex = i;
   }
-
 }

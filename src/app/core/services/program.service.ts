@@ -16,13 +16,7 @@ export class ProgramsService extends BaseService {
   }
 
   addProgram(model: any) {
-    debugger;
     let formData = this.modelToFormData(model);
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-      }),
-    };
     return this.http.post(
       environment.base_URL + `${this.serviceName}/AddProgram/`,
       formData
@@ -31,12 +25,6 @@ export class ProgramsService extends BaseService {
 
   updateProgram(model: any) {
     let formData = this.modelToFormData(model);
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-      }),
-    };
-
     return this.http.post(
       environment.base_URL + `${this.serviceName}/UpdateProgram/`,
       formData
@@ -45,11 +33,6 @@ export class ProgramsService extends BaseService {
 
   submitProgram(model: any) {
     let formData = this.modelToFormData(model);
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-      }),
-    };
     return this.http.post(
       environment.base_URL + `${this.serviceName}/SubmitProgram/`,
       formData

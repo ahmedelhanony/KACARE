@@ -18,10 +18,14 @@ export class FiltersService {
     };
   }
 
-  changeParams(filters: filters | AppFilters, url: string) {
+  changeParams(
+    filters: filters | AppFilters,
+    url: string,
+    searchOptions?: SearchOptions
+  ) {
     const page = 1; //gridModel.state.skip > 0 ? gridModel.state.skip / gridModel.state.take : gridModel.state.skip;
     const params = _.omitBy(
-      { ...filters },
+      { ...filters, ...searchOptions },
       (v: any) => v === '' || _.isUndefined(v) || _.isNull(v)
     );
     const queryParams = {
@@ -64,6 +68,14 @@ export class FiltersService {
     return dropdownFilters;
   }
 
+  getSearchOptions(params: any) {
+    const searchOptions = new SearchOptions();
+    searchOptions.searchFilter = params['searchFilter']
+      ? params['searchFilter']
+      : '';
+    return searchOptions;
+  }
+
   getCurrentPage(params: any) {
     return params['pageNumber'] ? +params['pageNumber'] : 1;
   }
@@ -91,4 +103,8 @@ export class AppFilters {
   reviewed!: boolean;
   dateFrom!: Date;
   dateTo!: Date;
+}
+
+export class SearchOptions {
+  searchFilter!: string;
 }

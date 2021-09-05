@@ -25,6 +25,6 @@ export const DefaultErrorOptions = (options?: any) => {
     title: options?.title || 'Error!',
     message: options?.message || 'Something went wrong.',
     type: 'done',
-    icon: 'delete-match',
+    icon: 'be-error-icon',
   };
 };

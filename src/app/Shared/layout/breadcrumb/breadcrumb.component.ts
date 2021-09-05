@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { BreadcrumbService } from 'src/app/core/services/breadcrumb/breadcrumb.service';
 
 @Component({
@@ -10,12 +9,18 @@ import { BreadcrumbService } from 'src/app/core/services/breadcrumb/breadcrumb.s
   styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent {
-  // breadcrumbs = this.activatedRoute.data.pipe(map(res => res.breadcrumbs))
-
   breadcrumbs$: Observable<any[]>;
 
-  constructor(private readonly breadcrumbService: BreadcrumbService) {
-    debugger
+  constructor(
+    private readonly breadcrumbService: BreadcrumbService,
+    private router: Router
+  ) {
     this.breadcrumbs$ = breadcrumbService.breadcrumbs$;
+  }
+
+  onNavigate(url: string) {
+    if (url) {
+      this.router.navigate([url]);
+    }
   }
 }

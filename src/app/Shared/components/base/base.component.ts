@@ -46,7 +46,6 @@ export class BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
     this.isUserOnly = this.profileService.currentUser.isUserOnly;
     this.isAdmin = this.profileService.currentUser.isAdminOnly;
     this.organizationName = this.profileService.currentUser.organizationName;

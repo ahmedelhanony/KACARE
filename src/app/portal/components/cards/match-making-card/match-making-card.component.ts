@@ -20,6 +20,6 @@ export class MatchMakingCardComponent implements OnInit {
   ngOnInit(): void {}
 
   truncateName(text: string) {
-    getFirstChar(text);
+   return getFirstChar(text);
   }
 }

@@ -8,7 +8,7 @@ export class NewArticleModel extends BaseModel {
   body!: string;
   @required()
   publishDate: Date = new Date();
-  @prop()
+  @required()
   image!: any;
   @prop()
   visible!: boolean;

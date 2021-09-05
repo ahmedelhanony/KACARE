@@ -33,19 +33,11 @@ export class MatchMakingService extends BaseService {
         return this.http.get<any[]>(environment.base_URL + `${this.serviceName}/GetMatchMaking/${id}?`);
     }
 
-    getMyMatchMaking(query: any) {
-        //var students = [{details: "NO More DETAILS", contactInfo: "CONTACTS info"}, {details: "NO More DETAILS2", contactInfo: "CONTACTS info2"}];
-        //return new Observable.of(JSON.parse('[{"details": "NO More DETAILS", "contactInfo": "CONTACTS info"}, {"details": "NO More DETAILS2", "contactInfo": "CONTACTS info2"}]'));
-        // const studentsObservable = new Observable(observer => {
-        //     setTimeout(() => {
-        //         observer.next(students);
-        //     }, 1000);
-        // });
+    getUnPublishedMatchMaking() {
+        return this.http.get<any[]>(environment.base_URL + `${this.serviceName}/CountUnpublished`);
+    }
 
-        //return studentsObservable;
-        // const options = {
-        //     headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
-        // };
+    getMyMatchMaking(query: any) {
         return this.http.post<any[]>(environment.base_URL + `${this.serviceName}/GetMyMatchMaking/`, query, { observe: 'response' });
     }
 

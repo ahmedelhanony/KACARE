@@ -4,7 +4,12 @@
       <a routerLink="/" class="cursor-pointer">Home</a>
     </li>
     <li *ngFor="let breadcrumb of breadcrumbs$ | async" class="breadcrumb-item">
-      <a class="cursor-pointer">{{ breadcrumb.label }}</a>
+      <a
+        (click)="onNavigate(breadcrumb.url)"
+        routerLinkActive="router-link-active"
+        class="cursor-pointer"
+        >{{ breadcrumb.label }}</a
+      >
     </li>
   </ol>
 </nav>

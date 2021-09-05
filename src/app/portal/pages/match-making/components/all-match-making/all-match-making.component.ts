@@ -2,7 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { filters, FiltersService } from 'src/app/core/services/filters/filters.service';
+import {
+  filters,
+  FiltersService,
+  SearchOptions,
+} from 'src/app/core/services/filters/filters.service';
 import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
 
 @Component({
@@ -10,63 +14,19 @@ import { MatchMakingService } from 'src/app/core/services/matchmaking.service';
   templateUrl: './all-match-making.component.html',
   styleUrls: ['./all-match-making.component.scss'],
 })
-export class AllMatchMakingComponent implements OnInit , OnDestroy {
-  companies:any = [
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-    // {
-    //   name: 'Organization Name',
-    //   description:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    //   email: 'Email@companyname.com.sa',
-    //   technology: 'Solar Cooling',
-    //   role: 'Off Takers',
-    // },
-  ];
+export class AllMatchMakingComponent implements OnInit, OnDestroy {
+  companies: any = [];
   showSpinner = false;
   filters!: filters;
+  searchOptions!: SearchOptions;
   dropDownIds = ['visible', 'technologyId', 'matchMakingRoleId'];
   destoryed$: Subject<any> = new Subject<any>();
 
-  constructor(private router : Router,private filtersService: FiltersService , private matchMakingService: MatchMakingService) {}
+  constructor(
+    private router: Router,
+    private filtersService: FiltersService,
+    private matchMakingService: MatchMakingService
+  ) {}
 
   ngOnInit(): void {
     this.showSpinner = true;
@@ -83,7 +43,8 @@ export class AllMatchMakingComponent implements OnInit , OnDestroy {
     this.showSpinner = true;
     const params: any = this.filtersService.getParams();
     this.filters = this.filtersService.getDropdownFilters(params);
-    
+    this.searchOptions = this.filtersService.getSearchOptions(params);
+
     Object.keys(params).forEach((key: any) => {
       if (this.dropDownIds.includes(key) && params[key]) {
         params[key] = +params[key];
@@ -117,10 +78,19 @@ export class AllMatchMakingComponent implements OnInit , OnDestroy {
     this.changeRouterParams();
   }
 
-  changeRouterParams() {
-    this.filtersService.changeParams(this.filters, '/match-making/all-match-making');
+  onSearchChanged(searchValue: string) {
+    this.searchOptions.searchFilter = searchValue;
+    this.changeRouterParams();
   }
-  
+
+  changeRouterParams() {
+    this.filtersService.changeParams(
+      this.filters,
+      '/match-making/all-match-making',
+      this.searchOptions
+    );
+  }
+
   ngOnDestroy(): void {
     this.destoryed$.next(true);
     this.destoryed$.complete();

@@ -18,6 +18,9 @@ export class SharedDataService {
   public isUserLoggedOutSubject = new BehaviorSubject<boolean>(false);
   public isUserLoggedOut$ = this.isUserLoggedOutSubject.asObservable();
 
+  public isMatchMakingToggledSubject = new BehaviorSubject<boolean>(false);
+  public isMatchMakingToggled$ = this.isMatchMakingToggledSubject.asObservable();
+
   constructor(private router: Router) {}
 
   goBack(url: string) {
@@ -46,5 +49,10 @@ export class SharedDataService {
   logUserOut() {
     this.isUserLoggedOutSubject.next(true);
     this.isUserLoggedOutSubject.next(false);
+  }
+
+  refreshUnPublishedMatchMaking() {
+    this.isMatchMakingToggledSubject.next(true);
+    this.isMatchMakingToggledSubject.next(false);
   }
 }

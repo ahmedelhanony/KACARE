@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TutorialsComponent } from './components/tutorials/tutorials.component';
+import { TutorialsPageComponent } from '../tutorials-page/tutorials-page.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
@@ -10,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'tutorials',
-    component: TutorialsComponent,
+    component: TutorialsPageComponent,
+    data: { breadcrumb: 'Tutorials' },
   },
 ];
 
