@@ -1,0 +1,16 @@
+:host{
+  ::ng-deep{
+    .portal-filter{
+      .admin-header{
+        margin-top: 0;
+        justify-content: flex-start;
+        @media (max-width: 768px){
+          justify-content: space-between;
+          > .d-flex{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

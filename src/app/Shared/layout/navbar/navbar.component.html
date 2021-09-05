@@ -135,11 +135,15 @@
                   >Forgot Password</span
                 >
               </button> -->
+              <button mat-menu-item routerLink="/admin-login">
+                <span class="icon fi fi-sign-out text-color-red font-20"></span>
+                <span class="font-15 font-weight-medium text-color-light-blue mx-3"
+                  >Logout</span>
+              </button>
             <button mat-menu-item (click)="logout()">
               <span class="icon fi fi-sign-out text-color-red font-20"></span>
               <span class="font-15 font-weight-medium text-color-red mx-3"
-                >Logout</span
-              >
+                >Logout</span>
             </button>
           </mat-menu>
         </ng-container>

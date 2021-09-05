@@ -14,6 +14,7 @@ export class MatchMakingCardComponent implements OnInit {
   @Input() email!: string;
   @Input() technology!: string;
   @Input() role!: string;
+  @Input() visible!: boolean;
 
   constructor() {}
 

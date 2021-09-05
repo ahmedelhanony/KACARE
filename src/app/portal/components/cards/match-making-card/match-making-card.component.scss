@@ -66,6 +66,26 @@
           background: white;
         }
       }
+
+      .match-status {
+        display: inline-flex;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 1.5rem;
+        height: 26px;
+        padding: 0 10px;
+        border-radius: 0px 3px 3px 0;
+        &.published {
+          background-color: $green;
+          color: $white;
+        }
+        &.unpublished {
+          background-color: #e4e7ee;
+          color: $onyx;
+        }
+      }
+
       .text-avatar{
         position: relative;
         border-radius: 6px;

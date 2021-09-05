@@ -1,5 +1,8 @@
 <div class="card match-making-card" [ngClass]="className" data-aos="zoom-in">
   <ng-content select="[actions]"></ng-content>
+  <span class="match-status {{ visible ? 'published' : 'unpublished' }}">{{
+    visible ? "Published" : "Under review"
+  }}</span>
   <div class="shape">
     <span
       class="
